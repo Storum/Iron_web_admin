@@ -439,7 +439,6 @@ Ext.define('Iron.controller.order_menu_controller', {
             hanger_no_weight_count_text = (total_count.no_weight_count - hanger_count.no_weight_count) + '_';
 
 
-
         if (hanger_count.home_weight_count !== 0)
         {
             if (total_count.home_weight_count > hanger_count.home_weight_count)
