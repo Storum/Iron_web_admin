@@ -1,0 +1,267 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "done_order_report_controller"
+    },
+    "designerId": "f525453e-dc7e-47a3-a584-77b4609b2318",
+    "cn": [
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "doneOrderReport",
+                "selector": "panel#doneOrderReport"
+            },
+            "designerId": "33893fd6-ff0b-4168-be28-6144881bbfe0"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "mark_as_phoned_btn",
+                "selector": "panel#doneOrderReport button[itemId=mark_as_phoned_btn]"
+            },
+            "designerId": "d14cf7bd-a995-4320-9894-4c5f0e086233"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "order_list",
+                "selector": "panel#doneOrderReport list[itemId=order_list]"
+            },
+            "designerId": "3f00474b-a528-42a6-aec9-f4737ec1e8b0"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "ok_btn",
+                "selector": "panel#doneOrderReport button[itemId=ok_btn]"
+            },
+            "designerId": "dc1cc355-d8cf-4c91-85a9-f0afc43963e1"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "panel#doneOrderReport",
+                "designer|targetType": "DoneOrderReport",
+                "fn": "Panel_show",
+                "implHandler": [
+                    "this.update_order_list();"
+                ],
+                "name": "show"
+            },
+            "designerId": "d6064597-9ad4-499f-ba25-acf822e7a7f1"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "update_order_list",
+                "implHandler": [
+                    "var t = this;",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name: 'get_order_for_phone_list',",
+                    "            format: 'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        async: false,",
+                    "        success: function (result)",
+                    "        {",
+                    "            t.update_order_store (result.order_for_phone_list);",
+                    "        }",
+                    "    });"
+                ]
+            },
+            "designerId": "bc0bb0c7-61ad-4a4a-843f-a6d17b7c8833"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "data"
+                ],
+                "fn": "update_order_store",
+                "implHandler": [
+                    "var order_list = this.getOrder_list();",
+                    "var order_store = order_list.getStore();",
+                    "",
+                    "",
+                    "order_store.setData(data);"
+                ]
+            },
+            "designerId": "4a024083-f311-41d4-af14-c5d56a374766"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "ok_btn",
+                "designer|targetType": "Ext.Button",
+                "fn": "ok_tap",
+                "implHandler": [
+                    "this.getDoneOrderReport().destroy();"
+                ],
+                "name": "tap"
+            },
+            "designerId": "6079fcbe-72f8-4ab9-875e-9b5fe5c3762b"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "check_selection",
+                "implHandler": [
+                    "var selection = this.getOrder_list().getSelection();",
+                    "",
+                    "if (selection.length > 0)",
+                    "    this.getMark_as_phoned_btn().setDisabled(false);",
+                    "else",
+                    "    this.getMark_as_phoned_btn().setDisabled(true);"
+                ]
+            },
+            "designerId": "e82ec224-afc3-4f0a-a35a-005f2545f09a"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "order_list",
+                "designer|targetType": "Ext.dataview.List",
+                "fn": "order_SelectionChange",
+                "implHandler": [
+                    "this.check_selection();"
+                ],
+                "name": "selectionchange"
+            },
+            "designerId": "2ba96dbe-dca3-4644-a7e9-70e8a55665bd"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "mark_as_phoned_btn",
+                "designer|targetType": "Ext.Button",
+                "fn": "mark_tap",
+                "implHandler": [
+                    "var selection = this.getOrder_list().getSelection();",
+                    "",
+                    "this.count = selection.length;",
+                    "",
+                    "",
+                    "for (var i = 0; i < this.count; i++)",
+                    "{",
+                    "    var id_order = selection[i].get('id_order');",
+                    "    this.update_status (id_order); ",
+                    "}",
+                    "    ",
+                    "",
+                    "",
+                    "//console.log(selection);"
+                ],
+                "name": "tap"
+            },
+            "designerId": "dc5a2b63-7345-425b-8a0a-dfaa996ce034"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "id_order"
+                ],
+                "fn": "update_status",
+                "implHandler": [
+                    "var t = this;",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name: 'update_order_status_as_phoned',",
+                    "            id_order:\t\tid_order,",
+                    "            format: 'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        async: false,",
+                    "        success: function (result)",
+                    "        {",
+                    "            t.count -= 1;",
+                    "            ",
+                    "            if (t.count === 0)",
+                    "            {",
+                    "                Ext.Msg.alert('Iron', result.text);",
+                    "                t.getDoneOrderReport().destroy();",
+                    "            }",
+                    "                ",
+                    "                ",
+                    "        }",
+                    "    });"
+                ]
+            },
+            "designerId": "1c6bf560-924c-4c04-b8f7-1abb49e80122"
+        }
+    ]
+}

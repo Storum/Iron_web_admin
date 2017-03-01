@@ -1,0 +1,1144 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "order_panel_controller",
+        "stores": [
+            "user_store",
+            "order_status_store",
+            "order_actions_store",
+            "client_store",
+            "order_store"
+        ]
+    },
+    "designerId": "5d81ccd0-5eb5-4d8c-86aa-bd0c7a9dd707",
+    "cn": [
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "addOrderPanel",
+                "selector": "panel#addOrderPanel"
+            },
+            "designerId": "1fc025b8-50ce-4c5f-9bbf-ec4d87c677a2"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "orderPanel",
+                "selector": "panel#orderPanel"
+            },
+            "designerId": "4de846ab-7d35-4bb6-83c2-29a5cb8f02b8"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "add_order_button",
+                "designer|targetType": "Ext.Button",
+                "fn": "add_order_tap",
+                "implHandler": [
+                    "var add_order_panel = Ext.create('widget.addorderpanel');",
+                    "Ext.Viewport.add(add_order_panel);",
+                    "add_order_panel.show();"
+                ],
+                "name": "tap"
+            },
+            "designerId": "b78918be-6911-4f2a-80c8-7cd23b17448a"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "orderPanel",
+                "designer|targetType": "OrderPanel",
+                "fn": "onOrderPanelShow",
+                "implHandler": [
+                    "this.update_order_action_list();",
+                    "this.update_order_status_list();",
+                    "this.update_order_executor_list();",
+                    "this.update_order_client_list();",
+                    "this.update_order_list();"
+                ],
+                "name": "show"
+            },
+            "designerId": "931696b9-daa4-4933-9fc0-650db5647d09"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "order_action_select",
+                "selector": "panel#orderPanel selectfield[itemId=id_action_order]"
+            },
+            "designerId": "51b6c9b7-e78d-4ebc-83b7-a0542694ee5c"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "order_status_select",
+                "selector": "panel#orderPanel selectfield[itemId=id_order_status]"
+            },
+            "designerId": "2bc40546-29ba-4bc1-98d1-e17893ae5a11"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "order_executor_select",
+                "selector": "panel#orderPanel selectfield[itemId=id_order_executor]"
+            },
+            "designerId": "0f181535-712f-441a-80e3-50b4e618d2f8"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "order_client_select",
+                "selector": "panel#orderPanel selectfield[itemId=id_order_client]"
+            },
+            "designerId": "5da560ea-f192-440b-b89c-ed3d2775a72d"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "ticket_number",
+                "selector": "panel#orderPanel numberfield[itemId=id_ticket_number_field]"
+            },
+            "designerId": "cca201fe-57f2-483c-9710-140e2d6630cc"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "container_count",
+                "selector": "panel#orderPanel numberfield[itemId=id_container_count_field]"
+            },
+            "designerId": "efc61b8a-f979-4a3b-90c2-f787a03f8c66"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "weight",
+                "selector": "panel#orderPanel numberfield[itemId=id_weight_field]"
+            },
+            "designerId": "86c86c21-3fdf-4137-afbf-c84ebb620365"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "weight_dress",
+                "selector": "panel#orderPanel numberfield[itemId=id_weight_dress]"
+            },
+            "designerId": "ceaa9c70-c0a5-4800-be7c-e86431b63916"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "white",
+                "selector": "panel#orderPanel checkboxfield[itemId=id_white_field]"
+            },
+            "designerId": "09db8287-bf7e-4401-b17d-6e19bfe2704f"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "comment",
+                "selector": "panel#orderPanel textfield[itemId=id_comment_field]"
+            },
+            "designerId": "b5a30e5a-e020-4562-95ce-803ccf0c5298"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "addition_info",
+                "selector": "panel#orderPanel textfield[itemId=id_addition_info_field]"
+            },
+            "designerId": "8b8d040b-a06a-409e-9a69-ea3a3dea2554"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "order_save_button",
+                "selector": "panel#orderPanel  button[itemId=order_save_button]"
+            },
+            "designerId": "1de11942-016e-4d06-a621-58f511121289"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "order_list",
+                "selector": "panel#orderPanel list[itemId=id_order_list]"
+            },
+            "designerId": "fc3c662b-83b4-41e8-8444-32467098d991"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "order_menu_btn",
+                "selector": "panel#orderPanel button[itemId=order_menu_button]"
+            },
+            "designerId": "628e8613-fa72-464a-9690-c6ea96ad61c5"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "add_order_button",
+                "selector": "panel#orderPanel button[itemId=add_order_button]"
+            },
+            "designerId": "7b8c41f0-8e67-47bc-9c99-bede9eadefb6"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "delete_order_btn",
+                "selector": "panel#orderPanel button[itemId=delete_order_button]"
+            },
+            "designerId": "2ebb7410-a168-4f8b-9634-647d6c0660f0"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "search_order",
+                "selector": "panel#orderPanel searchfield[itemId=id_search_order]"
+            },
+            "designerId": "33ca680b-0df4-4edd-a6ee-070e0f8a03fe"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "order_menu_button",
+                "selector": "panel#orderPanel button[itemId=order_menu_button]"
+            },
+            "designerId": "090888eb-b0ae-4c16-9bd0-b8898d52c905"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "addOrderMenu",
+                "selector": "panel#orderPanel panel#addorderMenu"
+            },
+            "designerId": "3e53880e-ceb4-4c27-ac82-d6f4c31f3dca"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "check_field_change",
+                "implHandler": [
+                    "var order_list = this.getOrder_list();",
+                    "",
+                    "",
+                    "",
+                    "if (order_list.getSelection().length !== 0)",
+                    "{",
+                    "    var order_action_select = this.getOrder_action_select();",
+                    "    var order_status_select = this.getOrder_status_select();",
+                    "    var order_executor_select = this.getOrder_executor_select();",
+                    "    var order_client_select = this.getOrder_client_select();",
+                    "    var ticket_number = this.getTicket_number();",
+                    "    var container_count = this.getContainer_count();",
+                    "    var weight = this.getWeight();",
+                    "    var weight_dress = this.getWeight_dress();",
+                    "    var white = this.getWhite();",
+                    "    var comment = this.getComment();",
+                    "",
+                    "",
+                    "    if (order_list.getSelection()[0].get(order_action_select.getName()) !== order_action_select.getValue())",
+                    "    {",
+                    "        this.change_save_btn_status (false);",
+                    "        return;",
+                    "    }",
+                    "",
+                    "",
+                    "    if (order_list.getSelection()[0].get(order_status_select.getName()) !== order_status_select.getValue())",
+                    "    {",
+                    "        this.change_save_btn_status (false);",
+                    "        return;",
+                    "    }",
+                    "",
+                    "    if (order_list.getSelection()[0].get(order_executor_select.getName()) !== order_executor_select.getValue())",
+                    "    {",
+                    "        this.change_save_btn_status (false);",
+                    "        return;",
+                    "    }",
+                    "",
+                    "    if (order_list.getSelection()[0].get(order_client_select.getName()) !== order_client_select.getValue())",
+                    "    {",
+                    "        this.change_save_btn_status (false);",
+                    "        return;",
+                    "    }",
+                    "",
+                    "",
+                    "",
+                    "    if (order_list.getSelection()[0].get(ticket_number.getName()) !== ticket_number.getValue() && ticket_number.getValue())",
+                    "    {",
+                    "        this.change_save_btn_status (false);",
+                    "        return;",
+                    "    }",
+                    "",
+                    "",
+                    "    if (order_list.getSelection()[0].get(container_count.getName()) !== container_count.getValue() && container_count.getValue())",
+                    "    {",
+                    "        this.change_save_btn_status (false);",
+                    "        return;",
+                    "    }",
+                    "",
+                    "",
+                    "    if (order_list.getSelection()[0].get(weight.getName()) !== weight.getValue())",
+                    "    {",
+                    "        this.change_save_btn_status (false);",
+                    "        return;",
+                    "    }",
+                    "",
+                    "    if (order_list.getSelection()[0].get(weight_dress.getName()) !== weight_dress.getValue())",
+                    "    {",
+                    "        this.change_save_btn_status (false);",
+                    "        return;",
+                    "    }",
+                    "",
+                    "",
+                    "    if (order_list.getSelection()[0].get(white.getName()) !== white.getChecked())",
+                    "    {",
+                    "        this.change_save_btn_status (false);",
+                    "        return;",
+                    "    }",
+                    "",
+                    "    if (order_list.getSelection()[0].get(comment.getName()) !== comment.getValue())",
+                    "    {",
+                    "        this.change_save_btn_status (false);",
+                    "        return;",
+                    "    }",
+                    "",
+                    "    this.change_save_btn_status (true);",
+                    "",
+                    "}"
+                ]
+            },
+            "designerId": "514c198c-9cd1-48a2-bc68-0736d636e82a"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "newValue"
+                ],
+                "fn": "change_save_btn_status",
+                "implHandler": [
+                    "var save_btn = this.getOrder_save_button();",
+                    "save_btn.setDisabled (newValue);"
+                ]
+            },
+            "designerId": "78ffc6ca-ecc7-4d97-819b-db06671d5579"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "disabled"
+                ],
+                "fn": "change_btn_disable",
+                "implHandler": [
+                    "var del_btn = this.getDelete_order_btn();",
+                    "var menu_btn = this.getOrder_menu_btn();",
+                    "",
+                    "",
+                    "",
+                    "del_btn.setDisabled (disabled);",
+                    "menu_btn.setDisabled (disabled);"
+                ]
+            },
+            "designerId": "8e6b956e-6a0e-4e3d-9e78-a90671e3def8"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "update_order_action_list",
+                "implHandler": [
+                    "var t = this;",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name\t\t:\t'get_current_order_actions',",
+                    "            format\t\t\t\t:\t'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        async: false,",
+                    "        success: function (result)",
+                    "        {",
+                    "            t.update_order_action_store (result.current_order_action_list);",
+                    "        }",
+                    "    });"
+                ]
+            },
+            "designerId": "01c4725e-939d-48eb-9bfb-a5af3ced8aee"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "data"
+                ],
+                "fn": "update_order_action_store",
+                "implHandler": [
+                    "var order_action_list = this.getOrder_action_select();",
+                    "order_action_list_store = order_action_list.getStore();",
+                    "",
+                    "",
+                    "order_action_list_store.data.clear();",
+                    "order_action_list_store.setData(data);"
+                ]
+            },
+            "designerId": "a7663f16-fbf6-4a79-80fb-b1fcd84d2124"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "update_order_status_list",
+                "implHandler": [
+                    "var t = this;",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name\t\t:\t'get_order_status_list',",
+                    "            format\t\t\t\t:\t'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        async: false,",
+                    "        success: function (result)",
+                    "        {",
+                    "            t.update_order_status_store (result.status_list);",
+                    "        }",
+                    "    });"
+                ]
+            },
+            "designerId": "2423df03-1e8c-443b-9ced-ac9f8c662bd2"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "data"
+                ],
+                "fn": "update_order_status_store",
+                "implHandler": [
+                    "var order_status_list = this.getOrder_status_select();",
+                    "var order_status_store = order_status_list.getStore();",
+                    "",
+                    "",
+                    "order_status_store.data.clear();",
+                    "order_status_store.setData(data);"
+                ]
+            },
+            "designerId": "20e089ae-6b3a-4794-b31f-abdd5f7af16c"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "update_order_executor_list",
+                "implHandler": [
+                    "var t = this;",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name\t\t:\t'get_user_list',",
+                    "            format\t\t\t\t:\t'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        async: false,",
+                    "        success: function (result)",
+                    "        {",
+                    "            t.update_order_executor_store (result.user_list);",
+                    "        }",
+                    "    });"
+                ]
+            },
+            "designerId": "ad9cd53d-c24a-4195-a3bd-cde0128bc8e9"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "data"
+                ],
+                "fn": "update_order_executor_store",
+                "implHandler": [
+                    "var order_executor_list = this.getOrder_executor_select();",
+                    "var order_executor_store = order_executor_list.getStore();",
+                    "",
+                    "",
+                    "order_executor_store.data.clear();",
+                    "order_executor_store.setData(data);"
+                ]
+            },
+            "designerId": "44cb8be5-b8ea-4164-bbf8-a69f6a3e7cb9"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "update_order_client_list",
+                "implHandler": [
+                    "var t = this;",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name\t\t:\t'get_client_list',",
+                    "            format\t\t\t\t:\t'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        async: false,",
+                    "        success: function (result)",
+                    "        {",
+                    "            t.update_order_client_store (result.client_list);",
+                    "        }",
+                    "    });"
+                ]
+            },
+            "designerId": "2e8013b8-d6f1-4614-8c95-30990b35863f"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "data"
+                ],
+                "fn": "update_order_client_store",
+                "implHandler": [
+                    "var order_client_list = this.getOrder_client_select();",
+                    "var order_client_store = order_client_list.getStore();",
+                    "",
+                    "",
+                    "order_client_store.data.clear();",
+                    "order_client_store.setData(data);"
+                ]
+            },
+            "designerId": "4d475d5c-43e8-4d3d-81e9-741e473d1bcf"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "update_order_list",
+                "implHandler": [
+                    "var t = this;",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name\t\t:\t'get_order_list',",
+                    "            format\t\t\t\t:\t'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        async: false,",
+                    "        success: function (result)",
+                    "        {",
+                    "            t.update_order_store (result.order_list);",
+                    "        }",
+                    "    });"
+                ]
+            },
+            "designerId": "73000ddc-efe0-45c5-a5ce-b4fa109c0f15"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "data"
+                ],
+                "fn": "update_order_store",
+                "implHandler": [
+                    "var order_list = this.getOrder_list();",
+                    "var order_store = order_list.getStore();",
+                    "",
+                    "",
+                    "order_store.data.clear();",
+                    "order_store.setData(data);"
+                ]
+            },
+            "designerId": "f2264a4d-5df1-410e-a373-fb74d958a816"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "order_list",
+                "designer|targetType": "Ext.dataview.List",
+                "fn": "order",
+                "implHandler": [
+                    "var order_action_select = this.getOrder_action_select();",
+                    "var order_status_select = this.getOrder_status_select();",
+                    "var order_executor_select = this.getOrder_executor_select();",
+                    "var order_client_select = this.getOrder_client_select();",
+                    "var ticket_number = this.getTicket_number();",
+                    "var container_count = this.getContainer_count();",
+                    "var weight = this.getWeight();",
+                    "var weight_dress = this.getWeight_dress();",
+                    "var white = this.getWhite();",
+                    "var comment = this.getComment();",
+                    "var addition_info = this.getAddition_info();",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "order_action_select.setValue (record.get('id_action'));",
+                    "order_status_select.setValue (record.get('id_status'));",
+                    "order_executor_select.setValue (record.get('id_executor'));",
+                    "order_client_select.setValue (record.get('id_client'));",
+                    "ticket_number.setValue (record.get('ticket_number'));",
+                    "container_count.setValue (record.get('cont_count'));",
+                    "weight.setValue (record.get('weight_home'));",
+                    "weight_dress.setValue (record.get('weight_dress'));",
+                    "weight_dress.setValue (record.get('weight_dress'));",
+                    "comment.setValue (record.get('comment'));",
+                    "",
+                    "if (record.get('is_white'))",
+                    "    white.check ();",
+                    "else",
+                    "    white.uncheck ();",
+                    "",
+                    "",
+                    "this.change_save_btn_status (true);",
+                    "this.change_btn_disable (false);",
+                    "",
+                    "//console.log(record);"
+                ],
+                "name": "itemtap"
+            },
+            "designerId": "2593fec4-5a5a-49a5-954b-b842a4d9f216"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "order_list",
+                "designer|targetType": "Ext.dataview.List",
+                "fn": "edit_order_detail",
+                "implHandler": [
+                    "var order_client_select = this.getOrder_client_select();",
+                    "",
+                    "",
+                    "var addOrderPanel = Ext.create('widget.addorderpanel');",
+                    "addOrderPanel.source_controller = 'order_panel_controller';",
+                    "addOrderPanel.target = 'edit_order';",
+                    "addOrderPanel.record = record;",
+                    "addOrderPanel.client_name = order_client_select.getStore().findRecord('id_client', order_client_select.getValue()).get('name');",
+                    "",
+                    "",
+                    "",
+                    "Ext.Viewport.add(addOrderPanel);",
+                    "addOrderPanel.show();"
+                ],
+                "name": "itemdoubletap"
+            },
+            "designerId": "6ae21e06-e1e2-41ec-a9d8-c78de79a65fd"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "panel#orderPanel selectfield",
+                "designer|targetType": "Ext.field.Select",
+                "fn": "onSelectfieldChange",
+                "implHandler": [
+                    "this.check_field_change();"
+                ],
+                "name": "change"
+            },
+            "designerId": "9b2720ce-5405-494f-8454-9e9f070140d4"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "panel#orderPanel numberfield",
+                "designer|targetType": "Ext.field.Number",
+                "fn": "onNumberfieldKeyup",
+                "implHandler": [
+                    "this.check_field_change();"
+                ],
+                "name": "keyup"
+            },
+            "designerId": "09a57471-e085-4541-a70d-ca66beae6514"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "panel#orderPanel textfield",
+                "designer|targetType": "Ext.field.Text",
+                "fn": "onTextfieldKeyup",
+                "implHandler": [
+                    "this.check_field_change();"
+                ],
+                "name": "keyup"
+            },
+            "designerId": "099e1df0-f331-4437-8ee6-2e90dd0d8046"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "panel#orderPanel checkboxfield",
+                "designer|targetType": "Ext.field.Checkbox",
+                "fn": "onCheckboxfieldChange",
+                "implHandler": [
+                    "this.check_field_change();"
+                ],
+                "name": "change"
+            },
+            "designerId": "f6d8d08c-3e80-4594-b837-2595793b83da"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "delete_order_btn",
+                "designer|targetType": "Ext.Button",
+                "fn": "delete_tap",
+                "implHandler": [
+                    "var id_order = this.getOrder_list().getSelection()[0].get('id_order');",
+                    "",
+                    "",
+                    "var t = this;",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name\t\t:\t'delete_order',",
+                    "            id_order\t\t\t:\tid_order,",
+                    "            format\t\t\t\t:\t'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        async: false,",
+                    "        success: function (result)",
+                    "        {",
+                    "            t.update_order_list();",
+                    "            t.change_save_btn_status(true);",
+                    "",
+                    "",
+                    "            Ext.Msg.alert('Iron', result.text);",
+                    "",
+                    "",
+                    "        }",
+                    "    });"
+                ],
+                "name": "tap"
+            },
+            "designerId": "dc4b9930-12d8-4345-9e36-031ff0f53ea2"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "order_save_button",
+                "designer|targetType": "Ext.Button",
+                "fn": "save_btn",
+                "implHandler": [
+                    "var id_order = this.getOrder_list().getSelection()[0].get('id_order');",
+                    "",
+                    "var id_action = this.getOrder_action_select().getValue();",
+                    "var id_status = this.getOrder_status_select().getValue();",
+                    "var id_executor = this.getOrder_executor_select().getValue();",
+                    "var id_client = this.getOrder_client_select().getValue();",
+                    "var ticket_number = this.getTicket_number().getValue();",
+                    "var container_count = this.getContainer_count().getValue();",
+                    "var weight_home = this.getWeight().getValue();",
+                    "var weight_dress = this.getWeight_dress().getValue();",
+                    "",
+                    "var is_white_ = this.getWhite().getChecked();",
+                    "var is_white = 0;",
+                    "if (is_white_)",
+                    "    is_white = 1;",
+                    "",
+                    "var comment = this.getComment().getValue();",
+                    "var addition_info = this.getAddition_info().getValue();",
+                    "",
+                    "",
+                    "var t = this;",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name\t\t:\t'update_order_ext',",
+                    "            id_order\t\t\t:\tid_order,",
+                    "            id_status\t\t\t:\tid_status,",
+                    "            id_client\t\t\t:\tid_client,",
+                    "            id_executor\t\t\t:\tid_executor,",
+                    "            id_action\t\t\t:\tid_action,",
+                    "            container_count\t\t:\tcontainer_count,",
+                    "            weight_home\t\t\t:\tweight_home,",
+                    "            weight_dress\t\t:\tweight_dress,",
+                    "            ticket_number\t\t:\tticket_number,",
+                    "            is_white\t\t\t:\tis_white,",
+                    "            comment\t\t\t\t:\tcomment,",
+                    "            format\t\t\t\t:\t'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        async: false,",
+                    "        success: function (result)",
+                    "        {",
+                    "            t.update_order_list();",
+                    "            t.change_save_btn_status(true);",
+                    "            Ext.Msg.alert('Iron', result.text);",
+                    "        }",
+                    "    });",
+                    ""
+                ],
+                "name": "tap"
+            },
+            "designerId": "95d8018e-8ba9-4226-a6ac-3c38641aba7c"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "search_order",
+                "designer|targetType": "Ext.field.Search",
+                "fn": "search",
+                "implHandler": [
+                    "var value = textfield.getValue(),",
+                    "store = this.getOrder_list().getStore();",
+                    "store.clearFilter();",
+                    "",
+                    "store.filter('id_order', value);"
+                ],
+                "name": "keyup"
+            },
+            "designerId": "2f239c05-af1d-45ea-a158-44b9d0fa24e5"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "search_order",
+                "designer|targetType": "Ext.field.Search",
+                "fn": "clear_filter_tap",
+                "implHandler": [
+                    "store = this.getOrder_list().getStore();",
+                    "store.clearFilter();",
+                    ""
+                ],
+                "name": "clearicontap"
+            },
+            "designerId": "7c5355e6-91ba-4b77-9dbe-812ac8221f00"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "order_menu_button",
+                "designer|params": [
+                    "target"
+                ],
+                "designer|targetType": null,
+                "fn": "menu_open",
+                "implHandler": [
+                    "",
+                    "var menu = this.getAddOrderMenu();",
+                    "if (!menu) {",
+                    "    menu = Ext.create('widget.addordermenu');",
+                    "}",
+                    "",
+                    "",
+                    "// Show menu by menu button",
+                    "menu.showBy(target);",
+                    "",
+                    ""
+                ],
+                "name": "tap"
+            },
+            "designerId": "f9a8b9c1-45d7-46fc-beae-0dd19be20a68"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "get_selected_order",
+                "implHandler": [
+                    "return this.getOrder_list().getSelection()[0];"
+                ]
+            },
+            "designerId": "83f449cc-c3d5-4c5d-8b82-ef5b15fa350c"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "get_selected_order_client",
+                "implHandler": [
+                    "var selected_order = this.getOrder_list().getSelection()[0];",
+                    "var client_store = this.getOrder_client_select().getStore();",
+                    "",
+                    "",
+                    "return client_store.getAt(client_store.find('id_client', selected_order.get('id_client')));",
+                    ""
+                ]
+            },
+            "designerId": "5f29a052-5616-4a19-a4fb-1238b414c66f"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "get_selected_order_action",
+                "implHandler": [
+                    "var selected_order = this.getOrder_list().getSelection()[0];",
+                    "var action_store = this.getOrder_action_select().getStore();",
+                    "",
+                    "",
+                    "return action_store.getAt(action_store.find('id_action', selected_order.get('id_action')));"
+                ]
+            },
+            "designerId": "84e2a382-d899-4342-b226-67ccf38cbbc4"
+        }
+    ]
+}

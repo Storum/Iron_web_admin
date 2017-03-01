@@ -1,0 +1,172 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "centered": true,
+        "designer|userAlias": "usermenu",
+        "designer|userClassName": "UserMenu",
+        "hidden": true,
+        "hideOnMaskTap": true,
+        "id": null,
+        "itemId": "userMenu",
+        "modal": true,
+        "padding": 10
+    },
+    "designerId": "ce113d1c-cf8c-4bde-b95d-ef4fc5cf12a6",
+    "cn": [
+        {
+            "type": "Ext.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "disabled": null,
+                "iconCls": "home",
+                "id": null,
+                "itemId": null,
+                "margin": 15,
+                "navId": null,
+                "navView": "addresspanel",
+                "navViewItemId": "addressPanel",
+                "text": "Адреса"
+            },
+            "designerId": "da640f15-171f-476a-977e-9f47fe6f22bb",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navId",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navView",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navViewItemId",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "config": null,
+                "iconCls": "info",
+                "itemId": null,
+                "margin": 15,
+                "navId": null,
+                "navView": "phonepanel",
+                "navViewItemId": "phonePanel",
+                "text": "Телефоны"
+            },
+            "designerId": "b04386b7-fa36-4f8e-bb16-e728e4810322",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "config",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navId",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navView",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navViewItemId",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "disabled": true,
+                "iconCls": "compose",
+                "itemId": null,
+                "margin": 15,
+                "navId": null,
+                "navView": "contactpanel",
+                "navViewItemId": "contactPanel",
+                "text": "Роли"
+            },
+            "designerId": "959f47c1-10d7-4445-907c-a36656a90988",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navId",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navView",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navViewItemId",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "disabled": true,
+                "iconCls": "compose",
+                "itemId": null,
+                "margin": 15,
+                "navId": null,
+                "navView": "userpanel",
+                "navViewItemId": "userPanel",
+                "text": "Сменить пароль"
+            },
+            "designerId": "a354f5d6-ac52-42c9-ab7e-b5c199783fad",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navId",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navView",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navViewItemId",
+                    "type": "string"
+                }
+            ]
+        }
+    ]
+}

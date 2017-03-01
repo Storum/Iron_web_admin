@@ -1,0 +1,148 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "centered": true,
+        "designer|userAlias": "addphonepanel",
+        "designer|userClassName": "AddPhonePanel",
+        "height": 260,
+        "itemId": "addPhonePanel",
+        "modal": true,
+        "showAnimation": "pop",
+        "width": 510
+    },
+    "designerId": "7dfa1530-4c79-4fe9-a455-9a46ecf09800",
+    "cn": [
+        {
+            "type": "Ext.Toolbar",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": "bottom",
+                "itemId": "add_phone_bottom_toolbar1"
+            },
+            "designerId": "08df747c-5fdb-46c3-a382-842e95a2828d",
+            "cn": [
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "disabled": true,
+                        "docked": "right",
+                        "itemId": "add_btn",
+                        "text": "Добавить"
+                    },
+                    "designerId": "0d290410-cfc4-4acc-9f82-26b60194863a"
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "docked": "right",
+                        "itemId": "cancel_btn",
+                        "text": "Отмена"
+                    },
+                    "designerId": "19e2a8f2-1f1c-493a-9d21-d5d329014555"
+                }
+            ]
+        },
+        {
+            "type": "Ext.form.FieldSet",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "title": ""
+            },
+            "designerId": "35fd3c61-7aed-47aa-a00f-56b7c160c1ca",
+            "cn": [
+                {
+                    "type": "Ext.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "clearIcon": false,
+                        "itemId": "id_phone_field",
+                        "label": "Телефон:",
+                        "name": "phone",
+                        "target": "add_phone"
+                    },
+                    "designerId": "23d2cfdb-bf7c-4fd8-8464-752288116031",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "target",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "clearIcon": false,
+                        "itemId": "id_phone_comment_field",
+                        "label": "Комментарий:",
+                        "name": "comment",
+                        "target": "add_phone"
+                    },
+                    "designerId": "bbca4e68-d32c-478f-ad47-5ce09a3ff294",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "target",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.field.Checkbox",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "checked": true,
+                        "itemId": "id_primary_phone_checkbox",
+                        "label": "Основной:",
+                        "name": "is_primary",
+                        "target": "add_phone"
+                    },
+                    "designerId": "7373a36c-2d2a-4a88-ad07-e6bffbe84866",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "target",
+                            "type": "string"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,866 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "client_panel_controller",
+        "requires": [
+            "Iron.Utilities"
+        ],
+        "views": [
+            "ClientMenu"
+        ]
+    },
+    "designerId": "edc5c9c3-08cd-40f2-8cb8-1d6eba43bd1c",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "client_menu_button",
+                "designer|params": [
+                    "target"
+                ],
+                "designer|targetType": null,
+                "fn": "show_ClientMenu",
+                "implHandler": [
+                    "",
+                    "var menu = this.getClientMenu();",
+                    "if (!menu) {",
+                    "    menu = Ext.create('widget.clientmenu');",
+                    "}",
+                    "",
+                    "",
+                    "// Show menu by menu button",
+                    "menu.showBy(target);",
+                    "",
+                    ""
+                ],
+                "name": "tap"
+            },
+            "designerId": "19b27c8c-1896-4b48-aa10-01f180664916"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "clientList",
+                "designer|targetType": "Ext.dataview.List",
+                "fn": "onClientListSelect",
+                "implHandler": [
+                    "",
+                    "",
+                    "var client_NameField\t\t= this.getClientNameField();",
+                    "var client_SurnameField\t\t= this.getClientSurnameField();",
+                    "var client_PatronymicField\t= this.getClientPatronymicField();",
+                    "var client_BirthdayField\t= this.getClientBirthdayField();",
+                    "var client_GenderField\t\t= this.getClientGender();",
+                    "var client_DateField\t\t= this.getClientDateCreateField();",
+                    "var client_CommentField\t\t= this.getClientCommentField();",
+                    "",
+                    "",
+                    "",
+                    "client_NameField.setValue (record.get('name'));",
+                    "client_SurnameField.setValue (record.get('surname'));",
+                    "client_PatronymicField.setValue (record.get('patronymic'));",
+                    "client_CommentField.setValue (record.get('comment'));",
+                    "client_BirthdayField.setValue (Iron.Utilities.date_to_string(record.get('birthday')));",
+                    "client_DateField.setValue (record.get('date_create'));",
+                    "client_GenderField.setValue (record.get('gender'));",
+                    "",
+                    "",
+                    "this.change_btn_disable (false);",
+                    "this.change_save_btn_status (true);"
+                ],
+                "name": "itemtap"
+            },
+            "designerId": "ac96170e-a4f1-4b52-9f8d-02a0c3816c72"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "clientList",
+                "designer|targetType": "Ext.dataview.List",
+                "fn": "onListItemDoubletap",
+                "implHandler": [
+                    "var client_panel = this.getClientPanel();",
+                    "",
+                    "",
+                    "if (client_panel.source)",
+                    "{",
+                    "    var client_list = this.getClientList();",
+                    "    this.getApplication().getController(client_panel.source).set_client_name(client_list.getSelection()[0].get('name'), client_list.getSelection()[0].get('id_client'));",
+                    "    client_panel.destroy();",
+                    "}",
+                    "",
+                    ""
+                ],
+                "name": "itemdoubletap"
+            },
+            "designerId": "ab41dca4-4b19-4cc3-8024-c0d15ee76d88"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "client_save_button",
+                "designer|targetType": "Ext.Button",
+                "fn": "save_tap",
+                "implHandler": [
+                    "",
+                    "",
+                    "var name = this.getClientNameField().getValue();",
+                    "var surname = this.getClientSurnameField().getValue();",
+                    "var patronymic = this.getClientPatronymicField().getValue();",
+                    "var comment = this.getClientCommentField().getValue();",
+                    "var birthday = this.getClientBirthdayField().getValue();",
+                    "var id_gender\t\t= this.getClientGender().getValue();",
+                    "",
+                    "var cleint_list = this.getClientList();",
+                    "var selected_id_client = cleint_list.getSelection ()[0].get('id_client');",
+                    "",
+                    "var t = this;",
+                    "",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name: 'update_client_data',",
+                    "            id_client: selected_id_client,",
+                    "            name: name,",
+                    "            surname: surname,",
+                    "            patronymic: patronymic,",
+                    "            birthday: birthday,",
+                    "            id_gender: id_gender,",
+                    "            comment: comment,",
+                    "            format: 'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        async: false,",
+                    "        success: function (result)",
+                    "        {",
+                    "",
+                    "            t.update_client_list();",
+                    "            t.change_save_btn_status(true);",
+                    "",
+                    "            t.select_client_in_listview (cleint_list, selected_id_client);",
+                    "        }",
+                    "    });",
+                    ""
+                ],
+                "name": "tap"
+            },
+            "designerId": "4c8f9a08-226d-4c2b-a259-5b30f4b59d67"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "client_delete_button",
+                "designer|targetType": "Ext.Button",
+                "fn": "delete_client_tap",
+                "implHandler": [
+                    "var client_list = this.getClientList();",
+                    "var selected_id_client = client_list.getSelection ()[0].get('id_client');",
+                    "",
+                    "this.delete_client (selected_id_client, false);"
+                ],
+                "name": "tap"
+            },
+            "designerId": "3b449677-717c-4523-85ae-a1de228ea7c2"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "textfield[target='edit_client']",
+                "designer|targetType": "Ext.field.Text",
+                "fn": "user_data_changed",
+                "implHandler": [
+                    "this.check_field_change ();"
+                ],
+                "name": "keyup"
+            },
+            "designerId": "66e8380e-d4b2-46f0-8646-277027498ac2"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "clientPanel",
+                "selector": "panel#clientPanel"
+            },
+            "designerId": "1689658c-9699-43c7-91f8-6912c9b61456"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "clientGender",
+                "designer|targetType": "Ext.field.Select",
+                "fn": "gender_changed",
+                "implHandler": [
+                    "this.check_field_change ();"
+                ],
+                "name": "change"
+            },
+            "designerId": "7bcc4314-24d9-4017-b6ab-2e0742e8144c"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "clientPanel",
+                "designer|targetType": "ClientPanel",
+                "fn": "clientpanel_Activate",
+                "implHandler": [
+                    "this.update_client_list();",
+                    "this.update_gender_list();",
+                    ""
+                ],
+                "name": "show"
+            },
+            "designerId": "3629cf6a-4968-468f-9e5f-69abfe395164"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "clientList",
+                "selector": "panel#clientPanel list[itemId=client_list]"
+            },
+            "designerId": "3696f1bc-d0b4-4e52-a084-18ee7f1d2915"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "clientDateCreateField",
+                "selector": "panel#clientPanel datepickerfield[itemId=client_date_create_textfield]"
+            },
+            "designerId": "3724dc84-726f-4b5b-916f-bca59fb3fa91"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "clientNameField",
+                "selector": "panel#clientPanel textfield[itemId=client_name_textfield]"
+            },
+            "designerId": "81f8cee8-4ec9-40db-8c83-f762b492b481"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "clientSurnameField",
+                "selector": "panel#clientPanel textfield[itemId=client_surname_textfield]"
+            },
+            "designerId": "e447c6df-0c59-41ed-9e85-515b5c029d8d"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "clientPatronymicField",
+                "selector": "panel#clientPanel textfield[itemId=client_patronymic_textfield]"
+            },
+            "designerId": "fbb9da99-a223-4568-9c03-4ce12972f388"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "clientBirthdayField",
+                "selector": "panel#clientPanel textfield[itemId=birthday_textfield_]"
+            },
+            "designerId": "93a8b5f1-058b-45a3-a54e-af06c21d3f8a"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "clientGender",
+                "selector": "panel#clientPanel selectfield[itemId=client_gender_field]"
+            },
+            "designerId": "fe1c57ed-88dd-4df0-a28b-72771cea7d55"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "clientCommentField",
+                "selector": "panel#clientPanel textfield[itemId=client_comment_textfield]"
+            },
+            "designerId": "c94f8e92-ef72-472e-a846-dd8b4eaa18c2"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "client_delete_button",
+                "selector": "panel#clientPanel button[itemId=delete_client_button]"
+            },
+            "designerId": "8f01364e-fafa-4c7b-8fb2-39a103703701"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "client_menu_button",
+                "selector": "panel#clientPanel button[itemId=clientmenu_button]"
+            },
+            "designerId": "bd55524f-88a2-4180-9be0-4706af33f340"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "client_save_button",
+                "selector": "panel#clientPanel button[itemId=client_save_button]"
+            },
+            "designerId": "542b4c2e-0bfc-49d5-82c0-13cbeb91ab3c"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "add_client_button",
+                "selector": "panel#clientPanel button[itemId=add_client_button]"
+            },
+            "designerId": "99361742-8e20-4dd1-8a13-26c00593b836"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "cancel_button",
+                "selector": "panel#clientPanel button[itemId=cancel_button]"
+            },
+            "designerId": "e37d50f2-d0fe-4f0c-9f05-63b9f606f133"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "select_client_button",
+                "selector": "panel#clientPanel  button[itemId=select_client_button]"
+            },
+            "designerId": "29f664ec-ab11-4195-a3d4-78fc5bc8fb3e"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "clientMenu",
+                "selector": "#clientMenu",
+                "xtype": "clientmenu"
+            },
+            "designerId": "1ee5c4c0-56fd-4c8a-a58c-641cb3bbbaa7"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "update_client_list",
+                "implHandler": [
+                    "var t = this;",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name: 'get_client_list',",
+                    "            format: 'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        async: false,",
+                    "        success: function (result)",
+                    "        {",
+                    "            t.update_client_store (result.client_list);",
+                    "        }",
+                    "    });"
+                ]
+            },
+            "designerId": "a02ff1e3-6d1c-4fa0-a57e-8e3782ad880f"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "update_gender_list",
+                "implHandler": [
+                    "var t = this;",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name: 'get_gender_list',",
+                    "            format: 'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        async: false,",
+                    "        success: function (result)",
+                    "        {",
+                    "            t.update_gender_store (result.gender_list);",
+                    "        }",
+                    "    });"
+                ]
+            },
+            "designerId": "095f4565-0149-4e3c-b844-1736bdc6fab3"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "data"
+                ],
+                "fn": "update_gender_store",
+                "implHandler": [
+                    "",
+                    "var gender_select = this.getClientGender();",
+                    "var gender_store = gender_select.getStore();",
+                    "",
+                    "",
+                    "gender_store.data.clear();",
+                    "gender_store.setData(data);",
+                    ""
+                ]
+            },
+            "designerId": "71ee6d67-b869-494b-b1a1-8c24998bc1b1"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "data"
+                ],
+                "fn": "update_client_store",
+                "implHandler": [
+                    "",
+                    "var client_ListView = this.getClientList();",
+                    "var client_store = client_ListView.getStore();",
+                    "",
+                    "client_store.data.clear();",
+                    "client_store.setData(data);",
+                    ""
+                ]
+            },
+            "designerId": "5ecc7385-2d8b-46e7-b68c-5cb3439266f3"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "disabled"
+                ],
+                "fn": "change_btn_disable",
+                "implHandler": [
+                    "var clnt_del_btn = this.getClient_delete_button ();",
+                    "var clnt_menu_btn = this.getClient_menu_button();",
+                    "var clnt_select_btn = this.getSelect_client_button();",
+                    "",
+                    "",
+                    "",
+                    "clnt_del_btn.setDisabled (disabled);",
+                    "clnt_menu_btn.setDisabled (disabled);",
+                    "clnt_select_btn.setDisabled (disabled);"
+                ]
+            },
+            "designerId": "4e1924c1-9c35-4623-b447-2fe5cb75f89c"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "newValue"
+                ],
+                "fn": "change_save_btn_status",
+                "implHandler": [
+                    "var clnt_save_btn = this.getClient_save_button();",
+                    "clnt_save_btn.setDisabled (newValue);"
+                ]
+            },
+            "designerId": "cbc83a23-beb6-4d5f-8a62-12831ee5da10"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "check_field_change",
+                "implHandler": [
+                    "var client_list = this.getClientList();",
+                    "",
+                    "",
+                    "if (client_list.getSelection().length !== 0)",
+                    "{",
+                    "    var name\t\t= this.getClientNameField();",
+                    "    var surname\t\t= this.getClientSurnameField();",
+                    "    var patronymic\t= this.getClientPatronymicField();",
+                    "    var comment\t\t= this.getClientCommentField();",
+                    "    var birthday\t= this.getClientBirthdayField();",
+                    "    var gender\t\t= this.getClientGender();",
+                    "",
+                    "",
+                    "    if (client_list.getSelection()[0].get(name.getName()) !== name.getValue())",
+                    "    {",
+                    "        this.change_save_btn_status (false);",
+                    "        return;",
+                    "    }",
+                    "",
+                    "",
+                    "    if (client_list.getSelection()[0].get(surname.getName()) !== surname.getValue())",
+                    "    {",
+                    "        this.change_save_btn_status (false);",
+                    "        return;",
+                    "    }",
+                    "",
+                    "    if (client_list.getSelection()[0].get(patronymic.getName()) !== patronymic.getValue())",
+                    "    {",
+                    "        this.change_save_btn_status (false);",
+                    "        return;",
+                    "    }",
+                    "",
+                    "    if (client_list.getSelection()[0].get(comment.getName()) !== comment.getValue())",
+                    "    {",
+                    "        this.change_save_btn_status (false);",
+                    "        return;",
+                    "    }",
+                    "",
+                    "",
+                    "",
+                    "    if (Iron.Utilities.date_to_string(client_list.getSelection()[0].get(birthday.getName())) !== birthday.getValue())",
+                    "    {",
+                    "        this.change_save_btn_status (false);",
+                    "        return;",
+                    "    }",
+                    "",
+                    "",
+                    "    if (parseInt(client_list.getSelection()[0].get(gender.getName()), 0) !== gender.getValue())",
+                    "    {",
+                    "        this.change_save_btn_status (false);",
+                    "        return;",
+                    "    }",
+                    "",
+                    "",
+                    "",
+                    "    this.change_save_btn_status (true);",
+                    "",
+                    "}"
+                ]
+            },
+            "designerId": "1dc96265-5e0f-49bb-a75f-45b1bf5a1f8a"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "listview",
+                    "id_client"
+                ],
+                "fn": "select_client_in_listview",
+                "implHandler": [
+                    "",
+                    "",
+                    "var store = listview.getStore();",
+                    "var record_index = store.find ('id_client', id_client);",
+                    "listview.select (0, false, true);",
+                    "",
+                    "//listview.fireEvent('itemtap', listview, 0, listview.getAt(0), null, null);"
+                ]
+            },
+            "designerId": "29d72f34-d64e-4e10-96ab-aaf53bde008c"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "id_client",
+                    "is_silent"
+                ],
+                "fn": "delete_client",
+                "implHandler": [
+                    "var t = this;",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name: 'delete_client',",
+                    "            id_client: id_client,",
+                    "            format: 'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        async: false,",
+                    "        success: function (result)",
+                    "        {",
+                    "            var client_list = t.getClientList();",
+                    "",
+                    "            t.update_client_list();",
+                    "            t.change_save_btn_status(true);",
+                    "",
+                    "            t.select_client_in_listview (client_list, id_client);",
+                    "",
+                    "            Ext.Msg.alert('Iron', result.text);",
+                    "        }",
+                    "    });"
+                ]
+            },
+            "designerId": "821eee9f-1048-4686-8a96-13ea43cf337a"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "get_current_client_id",
+                "implHandler": [
+                    "var client_list = this.getClientList();",
+                    "",
+                    "if (client_list)",
+                    "{",
+                    "    var selected_id_client = client_list.getSelection ()[0].get('id_client');",
+                    "    return selected_id_client;",
+                    "}",
+                    "else",
+                    "    return null;",
+                    ""
+                ]
+            },
+            "designerId": "1f2a2527-3823-4cb1-9058-e609712362ff"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "is_birthday_correct",
+                "implHandler": [
+                    "var birthday = this.getClientNameField().getValue();"
+                ]
+            },
+            "designerId": "8eb46160-12f1-47e4-bf79-23c500b824e2"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "add_client_button",
+                "designer|targetType": "Ext.Button",
+                "fn": "add_client",
+                "implHandler": [
+                    "",
+                    "addClientPanel = Ext.create('widget.addclientpanel');",
+                    "Ext.Viewport.add(addClientPanel);",
+                    "addClientPanel.show();",
+                    ""
+                ],
+                "name": "tap"
+            },
+            "designerId": "fbf5ee9d-faf9-44bd-a5a7-d588abb5a1c5"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "cancel_button",
+                "designer|targetType": "Ext.Button",
+                "fn": "cancel_tap",
+                "implHandler": [
+                    "var client_panel = this.getClientPanel();",
+                    "client_panel.destroy();"
+                ],
+                "name": "tap"
+            },
+            "designerId": "14deadf4-d830-41f3-97ae-b50f61a4febd"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "select_client_button",
+                "designer|targetType": "Ext.Button",
+                "fn": "select_client",
+                "implHandler": [
+                    "",
+                    "var client_list = this.getClientList();",
+                    "var client_panel = this.getClientPanel();",
+                    "",
+                    "",
+                    "this.getApplication().getController(client_panel.source).set_client_name(client_list.getSelection()[0].get('name'), client_list.getSelection()[0].get('id_client'));",
+                    "",
+                    "",
+                    "client_panel.destroy();"
+                ],
+                "name": "tap"
+            },
+            "designerId": "5e92d83f-8e87-441f-978d-a7fcc88e10e3"
+        }
+    ]
+}

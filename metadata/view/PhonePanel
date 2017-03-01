@@ -1,0 +1,246 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "centered": true,
+        "designer|userAlias": "phonepanel",
+        "designer|userClassName": "PhonePanel",
+        "height": 377,
+        "itemId": "phonePanel",
+        "layout": "vbox",
+        "modal": true,
+        "showAnimation": "pop",
+        "width": 745
+    },
+    "designerId": "1854e084-b8a6-4ad3-bfe7-818322746766",
+    "cn": [
+        {
+            "type": "Ext.dataview.List",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": "left",
+                "itemId": "id_phone_list",
+                "store": "phone_store",
+                "width": 276
+            },
+            "designerId": "cff825f3-22ae-4836-8019-baee05bedbb4",
+            "cn": [
+                {
+                    "type": "Ext.XTemplate",
+                    "reference": {
+                        "name": "itemTpl",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": null,
+                        "implHandler": [
+                            "<div class=\"phone\"> {phone}<br>{is_primary_text}<br> </div>"
+                        ]
+                    },
+                    "designerId": "483a3ecf-466d-4489-b0d4-5302d0cc24ac"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Toolbar",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": "bottom"
+            },
+            "designerId": "30ba5292-af19-4ddb-bf77-22ec87cbd990",
+            "cn": [
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "docked": "right",
+                        "iconCls": null,
+                        "id": null,
+                        "itemId": "id_ok_btn",
+                        "text": "OK",
+                        "width": 100
+                    },
+                    "designerId": "766f5942-2760-4276-a159-206d00174f77"
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "disabled": true,
+                        "docked": "right",
+                        "iconAlign": null,
+                        "iconCls": "bookmarks",
+                        "itemId": "id_save_btn",
+                        "layout|flex": null,
+                        "text": "Сохранить",
+                        "width": 133
+                    },
+                    "designerId": "5bbf592e-fd5a-471a-b00d-5548803e0fa7"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout": "fit"
+            },
+            "designerId": "4322b8da-8b3f-417a-839b-ad8c18f5946b",
+            "cn": [
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "docked": "top",
+                        "title": ""
+                    },
+                    "designerId": "a9c59d76-ae72-45f3-822f-2ee676905e54",
+                    "cn": [
+                        {
+                            "type": "Ext.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "clearIcon": false,
+                                "itemId": "id_phone_field",
+                                "label": "Телефон:",
+                                "name": "phone",
+                                "target": "edit_phone"
+                            },
+                            "designerId": "20a4f981-7cb1-4d05-8e8d-691b81d03cdb",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "target",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "clearIcon": false,
+                                "itemId": "id_phone_comment_field",
+                                "label": "Комментарий:",
+                                "name": "comment",
+                                "target": "edit_phone"
+                            },
+                            "designerId": "b6212c51-8ee2-44cf-9ef5-63bb9be795bc",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "target",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.field.Checkbox",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "itemId": "id_primary_phone_checkbox",
+                                "label": "Основной:",
+                                "name": "is_primary",
+                                "target": "edit_phone"
+                            },
+                            "designerId": "c924d65f-cb7e-4b24-b819-5368b1b186e2",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "target",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Toolbar",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "docked": "top"
+                            },
+                            "designerId": "447ef25b-0d36-424d-9893-48905600ebca",
+                            "cn": [
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "docked": null,
+                                        "iconCls": "add",
+                                        "itemId": "id_add_btn",
+                                        "text": "Добавить"
+                                    },
+                                    "designerId": "d5ee206f-a8b4-4d05-add1-af04ed6e414b"
+                                },
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "disabled": true,
+                                        "docked": null,
+                                        "iconCls": "delete",
+                                        "itemId": "id_delete_btn",
+                                        "text": "Удалить"
+                                    },
+                                    "designerId": "fa2c0c69-3b78-4b4d-828b-8416d2482ba8"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

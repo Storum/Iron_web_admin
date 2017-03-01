@@ -1,0 +1,33 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "centered": true,
+        "designer|userAlias": "reportsmenupanel",
+        "designer|userClassName": "ReportsMenuPanel",
+        "hideOnMaskTap": true,
+        "itemId": "reportsMenuPanel",
+        "modal": true,
+        "padding": 15
+    },
+    "designerId": "2568a4b1-4b31-40d2-bd87-e6ced6f2fd90",
+    "cn": [
+        {
+            "type": "Ext.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "done_report_btn",
+                "text": "Готовые заказы"
+            },
+            "designerId": "bbbc9bdf-72fb-4d80-b497-c6cd2bb74333"
+        }
+    ]
+}

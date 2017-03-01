@@ -1,0 +1,125 @@
+{
+    "name": "Iron",
+    "settings": {
+        "cmd": {
+            "license": "commercial",
+            "cmdVersion": "4.0.5.87",
+            "frameworkVersion": "2.3.1.410"
+        },
+        "canvasControls": {
+            "viewportSize": {
+                "name": "iPad",
+                "builtIn": true,
+                "height": 1024,
+                "width": 768
+            },
+            "viewportOrientation": "portrait"
+        },
+        "urlPrefix": "http://localhost/Iron/",
+        "exportPath": "",
+        "spacesToIndent": 4,
+        "sdkPath": "",
+        "lineEnding": "LF",
+        "genTimestamps": false,
+        "cacheBust": false,
+        "buildShouldOverwriteIndex": true,
+        "generateArchitectVersion": true,
+        "lastBuildSelection": {
+            "value": "webBuild",
+            "display": "Build web app"
+        }
+    },
+    "xdsVersion": "3.0.4",
+    "xdsBuild": 1386,
+    "schemaVersion": 1,
+    "upgradeVersion": 300000000004,
+    "framework": "touch23",
+    "viewOrderMap": {
+        "view": [
+            "faa0b672-f068-471f-a6d3-46b660667fb3",
+            "6b1d9070-b093-4ef5-9404-8efed4679c79",
+            "2568a4b1-4b31-40d2-bd87-e6ced6f2fd90",
+            "ce113d1c-cf8c-4bde-b95d-ef4fc5cf12a6",
+            "3232cd87-8eca-454a-b501-0b97b310088e",
+            "7bad157a-c027-422d-a916-69a7247ae1ac",
+            "12fcc33d-36a7-475b-8792-6b6c96745316",
+            "f122b302-f33f-44cd-90af-3a9292063adf",
+            "38f5b40f-a150-4b5c-aef0-c51c4eb05f73",
+            "d46667c2-a865-43a6-a11e-019bbc16dd9c",
+            "3671f604-62a6-4804-bbda-bc84596c2238",
+            "3fde306f-f0a1-47f1-9c1b-93e4b79ccd99",
+            "af626d22-7ec9-4a68-958c-ba1c60c591a7",
+            "1854e084-b8a6-4ad3-bfe7-818322746766",
+            "7dfa1530-4c79-4fe9-a455-9a46ecf09800",
+            "a36924e0-c897-4567-b03f-2249fb05a5bf",
+            "c7664043-f4c9-4222-93e4-435a5d908aa3",
+            "1c7f35a1-0da0-4106-8a1e-9ad6069825e2",
+            "25e1e552-2d4b-420e-8b1f-8d589ca371e4",
+            "8c78135e-cf27-415e-83c7-2d1624f5ee6b",
+            "546016af-c11f-451d-a62e-9f65cb36fead",
+            "8a7d0a1c-3429-4caf-9f2e-e81ed0440d42"
+        ],
+        "store": [
+            "82e178a3-1330-4e90-8bfe-fc7a5d1d0a51",
+            "1abccf76-6ece-48c7-9ae8-c2c73cd6ba2d",
+            "bddfbaaa-c938-4421-85f6-d68681a9709a",
+            "6906b2a7-c4d7-471a-91d4-e9e24907cecb",
+            "7b1cc4bf-b647-44f3-9337-2ef21f853660",
+            "854b1f79-d178-4c3d-8ac6-ed3fb4dfc7be",
+            "2bf2f872-f314-42f7-9cff-19ed223edb4c",
+            "4a92d684-5199-4b76-b50d-e1cdbe8f312b",
+            "9dbaff25-0464-4e24-ab67-329f15ae9de1",
+            "8d55bbf1-bf76-4f14-8f58-47de33662760",
+            "741e0620-a641-462e-9963-98e0ed0702f0",
+            "ede2a323-42d2-4fa9-a62d-270aa6bf81ba",
+            "30100205-6efc-4c2b-a0a2-58c332bdb19e",
+            "50d2b6ab-30ec-42cf-9586-49a40bd7c84a",
+            "73d81ab8-04e2-47ce-841b-befe2b25acbb"
+        ],
+        "controller": [
+            "b65f72c1-bee5-4e5a-9fed-ce939650a75c",
+            "75288f7b-60f1-415f-b405-74e4c77e30f0",
+            "1666d521-8822-476e-bf14-6f408866bdf3",
+            "5ee55433-fb37-4ca8-b7b9-3a12b6887513",
+            "f3985a0d-7aff-484c-a0c4-6ffdf91a542f",
+            "f7332657-8b2e-4a7b-a538-d89e76e1b285",
+            "c15cada4-e25a-459a-a6c6-93d0d4eabdff",
+            "a536e042-93c1-405c-9fd5-f5024cb4ddf7",
+            "edc5c9c3-08cd-40f2-8cb8-1d6eba43bd1c",
+            "700eb93e-3cad-4a0f-8fd2-81a245dd1f13",
+            "86149f8e-7120-48a2-b739-cdfb5018da1f",
+            "0106c457-0d2c-4483-8de6-d01500611e8c",
+            "5d81ccd0-5eb5-4d8c-86aa-bd0c7a9dd707",
+            "eaf27333-cd21-44a8-92a8-da283cd0fc33",
+            "f0d9dfae-5ab1-47f8-a4ea-47f285b9930f",
+            "c617e1a8-3d85-444f-ae4c-92bf40de1a06",
+            "f525453e-dc7e-47a3-a584-77b4609b2318",
+            "78832dee-4532-4f59-888c-754537a958b5"
+        ],
+        "model": [
+            "0d76cf67-76c2-47e0-8b93-78fb19712861",
+            "51d05d96-3c10-4ecc-a44a-ab63173a8dd5",
+            "9ce3b181-39d4-48dc-926e-381b5eaf93f6",
+            "1c54d880-5f85-4b47-80d6-ad9bdc71414d",
+            "0cd40044-1f9f-4072-840c-7daddec2ac40",
+            "d0e0f2c5-0145-4e51-9a55-5c5ada422a7b",
+            "9a073f87-4489-48a0-9b4a-bd7badf324d1",
+            "97092114-2f35-4e49-9f4e-11fccf4822e9",
+            "8c5fb41f-ca31-4771-b836-700012e76fd1",
+            "a97de633-8c45-4190-bf77-ee58d5a76b53",
+            "d0aa7ace-8a5a-4a66-8398-d5be7821072f",
+            "802d4ad9-d52d-4f1c-8e27-6c29c45767bb",
+            "658a4b25-485c-416b-93b2-4ff450bb07de",
+            "e037d785-bf53-409c-8ee9-a1a3d4639f66",
+            "7b94b49b-42a0-4115-abfb-7bc7e3893cf4"
+        ],
+        "resource": [
+            "01dfa91f-d7fa-4c86-8272-a99995dea3d2",
+            "efb22941-a3c0-4e92-a152-27d1ebe407f1",
+            "dc5cf56f-0544-496c-b0e1-3e6e2235c5cc"
+        ],
+        "app": [
+            "application"
+        ]
+    }
+}

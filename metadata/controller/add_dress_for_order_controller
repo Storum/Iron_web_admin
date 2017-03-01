@@ -1,0 +1,909 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "add_dress_for_order_controller"
+    },
+    "designerId": "c617e1a8-3d85-444f-ae4c-92bf40de1a06",
+    "cn": [
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "addDressForOrderPanel",
+                "selector": "panel#addDressForOrderPanel"
+            },
+            "designerId": "468f9e62-6319-45b4-ba2d-fb1d0064ab54"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "addDressForOrderPanel",
+                "designer|targetType": "AddDressForOrderPanel",
+                "fn": "onAddDressForOrderPanelShow",
+                "implHandler": [
+                    "this.update_item_type_groups_list();"
+                ],
+                "name": "show"
+            },
+            "designerId": "b50ed677-b3a8-48ba-b6b0-01c809bc0ea4"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "item_type_group_fld",
+                "selector": "panel#addDressForOrderPanel selectfield[itemId=item_type_group_fld]"
+            },
+            "designerId": "f2693784-f8ca-4540-a6bc-4757d6fa351d"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "item_type_fld",
+                "selector": "panel#addDressForOrderPanel selectfield[itemId=item_type_fld]"
+            },
+            "designerId": "d29e7877-08f9-408a-93fa-b52f9119d973"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "count_fld",
+                "selector": "panel#addDressForOrderPanel numberfield[itemId=count_fld]"
+            },
+            "designerId": "0e6e0b56-e621-498f-82f9-286717a8184a"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "color_fld",
+                "selector": "panel#addDressForOrderPanel selectfield[itemId=color_fld]"
+            },
+            "designerId": "8458559c-7573-42ca-86e5-401094da824f"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "gender_fld",
+                "selector": "panel#addDressForOrderPanel selectfield[itemId=gender_fld]"
+            },
+            "designerId": "1acbdd9d-68cb-43e9-be86-b54e9e832bf5"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "is_lable_fld",
+                "selector": "panel#addDressForOrderPanel checkboxfield[itemId=is_lable_fld]"
+            },
+            "designerId": "8fe5e023-241d-4050-bddb-27be939b0e20"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "comment_fld",
+                "selector": "panel#addDressForOrderPanel textfield[itemId=comment_fld]"
+            },
+            "designerId": "980ede66-de0b-4b8c-ac32-77aff9d9d83c"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "wear_fld",
+                "selector": "panel#addDressForOrderPanel numberfield[itemId=wear_fld]"
+            },
+            "designerId": "5941b88c-7b73-4c95-817d-86c5fd6c1e7e"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "price_fld",
+                "selector": "panel#addDressForOrderPanel selectfield[itemId=price_fld]"
+            },
+            "designerId": "2029bbb1-c291-4f51-ade9-58152c423061"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "ok_btn",
+                "selector": "panel#addDressForOrderPanel button[itemId=ok_btn]"
+            },
+            "designerId": "bd91a71a-106e-4ab4-a1d1-a5efc9351f51"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "cancle_btn",
+                "selector": "panel#addDressForOrderPanel button[itemId=cancle_btn]"
+            },
+            "designerId": "73b270f0-5c2a-4826-aef7-870fa855f21a"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "update_item_type_groups_list",
+                "implHandler": [
+                    "var t = this;",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name: 'get_item_type_groups',",
+                    "            format: 'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        async: false,",
+                    "        success: function (result)",
+                    "        {",
+                    "            t.update_item_type_groups_store (result.item_type_groups_list);",
+                    "        }",
+                    "    });"
+                ]
+            },
+            "designerId": "5dcec03b-e204-4f60-a31c-f7556b8c7284"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "data"
+                ],
+                "fn": "update_item_type_groups_store",
+                "implHandler": [
+                    "",
+                    "",
+                    "var item_groups_select_field = this.getItem_type_group_fld();",
+                    "var item_groups_select_store = item_groups_select_field.getStore();",
+                    "",
+                    "item_groups_select_store.data.clear();",
+                    "item_groups_select_store.setData(data);",
+                    "",
+                    "",
+                    "var add_dress_panel = this.getAddDressForOrderPanel();",
+                    "",
+                    "",
+                    "",
+                    "if (add_dress_panel.target == 'edit'){",
+                    "",
+                    "    var item_type_group_fld = this.getItem_type_group_fld();",
+                    "    item_type_group_fld.setValue(add_dress_panel.record.get('id_item_type_group'));",
+                    "}"
+                ]
+            },
+            "designerId": "438c9f7e-61fc-4755-868d-f1191991746f"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "item_type_group_fld",
+                "designer|targetType": "Ext.field.Select",
+                "fn": "item_type_group_select",
+                "implHandler": [
+                    "if (newValue)",
+                    "    this.update_item_types_list (newValue);",
+                    "",
+                    "",
+                    "this.getPrice_fld().setDisabled(true);",
+                    "this.check_all_fields();"
+                ],
+                "name": "change"
+            },
+            "designerId": "a28c94da-e8fd-42a9-82a8-c674d8e7358c"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "item_type_fld",
+                "designer|targetType": "Ext.field.Select",
+                "fn": "item_select",
+                "implHandler": [
+                    "if (newValue)",
+                    "{",
+                    "    this.update_price_list(newValue);",
+                    "",
+                    "",
+                    "    var is_home_weight = selectfield.getStore().findRecord('id_item_type', newValue).get('is_home_weight');",
+                    "",
+                    "    if (is_home_weight === 1){",
+                    "        this.getGender_fld().setHidden(true);",
+                    "        this.getWear_fld().setHidden(true);",
+                    "        this.getIs_lable_fld().setHidden(true);",
+                    "    }",
+                    "    else{",
+                    "        this.getGender_fld().setHidden(false);",
+                    "        this.getWear_fld().setHidden(false);",
+                    "        this.getIs_lable_fld().setHidden(false);",
+                    "    }",
+                    "}",
+                    "",
+                    "this.check_all_fields();"
+                ],
+                "name": "change"
+            },
+            "designerId": "5a343dd4-d97d-4289-81c6-93ffd97c4398"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "color_fld",
+                "designer|targetType": "Ext.field.Select",
+                "fn": "color_select",
+                "implHandler": [
+                    "this.check_all_fields();"
+                ],
+                "name": "change"
+            },
+            "designerId": "32980dd8-152b-48a6-8889-ede0748863e7"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "gender_fld",
+                "designer|targetType": "Ext.field.Select",
+                "fn": "gender_select",
+                "implHandler": [
+                    "this.check_all_fields();"
+                ],
+                "name": "change"
+            },
+            "designerId": "185e398f-cbcb-47ce-b3c4-33884596c7aa"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "wear_fld",
+                "designer|targetType": "Ext.field.Number",
+                "fn": "wear_fld",
+                "implHandler": [
+                    "this.check_all_fields();"
+                ],
+                "name": "keyup"
+            },
+            "designerId": "dfe4244a-ef80-4e65-962c-467aa2a40506"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "count_fld",
+                "designer|targetType": "Ext.field.Number",
+                "fn": "count_fld",
+                "implHandler": [
+                    "this.check_all_fields();"
+                ],
+                "name": "keyup"
+            },
+            "designerId": "de7da6c6-62e4-4aaa-bf0c-485a7d697e32"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "price_fld",
+                "designer|targetType": "Ext.field.Select",
+                "fn": "price_changed",
+                "implHandler": [
+                    "/*if (newValue)",
+                    "{",
+                    "    var price_type = this.getPrice_fld().getStore().findRecord('id_price', newValue).get('price_type_name');",
+                    "",
+                    "    if (price_type === 'Весовой'){",
+                    "        this.getCount_fld().setValue(\"\");",
+                    "        this.getCount_fld().setHidden(true);",
+                    "    }",
+                    "    else{",
+                    "        this.getCount_fld().setValue(1);",
+                    "        this.getCount_fld().setHidden(false);",
+                    "    }",
+                    "",
+                    "    this.check_all_fields();",
+                    "}*/",
+                    "",
+                    "",
+                    "this.check_all_fields();",
+                    ""
+                ],
+                "name": "change"
+            },
+            "designerId": "3dd49fc2-09fc-477a-8f81-ae84c76b2ac2"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "id_item_type_group"
+                ],
+                "fn": "update_item_types_list",
+                "implHandler": [
+                    "var t = this;",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name:\t\t\t'get_item_types_by_group_type',",
+                    "            id_item_type_group:\t\tid_item_type_group,",
+                    "            format: 'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        async: false,",
+                    "        success: function (result)",
+                    "        {",
+                    "            t.update_item_types_store (result.item_types_list);",
+                    "        }",
+                    "    });"
+                ]
+            },
+            "designerId": "06059698-14ed-421c-bed5-a3ca2815dece"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "data"
+                ],
+                "fn": "update_item_types_store",
+                "implHandler": [
+                    "",
+                    "var item_select_field = this.getItem_type_fld();",
+                    "var item_select_store = item_select_field.getStore();",
+                    "",
+                    "item_select_store.data.clear();",
+                    "item_select_store.setData(data);",
+                    "",
+                    "item_select_field.setDisabled(false);",
+                    "",
+                    "",
+                    "var add_dress_panel = this.getAddDressForOrderPanel();",
+                    "",
+                    "if (add_dress_panel.target == 'edit'){",
+                    "",
+                    "    var item_type_fld = this.getItem_type_fld();",
+                    "    item_type_fld.setValue(add_dress_panel.record.get('id_item_type'));",
+                    "}"
+                ]
+            },
+            "designerId": "7755d588-5b0e-460e-9327-f8b77c6d0963"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "update_color_list",
+                "implHandler": [
+                    "var t = this;",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name:\t'get_color_list',",
+                    "            format: 'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        async: false,",
+                    "        success: function (result)",
+                    "        {",
+                    "            t.update_color_store (result.color_list);",
+                    "        }",
+                    "    });"
+                ]
+            },
+            "designerId": "54866625-085b-4b64-9dbb-38f05cfcc2f7"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "data"
+                ],
+                "fn": "update_color_store",
+                "implHandler": [
+                    "",
+                    "var color_field = this.getColor_fld();",
+                    "var color_store = color_field.getStore();",
+                    "",
+                    "color_store.data.clear();",
+                    "color_store.setData(data);",
+                    "",
+                    "",
+                    "",
+                    "var add_dress_panel = this.getAddDressForOrderPanel();",
+                    "if (add_dress_panel.target == 'edit'){",
+                    "    ",
+                    "    var color_fld = this.getColor_fld();",
+                    "    color_fld.setValue(add_dress_panel.record.get('id_color'));",
+                    "}",
+                    "",
+                    "",
+                    "this.update_gender_list();"
+                ]
+            },
+            "designerId": "2879c2d1-b98e-42ee-a820-e23a8c8714cb"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "update_gender_list",
+                "implHandler": [
+                    "var t = this;",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name:\t'get_gender_list',",
+                    "            format: 'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        async: false,",
+                    "        success: function (result)",
+                    "        {",
+                    "            t.update_gender_store (result.gender_list);",
+                    "        }",
+                    "    });"
+                ]
+            },
+            "designerId": "88b67e60-5fb8-4ce1-b6db-66dc5013e8b0"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "data"
+                ],
+                "fn": "update_gender_store",
+                "implHandler": [
+                    "",
+                    "var gender_field = this.getGender_fld();",
+                    "var gender_store = gender_field.getStore();",
+                    "",
+                    "gender_store.data.clear();",
+                    "gender_store.setData(data);",
+                    "",
+                    "",
+                    "var add_dress_panel = this.getAddDressForOrderPanel();",
+                    "",
+                    "if (add_dress_panel.target == 'edit'){",
+                    "    ",
+                    "    var gender_fld = this.getGender_fld();",
+                    "    gender_fld.setValue(add_dress_panel.record.get('id_gender'));",
+                    "    this.fill_fields_from_record (add_dress_panel.record);",
+                    "}",
+                    "",
+                    ""
+                ]
+            },
+            "designerId": "67b59ac5-3a2a-4ee0-a812-478fb6f12e76"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "id_item_type"
+                ],
+                "fn": "update_price_list",
+                "implHandler": [
+                    "var t = this;",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name\t:\t'get_current_price_list_by_item_id',",
+                    "            id_item_type\t:\tid_item_type,",
+                    "            format: 'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        async: false,",
+                    "        success: function (result)",
+                    "        {",
+                    "            t.update_price_store (result.current_price_list);",
+                    "        }",
+                    "    });"
+                ]
+            },
+            "designerId": "5e42a2ff-8cbe-4599-a54f-58e8ca81f446"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "data"
+                ],
+                "fn": "update_price_store",
+                "implHandler": [
+                    "",
+                    "var price_field = this.getPrice_fld();",
+                    "var price_store = price_field.getStore();",
+                    "",
+                    "price_store.data.clear();",
+                    "price_store.setData(data);",
+                    "",
+                    "price_field.setDisabled(false);",
+                    "",
+                    "",
+                    "var add_dress_panel = this.getAddDressForOrderPanel();",
+                    "",
+                    "if (add_dress_panel.target == 'edit'){",
+                    "    ",
+                    "    var price_fld = this.getPrice_fld();",
+                    "    price_fld.setValue(add_dress_panel.record.get('id_price'));",
+                    "}",
+                    "",
+                    "",
+                    "this.update_color_list();"
+                ]
+            },
+            "designerId": "62d8a0f1-5711-449a-91d4-d738d92c4c48"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "check_all_fields",
+                "implHandler": [
+                    "var id_gender = this.getGender_fld().getValue();",
+                    "var id_color = this.getColor_fld().getValue();",
+                    "var id_item_type = this.getItem_type_fld().getValue();",
+                    "var wear = this.getWear_fld().getValue();",
+                    "var id_price = this.getPrice_fld().getValue();",
+                    "",
+                    "",
+                    "",
+                    "if (!id_item_type)",
+                    "    return;",
+                    "",
+                    "var is_home_weight = this.getItem_type_fld().getStore().findRecord('id_item_type', id_item_type).get('is_home_weight');",
+                    "",
+                    "",
+                    "if (is_home_weight === 1)",
+                    "{",
+                    "    if (id_item_type > 0 && id_price >0)",
+                    "        this.set_buttons_disable (false);",
+                    "    else",
+                    "        this.set_buttons_disable (true);",
+                    "}",
+                    "else",
+                    "{",
+                    "    if (id_gender > 0 && id_color > 0 && id_item_type > 0 && wear > 0 && id_price >0)",
+                    "        this.set_buttons_disable (false);",
+                    "    else",
+                    "        this.set_buttons_disable (true);",
+                    "}",
+                    "",
+                    ""
+                ]
+            },
+            "designerId": "621d02e3-063f-4d9b-b0bd-a8f3ff246560"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "disable"
+                ],
+                "fn": "set_buttons_disable",
+                "implHandler": [
+                    "var ok_btn = this.getOk_btn();",
+                    "ok_btn.setDisabled(disable);"
+                ]
+            },
+            "designerId": "906dffe4-1eb1-4848-b795-e48f302f05dc"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "ok_btn",
+                "designer|targetType": "Ext.Button",
+                "fn": "Ok_btn",
+                "implHandler": [
+                    "var add_dress_for_order_panel = this.getAddDressForOrderPanel();",
+                    "",
+                    "var source_controller = add_dress_for_order_panel.source;",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "var id_item_type_group = this.getItem_type_group_fld().getValue();",
+                    "",
+                    "var id_item_type = this.getItem_type_fld().getValue();",
+                    "var item_type_name = this.getItem_type_fld().getStore().findRecord('id_item_type',id_item_type).get('name');",
+                    "var is_home_weight = this.getItem_type_fld().getStore().findRecord('id_item_type', id_item_type).get('is_home_weight');",
+                    "",
+                    "var id_gender = this.getGender_fld().getValue();",
+                    "",
+                    "if (id_gender)",
+                    "    var gender = this.getGender_fld().getStore().findRecord('id_gender', id_gender).get('name');",
+                    "",
+                    "var id_color = this.getColor_fld().getValue();",
+                    "var color = this.getColor_fld().getStore().findRecord('id_color', id_color).get('name');",
+                    "",
+                    "var wear = this.getWear_fld().getValue();",
+                    "var id_price = this.getPrice_fld().getValue();",
+                    "var price_type = this.getPrice_fld().getStore().findRecord('id_price', id_price).get('price_type_name');",
+                    "var price = this.getPrice_fld().getStore().findRecord('id_price', id_price).get('price');",
+                    "",
+                    "",
+                    "var is_lable_ = this.getIs_lable_fld().isChecked();",
+                    "var is_lable = 0;",
+                    "if (is_lable_)",
+                    "    is_lable = 1;",
+                    "",
+                    "var comment = this.getComment_fld().getValue();",
+                    "var number = this.getApplication().getController(source_controller).get_order_detail_count() + 1;",
+                    "var count = this.getCount_fld().getValue();",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "var t = this;",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name\t:\t'get_current_action_by_item_id',",
+                    "            id_item_type\t:\tid_item_type,",
+                    "            format: 'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        async: false,",
+                    "        success: function (result)",
+                    "        {",
+                    "",
+                    "            var action_name = ' ';",
+                    "            var action_type = '';",
+                    "            var action_value = 0;",
+                    "            var id_action = 0;",
+                    "",
+                    "",
+                    "            if (result.current_item_action_list.length > 0)",
+                    "            {",
+                    "                action_name = result.current_item_action_list[0].action_name;",
+                    "                action_type = result.current_item_action_list[0].action_type;",
+                    "                action_value = result.current_item_action_list[0].action_value;",
+                    "                id_action = result.current_item_action_list[0].id_action;",
+                    "            }",
+                    "",
+                    "",
+                    "            if (add_dress_for_order_panel.target == 'add')",
+                    "                t.getApplication().getController(source_controller).add_order_detail(number, id_item_type_group, id_item_type, is_home_weight, count, id_color, color, id_gender, gender, wear, id_price, price_type, price, id_action, action_name, action_type, action_value, is_lable, item_type_name, comment);",
+                    "            else",
+                    "                t.getApplication().getController(source_controller).edit_order_detail(number, id_item_type_group, id_item_type, is_home_weight, count, id_color, color, id_gender, gender, wear, id_price, price_type, price, id_action, action_name, action_type, action_value, is_lable, item_type_name, comment, add_dress_for_order_panel.record);",
+                    "",
+                    "",
+                    "            add_dress_for_order_panel.destroy();",
+                    "        }",
+                    "    });",
+                    "",
+                    "",
+                    ""
+                ],
+                "name": "tap"
+            },
+            "designerId": "d8e7a060-ee90-44d7-9cf6-8ab53e6d8932"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "record"
+                ],
+                "fn": "fill_fields_from_record",
+                "implHandler": [
+                    "var wear_fld = this.getWear_fld();",
+                    "var comment_fld = this.getComment_fld();",
+                    "var count_fld = this.getCount_fld();",
+                    "var is_lable_fld = this.getIs_lable_fld();",
+                    "",
+                    "",
+                    "count_fld.setValue(record.get('count'));",
+                    "wear_fld.setValue(record.get('wear'));",
+                    "comment_fld.setValue(record.get('comment'));",
+                    "",
+                    "",
+                    "if (record.get('is_lable') == 1)",
+                    "    is_lable_fld.check();",
+                    "",
+                    "",
+                    ""
+                ]
+            },
+            "designerId": "fc206a99-d007-4fa5-a37f-c8b4d6ea3c1c"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "cancle_btn",
+                "designer|targetType": "Ext.Button",
+                "fn": "cancle_btn",
+                "implHandler": [
+                    "var add_dress_for_order_panel = this.getAddDressForOrderPanel();",
+                    "add_dress_for_order_panel.destroy();"
+                ],
+                "name": "tap"
+            },
+            "designerId": "29856b03-9224-4b3c-8ad4-68ca625758c9"
+        }
+    ]
+}

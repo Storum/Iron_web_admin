@@ -1,0 +1,14 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "address_type_store",
+        "model": "address_type_model",
+        "storeId": "address_type_store"
+    },
+    "designerId": "6906b2a7-c4d7-471a-91d4-e9e24907cecb"
+}

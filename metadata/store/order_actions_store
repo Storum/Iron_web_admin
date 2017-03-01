@@ -1,0 +1,14 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "order_actions_store",
+        "model": "order_actions_model",
+        "storeId": "order_actions_store"
+    },
+    "designerId": "ede2a323-42d2-4fa9-a62d-270aa6bf81ba"
+}

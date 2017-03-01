@@ -1,0 +1,413 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "orderpanel",
+        "designer|userClassName": "OrderPanel",
+        "itemId": "orderPanel"
+    },
+    "designerId": "25e1e552-2d4b-420e-8b1f-8d589ca371e4",
+    "cn": [
+        {
+            "type": "Ext.dataview.List",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": "left",
+                "itemId": "id_order_list",
+                "store": "order_store",
+                "width": 293
+            },
+            "designerId": "344761f0-bcfe-44f9-adc0-9e45cf773853",
+            "cn": [
+                {
+                    "type": "Ext.Toolbar",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "docked": "top"
+                    },
+                    "designerId": "7f0c6bb7-bcd3-48ef-9bab-54145c18ce1d",
+                    "cn": [
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "designerId": "cb0f6cee-4949-4e1f-abbb-725f26055419",
+                            "cn": [
+                                {
+                                    "type": "Ext.field.Search",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "itemId": "id_search_order",
+                                        "label": "Поиск:"
+                                    },
+                                    "designerId": "295af380-9b6f-4172-87bd-b8136053f38b"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.XTemplate",
+                    "reference": {
+                        "name": "itemTpl",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "itemTpl",
+                        "implHandler": [
+                            "<div>Заказ номер {id_order}</div>"
+                        ]
+                    },
+                    "designerId": "039de1b4-fbf8-443f-b272-3068307ac82e"
+                },
+                {
+                    "type": "Ext.Toolbar",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "docked": "bottom"
+                    },
+                    "designerId": "24654817-e7ad-4a0c-a18c-f5d501687f01",
+                    "cn": [
+                        {
+                            "type": "Ext.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "docked": null,
+                                "iconCls": "add",
+                                "id": null,
+                                "itemId": "add_order_button",
+                                "layout|flex": 1,
+                                "text": "Добавить",
+                                "width": 125
+                            },
+                            "designerId": "27df2b3b-41b4-4a1d-aaa8-934237718523"
+                        },
+                        {
+                            "type": "Ext.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "disabled": true,
+                                "docked": null,
+                                "iconCls": "delete",
+                                "id": null,
+                                "itemId": "delete_order_button",
+                                "layout|flex": 1,
+                                "text": "Удалить",
+                                "width": 125
+                            },
+                            "designerId": "f1c42d3e-16d2-475d-b3dd-3032f33e9a69"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.Toolbar",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": "top",
+                "height": 41,
+                "id": null,
+                "itemId": "order_toolbar"
+            },
+            "designerId": "785449b2-c61d-4e8b-8498-c50eb1310245",
+            "cn": [
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "disabled": true,
+                        "docked": "right",
+                        "iconCls": "bookmarks",
+                        "id": null,
+                        "itemId": "order_save_button",
+                        "layout|flex": 1,
+                        "text": "Сохранить",
+                        "width": 133
+                    },
+                    "designerId": "417326c4-62d4-41fd-8d81-145235dd5989"
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "disabled": true,
+                        "docked": "left",
+                        "iconCls": "more",
+                        "id": null,
+                        "itemId": "order_menu_button",
+                        "layout|flex": 1,
+                        "text": "Меню",
+                        "width": 101
+                    },
+                    "designerId": "fb3a38ce-1901-47e0-a00b-111b71512d18"
+                }
+            ]
+        },
+        {
+            "type": "Ext.form.FieldSet",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": "top",
+                "height": 708,
+                "scrollable": true,
+                "title": "Информация о заказе"
+            },
+            "designerId": "36600fc2-04d1-4c10-acda-9839b9e61b31",
+            "cn": [
+                {
+                    "type": "Ext.field.Select",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "autoSelect": false,
+                        "disabled": false,
+                        "displayField": "name",
+                        "itemId": "id_order_status",
+                        "label": "Статус:",
+                        "name": "id_status",
+                        "store": "order_status_store",
+                        "target": "add_order",
+                        "valueField": "id_status"
+                    },
+                    "designerId": "b7c76626-6697-4970-8163-ecac07591da9",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "target",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.field.Select",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "autoSelect": false,
+                        "disabled": false,
+                        "displayField": "name",
+                        "itemId": "id_order_executor",
+                        "label": "Исполнитель:",
+                        "name": "id_executor",
+                        "store": "user_store",
+                        "target": "add_order",
+                        "valueField": "id_user"
+                    },
+                    "designerId": "0be47a08-2b6d-4ad9-9a54-a3f0f3cc3410",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "target",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.field.Select",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "autoSelect": false,
+                        "displayField": "name",
+                        "itemId": "id_order_client",
+                        "label": "Клиент:",
+                        "name": "id_client",
+                        "store": "client_store",
+                        "valueField": "id_client"
+                    },
+                    "designerId": "188efc1b-a7f1-4c12-8c8e-d5475c887c89"
+                },
+                {
+                    "type": "Ext.field.Number",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "clearIcon": false,
+                        "itemId": "id_ticket_number_field",
+                        "label": "Номер квитанции:",
+                        "name": "ticket_number"
+                    },
+                    "designerId": "6255526f-6253-4392-81b5-1ad52427a8d4"
+                },
+                {
+                    "type": "Ext.field.Number",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "clearIcon": false,
+                        "itemId": "id_container_count_field",
+                        "label": "Количество контейнеров:",
+                        "name": "cont_count"
+                    },
+                    "designerId": "6e2bbaf4-32e0-4ebd-ab6c-994ca52bd162"
+                },
+                {
+                    "type": "Ext.field.Number",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "clearIcon": false,
+                        "itemId": "id_weight_field",
+                        "label": "Вес текстиль:",
+                        "name": "weight_home"
+                    },
+                    "designerId": "6cc7d4af-084c-481d-81be-73121e091980"
+                },
+                {
+                    "type": "Ext.field.Number",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "clearIcon": false,
+                        "itemId": "id_weight_dress",
+                        "label": "Вес одежда:",
+                        "name": "weight_dress"
+                    },
+                    "designerId": "54302a29-3fd8-43c4-9862-db995f97f4a3"
+                },
+                {
+                    "type": "Ext.field.Select",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "autoSelect": false,
+                        "disabled": false,
+                        "displayField": "action_name",
+                        "itemId": "id_action_order",
+                        "label": "Акция на заказ:",
+                        "name": "id_action",
+                        "store": "order_actions_store",
+                        "target": "add_order",
+                        "valueField": "id_action"
+                    },
+                    "designerId": "fdc52438-754e-414f-b4d9-a64ceef0fa52",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "target",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.field.Checkbox",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "id_white_field",
+                        "label": "Белый:",
+                        "name": "is_white"
+                    },
+                    "designerId": "45264a26-4251-487f-b0b1-4c0d01269ce7"
+                },
+                {
+                    "type": "Ext.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "clearIcon": false,
+                        "height": 50,
+                        "itemId": "id_comment_field",
+                        "label": "Комментарии:",
+                        "name": "comment"
+                    },
+                    "designerId": "556c154a-948a-403a-babf-805268aa505c"
+                },
+                {
+                    "type": "Ext.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "clearIcon": false,
+                        "height": 92,
+                        "itemId": "id_addition_info_field",
+                        "label": "Дополнительная информация о заказе:"
+                    },
+                    "designerId": "7676635f-399f-45d7-940c-72af2d07a997"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,486 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "centered": true,
+        "designer|userAlias": "addorderpanel",
+        "designer|userClassName": "AddOrderPanel",
+        "height": 648,
+        "itemId": "addOrderPanel",
+        "modal": true,
+        "width": 1130
+    },
+    "designerId": "8c78135e-cf27-415e-83c7-2d1624f5ee6b",
+    "cn": [
+        {
+            "type": "Ext.Toolbar",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": "top",
+                "html": ""
+            },
+            "designerId": "c354e0ae-8a12-43f8-b4ab-46e0c012803a",
+            "cn": [
+                {
+                    "type": "Ext.Label",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "data": null,
+                        "html": "Заказов у клиента:",
+                        "itemId": "id_tip"
+                    },
+                    "designerId": "826e6225-0442-4ec1-b159-eb0c07b60ab7"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "height": 553,
+                "layout": "hbox"
+            },
+            "designerId": "2076362e-abd7-4027-b063-2abdf9483b38",
+            "cn": [
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "disabled": null,
+                        "docked": null,
+                        "height": 576,
+                        "itemId": "order_info",
+                        "layout|flex": 1,
+                        "title": "Информация о заказе",
+                        "width": 545
+                    },
+                    "designerId": "afde20d2-146b-4e97-8e35-8de9c902c90a",
+                    "cn": [
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout": "hbox"
+                            },
+                            "designerId": "5b5ae424-a4c0-41a9-82a1-e45b013532dc",
+                            "cn": [
+                                {
+                                    "type": "Ext.field.Text",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "clearIcon": false,
+                                        "disabled": true,
+                                        "itemId": "id_client_field",
+                                        "label": "Клиент",
+                                        "labelCls": null,
+                                        "layout|flex": 35,
+                                        "target": "add_order",
+                                        "width": 504
+                                    },
+                                    "designerId": "b7e10082-fed8-49ad-8955-6934ce2af5f9",
+                                    "customConfigs": [
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "target",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "docked": null,
+                                        "itemId": "id_select_client_btn",
+                                        "layout|flex": 1,
+                                        "text": "..."
+                                    },
+                                    "designerId": "a07829a4-792c-4d62-87b3-f035a08d7762"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.field.Number",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "clearIcon": false,
+                                "itemId": "id_ticket_number_field",
+                                "label": "№ квитанции:",
+                                "target": "add_order"
+                            },
+                            "designerId": "1e8c93c0-a673-49a9-9416-d13c847e3ecf",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "target",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.field.Number",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "clearIcon": false,
+                                "itemId": "id_container_count_field",
+                                "label": "Кол. контейнеров:",
+                                "target": "add_order"
+                            },
+                            "designerId": "c3f8ca6e-7cb6-4d30-81a3-9f0772452339",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "target",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.field.Number",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "clearIcon": false,
+                                "disabled": true,
+                                "itemId": "id_weight_field",
+                                "label": "Вес текстиль:",
+                                "target": "add_order"
+                            },
+                            "designerId": "e68dd099-c527-4e9c-a57d-a11b2deedbcb",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "target",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.field.Number",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "clearIcon": false,
+                                "disabled": true,
+                                "itemId": "id_weight_dress_field",
+                                "label": "Вес одежда:",
+                                "target": "add_order"
+                            },
+                            "designerId": "c0495362-4db5-4129-ae5b-7b2c0c4cdb73",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "target",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.field.Select",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "autoSelect": false,
+                                "disabled": false,
+                                "displayField": "action_name",
+                                "itemId": "id_action_order",
+                                "label": "Акция на заказ:",
+                                "store": "order_actions_store",
+                                "target": "add_order",
+                                "valueField": "id_action"
+                            },
+                            "designerId": "3d3a9ef1-4002-4ea3-a39f-8af89b60f567",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "target",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.field.Checkbox",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "itemId": "id_white_field",
+                                "label": "Белый:",
+                                "target": "add_order"
+                            },
+                            "designerId": "84547c29-40da-4e7f-aafb-06c75bca6394",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "target",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "clearIcon": false,
+                                "height": 83,
+                                "itemId": "id_comment_field",
+                                "label": "Комментарии:",
+                                "target": "add_order"
+                            },
+                            "designerId": "0c2651a7-1b74-4e9c-8ea5-06b308c2aaf3",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "target",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Toolbar",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "docked": "bottom"
+                            },
+                            "designerId": "db89bc8e-ea21-4205-9b9f-6f385541d0ef",
+                            "cn": [
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "id": null,
+                                        "itemId": "id_cancle",
+                                        "text": " Отмена"
+                                    },
+                                    "designerId": "56343a9f-11af-4c6e-a793-cd69988a5efd"
+                                },
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "disabled": true,
+                                        "id": null,
+                                        "itemId": "id_create_order",
+                                        "text": "Сформировать"
+                                    },
+                                    "designerId": "b714cc4c-3062-40a7-8e2a-edadaca2c531"
+                                },
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "docked": "right",
+                                        "itemId": "id_order_menu",
+                                        "text": "Меню"
+                                    },
+                                    "designerId": "987982e5-af7d-4227-abdf-c91ea56d8de9"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "height": 590,
+                        "layout": "vbox",
+                        "layout|flex": 1
+                    },
+                    "designerId": "b6322162-c8ca-444a-83c1-237d38e2bdd8",
+                    "cn": [
+                        {
+                            "type": "Ext.Label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "centered": false,
+                                "docked": "top",
+                                "height": 29,
+                                "html": "Состав заказа"
+                            },
+                            "designerId": "50c7d909-ce9e-457a-a4e1-93cceea92aea"
+                        },
+                        {
+                            "type": "Ext.dataview.List",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "centered": false,
+                                "docked": "top",
+                                "height": 559,
+                                "itemId": "order_detail_list",
+                                "layout|flex": null,
+                                "store": "order_detail_store",
+                                "width": 550
+                            },
+                            "designerId": "db4965fd-62d3-40b2-b45c-61d22718bf66",
+                            "cn": [
+                                {
+                                    "type": "Ext.XTemplate",
+                                    "reference": {
+                                        "name": "itemTpl",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "itemTpl",
+                                        "implHandler": [
+                                            "<div class=\"order_detail\"> <font size=\"2\"> {wear_name} </font> </div>"
+                                        ]
+                                    },
+                                    "designerId": "43be9431-e127-4808-9ebb-ce46af68bca8"
+                                },
+                                {
+                                    "type": "Ext.Toolbar",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "docked": "bottom",
+                                        "height": 43,
+                                        "width": null
+                                    },
+                                    "designerId": "d06b1c6f-2017-4a4f-b961-cf8c17d1f715",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.Container",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "docked": "right",
+                                                "layout": "hbox",
+                                                "width": 200
+                                            },
+                                            "designerId": "d03394e5-9c27-45b4-91db-5954be0a470c",
+                                            "cn": [
+                                                {
+                                                    "type": "Ext.Button",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "disabled": true,
+                                                        "docked": null,
+                                                        "itemId": "id_delete_dress",
+                                                        "layout|flex": 1,
+                                                        "text": "Удалить"
+                                                    },
+                                                    "designerId": "da0bf881-250c-4318-a604-1ff2237d4b04"
+                                                },
+                                                {
+                                                    "type": "Ext.Button",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "disabled": true,
+                                                        "docked": null,
+                                                        "itemId": "id_add_dress",
+                                                        "layout|flex": 1,
+                                                        "text": "Добавить"
+                                                    },
+                                                    "designerId": "90afa5c8-27f9-46b9-ac76-b54fddd2f0ae"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

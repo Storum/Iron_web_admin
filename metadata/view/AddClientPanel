@@ -1,0 +1,234 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "centered": true,
+        "designer|userAlias": "addclientpanel",
+        "designer|userClassName": "AddClientPanel",
+        "hideAnimation": null,
+        "hideOnMaskTap": false,
+        "itemId": "addClientPanel",
+        "modal": true,
+        "showAnimation": "pop",
+        "width": 545
+    },
+    "configAlternates": {
+        "cash_user": "number"
+    },
+    "designerId": "c7664043-f4c9-4222-93e4-435a5d908aa3",
+    "cn": [
+        {
+            "type": "Ext.form.FieldSet",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "disabled": null,
+                "docked": null,
+                "itemId": "client_data_fieldset1",
+                "title": "Данные"
+            },
+            "designerId": "7dc9b45e-df6a-41a7-a657-56e547fc365a",
+            "cn": [
+                {
+                    "type": "Ext.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "clearIcon": false,
+                        "id": null,
+                        "itemId": "client_name_textfield",
+                        "label": "Имя",
+                        "name": "name",
+                        "target": "add_client"
+                    },
+                    "designerId": "60e1ca14-c8b5-4ed5-a4e6-f075f884e7df",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "target",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "clearIcon": false,
+                        "id": null,
+                        "itemId": "client_patronymic_textfield",
+                        "label": "Отчество",
+                        "name": "patronymic",
+                        "target": "add_client"
+                    },
+                    "designerId": "c1def04f-ad50-4f29-af1a-e89d7e3b4985",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "target",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "clearIcon": false,
+                        "id": null,
+                        "itemId": "client_surname_textfield",
+                        "label": "Фамилия",
+                        "name": "surname",
+                        "target": "add_client"
+                    },
+                    "designerId": "beecbd1a-70a5-40b3-9e4a-d2dece1e8175",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "target",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.field.Select",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "autoSelect": false,
+                        "displayField": "name",
+                        "itemId": "client_gender_field",
+                        "label": "Пол",
+                        "name": "id_gender",
+                        "store": "gender_store",
+                        "target": "add_client",
+                        "valueField": "id_gender"
+                    },
+                    "designerId": "3885df7f-f291-4e73-93a8-94061857aca7",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "target",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "clearIcon": false,
+                        "component": [
+                            "{\"xtype\":\"input\",\"type\":\"date\",\"fastFocus\":true}"
+                        ],
+                        "id": "birthday_textfield",
+                        "label": "Дата рождения",
+                        "name": "birthday",
+                        "target": "add_client"
+                    },
+                    "designerId": "928a563e-9132-4b23-9680-c7555ec58a94",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "target",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "height": 116,
+                        "id": null,
+                        "itemId": "client_comment_textfield",
+                        "label": "Комментарии",
+                        "name": "comment",
+                        "target": "add_client"
+                    },
+                    "designerId": "ccc325b5-7a6a-4ecd-99bc-0fa177282611",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "target",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.Toolbar",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "docked": "bottom",
+                        "itemId": "add_client_bottom_roolbar"
+                    },
+                    "designerId": "518ea124-0c57-43ff-99aa-7d46b9ff35c7",
+                    "cn": [
+                        {
+                            "type": "Ext.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "disabled": true,
+                                "docked": "right",
+                                "itemId": "add_btn",
+                                "text": "Добавить"
+                            },
+                            "designerId": "0184166d-bc18-4cd1-94b9-4f6d0056e0c1"
+                        },
+                        {
+                            "type": "Ext.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "docked": "right",
+                                "itemId": "cancel_btn",
+                                "text": "Отмена"
+                            },
+                            "designerId": "4dfdcb79-10c7-47cf-a14e-df98d52c33df"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

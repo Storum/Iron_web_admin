@@ -1,0 +1,156 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "centered": true,
+        "designer|userAlias": "addaddresspanel",
+        "designer|userClassName": "AddAddressPanel",
+        "height": 281,
+        "itemId": "add_addressPanel",
+        "modal": true,
+        "showAnimation": "pop",
+        "width": 531
+    },
+    "designerId": "af626d22-7ec9-4a68-958c-ba1c60c591a7",
+    "cn": [
+        {
+            "type": "Ext.form.FieldSet",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": null,
+                "height": 261,
+                "itemId": "address_data_fieldset1",
+                "title": "Данные"
+            },
+            "designerId": "4a88aadb-f7fa-4328-91dd-95b34322ef41",
+            "cn": [
+                {
+                    "type": "Ext.field.Select",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "centered": false,
+                        "displayField": "name",
+                        "itemId": "address_type_select",
+                        "label": "Тип адреса",
+                        "name": "id_address_type",
+                        "store": "address_type_store",
+                        "target": "add_address",
+                        "valueField": "id_address_type"
+                    },
+                    "designerId": "8442516a-29fd-40e8-adf6-f49101688148",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "target",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "clearIcon": false,
+                        "id": null,
+                        "itemId": "address_name_textfield",
+                        "label": "Адрес",
+                        "name": "name",
+                        "target": "add_address"
+                    },
+                    "designerId": "cd3d6f96-a863-4acb-b05e-8e199f8265f4",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "target",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "clearIcon": false,
+                        "height": 116,
+                        "itemId": "comment_textfield",
+                        "label": "Комментарий:",
+                        "name": "comment",
+                        "target": "add_address"
+                    },
+                    "designerId": "2e58271d-854d-4524-be9c-ddb308d25065",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "target",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.Toolbar",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "docked": "bottom",
+                        "itemId": "add_address_bottom_toolbar"
+                    },
+                    "designerId": "fc4f76c0-80f8-45c0-9c30-945167e1abb8",
+                    "cn": [
+                        {
+                            "type": "Ext.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "disabled": true,
+                                "docked": "right",
+                                "itemId": "add_btn",
+                                "text": "Добавить"
+                            },
+                            "designerId": "fc192f15-64cc-4e9c-95e0-64475a82bd46"
+                        },
+                        {
+                            "type": "Ext.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "docked": "right",
+                                "itemId": "cancel_btn",
+                                "text": "Отмена"
+                            },
+                            "designerId": "d1288796-b272-4848-b7d2-70a264d97466"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

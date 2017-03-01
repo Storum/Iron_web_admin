@@ -1,0 +1,617 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "address_panel_controller",
+        "views": [
+            "AddressPanel"
+        ]
+    },
+    "designerId": "f3985a0d-7aff-484c-a0c4-6ffdf91a542f",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "ok_btn",
+                "designer|targetType": "Ext.Button",
+                "fn": "ok_btn_tap",
+                "implHandler": [
+                    "var address_panel = this.getAddress_panel();",
+                    "address_panel.destroy();",
+                    "",
+                    ""
+                ],
+                "name": "tap"
+            },
+            "designerId": "6971bf71-9497-444d-9a70-7c6f622f4772"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "ok_btn",
+                "selector": "panel#addressPanel button[itemId=id_ok_addr_btn]",
+                "xtype": "Ext.Button"
+            },
+            "designerId": "6b37ce01-be25-4ef0-8477-562b68deca50"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "save_btn",
+                "selector": "panel#addressPanel button[itemId=save_address_btn]",
+                "xtype": "Ext.Button"
+            },
+            "designerId": "3e001484-f832-480c-ba11-02e4608c48c6"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "address_panel",
+                "selector": "panel#addressPanel",
+                "xtype": "addresspanel"
+            },
+            "designerId": "2f4077b0-baee-409f-bfaf-b52b9771684a"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "address_panel",
+                "designer|targetType": "AddressPanel",
+                "fn": "onAddressPanelShow",
+                "implHandler": [
+                    "this.owner_type = 'client';",
+                    "this.address_list_owner_id = this.getApplication().getController('user_panel_controller').get_current_user_id();",
+                    "",
+                    "",
+                    "if (this.address_list_owner_id)",
+                    "    this.owner_type = 'user';",
+                    "else",
+                    "    this.address_list_owner_id = this.getApplication().getController('client_panel_controller').get_current_client_id();",
+                    "",
+                    "",
+                    "",
+                    "this.update_address_list ();",
+                    "this.update_address_type_list();"
+                ],
+                "name": "show"
+            },
+            "designerId": "01bddae1-6438-477f-a517-870e44bdc4c0"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "addresslist",
+                "selector": "panel#addressPanel list[itemId=address_list]"
+            },
+            "designerId": "fe2adeca-7f2b-4329-a495-b4a0a71f7e6c"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "address_type_select",
+                "selector": "panel#addressPanel selectfield[itemId=address_type_select]",
+                "xtype": "Ext.field.Select"
+            },
+            "designerId": "247244c0-f364-4d09-bbe2-0958c02468c1"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "address_name_fld",
+                "selector": "panel#addressPanel  textfield[itemId=address_name_textfield]",
+                "xtype": "Ext.field.Text"
+            },
+            "designerId": "e6d3e05b-f46c-4d4e-9668-51be5c1d3a83"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "comment_fld",
+                "selector": "panel#addressPanel  textfield[itemId=comment_textfield]",
+                "xtype": "Ext.field.Text"
+            },
+            "designerId": "30acc38b-894a-4c72-8cf1-b7f38d9ec84b"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "delete_address_btn",
+                "selector": "panel#addressPanel button[itemId=delete_address_btn]"
+            },
+            "designerId": "0644121c-0e74-47bf-ae2c-cb9b8053fbae"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "add_address_btn",
+                "selector": "panel#addressPanel  button[itemId=add_address_btn]"
+            },
+            "designerId": "e37b21b8-6bd0-4a6d-ab00-8b23f79c0988"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "update_address_list",
+                "implHandler": [
+                    "var t = this;",
+                    "",
+                    "",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name\t: 'get_address_list',",
+                    "            id_owner\t\t: t.address_list_owner_id,",
+                    "            owner_type\t\t: t.owner_type,",
+                    "            format: 'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        async: false,",
+                    "        success: function (result)",
+                    "        {",
+                    "",
+                    "            t.update_address_store (result.address_list);",
+                    "        }",
+                    "    });"
+                ]
+            },
+            "designerId": "bbeb4474-ce83-4fc7-b000-6bd1fc1151f4"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "data"
+                ],
+                "fn": "update_address_store",
+                "implHandler": [
+                    "var address_list = this.getAddresslist();",
+                    "var address_store = address_list.getStore();",
+                    "",
+                    "",
+                    "address_store.data.clear();",
+                    "address_store.setData(data);",
+                    ""
+                ]
+            },
+            "designerId": "5e9f54da-0fbe-4fb4-b2ce-a9b09e816b45"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "update_address_type_list",
+                "implHandler": [
+                    "",
+                    "var t = this;",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name\t: 'get_address_type_list',",
+                    "            format: 'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        async: false,",
+                    "        success: function (result)",
+                    "        {",
+                    "            t.update_address_type_store (result.address_type_list);",
+                    "        }",
+                    "    });"
+                ]
+            },
+            "designerId": "8da1573f-cf0b-4db7-bcba-8873ff2aabc3"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "data"
+                ],
+                "fn": "update_address_type_store",
+                "implHandler": [
+                    "var address_type_select = this.getAddress_type_select();",
+                    "var address_type_store = address_type_select.getStore();",
+                    "",
+                    "",
+                    "address_type_store.data.clear();",
+                    "address_type_store.setData(data);",
+                    ""
+                ]
+            },
+            "designerId": "bce668d8-a2a4-45a6-b98e-39b38091abfd"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "addresslist",
+                "designer|targetType": "Ext.dataview.List",
+                "fn": "address_item_tap",
+                "implHandler": [
+                    "var address_type = this.getAddress_type_select ();",
+                    "var address_name = this.getAddress_name_fld ();",
+                    "var comment = this.getComment_fld ();",
+                    "",
+                    "",
+                    "address_name.setValue (records[0].get('name'));",
+                    "comment.setValue (records[0].get('comment'));",
+                    "address_type.setValue (records[0].get('add_type_name'));",
+                    "",
+                    "this.change_delete_btn_disable (false);"
+                ],
+                "name": "selectionchange"
+            },
+            "designerId": "76b09adf-b2d2-433d-90f4-696adea2d421"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "textfield[target='edit_address']",
+                "designer|targetType": "Ext.field.Text",
+                "fn": "address_data_changed",
+                "implHandler": [
+                    "this.check_all_fields();"
+                ],
+                "name": "keyup"
+            },
+            "designerId": "47623b8b-1d5c-4d4b-8e5b-8bc326a3d67e"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "newValue"
+                ],
+                "fn": "change_save_btn_status",
+                "implHandler": [
+                    "var addr_save_btn = this.getSave_btn();",
+                    "addr_save_btn.setDisabled (newValue);"
+                ]
+            },
+            "designerId": "21f37553-1b9c-4dbb-b17b-8d2137e558fb"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "address_type_select",
+                "designer|targetType": "Ext.field.Select",
+                "fn": "addr_type_change",
+                "implHandler": [
+                    "this.check_all_fields();"
+                ],
+                "name": "change"
+            },
+            "designerId": "69658c1c-7aa6-464f-8d27-c474c2ae9521"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "newValue"
+                ],
+                "fn": "change_delete_btn_disable",
+                "implHandler": [
+                    "var addr_delete_btn = this.getDelete_address_btn();",
+                    "addr_delete_btn.setDisabled (newValue);"
+                ]
+            },
+            "designerId": "9e3800e9-8570-48d6-bbc2-354c01fd8d49"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "check_all_fields",
+                "implHandler": [
+                    "var address_list = this.getAddresslist();",
+                    "",
+                    "if (address_list.getSelection().length !== 0)",
+                    "{",
+                    "    var address_type = this.getAddress_type_select ();",
+                    "    var address_name = this.getAddress_name_fld ();",
+                    "    var comment = this.getComment_fld ();",
+                    "",
+                    "    if (parseInt(address_list.getSelection()[0].get(address_type.getName()), 0) !== address_type.getValue())",
+                    "    {",
+                    "        this.change_save_btn_status (false);",
+                    "        return;",
+                    "    }",
+                    "",
+                    "    if (address_list.getSelection()[0].get(address_name.getName()) !== address_name.getValue())",
+                    "    {",
+                    "        this.change_save_btn_status (false);",
+                    "        return;",
+                    "    }",
+                    "",
+                    "",
+                    "    if (address_list.getSelection()[0].get(comment.getName()) !== comment.getValue())",
+                    "    {",
+                    "        this.change_save_btn_status (false);",
+                    "        return;",
+                    "    }",
+                    "",
+                    "    this.change_save_btn_status (true);",
+                    "}",
+                    ""
+                ]
+            },
+            "designerId": "55967f98-dd94-456d-a638-e031a9adfc19"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "add_address_btn",
+                "designer|targetType": "Ext.Button",
+                "fn": "add_btn_tap",
+                "implHandler": [
+                    "",
+                    "addAddressPanel = Ext.create('widget.addaddresspanel');",
+                    "Ext.Viewport.add(addAddressPanel);",
+                    "addAddressPanel.show();",
+                    ""
+                ],
+                "name": "tap"
+            },
+            "designerId": "693baa37-5253-4144-b740-dd5ecba37a8e"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "delete_address_btn",
+                "designer|targetType": "Ext.Button",
+                "fn": "delete_btn_tap",
+                "implHandler": [
+                    "var address_list = this.getAddresslist();",
+                    "var id_address_set = parseInt(address_list.getSelection()[0].get('id_address_set'), 0);",
+                    "",
+                    "this.delete_address (id_address_set);"
+                ],
+                "name": "tap"
+            },
+            "designerId": "18ce6f5f-c4e2-4ee5-86c8-3e44e2abedbf"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "id_address_set"
+                ],
+                "fn": "delete_address",
+                "implHandler": [
+                    "",
+                    "",
+                    "var t = this;",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name\t: 'delete_address',",
+                    "            id_address_set\t: id_address_set,",
+                    "            owner_type\t\t: t.owner_type,",
+                    "            format: 'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        scope: this,",
+                    "        success: function (result)",
+                    "        {",
+                    "            Ext.Msg.alert('Iron', result.text);",
+                    "",
+                    "            if (result.result == 'ok')",
+                    "                t.update_address_list ();",
+                    "",
+                    "        }",
+                    "    });"
+                ]
+            },
+            "designerId": "d76953af-e4ee-4f90-b173-b6c7b362c496"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "save_btn",
+                "designer|targetType": "Ext.Button",
+                "fn": "save_btn_tap",
+                "implHandler": [
+                    "var address_type = this.getAddress_type_select ().getValue();",
+                    "var address_name = this.getAddress_name_fld ().getValue();",
+                    "var comment = this.getComment_fld ().getValue();",
+                    "",
+                    "",
+                    "var address_list = this.getAddresslist();",
+                    "var id_address_set = address_list.getSelection ()[0].get('id_address_set');",
+                    "",
+                    "",
+                    "var t = this;",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name\t\t: 'update_address',",
+                    "            owner_type\t\t\t: t.owner_type,",
+                    "            id_address_set\t\t: id_address_set,",
+                    "            id_address_type\t\t: address_type,",
+                    "            name\t\t\t\t: address_name,",
+                    "            comment\t\t\t\t: comment,",
+                    "            format\t\t\t\t: 'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        async: false,",
+                    "        success: function (result)",
+                    "        {",
+                    "            t.update_address_list ();",
+                    "            t.change_save_btn_status(true);",
+                    "        }",
+                    "    });",
+                    ""
+                ],
+                "name": "tap"
+            },
+            "designerId": "e37785d5-0f3f-41b7-a401-ea829efbd4f7"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "get_address_list_owner_id",
+                "implHandler": [
+                    "return this.address_list_owner_id;"
+                ]
+            },
+            "designerId": "79773aca-0b77-41de-9054-89301d717707"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "get_address_list_owner_type",
+                "implHandler": [
+                    "return this.owner_type;"
+                ]
+            },
+            "designerId": "59679409-5c91-4a85-b5db-e6823a9de8be"
+        }
+    ]
+}

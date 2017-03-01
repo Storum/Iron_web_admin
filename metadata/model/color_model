@@ -1,0 +1,66 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "color_model"
+    },
+    "designerId": "8c5fb41f-ca31-4771-b836-700012e76fd1",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "id_color",
+                "type": "int"
+            },
+            "designerId": "28b4282c-8006-4eb8-ad29-bea3b6e12d29"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "name",
+                "type": "string"
+            },
+            "designerId": "00898c4e-562e-4825-9d1a-351f4cb83ba5"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "comment",
+                "type": "string"
+            },
+            "designerId": "c133eb9f-cc83-4b31-b42a-1394f69ac37a"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "color_code",
+                "type": "string"
+            },
+            "designerId": "90ae1d30-bb95-4285-a042-f4bf09369326"
+        }
+    ]
+}

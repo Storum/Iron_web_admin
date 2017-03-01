@@ -1,0 +1,53 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "item_type_groups_model"
+    },
+    "designerId": "9a073f87-4489-48a0-9b4a-bd7badf324d1",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "id_item_type_group",
+                "type": "int"
+            },
+            "designerId": "5cb7c8af-500d-47d3-b02f-c29dc44ceca6"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "name",
+                "type": "string"
+            },
+            "designerId": "4981e9de-ab72-4e54-9de9-395293a3f942"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "comment",
+                "type": "string"
+            },
+            "designerId": "ec1239b1-fdf5-4282-8026-150c16064f61"
+        }
+    ]
+}

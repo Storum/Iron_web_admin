@@ -1,0 +1,79 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "phone_model"
+    },
+    "designerId": "0cd40044-1f9f-4072-840c-7daddec2ac40",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "id_phone_set",
+                "type": "int"
+            },
+            "designerId": "8b6f9aa3-4daf-4a7f-90dc-9c7b0ed7d54a"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "phone",
+                "type": "string"
+            },
+            "designerId": "3fe1ffce-6708-4cca-8f32-9e31895b1b89"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "is_primary_text",
+                "type": "string"
+            },
+            "designerId": "d9ad4ade-8003-4d0c-bd4c-37c6b7af7312"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "is_primary",
+                "type": "boolean"
+            },
+            "designerId": "fee8fa9b-75cf-4a69-8d3d-941645385f58"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "comment",
+                "type": "string"
+            },
+            "designerId": "6c08c305-901e-4598-9ce2-c5424d56366f"
+        }
+    ]
+}

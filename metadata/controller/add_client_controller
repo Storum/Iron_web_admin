@@ -1,0 +1,344 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "add_client_controller"
+    },
+    "designerId": "700eb93e-3cad-4a0f-8fd2-81a245dd1f13",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "panel#addClientPanel  textfield[target='add_client']",
+                "designer|targetType": "Ext.field.Text",
+                "fn": "textdata_changed",
+                "implHandler": [
+                    "this.check_all_fields();"
+                ],
+                "name": "keyup"
+            },
+            "designerId": "321c2215-acea-4a76-bc4a-e4ba32db44db"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "panel#addClientPanel  textfield[target='add_client']",
+                "designer|targetType": "Ext.field.Select",
+                "fn": "gender_changed",
+                "implHandler": [
+                    "this.check_all_fields();"
+                ],
+                "name": "change"
+            },
+            "designerId": "c855d722-3a8d-442d-a942-f63aee6dff58"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "addClientPanel",
+                "selector": "panel#addClientPanel"
+            },
+            "designerId": "d0f3f1fb-8a44-4289-992d-fb6ca9808a61"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "client_name",
+                "selector": "panel#addClientPanel textfield[itemId=client_name_textfield]"
+            },
+            "designerId": "c0945e7c-b092-4627-ab66-ea15e14ba222"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "client_patronymic",
+                "selector": "panel#addClientPanel textfield[itemId=client_patronymic_textfield]"
+            },
+            "designerId": "e7296272-2ce1-4cd5-b100-ce083f23162e"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "client_surname",
+                "selector": "panel#addClientPanel textfield[itemId=client_surname_textfield]"
+            },
+            "designerId": "4c7049e2-a384-4dbe-9aac-8d388987cf27"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "client_gender",
+                "selector": "panel#addClientPanel selectfield[itemId=client_gender_field]"
+            },
+            "designerId": "17bfee6a-c391-414e-bc2a-1e93f10d87a7"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "client_birthday",
+                "selector": "panel#addClientPanel textfield[itemId=birthday_textfield]"
+            },
+            "designerId": "57bfa0b7-6171-4b45-93cb-1af1230a70a2"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "client_comment",
+                "selector": "panel#addClientPanel textfield[itemId=client_comment_textfield]"
+            },
+            "designerId": "e589e0c4-142a-43bb-9197-e59d021926cc"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "add_btn",
+                "selector": "panel#addClientPanel button[itemId=add_btn]"
+            },
+            "designerId": "248ac502-fce4-4ac1-a086-58510a2f8537"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "cancel_btn",
+                "selector": "panel#addClientPanel button[itemId=cancel_btn]"
+            },
+            "designerId": "28ab55df-d29a-46f8-9481-5110ea58a397"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "update_gender_list",
+                "implHandler": [
+                    ""
+                ]
+            },
+            "designerId": "3cdd0c0f-b337-49e0-9b68-451bd64567b3"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "close_add_client_form",
+                "implHandler": [
+                    "var add_client_panel = this.getAddClientPanel();",
+                    "add_client_panel.destroy();",
+                    "",
+                    "",
+                    "this.getApplication().getController('client_panel_controller').update_client_list();"
+                ]
+            },
+            "designerId": "30b8bc6a-2750-4a75-85f4-e5592c7213c7"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "cancel_btn",
+                "designer|targetType": "Ext.Button",
+                "fn": "cancle_btn_tap",
+                "implHandler": [
+                    "this.close_add_client_form();"
+                ],
+                "name": "tap"
+            },
+            "designerId": "dccb9e53-e2dc-4837-a62d-35d34a556714"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "check_all_fields",
+                "implHandler": [
+                    "var id_gender = this.getClient_gender().getValue();",
+                    "var name = this.getClient_name().getValue();",
+                    "var surname = this.getClient_surname().getValue();",
+                    "var patronymic = this.getClient_patronymic().getValue();",
+                    "var birthday = this.getClient_birthday().getValue();",
+                    "var comment = this.getClient_comment().getValue();",
+                    "",
+                    "",
+                    "if (birthday && id_gender && name.length > 0 && surname.length >0 && patronymic.length >0)",
+                    "    this.set_buttons_disable (false);",
+                    "else",
+                    "    this.set_buttons_disable (true);",
+                    ""
+                ]
+            },
+            "designerId": "57a2c0fa-6dc7-4f78-bcc3-7785caa2563f"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "disable"
+                ],
+                "fn": "set_buttons_disable",
+                "implHandler": [
+                    "var add_btn = this.getAdd_btn();",
+                    "add_btn.setDisabled(disable);"
+                ]
+            },
+            "designerId": "07fd28e8-9333-49e8-b7c5-75aa8a02e6c7"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "name",
+                    "surname",
+                    "patronymic",
+                    "id_gender",
+                    "birthday",
+                    "comment"
+                ],
+                "fn": "add_client",
+                "implHandler": [
+                    "var t = this;",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name\t: 'add_client',",
+                    "            name\t\t\t: name,",
+                    "            surname\t\t\t: surname,",
+                    "            patronymic\t\t: patronymic,",
+                    "            id_gender\t\t: id_gender,",
+                    "            birthday\t\t: birthday,",
+                    "            comment\t\t\t: comment,",
+                    "            format\t\t\t: 'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        scope: this,",
+                    "        success: function (result)",
+                    "        {",
+                    "            Ext.Msg.alert('Iron', result.text);",
+                    "",
+                    "            if (result.result == 'ok')",
+                    "                t.close_add_client_form ();",
+                    "",
+                    "        }",
+                    "    });",
+                    "",
+                    "",
+                    ""
+                ]
+            },
+            "designerId": "f673ac07-fa13-4fd9-80dc-ba8e2ea838dc"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "add_btn",
+                "designer|targetType": "Ext.Button",
+                "fn": "add_client_tap",
+                "implHandler": [
+                    "var id_gender = this.getClient_gender().getValue();",
+                    "var name = this.getClient_name().getValue();",
+                    "var surname = this.getClient_surname().getValue();",
+                    "var patronymic = this.getClient_patronymic().getValue();",
+                    "var birthday = this.getClient_birthday().getValue();",
+                    "var comment = this.getClient_comment().getValue();",
+                    "",
+                    "",
+                    "",
+                    "this.add_client(name, surname, patronymic, id_gender, birthday, comment);"
+                ],
+                "name": "tap"
+            },
+            "designerId": "77a4a1e7-a6ac-4331-9a72-1bab34495d97"
+        }
+    ]
+}

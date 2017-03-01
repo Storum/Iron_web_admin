@@ -1,0 +1,131 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "order_for_phone"
+    },
+    "designerId": "7b94b49b-42a0-4115-abfb-7bc7e3893cf4",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "id_order",
+                "type": "int"
+            },
+            "designerId": "261ae34d-d4e0-4a5f-991e-5f415f40afa4"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "date_create",
+                "type": "string"
+            },
+            "designerId": "697a8813-e9a7-4241-85c1-801baea780aa"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "status_name",
+                "type": "string"
+            },
+            "designerId": "54b34a7f-48d6-4405-93ea-3b475dd062ee"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "surname",
+                "type": "string"
+            },
+            "designerId": "5f4589f0-6198-4ade-bc17-c16c18f0cc58"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "name",
+                "type": "string"
+            },
+            "designerId": "0a2acb05-1db5-45c4-a2f3-95a8d7120467"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "patronymic",
+                "type": "string"
+            },
+            "designerId": "419f8e54-ea79-41d0-a5d8-49d626b1d029"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "phone",
+                "type": "string"
+            },
+            "designerId": "893819c5-25d8-4b92-a496-a02253565280"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "done_date",
+                "type": "string"
+            },
+            "designerId": "d07b9d59-c58f-4681-9b59-be8b2cea1f25"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "last_phone_date",
+                "type": "string"
+            },
+            "designerId": "7bb42258-4776-4e22-a6cb-e9f8f17c9e50"
+        }
+    ]
+}

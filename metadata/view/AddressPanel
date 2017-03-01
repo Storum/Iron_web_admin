@@ -1,0 +1,290 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "centered": true,
+        "designer|userAlias": "addresspanel",
+        "designer|userClassName": "AddressPanel",
+        "height": 572,
+        "itemId": "addressPanel",
+        "modal": true,
+        "showAnimation": "pop",
+        "width": 785
+    },
+    "configAlternates": {
+        "cash_user": "number"
+    },
+    "designerId": "3fde306f-f0a1-47f1-9c1b-93e4b79ccd99",
+    "cn": [
+        {
+            "type": "Ext.dataview.List",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": "left",
+                "id": null,
+                "itemId": "address_list",
+                "store": "address_store",
+                "striped": true,
+                "width": 278
+            },
+            "designerId": "3e450f24-2ceb-4087-9c33-7e2bfc687efd",
+            "cn": [
+                {
+                    "type": "Ext.XTemplate",
+                    "reference": {
+                        "name": "itemTpl",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "itemTpl",
+                        "implHandler": [
+                            "<div class=\"address\"> {name}<br>{comment}<br> </div>"
+                        ]
+                    },
+                    "designerId": "4655a992-57a8-4ffe-91f2-89934c939c0e"
+                },
+                {
+                    "type": "Ext.Toolbar",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "docked": "bottom"
+                    },
+                    "designerId": "8967b83f-1c61-4651-9d01-ec42b1e0287d",
+                    "cn": [
+                        {
+                            "type": "Ext.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "iconCls": "add",
+                                "itemId": "add_address_btn",
+                                "text": "Добавить"
+                            },
+                            "designerId": "4c3a8bdc-06e0-4ff1-a633-7a2e29d1142b"
+                        },
+                        {
+                            "type": "Ext.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "disabled": true,
+                                "iconCls": "delete",
+                                "id": "delete_address_btn",
+                                "text": "Удалить"
+                            },
+                            "designerId": "cc1861f3-a038-49f0-aa47-498aded28569"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.form.FieldSet",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": null,
+                "height": 261,
+                "itemId": "address_data_fieldset",
+                "title": "Данные"
+            },
+            "designerId": "8dac70b6-fb1b-4d47-a4bb-f99ba56c2e30",
+            "cn": [
+                {
+                    "type": "Ext.field.Select",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "autoSelect": false,
+                        "displayField": "name",
+                        "itemId": "address_type_select",
+                        "label": "Тип адреса",
+                        "name": "id_address_type",
+                        "store": "address_type_store",
+                        "target": "edit_address",
+                        "valueField": "id_address_type"
+                    },
+                    "designerId": "7e5cbd11-43d5-4066-a9b7-d83cd081259e",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "target",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "clearIcon": false,
+                        "id": null,
+                        "itemId": "address_name_textfield",
+                        "label": "Адрес",
+                        "name": "name",
+                        "target": "edit_address"
+                    },
+                    "designerId": "cda5fcb2-f4b9-48e0-bf1d-5acdcf4f46fe",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "target",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "clearIcon": false,
+                        "height": 116,
+                        "itemId": "comment_textfield",
+                        "label": "Комментарий:",
+                        "name": "comment",
+                        "target": "edit_address"
+                    },
+                    "designerId": "3c67ba78-a39c-4ccc-b8ea-4aa2c9c1bcb2",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "target",
+                            "type": "string"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.Toolbar",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": "top",
+                "height": 45
+            },
+            "designerId": "d57ba3d3-6adf-4c90-a236-34fbe7c1e233",
+            "cn": [
+                {
+                    "type": "Ext.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "docked": "right"
+                    },
+                    "designerId": "cba3cea1-05be-45ba-86ab-81e2d40cb8dd",
+                    "cn": [
+                        {
+                            "type": "Ext.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "disabled": true,
+                                "docked": "top",
+                                "iconAlign": null,
+                                "iconCls": "bookmarks",
+                                "itemId": "save_address_btn",
+                                "text": "Сохранить"
+                            },
+                            "designerId": "c00d22ca-1d6d-4f2c-9992-6edc6cac540a"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.Toolbar",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": "bottom"
+            },
+            "designerId": "1a61991f-34cc-42e1-9f4c-5bc558671d42",
+            "cn": [
+                {
+                    "type": "Ext.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "docked": "right"
+                    },
+                    "designerId": "02715698-8ad3-48ce-b06d-b363919d174e",
+                    "cn": [
+                        {
+                            "type": "Ext.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "docked": "right",
+                                "id": null,
+                                "itemId": "id_ok_addr_btn",
+                                "t": "s",
+                                "text": "OK",
+                                "width": 100
+                            },
+                            "designerId": "33c59ce3-178a-4846-92eb-8f390695fdd8",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "t",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

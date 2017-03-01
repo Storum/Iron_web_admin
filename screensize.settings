@@ -1,0 +1,18 @@
+{
+    "profiles": [
+        {
+            "name": "New Size",
+            "width": 1024,
+            "height": 1024,
+            "builtIn": false,
+            "fw": "touch"
+        },
+        {
+            "name": "New Size 2",
+            "width": 2000,
+            "height": 2000,
+            "builtIn": false,
+            "fw": "touch"
+        }
+    ]
+}

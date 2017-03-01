@@ -1,0 +1,66 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "report_menu_controller"
+    },
+    "designerId": "78832dee-4532-4f59-888c-754537a958b5",
+    "cn": [
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "userReportMenu",
+                "selector": "panel#reportsMenuPanel"
+            },
+            "designerId": "6bb43777-7758-48db-829d-2a6e3e1b074a"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "done_repor_tbtn",
+                "selector": "panel#reportsMenuPanel button[itemId=done_report_btn]"
+            },
+            "designerId": "0b8946e8-5533-4b16-8808-d1b14cc8299f"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "done_repor_tbtn",
+                "designer|targetType": "Ext.Button",
+                "fn": "done_report_tap",
+                "implHandler": [
+                    "",
+                    "",
+                    "DoneReportPanel = Ext.create('widget.doneorderreport');",
+                    "Ext.Viewport.add(DoneReportPanel);",
+                    "DoneReportPanel.setModal(true);",
+                    "DoneReportPanel.setCentered(true);",
+                    "DoneReportPanel.show();",
+                    "",
+                    "this.getUserReportMenu().destroy();"
+                ],
+                "name": "tap"
+            },
+            "designerId": "b488c898-60dc-4043-ade9-019fddc17284"
+        }
+    ]
+}

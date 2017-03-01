@@ -1,0 +1,306 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "add_address_controller"
+    },
+    "designerId": "f7332657-8b2e-4a7b-a538-d89e76e1b285",
+    "cn": [
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "addAddressPanel",
+                "selector": "panel#add_addressPanel",
+                "xtype": "addaddresspanel"
+            },
+            "designerId": "e06ed3a5-b974-43df-aef0-12ee641b419e"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "cancel_btn",
+                "selector": "panel#add_addressPanel button[itemId=cancel_btn]",
+                "xtype": "Ext.Button"
+            },
+            "designerId": "577d75f2-c0ec-4cc2-a1b3-086312b950fa"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "cancel_btn",
+                "designer|targetType": "Ext.Button",
+                "fn": "cancle_btn_tap",
+                "implHandler": [
+                    "this.close_add_address_form();"
+                ],
+                "name": "tap"
+            },
+            "designerId": "be1aed4a-8b7d-444a-a710-5710324c67d6"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "add_btn",
+                "selector": "panel#add_addressPanel button[itemId=add_btn]",
+                "xtype": "Ext.Button"
+            },
+            "designerId": "00efdc12-91e0-4dfc-b850-643bd20c87fa"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "address_type_select",
+                "selector": "panel#add_addressPanel selectfield[itemId=address_type_select]",
+                "xtype": "Ext.field.Select"
+            },
+            "designerId": "5bcd0707-beb9-401b-be07-bcc035fbfc2d"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "address_name_fld",
+                "selector": "panel#add_addressPanel  textfield[itemId=address_name_textfield]",
+                "xtype": "Ext.field.Text"
+            },
+            "designerId": "eda57078-1137-417d-b3f5-34141e6f8710"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "comment_fld",
+                "selector": "panel#add_addressPanel  textfield[itemId=comment_textfield]",
+                "xtype": "Ext.field.Text"
+            },
+            "designerId": "00395e49-28b0-48a1-92b1-73eca92d112e"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "close_add_address_form",
+                "implHandler": [
+                    "var add_address_panel = this.getAddAddressPanel();",
+                    "add_address_panel.destroy();",
+                    "",
+                    "",
+                    "this.getApplication().getController('address_panel_controller').update_address_list();"
+                ]
+            },
+            "designerId": "5f540ee8-facf-4cf3-bb05-cb12f08e2e0e"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "disable"
+                ],
+                "fn": "set_buttons_disable",
+                "implHandler": [
+                    "var add_btn = this.getAdd_btn();",
+                    "add_btn.setDisabled(disable);"
+                ]
+            },
+            "designerId": "ce81f82d-47e3-4333-b02f-ae5040bad265"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "check_all_fields",
+                "implHandler": [
+                    "var address_type = this.getAddress_type_select().getValue();",
+                    "var name = this.getAddress_name_fld().getValue();",
+                    "var comment = this.getComment_fld().getValue();",
+                    "",
+                    "",
+                    "if (address_type && name.length > 0)",
+                    "    this.set_buttons_disable (false);",
+                    "else",
+                    "    this.set_buttons_disable (true);",
+                    ""
+                ]
+            },
+            "designerId": "b1ce8531-37b4-4dba-bff2-f67d97eb5fad"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "address_type_select",
+                "designer|targetType": "Ext.field.Select",
+                "fn": "addr_type_change",
+                "implHandler": [
+                    "this.check_all_fields();"
+                ],
+                "name": "change"
+            },
+            "designerId": "a27079aa-f6fe-4363-bea3-27e237345563"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "panel#add_addressPanel  textfield",
+                "designer|targetType": "Ext.field.Text",
+                "fn": "address_data_chenge",
+                "implHandler": [
+                    "this.check_all_fields();"
+                ],
+                "name": "keyup"
+            },
+            "designerId": "3b1e94de-3588-4d1f-9ea7-a82d59c031c0"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "add_btn",
+                "designer|targetType": "Ext.Button",
+                "fn": "add_address_btn_tap",
+                "implHandler": [
+                    "var address_type = this.getAddress_type_select().getValue();",
+                    "var name = this.getAddress_name_fld().getValue();",
+                    "var comment = this.getComment_fld().getValue();",
+                    "",
+                    "",
+                    "",
+                    "this.add_address (address_type, name, comment);"
+                ],
+                "name": "tap"
+            },
+            "designerId": "d57f9ede-70c1-4219-9e64-dc9ef7222d89"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "id_address_type",
+                    "name",
+                    "comment"
+                ],
+                "fn": "add_address",
+                "implHandler": [
+                    "var t = this;",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name\t: 'add_address',",
+                    "            id_owner\t\t: t.id_owner,",
+                    "            owner_type\t\t: t.owner_type,",
+                    "            id_address_type\t: id_address_type,",
+                    "            name\t\t\t: name,",
+                    "            comment\t\t\t: comment,",
+                    "            format\t\t\t: 'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        scope: this,",
+                    "        success: function (result)",
+                    "        {",
+                    "            Ext.Msg.alert('Iron', result.text);",
+                    "",
+                    "            if (result.result == 'ok')",
+                    "                t.close_add_address_form ();",
+                    "",
+                    "        }",
+                    "    });",
+                    "",
+                    "",
+                    ""
+                ]
+            },
+            "designerId": "c9170e1c-debc-4fd2-97be-773e4003b33f"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "addAddressPanel",
+                "designer|targetType": "AddressPanel",
+                "fn": "onAddressPanelShow",
+                "implHandler": [
+                    "this.id_owner = this.getApplication().getController('address_panel_controller').get_address_list_owner_id();",
+                    "this.owner_type = this.getApplication().getController('address_panel_controller').get_address_list_owner_type();",
+                    ""
+                ],
+                "name": "show"
+            },
+            "designerId": "21eca33c-79e2-41c8-830c-4dc5340a6c8c"
+        }
+    ]
+}

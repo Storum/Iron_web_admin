@@ -1,0 +1,53 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "select_price_model"
+    },
+    "designerId": "d0aa7ace-8a5a-4a66-8398-d5be7821072f",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "id_price",
+                "type": "int"
+            },
+            "designerId": "71ea6a26-5297-46c3-a8f2-d81c60a0930d"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "price_type_name",
+                "type": "string"
+            },
+            "designerId": "5b3a3267-7588-43d9-8149-5cf499c58873"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "price",
+                "type": "float"
+            },
+            "designerId": "9f02a040-a460-43dd-b34f-d389a8e89665"
+        }
+    ]
+}

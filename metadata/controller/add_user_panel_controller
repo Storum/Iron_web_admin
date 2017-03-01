@@ -1,0 +1,344 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "add_user_panel_controller",
+        "views": [
+            "AddUserPanel"
+        ]
+    },
+    "configAlternates": {
+        "cash_user": "number"
+    },
+    "designerId": "1666d521-8822-476e-bf14-6f408866bdf3",
+    "cn": [
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "check_all_fields",
+                "implHandler": [
+                    "var nick = this.getUserNickField().getValue();",
+                    "var name = this.getUserNameField().getValue();",
+                    "var surname = this.getUserSurnameField().getValue();",
+                    "var patronymic = this.getUserPatronymicField().getValue();",
+                    "var comment = this.getUserCommentField().getValue();",
+                    "var password = this.getUserPasswordField().getValue();",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "if (nick.length > 0 && name.length > 0 && surname.length > 0 && patronymic.length > 0 && comment.length > 0 && password.length > 0)",
+                    "    this.set_buttons_disable (false);",
+                    "else",
+                    "    this.set_buttons_disable (true);",
+                    ""
+                ]
+            },
+            "designerId": "2bc6cc48-f5b9-440b-bcd8-5be87d5c5599"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "disable"
+                ],
+                "fn": "set_buttons_disable",
+                "implHandler": [
+                    "var add_btn = this.getAdd_btn();",
+                    "",
+                    "add_btn.setDisabled(disable);"
+                ]
+            },
+            "designerId": "3cf30627-404c-48cd-aa7c-b1d28f29d689"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "close_add_user_form",
+                "implHandler": [
+                    "var add_user_panel = this.getAddUserPanel();",
+                    "add_user_panel.destroy();",
+                    "",
+                    "this.getApplication().getController('user_panel_controller').update_user_list();"
+                ]
+            },
+            "designerId": "7645d4c4-91b7-4a92-b39a-9948893b9919"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "nick",
+                    "name",
+                    "surname",
+                    "patronymic",
+                    "comment",
+                    "password"
+                ],
+                "fn": "add_user",
+                "implHandler": [
+                    "var t = this;",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name: 'add_user',",
+                    "            nick: nick,",
+                    "            name: name,",
+                    "            surname: surname,",
+                    "            patronymic: patronymic,",
+                    "            comment: comment,",
+                    "            password: password,",
+                    "            format: 'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        scope: this,",
+                    "        success: function (result)",
+                    "        {",
+                    "            Ext.Msg.alert('Iron', result.text);",
+                    "",
+                    "            if (result.result == 'ok')",
+                    "                t.close_add_user_form ();",
+                    "",
+                    "        }",
+                    "    });",
+                    "",
+                    "",
+                    ""
+                ]
+            },
+            "designerId": "71365866-eda1-43df-948f-d8625805ae5c"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "addUserPanel",
+                "selector": "panel#addUserPanel",
+                "xtype": "adduserpanel"
+            },
+            "designerId": "c008bab0-507f-41d0-bcc2-57d2d49cf58c"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "textfield[target='add_user']",
+                "designer|targetType": "Ext.field.Text",
+                "fn": "user_data_changed",
+                "implHandler": [
+                    "this.check_all_fields ();"
+                ],
+                "name": "keyup"
+            },
+            "designerId": "f6b306b8-b8dc-4337-aae4-c05cbcd2081d"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "cancel_btn",
+                "selector": "#addUserPanel #cancel_btn",
+                "xtype": "Ext.Button"
+            },
+            "designerId": "a76c0004-e529-4d4b-9206-cdee68b83457"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "cancel_btn",
+                "designer|targetType": "Ext.Button",
+                "fn": "cancel_tap",
+                "implHandler": [
+                    "this.close_add_user_form ();"
+                ],
+                "name": "tap"
+            },
+            "designerId": "7f5ba550-1961-47ca-ad3c-ce3897f07f7a"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "add_btn",
+                "selector": "#addUserPanel #add_btn",
+                "xtype": "Ext.Button"
+            },
+            "designerId": "664a4903-34a1-49fe-aab5-bb63a377166e"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "userNickField",
+                "selector": "#addUserPanel #user_nick_textfield",
+                "xtype": "Ext.field.Text"
+            },
+            "designerId": "5c759a56-89ce-4c37-90ad-1f4918136fcb"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "userNameField",
+                "selector": "#addUserPanel  #user_name_textfield",
+                "xtype": "Ext.field.Text"
+            },
+            "designerId": "06d09ef3-e3f0-419c-8f64-f9e5bb62239e"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "userSurnameField",
+                "selector": "#addUserPanel  #user_surname_textfield",
+                "xtype": "Ext.field.Text"
+            },
+            "designerId": "b1e59657-2265-4167-833f-3624d4bcec9a"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "userPatronymicField",
+                "selector": "#addUserPanel  #user_patronymic_textfield",
+                "xtype": "Ext.field.Text"
+            },
+            "designerId": "ceebb5bc-44ff-4500-9283-ff0c1b0febc0"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "userCommentField",
+                "selector": "#addUserPanel #user_comment_textfield",
+                "xtype": "Ext.field.Text"
+            },
+            "designerId": "7be38d12-715e-4fd8-b1e8-09b4058f61ca"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "userPasswordField",
+                "selector": "#addUserPanel #user_pass_textfield",
+                "xtype": "Ext.field.Text"
+            },
+            "designerId": "ea07a61a-ebb1-4f37-964d-501a82786a4e"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "add_btn",
+                "designer|targetType": "Ext.Button",
+                "fn": "add_user_tap",
+                "implHandler": [
+                    "var nick = this.getUserNickField().getValue();",
+                    "var name = this.getUserNameField().getValue();",
+                    "var surname = this.getUserSurnameField().getValue();",
+                    "var patronymic = this.getUserPatronymicField().getValue();",
+                    "var comment = this.getUserCommentField().getValue();",
+                    "var password = this.getUserPasswordField().getValue();",
+                    "",
+                    "this.add_user (nick, name, surname, patronymic, comment, password);"
+                ],
+                "name": "tap"
+            },
+            "designerId": "11ff3eec-5f82-4a10-8762-415fe9b8ffa0"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "addUserPanel",
+                "designer|targetType": "AddUserPanel",
+                "fn": "AddUserPanel_destroy",
+                "implHandler": [
+                    "this.getApplication().getController('user_panel_controller').update_user_list();"
+                ],
+                "name": "hide"
+            },
+            "designerId": "36d2186d-46a6-4557-b66b-4df5772031e1"
+        }
+    ]
+}

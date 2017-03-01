@@ -1,0 +1,2823 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "add_order_panel_controller",
+        "stores": [
+            "order_actions_store"
+        ]
+    },
+    "designerId": "eaf27333-cd21-44a8-92a8-da283cd0fc33",
+    "cn": [
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "addOrderPanel",
+                "selector": "panel#addOrderPanel"
+            },
+            "designerId": "fabbf7fd-9ea2-4ffa-94df-3e41de483b11"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "addOrderMenu",
+                "selector": "panel#userMenu"
+            },
+            "designerId": "69c96cc3-9fcc-4146-9587-87cedebc17c4"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "id_order_menu",
+                "selector": "panel#addOrderPanel button[itemId=id_order_menu]"
+            },
+            "designerId": "ef155a25-540a-4228-8c4f-63d2d156a899"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "id_cancle_btn",
+                "selector": "panel#addOrderPanel button[itemId=id_cancle]"
+            },
+            "designerId": "b446622c-f945-477a-8769-b7000a410a0d"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "id_cancle_btn",
+                "designer|targetType": "Ext.Button",
+                "fn": "cancle_tap",
+                "implHandler": [
+                    "this.close_add_order_form();"
+                ],
+                "name": "tap"
+            },
+            "designerId": "ec32ca01-9cb7-4e28-9956-dea8f53d70a6"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "id_create_order_btn",
+                "selector": "panel#addOrderPanel  button[itemId=id_create_order]"
+            },
+            "designerId": "7ce4e20a-5181-4c0e-bd31-40c59848e0ff"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "client_field",
+                "selector": "panel#addOrderPanel  textfield[itemId=id_client_field]"
+            },
+            "designerId": "8c0a2d6d-107e-4d66-b913-ab3864839425"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "ticket_number_field",
+                "selector": "panel#addOrderPanel numberfield[itemId=id_ticket_number_field]"
+            },
+            "designerId": "a3a89ee2-cc29-4d59-8650-898e485df711"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "container_count_field",
+                "selector": "panel#addOrderPanel   numberfield[itemId=id_container_count_field]"
+            },
+            "designerId": "1d28d6d9-60af-436f-8abc-5d23a638397e"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "weight_field",
+                "selector": "panel#addOrderPanel   numberfield[itemId=id_weight_field]"
+            },
+            "designerId": "efcb797e-3445-4564-be46-680fc5ba7886"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "weight_dress_field",
+                "selector": "panel#addOrderPanel numberfield[itemId=id_weight_dress_field]"
+            },
+            "designerId": "35b41b0c-c042-4069-963c-8a5213fc42e9"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "white_field",
+                "selector": "panel#addOrderPanel   checkboxfield[itemId=id_white_field]"
+            },
+            "designerId": "0bcd89f4-bb87-4ffd-91f9-ea942b3ab9f6"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "comment_field",
+                "selector": "panel#addOrderPanel   textfield[itemId=id_comment_field]"
+            },
+            "designerId": "122e3207-d675-4165-8ace-1fe31eb7d69e"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "order_detail_list",
+                "selector": "panel#addOrderPanel list[itemId=order_detail_list]"
+            },
+            "designerId": "8af97267-bea3-45d7-ae20-57089625fd35"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "id_select_client_btn",
+                "selector": "panel#addOrderPanel button[itemId=id_select_client_btn]"
+            },
+            "designerId": "f68b6333-b83e-4328-9c87-7d2e1fb20ebb"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "id_add_dress",
+                "selector": "panel#addOrderPanel button[itemId=id_add_dress]"
+            },
+            "designerId": "ee2db8c0-7a0f-43a8-843d-bddd816b1540"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "id_delete_dress",
+                "selector": "panel#addOrderPanel button[itemId=id_delete_dress]"
+            },
+            "designerId": "5773e79a-88d2-4593-b6c0-24b82355e134"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "id_client_order_count",
+                "selector": "panel#addOrderPanel label[itemId=id_client_order_count]"
+            },
+            "designerId": "396758e9-4255-4d41-9a36-5c792bcb9859"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "id_tip",
+                "selector": "panel#addOrderPanel label[itemId=id_tip]"
+            },
+            "designerId": "18beabd1-af1f-42a6-acf5-a88322b1c815"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "id_action_order_field",
+                "selector": "panel#addOrderPanel selectfield[itemId=id_action_order]"
+            },
+            "designerId": "cff42722-5338-40ee-b53e-c16fb2323985"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "select_client_button",
+                "selector": "panel#clientPanel button[itemId=select_client_button]"
+            },
+            "designerId": "9400ee33-65be-42e4-a92d-d61ed996bf04"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "cancel_client_button",
+                "selector": "panel#clientPanel button[itemId=cancel_button]"
+            },
+            "designerId": "bd26a7fd-e70d-4eff-8186-317b185a566f"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "record",
+                    "client_name",
+                    "name_dist"
+                ],
+                "fn": "load_order_data_to_form",
+                "implHandler": [
+                    "var client = this.getClient_field();",
+                    "var ticket_number = this.getTicket_number_field();",
+                    "var container_count = this.getContainer_count_field();",
+                    "var weight = this.getWeight_field();",
+                    "var weight_dress = this.getWeight_dress_field();",
+                    "var white = this.getWhite_field();",
+                    "var comment = this.getComment_field();",
+                    "var action = this.getId_action_order_field();",
+                    "",
+                    "action.setValue (record.get('id_action'));",
+                    "",
+                    "//console.log(client.getValue());",
+                    "if (client.getValue() === '')",
+                    "{",
+                    "    client.setValue(client_name);",
+                    "    client.id_client = record.get('id_client');    ",
+                    "}",
+                    "",
+                    "ticket_number.setValue(record.get('ticket_number'));",
+                    "container_count.setValue(record.get('cont_count'));",
+                    "weight.setValue(record.get('weight_home'));",
+                    "weight_dress.setValue(record.get('weight_dress'));",
+                    "",
+                    "if (record.get('is_white') == 1)",
+                    "    white.check();",
+                    "else",
+                    "    white.uncheck();",
+                    "",
+                    "comment.setValue (record.get('comment'));",
+                    "",
+                    "",
+                    "this.get_order_detail_by_id_order(record.get('id_order'));"
+                ]
+            },
+            "designerId": "c1da9ed1-55b3-4e8e-b59c-8bb307c6c042"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "id_order"
+                ],
+                "fn": "get_order_detail_by_id_order",
+                "implHandler": [
+                    "var t = this;",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name\t\t:\t'get_order_detail_by_id_order',",
+                    "            id_order\t\t\t:\tid_order,",
+                    "            format\t\t\t\t:\t'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        async: false,",
+                    "        success: function (result)",
+                    "        {",
+                    "            t.update_order_detail_list (result.order_detail_list);",
+                    "        }",
+                    "    });"
+                ]
+            },
+            "designerId": "1b0a5432-5371-4b4e-b0bf-55da539744bf"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "data"
+                ],
+                "fn": "update_order_detail_list",
+                "implHandler": [
+                    "var order_detail_list = this.getOrder_detail_list();",
+                    "var order_detail_store = order_detail_list.getStore();",
+                    "",
+                    "order_detail_store.setData(data);",
+                    "this.update_order_detail_prices();"
+                ]
+            },
+            "designerId": "f4e7fb0c-578e-4019-aa4f-fc5e06627623"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "update_order_detail_prices",
+                "implHandler": [
+                    "var order_detail_store = this.getOrder_detail_list().getStore();",
+                    "",
+                    "var record_count = order_detail_store.getCount();",
+                    "",
+                    "for (var i = 0; i < record_count; i++)",
+                    "{",
+                    "",
+                    "    var action_fld = this.getId_action_order_field();",
+                    "    var action_record = action_fld.getStore().findRecord('id_action', action_fld.getValue());",
+                    "    var client_order_count = this.getAddOrderPanel().order_count;",
+                    "    var home_weight_price = this.getAddOrderPanel().home_weight_price;",
+                    "    var dress_weight_price = this.getAddOrderPanel().dress_weight_price;",
+                    "    var id_order_detail = order_detail_store.getAt(i).get('id_order_detail');",
+                    "",
+                    "    if (id_order_detail)",
+                    "        name_dist = 'edit_order';",
+                    "    else",
+                    "        name_dist = 'add_order';",
+                    "",
+                    "    var wear_name = this.create_wear_name_and_calc_result_price_ext (order_detail_store.getAt(i), action_record, client_order_count, home_weight_price, dress_weight_price, name_dist);",
+                    "",
+                    "",
+                    "    order_detail_store.getAt(i).set('wear_name', wear_name.wear_name);",
+                    "}",
+                    "",
+                    "this.set_order_msg();",
+                    "this.check_weight_is_need();"
+                ]
+            },
+            "designerId": "c771f1a6-1afa-4b78-96af-048dd7ed2ac1"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "get_current_weight_prices",
+                "implHandler": [
+                    "var t = this;",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name\t\t:\t'get_current_order_price_list',",
+                    "            format\t\t\t\t:\t'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        async: false,",
+                    "        success: function (result)",
+                    "        {",
+                    "            t.update_order_price_values (result);",
+                    "        }",
+                    "    });",
+                    "",
+                    ""
+                ]
+            },
+            "designerId": "1035172d-7348-41ae-a2b3-818ca243ecbe"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "data"
+                ],
+                "fn": "update_order_price_values",
+                "implHandler": [
+                    "var add_order_panel = this.getAddOrderPanel();",
+                    "",
+                    "for (var next_price in data.current_order_price_list){",
+                    "    if (data.current_order_price_list[next_price].price_type_name === 'Весовой на домашний текстиль')",
+                    "    {",
+                    "        add_order_panel.home_weight_price = data.current_order_price_list[next_price].price;",
+                    "        add_order_panel.home_weight_result_price = data.current_order_price_list[next_price].price;",
+                    "    }",
+                    "",
+                    "",
+                    "    if (data.current_order_price_list[next_price].price_type_name === 'Весовой для одежды')",
+                    "    {",
+                    "        add_order_panel.dress_weight_price = data.current_order_price_list[next_price].price;",
+                    "        add_order_panel.dress_weight_result_price = data.current_order_price_list[next_price].price;",
+                    "    }",
+                    "",
+                    "}",
+                    "",
+                    "this.update_order_action_list();"
+                ]
+            },
+            "designerId": "62fd37fc-25e6-4c56-8274-87a797186619"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "update_order_prices_by_action",
+                "implHandler": [
+                    "var add_order_panel = this.getAddOrderPanel();",
+                    "var action_fld = this.getId_action_order_field();",
+                    "var action_record = action_fld.getStore().findRecord('id_action', action_fld.getValue());",
+                    "",
+                    "",
+                    "if (action_record.get('action_type') == 'На весовой текстиль')",
+                    "    add_order_panel.home_weight_result_price = action_record.get('action_value') * add_order_panel.home_weight_price;    ",
+                    "else",
+                    "    add_order_panel.home_weight_result_price = add_order_panel.home_weight_price;",
+                    "",
+                    "if (action_record.get('action_type') == 'На весовую одежду')",
+                    "    add_order_panel.dress_weight_result_price = action_record.get('action_value') * add_order_panel.dress_weight_price;",
+                    "else",
+                    "    add_order_panel.dress_weight_result_price = add_order_panel.dress_weight_price;",
+                    "",
+                    "if (action_record.get('action_type') == 'Процентная')",
+                    "{",
+                    "    add_order_panel.home_weight_result_price = action_record.get('action_value') * add_order_panel.home_weight_price;    ",
+                    "    add_order_panel.dress_weight_result_price = action_record.get('action_value') * add_order_panel.dress_weight_price;",
+                    "}"
+                ]
+            },
+            "designerId": "686d0e69-3b85-48e4-8b69-3970add990cc"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "update_order_action_list",
+                "implHandler": [
+                    "var t = this;",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name\t\t:\t'get_current_order_actions',",
+                    "            format\t\t\t\t:\t'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        async: false,",
+                    "        success: function (result)",
+                    "        {",
+                    "            t.update_order_action_store (result.current_order_action_list);",
+                    "        }",
+                    "    });"
+                ]
+            },
+            "designerId": "6c66d8e0-7e7f-42f9-8a94-8d919ee83bb7"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "data"
+                ],
+                "fn": "update_order_action_store",
+                "implHandler": [
+                    "var order_action_list = this.getId_action_order_field();",
+                    "order_action_list_store = order_action_list.getStore();",
+                    "",
+                    "",
+                    "order_action_list_store.data.clear();",
+                    "order_action_list_store.setData(data);",
+                    "",
+                    "",
+                    "var add_order_panel = this.getAddOrderPanel();",
+                    "",
+                    "if (add_order_panel.target == 'edit_order')",
+                    "    this.get_client_order_count (add_order_panel.record.get('id_client'));",
+                    "else",
+                    "    this.set_order_msg();",
+                    "",
+                    "",
+                    ""
+                ]
+            },
+            "designerId": "4f32c0d2-f284-458a-9ed1-9e2462c820a5"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "id_client"
+                ],
+                "fn": "get_client_order_count",
+                "implHandler": [
+                    "var t = this;",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name\t: 'get_client_order_count',",
+                    "            id_client\t\t: id_client,",
+                    "            format: 'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        async: false,",
+                    "        success: function (result)",
+                    "        {",
+                    "            ",
+                    "            var add_order_panel = t.getAddOrderPanel();",
+                    "            ",
+                    "            t.getAddOrderPanel().order_count = (result.order_count);",
+                    "            t.getId_add_dress().setDisabled(false);",
+                    "            ",
+                    "            if (add_order_panel.target == 'edit_order')",
+                    "            {",
+                    "                var create_order_btn = t.getId_create_order_btn();",
+                    "                create_order_btn.setText('OK');",
+                    "                t.load_order_data_to_form (add_order_panel.record, add_order_panel.client_name);",
+                    "                ",
+                    "            }",
+                    "            else",
+                    "                t.update_order_detail_prices();",
+                    "",
+                    "            t.set_order_msg();",
+                    "                        ",
+                    "        }",
+                    "    });"
+                ]
+            },
+            "designerId": "c212afb0-60af-4270-af7a-ffd859f3c10d"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "close_add_order_form",
+                "implHandler": [
+                    "var add_order_panel = this.getAddOrderPanel();",
+                    "",
+                    "var order_detail_store = this.getOrder_detail_list().getStore();",
+                    "order_detail_store.data.clear();",
+                    "",
+                    "add_order_panel.destroy();",
+                    "",
+                    "",
+                    "//this.getApplication().getController('client_panel_controller').update_client_list();"
+                ]
+            },
+            "designerId": "ddae812d-b176-4bb5-b4bb-8341547ee815"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "id_order_menu",
+                "designer|params": [
+                    "target"
+                ],
+                "designer|targetType": null,
+                "fn": "order_menu_tap",
+                "implHandler": [
+                    "",
+                    "var menu = this.getAddOrderMenu();",
+                    "if (!menu) {",
+                    "    menu = Ext.create('widget.addordermenu');",
+                    "}",
+                    "",
+                    "",
+                    "// Show menu by menu button",
+                    "menu.showBy(target);",
+                    "",
+                    ""
+                ],
+                "name": "tap"
+            },
+            "designerId": "23a391fa-29be-44a3-98d8-4bba378c9def"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "client_name",
+                    "id_client"
+                ],
+                "fn": "set_client_name",
+                "implHandler": [
+                    "var client_field = this.getClient_field();",
+                    "",
+                    "client_field.setValue(client_name);",
+                    "client_field.id_client = id_client;",
+                    "",
+                    "this.get_client_order_count(id_client);",
+                    "",
+                    "this.check_all_fields();"
+                ]
+            },
+            "designerId": "855f7593-05ae-48eb-9c0b-1d720b624f20"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "panel#addOrderPanel numberfield",
+                "designer|targetType": "Ext.field.Number",
+                "fn": "order_data_chenged",
+                "implHandler": [
+                    "this.check_all_fields();"
+                ],
+                "name": "keyup"
+            },
+            "designerId": "23eb4914-a931-43fd-b201-09ba0ce72e25"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "check_all_fields",
+                "implHandler": [
+                    "var client = this.getClient_field().getValue();",
+                    "var ticket_number = this.getTicket_number_field().getValue();",
+                    "var container_count = this.getContainer_count_field().getValue();",
+                    "var white = this.getWhite_field().getChecked();",
+                    "var comment = this.getComment_field().getValue();",
+                    "",
+                    "var weight_home = this.getWeight_field().getValue();",
+                    "var weight_dress = this.getWeight_dress_field().getValue();",
+                    "var order_detail_info = this.get_order_detail_info();",
+                    "",
+                    "",
+                    "var order_detail_list_store = this.getOrder_detail_list().getStore();",
+                    "var order_detail_count = order_detail_list_store.getCount();",
+                    "",
+                    "",
+                    "if (order_detail_info.is_dress_weight && (weight_dress === 0 || weight_dress === null)){",
+                    "    this.set_buttons_disable (true);",
+                    "    return;",
+                    "}",
+                    "",
+                    "",
+                    "",
+                    "if (order_detail_info.is_home_weight && (weight_home === 0 || weight_home === null)){",
+                    "    this.set_buttons_disable (true);",
+                    "    return;",
+                    "}",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "if (client && ((ticket_number > 0 && white) || !white)  && order_detail_count > 0 && container_count > 0)",
+                    "    this.set_buttons_disable (false);",
+                    "else",
+                    "    this.set_buttons_disable (true);",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "this.set_order_msg();"
+                ]
+            },
+            "designerId": "437ada7e-5e10-4dbe-8c8b-caff01a348d1"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "check_weight_is_need",
+                "implHandler": [
+                    "var order_detail_store = this.getOrder_detail_list().getStore();",
+                    "var record_count = order_detail_store.getCount();",
+                    "",
+                    "",
+                    "var is_need_home_weight = false;",
+                    "var is_need_dress_weight = false;",
+                    "",
+                    "",
+                    "",
+                    "for (var i = 0; i < record_count; i++)",
+                    "{",
+                    "    ",
+                    "    if (order_detail_store.getAt(i).get('is_home_weight') == 1 && order_detail_store.getAt(i).get('price_type') == 'Весовой')",
+                    "        is_need_home_weight = true;",
+                    "    ",
+                    "    if (order_detail_store.getAt(i).get('is_home_weight') === 0 && order_detail_store.getAt(i).get('price_type') == 'Весовой')",
+                    "        is_need_dress_weight = true;",
+                    "}",
+                    "",
+                    "if (!is_need_home_weight)",
+                    "{",
+                    "    this.getWeight_field().setValue(\"0\");",
+                    "    this.getWeight_field().setDisabled(true);",
+                    "}",
+                    "else",
+                    "    this.getWeight_field().setDisabled(false);",
+                    "",
+                    "",
+                    "if (!is_need_dress_weight)",
+                    "{",
+                    "    this.getWeight_dress_field().setValue(\"0\");",
+                    "    this.getWeight_dress_field().setDisabled(true);",
+                    "}",
+                    "else",
+                    "    this.getWeight_dress_field().setDisabled(false);"
+                ]
+            },
+            "designerId": "4a0990ef-305b-4d85-9534-4f09de300c02"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "disable"
+                ],
+                "fn": "set_buttons_disable",
+                "implHandler": [
+                    "var create_order_btn = this.getId_create_order_btn();",
+                    "create_order_btn.setDisabled(disable);"
+                ]
+            },
+            "designerId": "8169e280-9b42-4a87-becf-c73cfe9e2524"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "id_select_client_btn",
+                "designer|targetType": "Ext.Button",
+                "fn": "client_select",
+                "implHandler": [
+                    "",
+                    "client_panel = Ext.create ('widget.clientpanel');",
+                    "client_panel.setModal(true);",
+                    "client_panel.setCentered(true);",
+                    "client_panel.source = 'add_order_panel_controller';",
+                    "Ext.Viewport.add (client_panel);",
+                    "client_panel.show ();",
+                    "",
+                    "",
+                    "var select_client_btn = this.getSelect_client_button();",
+                    "select_client_btn.setHidden(false);",
+                    "",
+                    "var cancle_client_btn = this.getCancel_client_button();",
+                    "cancle_client_btn.setHidden(false);",
+                    "",
+                    "",
+                    "client_panel.setWidth(980);"
+                ],
+                "name": "tap"
+            },
+            "designerId": "a87a869a-76b6-41e7-9570-e73d7398e68a"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "id_add_dress",
+                "designer|targetType": "Ext.Button",
+                "fn": "add_dress_tap",
+                "implHandler": [
+                    "addDressPanel = Ext.create('widget.adddressfororderpanel');",
+                    "",
+                    "Ext.Viewport.add(addDressPanel);",
+                    "addDressPanel.source = 'add_order_panel_controller';",
+                    "addDressPanel.target = 'add';",
+                    "addDressPanel.order_count = this.getAddOrderPanel().order_count;",
+                    "addDressPanel.show();",
+                    "",
+                    ""
+                ],
+                "name": "tap"
+            },
+            "designerId": "3c894787-811f-4a1b-93ef-ceb683328344"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "id_delete_dress",
+                "designer|targetType": "Ext.Button",
+                "fn": "delete_dress",
+                "implHandler": [
+                    "var order_detail_list = this.getOrder_detail_list();",
+                    "var order_detail_store = order_detail_list.getStore();",
+                    "",
+                    "var selected_order_detail = order_detail_list.getSelection ()[0];",
+                    "",
+                    "if (selected_order_detail.get('id_order_detail'))",
+                    "    this.removed_records[this.removed_records.length] = selected_order_detail;",
+                    "",
+                    "order_detail_store.remove(selected_order_detail);",
+                    "",
+                    "",
+                    "",
+                    "this.set_order_msg();",
+                    "this.check_weight_is_need();",
+                    "this.set_buttons_disable(false);"
+                ],
+                "name": "tap"
+            },
+            "designerId": "8db7ad1c-5923-4dd4-b973-0cd56997d89e"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "number",
+                    "id_item_type_group",
+                    "id_item_type",
+                    "is_home_weight",
+                    "count",
+                    "id_color",
+                    "color",
+                    "id_gender",
+                    "gender",
+                    "wear",
+                    "id_price",
+                    "price_type",
+                    "price",
+                    "id_action",
+                    "action_name",
+                    "action_type",
+                    "action_value",
+                    "is_lable",
+                    "item_type_name",
+                    "comment"
+                ],
+                "fn": "add_order_detail",
+                "implHandler": [
+                    "",
+                    "var order_detail_list = this.getOrder_detail_list();",
+                    "var order_detail_store = order_detail_list.getStore();",
+                    "",
+                    "",
+                    "order_detail_store.add({number:number, id_item_type_group:id_item_type_group, id_item_type:id_item_type, is_home_weight:is_home_weight, count:count, id_color:id_color, color:color, id_gender:id_gender, gender:gender, wear:wear, id_price:id_price, price_type:price_type, price:price, id_action:id_action, action_name:action_name, action_type:action_type, action_value:action_value, is_lable:is_lable, comment:comment, item_type_name:item_type_name});",
+                    "",
+                    "this.set_buttons_disable(false);",
+                    "this.update_order_detail_prices();",
+                    "this.check_weight_is_need();",
+                    "this.check_all_fields();",
+                    "this.set_order_msg();"
+                ]
+            },
+            "designerId": "9a87ac48-d167-43c1-9768-6d405e1096c3"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "number",
+                    "id_item_type_group",
+                    "id_item_type",
+                    "is_home_weight",
+                    "count",
+                    "id_color",
+                    "color",
+                    "id_gender",
+                    "gender",
+                    "wear",
+                    "id_price",
+                    "price_type",
+                    "price",
+                    "id_action",
+                    "action_name",
+                    "action_type",
+                    "action_value",
+                    "is_lable",
+                    "item_type_name",
+                    "comment",
+                    "remove_record"
+                ],
+                "fn": "edit_order_detail",
+                "implHandler": [
+                    "var order_detail_list = this.getOrder_detail_list();",
+                    "var order_detail_store = order_detail_list.getStore();",
+                    "",
+                    "//order_detail_store.remove (remove_record);",
+                    "",
+                    "",
+                    "remove_record.set('number', number);",
+                    "remove_record.set('id_item_type_group', id_item_type_group);",
+                    "remove_record.set('id_item_type', id_item_type);",
+                    "remove_record.set('is_home_weight', is_home_weight);",
+                    "remove_record.set('count', count);",
+                    "remove_record.set('id_color', id_color);",
+                    "remove_record.set('color', color);",
+                    "remove_record.set('id_gender', id_gender);",
+                    "remove_record.set('gender', gender);",
+                    "remove_record.set('wear', wear);",
+                    "remove_record.set('id_price', id_price);",
+                    "remove_record.set('price_type', price_type);",
+                    "remove_record.set('price', price);",
+                    "remove_record.set('id_action', id_action);",
+                    "remove_record.set('action_name', action_name);",
+                    "remove_record.set('action_type', action_type);",
+                    "remove_record.set('action_value', action_value);",
+                    "remove_record.set('is_lable', is_lable);",
+                    "remove_record.set('comment', comment);",
+                    "remove_record.set('item_type_name', item_type_name);",
+                    "",
+                    "",
+                    "//order_detail_store.add({number:number, id_item_type_group:id_item_type_group, id_item_type:id_item_type, is_home_weight:is_home_weight, count:count, id_color:id_color, color:color, id_gender:id_gender, gender:gender, wear:wear, id_price:id_price, price_type:price_type, price:price, id_action:id_action, action_name:action_name, action_type:action_type, action_value:action_value, is_lable:is_lable, comment:comment, item_type_name:item_type_name});",
+                    "",
+                    "this.set_buttons_disable(false);",
+                    "this.update_order_detail_prices();",
+                    "this.check_weight_is_need();",
+                    "this.set_order_msg();"
+                ]
+            },
+            "designerId": "becee2bf-bb93-48b3-a702-00bf852c7120"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "id_create_order_btn",
+                "designer|targetType": "Ext.Button",
+                "fn": "add_order_tap",
+                "implHandler": [
+                    "var add_order_panel = this.getAddOrderPanel();",
+                    "",
+                    "",
+                    "if (add_order_panel.target == 'edit_order')",
+                    "    this.update_order_to_base_and_close_window ();",
+                    "else",
+                    "    this.add_order_to_base_and_close_window();"
+                ],
+                "name": "tap"
+            },
+            "designerId": "454a4a2a-4eec-4b11-9e68-09629c05b97d"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "add_order_to_base_and_close_window",
+                "implHandler": [
+                    "var id_client = this.getClient_field().id_client;",
+                    "var container_count = this.getContainer_count_field().getValue();",
+                    "var weight_home = this.getWeight_field().getValue();",
+                    "var weight_dress = this.getWeight_dress_field().getValue();",
+                    "var ticket_number = this.getTicket_number_field().getValue();",
+                    "var id_action = this.getId_action_order_field().getValue();",
+                    "var is_white_ = this.getWhite_field().getChecked();",
+                    "var is_white = 0;",
+                    "if (is_white_)",
+                    "    is_white = 1;",
+                    "",
+                    "var comment = this.getComment_field().getValue();",
+                    "",
+                    "",
+                    "",
+                    "var t = this;",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name\t\t:\t'add_order',",
+                    "            id_client\t\t\t:\tid_client,",
+                    "            container_count\t\t:\tcontainer_count,",
+                    "            weight_home\t\t\t:\tweight_home,",
+                    "            weight_dress\t\t:\tweight_dress,",
+                    "            ticket_number\t\t:\tticket_number,",
+                    "            id_action\t\t\t:\tid_action,",
+                    "            is_white\t\t\t:\tis_white,",
+                    "            comment\t\t\t\t:\tcomment,",
+                    "            format\t\t\t\t:\t'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        async: false,",
+                    "        success: function (result)",
+                    "        {",
+                    "            t.add_order_detailes_to_base (result.id_order);",
+                    "        }",
+                    "    });",
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                ]
+            },
+            "designerId": "1b0ed80d-ce14-4838-a2e0-98a4fcd2e198"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "id_order"
+                ],
+                "fn": "add_order_detailes_to_base",
+                "implHandler": [
+                    "",
+                    "",
+                    "",
+                    "",
+                    "var t = this;",
+                    "var order_detail_store = this.getOrder_detail_list().getStore();",
+                    "var record_count = order_detail_store.getCount();",
+                    "",
+                    "for (var i = 0; i < record_count; i++)",
+                    "{",
+                    "",
+                    "    var id_item_type = order_detail_store.getAt(i).get('id_item_type');",
+                    "    var id_action = order_detail_store.getAt(i).get('id_action');",
+                    "    var id_color = order_detail_store.getAt(i).get('id_color');",
+                    "    var id_gender = order_detail_store.getAt(i).get('id_gender');",
+                    "    var wear = order_detail_store.getAt(i).get('wear');",
+                    "    var count = order_detail_store.getAt(i).get('count');",
+                    "    var id_price = order_detail_store.getAt(i).get('id_price');",
+                    "    var is_label = order_detail_store.getAt(i).get('is_lable');",
+                    "    var comment = order_detail_store.getAt(i).get('comment');",
+                    "",
+                    "",
+                    "    t.add_order_detail_to_base (id_order, id_item_type, id_action, id_color, id_gender, wear, count, id_price, is_label, comment);",
+                    "}",
+                    "",
+                    "",
+                    "order_detail_store.data.clear();",
+                    "",
+                    "",
+                    "Ext.Msg.alert('Iron', \"Заказ добавлен\");",
+                    "",
+                    "",
+                    "var add_order_panel = this.getAddOrderPanel();",
+                    "add_order_panel.destroy();",
+                    "",
+                    "",
+                    "this.getApplication().getController('order_panel_controller').update_order_list();"
+                ]
+            },
+            "designerId": "f17c70e5-e8a9-4190-a2fc-cd1d1b0008e8"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "id_order",
+                    "id_item_type",
+                    "id_action",
+                    "id_color",
+                    "id_gender",
+                    "wear",
+                    "count",
+                    "id_price",
+                    "is_label",
+                    "comment"
+                ],
+                "fn": "add_order_detail_to_base",
+                "implHandler": [
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name\t\t:\t'add_order_detail',",
+                    "            id_order\t\t\t:\tid_order,",
+                    "            id_item_type\t\t:\tid_item_type,",
+                    "            id_action\t\t\t:\tid_action,",
+                    "            id_color\t\t\t:\tid_color,",
+                    "            id_gender\t\t\t:\tid_gender,",
+                    "            wear\t\t\t\t:\twear,",
+                    "            count\t\t\t\t:\tcount,",
+                    "            id_price\t\t\t:\tid_price,",
+                    "            is_label\t\t\t:\tis_label,",
+                    "            comment\t\t\t\t:\tcomment,",
+                    "            format\t\t\t\t:\t'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        async: false,",
+                    "        success: function (result)",
+                    "        {",
+                    "            //console.log(result.id_order_detail);",
+                    "        }",
+                    "    });"
+                ]
+            },
+            "designerId": "47f757e3-8e59-4aa1-a999-3b11555e6e0e"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "update_order_to_base_and_close_window",
+                "implHandler": [
+                    "var id_client = this.getClient_field().id_client;",
+                    "var container_count = this.getContainer_count_field().getValue();",
+                    "",
+                    "var weight_home = this.getWeight_field().getValue();",
+                    "if (this.getWeight_field().getDisabled())",
+                    "    weight_home = 0;",
+                    "",
+                    "var weight_dress = this.getWeight_dress_field().getValue();",
+                    "if (this.getWeight_dress_field().getDisabled())",
+                    "    weight_dress = 0;",
+                    "",
+                    "",
+                    "var ticket_number = this.getTicket_number_field().getValue();",
+                    "var id_action = this.getId_action_order_field().getValue();",
+                    "var is_white_ = this.getWhite_field().getChecked();",
+                    "var is_white = 0;",
+                    "if (is_white_)",
+                    "    is_white = 1;",
+                    "",
+                    "var comment = this.getComment_field().getValue();",
+                    "var id_order = this.getAddOrderPanel().record.get('id_order');",
+                    "",
+                    "",
+                    "var t = this;",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name\t\t:\t'update_order',",
+                    "            id_order\t\t\t:\tid_order,",
+                    "            id_client\t\t\t:\tid_client,",
+                    "            container_count\t\t:\tcontainer_count,",
+                    "            weight_home\t\t\t:\tweight_home,",
+                    "            weight_dress\t\t:\tweight_dress,",
+                    "            ticket_number\t\t:\tticket_number,",
+                    "            id_action\t\t\t:\tid_action,",
+                    "            is_white\t\t\t:\tis_white,",
+                    "            comment\t\t\t\t:\tcomment,",
+                    "            format\t\t\t\t:\t'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        async: false,",
+                    "        success: function (result)",
+                    "        {",
+                    "            t.update_order_detailes_in_base (id_order);",
+                    "        }",
+                    "    });",
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                ]
+            },
+            "designerId": "4f303faa-9f0d-437c-ba24-e63a3b60aea2"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "id_order"
+                ],
+                "fn": "update_order_detailes_in_base",
+                "implHandler": [
+                    "var order_detail_store = this.getOrder_detail_list().getStore();",
+                    "var record_count = order_detail_store.getCount();",
+                    "",
+                    "",
+                    "for (var i = 0; i< this.removed_records.length; i++)",
+                    "    this.delete_order_detail_from_base (this.removed_records[i].get('id_order_detail'));",
+                    "",
+                    "for (var i = 0; i < record_count; i++)",
+                    "{",
+                    "",
+                    "    var id_order_detail = order_detail_store.getAt(i).get('id_order_detail');",
+                    "    var id_item_type = order_detail_store.getAt(i).get('id_item_type');",
+                    "    var id_action = order_detail_store.getAt(i).get('id_action');",
+                    "    var id_color = order_detail_store.getAt(i).get('id_color');",
+                    "    var id_gender = order_detail_store.getAt(i).get('id_gender');",
+                    "    var wear = order_detail_store.getAt(i).get('wear');",
+                    "    var count = order_detail_store.getAt(i).get('count');",
+                    "    var id_price = order_detail_store.getAt(i).get('id_price');",
+                    "    var is_label = order_detail_store.getAt(i).get('is_lable');",
+                    "    var comment = order_detail_store.getAt(i).get('comment');",
+                    "",
+                    "",
+                    "    if (id_order_detail)",
+                    "        this.update_order_detail_to_base (id_order_detail, id_item_type, id_action, id_color, id_gender, wear, count, id_price, is_label, comment);",
+                    "    else",
+                    "        this.add_order_detail_to_base (id_order, id_item_type, id_action, id_color, id_gender, wear, count, id_price, is_label, comment);",
+                    "}",
+                    "",
+                    "",
+                    "order_detail_store.data.clear();",
+                    "",
+                    "",
+                    "Ext.Msg.alert('Iron', \"Заказ обновлен\");",
+                    "",
+                    "",
+                    "var add_order_panel = this.getAddOrderPanel();",
+                    "add_order_panel.destroy();",
+                    "",
+                    "",
+                    "this.getApplication().getController('order_panel_controller').update_order_list();"
+                ]
+            },
+            "designerId": "33eafe6b-cfae-49c5-bed0-cf729535160d"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "id_order_detail",
+                    "id_item_type",
+                    "id_action",
+                    "id_color",
+                    "id_gender",
+                    "wear",
+                    "count",
+                    "id_price",
+                    "is_label",
+                    "comment"
+                ],
+                "fn": "update_order_detail_to_base",
+                "implHandler": [
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name\t\t:\t'update_order_detail',",
+                    "            id_order_detail\t\t:\tid_order_detail,",
+                    "            id_item_type\t\t:\tid_item_type,",
+                    "            id_action\t\t\t:\tid_action,",
+                    "            id_color\t\t\t:\tid_color,",
+                    "            id_gender\t\t\t:\tid_gender,",
+                    "            wear\t\t\t\t:\twear,",
+                    "            count\t\t\t\t:\tcount,",
+                    "            id_price\t\t\t:\tid_price,",
+                    "            is_label\t\t\t:\tis_label,",
+                    "            comment\t\t\t\t:\tcomment,",
+                    "            format\t\t\t\t:\t'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        async: false,",
+                    "        success: function (result)",
+                    "        {",
+                    "            //console.log(result.id_order_detail);",
+                    "        }",
+                    "    });"
+                ]
+            },
+            "designerId": "4da2bb5e-a90e-4208-adac-1fa2c861f6c5"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "id_order_detail",
+                    "comment"
+                ],
+                "fn": "delete_order_detail_from_base",
+                "implHandler": [
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name\t\t:\t'delete_order_detail',",
+                    "            id_order_detail\t\t:\tid_order_detail,",
+                    "            format\t\t\t\t:\t'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        async: false,",
+                    "        success: function (result)",
+                    "        {",
+                    "            //console.log(result.id_order_detail);",
+                    "        }",
+                    "    });"
+                ]
+            },
+            "designerId": "a4415f00-8943-4a2e-870b-0eb0249f7ab4"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "get_order_detail_count",
+                "implHandler": [
+                    "var order_detail_list = this.getOrder_detail_list();",
+                    "var order_detail_store = order_detail_list.getStore();",
+                    "",
+                    "return order_detail_store.getCount();"
+                ]
+            },
+            "designerId": "8c1aba42-09b6-418e-b072-bc7140ed55bf"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "order_detail_list",
+                "designer|targetType": "Ext.dataview.List",
+                "fn": "dress_Doubletap",
+                "implHandler": [
+                    "addDressPanel = Ext.create('widget.adddressfororderpanel');",
+                    "",
+                    "Ext.Viewport.add(addDressPanel);",
+                    "addDressPanel.source = 'add_order_panel_controller';",
+                    "addDressPanel.target = 'edit';",
+                    "addDressPanel.record = record;",
+                    "addDressPanel.show();"
+                ],
+                "name": "itemdoubletap"
+            },
+            "designerId": "6a840303-ff4c-4494-ba2f-5a39d01ba976"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "order_detail_list",
+                "designer|targetType": "Ext.dataview.List",
+                "fn": "dress_item_tap",
+                "implHandler": [
+                    "this.getId_delete_dress().setDisabled(false);"
+                ],
+                "name": "itemsingletap"
+            },
+            "designerId": "f363e595-f99a-4122-be31-3538ab3d1e2b"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "addOrderPanel",
+                "designer|targetType": "AddOrderPanel",
+                "fn": "Panel_open",
+                "implHandler": [
+                    "",
+                    "this.get_current_weight_prices();",
+                    "",
+                    "this.removed_records = [];",
+                    "",
+                    "this.check_weight_is_need();"
+                ],
+                "name": "show"
+            },
+            "designerId": "f75f1cfc-0adb-4383-9074-0129c5ed8689"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "weight_field",
+                "designer|targetType": "Ext.field.Number",
+                "fn": "home_weight_change",
+                "implHandler": [
+                    "this.set_order_msg();"
+                ],
+                "name": "keyup"
+            },
+            "designerId": "36471f91-fdf9-4ea8-9d55-58370ac7149f"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "weight_dress_field",
+                "designer|targetType": "Ext.field.Number",
+                "fn": "dress_weight_change",
+                "implHandler": [
+                    "this.set_order_msg();"
+                ],
+                "name": "keyup"
+            },
+            "designerId": "85349239-7c68-46d6-b859-40cd7f745d5b"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "get_order_detail_info",
+                "implHandler": [
+                    "var order_detail_list = this.getOrder_detail_list();",
+                    "var order_detail_store = order_detail_list.getStore();",
+                    "var order_detail_count = order_detail_store.getCount();",
+                    "",
+                    "var is_dress_weight = false;",
+                    "var weight_dress_price = 0;",
+                    "",
+                    "var is_home_weight = false;",
+                    "var weight_home_price = 0;",
+                    "",
+                    "var is_simple_item = false;",
+                    "var no_weight_item_sum = 0;",
+                    "var no_weight_item_discount = 0;",
+                    "var no_weight_item_wo_disc = 0;",
+                    "",
+                    "for (var i = 0; i < order_detail_count; i++){",
+                    "    var next = order_detail_store.getAt (i);",
+                    "",
+                    "    // домашний текстиль с весовым прайсом хотя бы один",
+                    "    if (next.get('is_home_weight') === 1 && next.get('price_type') == 'Весовой')",
+                    "        is_home_weight = true;",
+                    "",
+                    "",
+                    "",
+                    "    // не домашний текстиль с весовым прайсом хотя бы один",
+                    "    if (next.get('is_home_weight') === 0 && next.get('price_type') == 'Весовой')",
+                    "        is_dress_weight = true;",
+                    "",
+                    "",
+                    "",
+                    "    // сумма заказа на штучный",
+                    "    if (next.get('price_type') == 'Штучный'){",
+                    "        no_weight_item_sum += next.get('result_price') * next.get('count');",
+                    "    }",
+                    "",
+                    "",
+                    "    // сумма зазказа на штучный без скидки",
+                    "    if (next.get('price_type') == 'Штучный'){",
+                    "        no_weight_item_wo_disc += next.get('price') * next.get('count');",
+                    "    }",
+                    "",
+                    "    // сумма скидки",
+                    "    if (next.get('price_type') == 'Штучный'){",
+                    "        no_weight_item_discount += (next.get('price') - next.get('result_price')) * next.get('count');",
+                    "    }",
+                    "",
+                    "",
+                    "}",
+                    "",
+                    "return {is_dress_weight:is_dress_weight, is_home_weight:is_home_weight, no_weight_item_sum:no_weight_item_sum, no_weight_item_discount:no_weight_item_discount, no_weight_item_wo_disc:no_weight_item_wo_disc};"
+                ]
+            },
+            "designerId": "66c0b95c-5b58-4476-9547-4b6c8f5f51be"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "set_order_msg",
+                "implHandler": [
+                    "var tip_lbl = this.getId_tip ();",
+                    "var client_field = this.getClient_field();",
+                    "var order_detail_list = this.getOrder_detail_list();",
+                    "var order_detail_store = order_detail_list.getStore();",
+                    "var weight_home = this.getWeight_field().getValue();",
+                    "var weight_dress = this.getWeight_dress_field().getValue();",
+                    "var container_count = this.getContainer_count_field().getValue();",
+                    "var ticket_number = this.getTicket_number_field().getValue();",
+                    "",
+                    "var order_detail_info = this.get_order_detail_info();",
+                    "var is_can_calc = false;",
+                    "",
+                    "var text = '<div> <font size=\"3\" color=\"white\"> Для рассчета стоимости: </font> </div>';",
+                    "",
+                    "var client_selected = true;",
+                    "var order_detail_is = true;",
+                    "var dress_weight_is = true;",
+                    "var home_weight_is = true;",
+                    "",
+                    "",
+                    "var add_order_panel = this.getAddOrderPanel();",
+                    "",
+                    "",
+                    "if (client_field.getValue() === ''){",
+                    "    text += '<font size=\"3\" color=\"red\"> Выберите клиента; </font>';",
+                    "    client_selected = false;",
+                    "}",
+                    "",
+                    "if (order_detail_store.getCount() === 0){",
+                    "    text +=  '<font size=\"3\" color=\"red\"> Добавьте позиции одежды; </font>';",
+                    "    order_detail_is = false;",
+                    "}",
+                    "",
+                    "",
+                    "if (order_detail_info.is_dress_weight && (weight_dress === 0 || weight_dress === null)){",
+                    "    text +=  '<font size=\"3\" color=\"red\"> Укажите вес одежды; </font>';",
+                    "    dress_weight_is = false;",
+                    "}",
+                    "",
+                    "",
+                    "",
+                    "if (order_detail_info.is_home_weight && (weight_home === 0 || weight_home === null)){",
+                    "    text +=  '<font size=\"3\" color=\"red\"> Укажите вес текстиля; </font>';",
+                    "    home_weight_is = false;",
+                    "}",
+                    "",
+                    "",
+                    "if (container_count === 0 || container_count === null)",
+                    "    text +=  '<font size=\"3\" color=\"red\"> Укажите число контейнеров; </font>';",
+                    "",
+                    "",
+                    "if (ticket_number === 0 || ticket_number === null)",
+                    "    text +=  '<font size=\"3\" color=\"red\"> Укажите номер квитанции; </font>';",
+                    "",
+                    "",
+                    "",
+                    "if (client_selected && order_detail_is && dress_weight_is && home_weight_is){",
+                    "",
+                    "    var weight_discount = 0;",
+                    "",
+                    "    var weight_home_items_sum = 0;",
+                    "    var weight_home_items_sum_wo_disc = 0;",
+                    "",
+                    "    if (order_detail_info.is_home_weight)",
+                    "    {",
+                    "        weight_home_items_sum = add_order_panel.home_weight_result_price * weight_home;",
+                    "        weight_home_items_sum_wo_disc = add_order_panel.home_weight_price * weight_home;",
+                    "        weight_discount += (add_order_panel.home_weight_price - add_order_panel.home_weight_result_price) * weight_home;",
+                    "    }",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "    var weight_dress_items_sum = 0;",
+                    "    var weight_dress_items_sum_wo_disc = 0;",
+                    "",
+                    "    if (order_detail_info.is_dress_weight)",
+                    "    {",
+                    "        weight_dress_items_sum = add_order_panel.dress_weight_result_price * weight_dress;",
+                    "        weight_dress_items_sum_wo_disc = add_order_panel.dress_weight_price * weight_dress;",
+                    "        weight_discount += (add_order_panel.dress_weight_price - add_order_panel.dress_weight_result_price) * weight_dress;",
+                    "    }",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "    var total_sum = weight_home_items_sum + weight_dress_items_sum + order_detail_info.no_weight_item_sum;",
+                    "",
+                    "",
+                    "    var total_sum_wo_disc = weight_home_items_sum_wo_disc + weight_dress_items_sum_wo_disc + order_detail_info.no_weight_item_wo_disc;",
+                    "    var total_discount = order_detail_info.no_weight_item_discount + weight_discount;",
+                    "",
+                    "    text = '<div> <font size=\"2\" color=\"white\"> Общая сумма заказа: </font> <font size=\"3\" color=\"yellow\">' + Math.floor(total_sum/10)*10 + ' руб.: </div> </font> ' +",
+                    "            '<font size=\"2\" color=\"yellow\"> Поштучно: ' + order_detail_info.no_weight_item_sum + ' руб.; </font>' +",
+                    "            '<font size=\"2\" color=\"yellow\"> Весовая одежда: ' + parseFloat(weight_dress_items_sum.toFixed(2)) + ' руб.; </font>' +",
+                    "            '<font size=\"2\" color=\"yellow\"> Весовой текстиль: ' + parseFloat(weight_home_items_sum.toFixed(2)) + ' руб.; </font>' +",
+                    "            '<font size=\"2\" color=\"yellow\"> Итоговая скидка (без учета округления): ' + parseFloat(total_discount.toFixed(2)) + ' руб. или ' + parseFloat(((total_discount/total_sum_wo_disc)*100).toFixed(1)) + '% </font>';",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "    tip_lbl.setHtml(text);",
+                    "}",
+                    "else",
+                    "    tip_lbl.setHtml(text);"
+                ]
+            },
+            "designerId": "cecfa525-45bb-40d0-a7fb-6649690ef8b9"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "record"
+                ],
+                "fn": "create_wear_name_and_calc_result_price",
+                "implHandler": [
+                    "",
+                    "var add_order_panel = this.getAddOrderPanel();",
+                    "var action_fld = this.getId_action_order_field();",
+                    "var action_record = action_fld.getStore().findRecord('id_action', action_fld.getValue());",
+                    "",
+                    "",
+                    "var wear_name = record.get('item_type_name') + \" (\" + record.get('gender') + \"; \" + record.get('color');",
+                    "",
+                    "",
+                    "if (record.get('is_home_weight') === 1)",
+                    "    wear_name = record.get('item_type_name') + \" (\" + record.get('color');",
+                    "",
+                    "",
+                    "",
+                    "if (record.get('price_type') == \"Штучный\")",
+                    "    wear_name += \"; \" + record.get('count') + \" шт.\";",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "if (record.get('price_type') == \"Весовой\" && record.get('is_home_weight') === 0)",
+                    "    wear_name += \"; весовая одежда\";",
+                    "",
+                    "",
+                    "if (record.get('price_type') == \"Весовой\" && record.get('is_home_weight') === 1)",
+                    "    wear_name += \"; весовой текстиль\" ;",
+                    "",
+                    "",
+                    "",
+                    "wear_name += \")\";",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "if (record.get('price_type') == \"Штучный\")",
+                    "    wear_name += \" ** Цена: \" + record.get('price').toString() + \" руб./шт.\";",
+                    "else",
+                    "{",
+                    "",
+                    "    if (record.get('is_home_weight') === 0)",
+                    "        wear_name += \" ** Цена \" + add_order_panel.dress_weight_price + \" руб./кг.\";",
+                    "    else",
+                    "        wear_name += \" ** Цена \" + add_order_panel.home_weight_price + \" руб./кг.\";",
+                    "}",
+                    "",
+                    "",
+                    "/* если есть глобальные акции */",
+                    "if (action_record && action_record.get('action_name') !== ' ')",
+                    "{",
+                    "    var discount = 0;",
+                    "    var result_price = 0;",
+                    "",
+                    "    /*Если есть глобальная процентная акция и прайс штучный*/",
+                    "    if (record.get('price_type') == \"Штучный\" && action_record.get('action_type') == 'Процентная')",
+                    "    {",
+                    "        discount = ((record.get('price') * (1-action_record.get('action_value')))/record.get('price'))*100;",
+                    "        result_price = Math.floor (record.get('price') * action_record.get('action_value'));",
+                    "",
+                    "        wear_name += \" ** Акция: \" + action_record.get('action_name') + \"; Скидка: \" + discount.toPrecision(2).toString() + \"%; ** Итоговая цена: \" + result_price.toString() + \" руб./шт. **\";",
+                    "",
+                    "        record.set('result_price', result_price);",
+                    "    }",
+                    "    /* если есть акция локальная */",
+                    "    else if (record.get('price_type') == \"Штучный\" && ((record.get('action_name') == \"первый контакт\" && this.getAddOrderPanel().order_count === 0) || (record.get('action_name') == \"первый контакт\" && this.getAddOrderPanel().order_count === 0) || (record.get('action_name') !== \"первый контакт\" && record.get('action_name') !== \"\")))",
+                    "    {",
+                    "        if (record.get('action_type') == \"Рублевая\")",
+                    "        {",
+                    "            discount = ((record.get('price') - record.get('action_value'))/record.get('price'))*100;",
+                    "            result_price = Math.floor (record.get('action_value'));",
+                    "        }",
+                    "        else if (record.get('action_type') == \"Процентная\")",
+                    "        {",
+                    "            discount = ((record.get('price') * (1-record.get('action_value')))/record.get('price'))*100;",
+                    "            result_price = Math.floor (record.get('price') * record.get('action_value'));",
+                    "        }",
+                    "",
+                    "",
+                    "        wear_name += \" ** Акция: \" + record.get('action_name') + \"; Скидка: \" + discount.toPrecision(2).toString() + \"%; ** Итоговая цена: \" + result_price.toString() + \" руб./шт. **\";",
+                    "",
+                    "        record.set('result_price', result_price);",
+                    "    }",
+                    "",
+                    "",
+                    "    /* Есть глобальная акция на весовой текстиль или процентная акция и прайс весовой */",
+                    "    if ((action_record.get('action_type') == 'На весовой текстиль' || action_record.get('action_type') == 'Процентная') && record.get('is_home_weight') === 1 && record.get('price_type') == \"Весовой\")",
+                    "    {",
+                    "        discount = ((add_order_panel.home_weight_price * (1-action_record.get('action_value')))/add_order_panel.home_weight_price)*100;",
+                    "        result_price = Math.floor (add_order_panel.home_weight_price * action_record.get('action_value'));",
+                    "",
+                    "        wear_name += \" ** Акция: \" + action_record.get('action_name') + \"; Скидка: \" + discount.toPrecision(2).toString() + \"%; ** Итоговая цена: \" + result_price.toString() + \" руб/кг.. **\";",
+                    "",
+                    "        add_order_panel.home_weight_result_price = result_price;",
+                    "    }",
+                    "",
+                    "",
+                    "    /* Есть глобальная акция на весовую одежду или процентная акция и прайс весовой */",
+                    "    if ((action_record.get('action_type') == 'На весовую одежду' || action_record.get('action_type') == 'Процентная') && record.get('is_home_weight') === 0 && record.get('price_type') == \"Весовой\")",
+                    "    {",
+                    "        discount = ((add_order_panel.dress_weight_price * (1-action_record.get('action_value')))/add_order_panel.dress_weight_price)*100;",
+                    "        result_price = Math.floor (add_order_panel.dress_weight_price * action_record.get('action_value'));",
+                    "",
+                    "        wear_name += \" ** Акция: \" + action_record.get('action_name') + \"; Скидка: \" + discount.toPrecision(2).toString() + \"%; ** Итоговая цена: \" + result_price.toString() + \" руб/кг.. **\";",
+                    "",
+                    "        add_order_panel.dress_weight_result_price = result_price;",
+                    "    }",
+                    "}",
+                    "/* если есть акция локальная */",
+                    "else if (record.get('price_type') == \"Штучный\" && ((record.get('action_name') == \"первый контакт\" && this.getAddOrderPanel().order_count === 0) || (record.get('action_name') !== \"первый контакт\" && record.get('action_name') !== \"\")))",
+                    "{",
+                    "    if (record.get('action_type') == \"Рублевая\")",
+                    "    {",
+                    "        discount = ((record.get('price') - record.get('action_value'))/record.get('price'))*100;",
+                    "        result_price = Math.floor (record.get('action_value'));",
+                    "    }",
+                    "    else if (record.get('action_type') == \"Процентная\")",
+                    "    {",
+                    "        discount = ((record.get('price') * (1-record.get('action_value')))/record.get('price'))*100;",
+                    "        result_price = Math.floor (record.get('price') * record.get('action_value'));",
+                    "    }",
+                    "",
+                    "",
+                    "",
+                    "    wear_name += \" ** Акция: \" + record.get('action_name') + \"; Скидка: \" + discount.toPrecision(2).toString() + \"%; ** Итоговая цена: \" + result_price.toString() + \" руб. **\";",
+                    "",
+                    "    record.set('result_price', result_price);",
+                    "}",
+                    "/* нет ни глобальных ни локальных акций*/",
+                    "else",
+                    "{",
+                    "    add_order_panel.home_weight_result_price = add_order_panel.home_weight_price;",
+                    "    add_order_panel.dress_weight_result_price = add_order_panel.dress_weight_price;",
+                    "    record.set('result_price', record.get('price'));",
+                    "    record.set('id_action', 0);",
+                    "",
+                    "}",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "return wear_name;"
+                ]
+            },
+            "designerId": "77b64bac-63b3-4212-8d93-687ea338bca6"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "record"
+                ],
+                "fn": "create_wear_name_and_calc_result_price_exists",
+                "implHandler": [
+                    "",
+                    "var add_order_panel = this.getAddOrderPanel();",
+                    "var action_fld = this.getId_action_order_field();",
+                    "var action_record = action_fld.getStore().findRecord('id_action', action_fld.getValue());",
+                    "",
+                    "",
+                    "var wear_name = record.get('item_type_name') + \" (\" + record.get('gender') + \"; \" + record.get('color');",
+                    "",
+                    "",
+                    "if (record.get('is_home_weight') === 1)",
+                    "    wear_name = record.get('item_type_name') + \" (\" + record.get('color');",
+                    "",
+                    "",
+                    "",
+                    "if (record.get('price_type') == \"Штучный\")",
+                    "    wear_name += \"; \" + record.get('count') + \" шт.\";",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "if (record.get('price_type') == \"Весовой\" && record.get('is_home_weight') === 0)",
+                    "    wear_name += \"; весовая одежда\";",
+                    "",
+                    "",
+                    "if (record.get('price_type') == \"Весовой\" && record.get('is_home_weight') === 1)",
+                    "    wear_name += \"; весовой текстиль\" ;",
+                    "",
+                    "",
+                    "",
+                    "wear_name += \")\";",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "if (record.get('price_type') == \"Штучный\")",
+                    "    wear_name += \" ** Цена: \" + record.get('price').toString() + \" руб./шт.\";",
+                    "else",
+                    "{",
+                    "",
+                    "    if (record.get('is_home_weight') === 0)",
+                    "        wear_name += \" ** Цена \" + add_order_panel.dress_weight_price + \" руб./кг.\";",
+                    "    else",
+                    "        wear_name += \" ** Цена \" + add_order_panel.home_weight_price + \" руб./кг.\";",
+                    "}",
+                    "",
+                    "",
+                    "",
+                    "/* если есть глобальные акции */",
+                    "if (action_record && action_record.get('action_name') !== ' ')",
+                    "{",
+                    "    var discount = 0;",
+                    "    var result_price = 0;",
+                    "",
+                    "    /*Если есть глобальная процентная акция и прайс штучный*/",
+                    "    if (record.get('price_type') == \"Штучный\" && action_record.get('action_type') == 'Процентная')",
+                    "    {",
+                    "        discount = ((record.get('price') * (1-action_record.get('action_value')))/record.get('price'))*100;",
+                    "        result_price = Math.floor (record.get('price') * action_record.get('action_value'));",
+                    "",
+                    "        wear_name += \" ** Акция: \" + action_record.get('action_name') + \"; Скидка: \" + discount.toPrecision(2).toString() + \"%; ** Итоговая цена: \" + result_price.toString() + \" руб./шт. **\";",
+                    "",
+                    "        record.set('result_price', result_price);",
+                    "    }",
+                    "    /* если есть акция локальная */",
+                    "    else if (record.get('price_type') == \"Штучный\" && record.get('action_name') !== \"\")",
+                    "    {",
+                    "        if (record.get('action_type') == \"Рублевая\")",
+                    "        {",
+                    "            discount = ((record.get('price') - record.get('action_value'))/record.get('price'))*100;",
+                    "            result_price = Math.floor (record.get('action_value'));",
+                    "        }",
+                    "        else if (record.get('action_type') == \"Процентная\")",
+                    "        {",
+                    "            discount = ((record.get('price') * (1-record.get('action_value')))/record.get('price'))*100;",
+                    "            result_price = Math.floor (record.get('price') * record.get('action_value'));",
+                    "        }",
+                    "",
+                    "",
+                    "        wear_name += \" ** Акция: \" + record.get('action_name') + \"; Скидка: \" + discount.toPrecision(2).toString() + \"%; ** Итоговая цена: \" + result_price.toString() + \" руб./шт. **\";",
+                    "",
+                    "        record.set('result_price', result_price);",
+                    "    }",
+                    "    //else",
+                    "    //    record.set('result_price', record.get('price'));",
+                    "",
+                    "",
+                    "    /* Есть глобальная акция на весовой текстиль или процентная акция и прайс весовой */",
+                    "    if ((action_record.get('action_type') == 'На весовой текстиль' || action_record.get('action_type') == 'Процентная') && record.get('is_home_weight') === 1 && record.get('price_type') == \"Весовой\")",
+                    "    {",
+                    "        discount = ((add_order_panel.home_weight_price * (1-action_record.get('action_value')))/add_order_panel.home_weight_price)*100;",
+                    "        result_price = Math.floor (add_order_panel.home_weight_price * action_record.get('action_value'));",
+                    "",
+                    "        //console.log(discount);",
+                    "        //console.log(result_price);",
+                    "",
+                    "",
+                    "        wear_name += \" ** Акция: \" + action_record.get('action_name') + \"; Скидка: \" + discount.toPrecision(2).toString() + \"%; ** Итоговая цена: \" + result_price.toString() + \" руб/кг.. **\";",
+                    "",
+                    "        add_order_panel.home_weight_result_price = result_price;",
+                    "    }",
+                    "    //else",
+                    "    //    add_order_panel.home_weight_result_price = add_order_panel.home_weight_price;",
+                    "",
+                    "    /* Есть глобальная акция на весовую одежду или процентная акция и прайс весовой */",
+                    "    if ((action_record.get('action_type') == 'На весовую одежду' || action_record.get('action_type') == 'Процентная') && record.get('is_home_weight') === 0 && record.get('price_type') == \"Весовой\")",
+                    "    {",
+                    "        discount = ((add_order_panel.dress_weight_price * (1-action_record.get('action_value')))/add_order_panel.dress_weight_price)*100;",
+                    "        result_price = Math.floor (add_order_panel.dress_weight_price * action_record.get('action_value'));",
+                    "",
+                    "        wear_name += \" ** Акция: \" + action_record.get('action_name') + \"; Скидка: \" + discount.toPrecision(2).toString() + \"%; ** Итоговая цена: \" + result_price.toString() + \" руб/кг.. **\";",
+                    "",
+                    "        add_order_panel.dress_weight_result_price = result_price;",
+                    "    }",
+                    "    //else",
+                    "    //    add_order_panel.dress_weight_result_price = add_order_panel.dress_weight_price;",
+                    "",
+                    "}",
+                    "/* если есть акция локальная */",
+                    "else if (record.get('price_type') == \"Штучный\" && record.get('action_name') !== \"\")",
+                    "{",
+                    "    if (record.get('action_type') == \"Рублевая\")",
+                    "    {",
+                    "        discount = ((record.get('price') - record.get('action_value'))/record.get('price'))*100;",
+                    "        result_price = Math.floor (record.get('action_value'));",
+                    "    }",
+                    "    else if (record.get('action_type') == \"Процентная\")",
+                    "    {",
+                    "        discount = ((record.get('price') * (1-record.get('action_value')))/record.get('price'))*100;",
+                    "        result_price = Math.floor (record.get('price') * record.get('action_value'));",
+                    "    }",
+                    "",
+                    "",
+                    "",
+                    "    wear_name += \" ** Акция: \" + record.get('action_name') + \"; Скидка: \" + discount.toPrecision(2).toString() + \"%; ** Итоговая цена: \" + result_price.toString() + \" руб. **\";",
+                    "",
+                    "    record.set('result_price', result_price);",
+                    "}",
+                    "/* нет ни глобальных ни локальных акций*/",
+                    "else",
+                    "{",
+                    "    add_order_panel.home_weight_result_price = add_order_panel.home_weight_price;",
+                    "    add_order_panel.dress_weight_result_price = add_order_panel.dress_weight_price;",
+                    "    record.set('result_price', record.get('price'));",
+                    "",
+                    "}",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "return wear_name;"
+                ]
+            },
+            "designerId": "bea30b30-e851-4174-b58d-275ea9966629"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "record",
+                    "action_record"
+                ],
+                "fn": "create_wear_name_and_calc_result_price_exists_remote",
+                "implHandler": [
+                    "var wear_name = record.get('item_type_name') + \" (\" + record.get('gender') + \"; \" + record.get('color');",
+                    "record.set('wear_name', wear_name);",
+                    "",
+                    "",
+                    "if (record.get('is_home_weight') === 1)",
+                    "    wear_name = record.get('item_type_name') + \" (\" + record.get('color');",
+                    "",
+                    "",
+                    "",
+                    "if (record.get('price_type') == \"Штучный\")",
+                    "    wear_name += \"; \" + record.get('count') + \" шт.\";",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "if (record.get('price_type') == \"Весовой\" && record.get('is_home_weight') === 0)",
+                    "    wear_name += \"; весовая одежда\";",
+                    "",
+                    "",
+                    "if (record.get('price_type') == \"Весовой\" && record.get('is_home_weight') === 1)",
+                    "    wear_name += \"; весовой текстиль\" ;",
+                    "",
+                    "",
+                    "",
+                    "wear_name += \")\";",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "if (record.get('price_type') == \"Штучный\")",
+                    "    wear_name += \" ** Цена: \" + record.get('price').toString() + \" руб./шт.\";",
+                    "else",
+                    "{",
+                    "",
+                    "    if (record.get('is_home_weight') === 0)",
+                    "        wear_name += \" ** Цена \" + record.get('dress_weight_price') + \" руб./кг.\";",
+                    "    else",
+                    "        wear_name += \" ** Цена \" + record.get('home_weight_price') + \" руб./кг.\";",
+                    "}",
+                    "",
+                    "",
+                    "",
+                    "/* если есть глобальные акции */",
+                    "if (action_record && action_record.get('action_name') !== ' ')",
+                    "{",
+                    "    var discount = 0;",
+                    "    var result_price = 0;",
+                    "",
+                    "    /*Если есть глобальная процентная акция и прайс штучный*/",
+                    "    if (record.get('price_type') == \"Штучный\" && action_record.get('action_type') == 'Процентная')",
+                    "    {",
+                    "        discount = ((record.get('price') * (1-action_record.get('action_value')))/record.get('price'))*100;",
+                    "        result_price = Math.floor (record.get('price') * action_record.get('action_value'));",
+                    "",
+                    "        wear_name += \" ** Акция: \" + action_record.get('action_name') + \"; Скидка: \" + discount.toPrecision(2).toString() + \"%; ** Итоговая цена: \" + result_price.toString() + \" руб./шт. **\";",
+                    "",
+                    "        record.set('result_price', result_price);",
+                    "        record.set('discount', Math.ceil(discount));",
+                    "        record.set('result_action_name', action_record.get('action_name'));",
+                    "",
+                    "    }",
+                    "    /* если есть акция локальная */",
+                    "    else if (record.get('price_type') == \"Штучный\" && record.get('action_name') !== \"\")",
+                    "    {",
+                    "        if (record.get('action_type') == \"Рублевая\")",
+                    "        {",
+                    "            discount = ((record.get('price') - record.get('action_value'))/record.get('price'))*100;",
+                    "            result_price = Math.floor (record.get('action_value'));",
+                    "        }",
+                    "        else if (record.get('action_type') == \"Процентная\")",
+                    "        {",
+                    "            discount = ((record.get('price') * (1-record.get('action_value')))/record.get('price'))*100;",
+                    "            result_price = Math.floor (record.get('price') * record.get('action_value'));",
+                    "        }",
+                    "",
+                    "",
+                    "        wear_name += \" ** Акция: \" + record.get('action_name') + \"; Скидка: \" + discount.toPrecision(2).toString() + \"%; ** Итоговая цена: \" + result_price.toString() + \" руб./шт. **\";",
+                    "",
+                    "        record.set('result_price', result_price);",
+                    "        record.set('discount', Math.ceil(discount));",
+                    "        record.set('result_action_name', record.get('action_name'));",
+                    "    }",
+                    "    else",
+                    "    {",
+                    "        record.set('result_price', record.get('price'));",
+                    "        record.set('discount', 0);",
+                    "        record.set('result_action_name', \"\");",
+                    "    }",
+                    "",
+                    "",
+                    "    /* Есть глобальная акция на весовой текстиль или процентная акция и прайс весовой */",
+                    "    if ((action_record.get('action_type') == 'На весовой текстиль' || action_record.get('action_type') == 'Процентная') && record.get('is_home_weight') === 1 && record.get('price_type') == \"Весовой\")",
+                    "    {",
+                    "        discount = ((record.get('home_weight_price') * (1-action_record.get('action_value')))/record.get('home_weight_price'))*100;",
+                    "        result_price = Math.floor (record.get('home_weight_price') * action_record.get('action_value'));",
+                    "",
+                    "        //console.log(discount);",
+                    "        //console.log(result_price);",
+                    "",
+                    "        wear_name += \" ** Акция: \" + action_record.get('action_name') + \"; Скидка: \" + discount.toPrecision(2).toString() + \"%; ** Итоговая цена: \" + result_price.toString() + \" руб/кг.. **\";",
+                    "",
+                    "        record.set('home_weight_result_price', result_price);",
+                    "        record.set('result_action_name', action_record.get('action_name'));",
+                    "        record.set('discount', Math.ceil(discount));",
+                    "    }",
+                    "    else",
+                    "        record.set('home_weight_result_price', record.get('home_weight_price'));",
+                    "",
+                    "",
+                    "    /* Есть глобальная акция на весовую одежду или процентная акция и прайс весовой */",
+                    "    if ((action_record.get('action_type') == 'На весовую одежду' || action_record.get('action_type') == 'Процентная') && record.get('is_home_weight') === 0 && record.get('price_type') == \"Весовой\")",
+                    "    {",
+                    "        discount = ((record.get('dress_weight_price') * (1-action_record.get('action_value')))/record.get('dress_weight_price'))*100;",
+                    "        result_price = Math.floor (record.get('dress_weight_price') * action_record.get('action_value'));",
+                    "",
+                    "        wear_name += \" ** Акция: \" + action_record.get('action_name') + \"; Скидка: \" + discount.toPrecision(2).toString() + \"%; ** Итоговая цена: \" + result_price.toString() + \" руб/кг.. **\";",
+                    "",
+                    "        record.set('dress_weight_result_price', result_price);",
+                    "        record.set('result_action_name', action_record.get('action_name'));",
+                    "        record.set('discount', Math.ceil(discount));",
+                    "    }",
+                    "    else",
+                    "        record.set('dress_weight_result_price', record.get('dress_weight_price'));",
+                    "}",
+                    "/* если есть акция локальная */",
+                    "else if (record.get('price_type') == \"Штучный\" && record.get('action_name') !== \"\")",
+                    "{",
+                    "    if (record.get('action_type') == \"Рублевая\")",
+                    "    {",
+                    "        discount = ((record.get('price') - record.get('action_value'))/record.get('price'))*100;",
+                    "        result_price = Math.floor (record.get('action_value'));",
+                    "    }",
+                    "    else if (record.get('action_type') == \"Процентная\")",
+                    "    {",
+                    "        discount = ((record.get('price') * (1-record.get('action_value')))/record.get('price'))*100;",
+                    "        result_price = Math.floor (record.get('price') * record.get('action_value'));",
+                    "    }",
+                    "",
+                    "",
+                    "",
+                    "    wear_name += \" ** Акция: \" + record.get('action_name') + \"; Скидка: \" + discount.toPrecision(2).toString() + \"%; ** Итоговая цена: \" + result_price.toString() + \" руб. **\";",
+                    "",
+                    "    record.set('result_price', result_price);",
+                    "    record.set('discount', Math.ceil(discount));",
+                    "    record.set('result_action_name', record.get('action_name'));",
+                    "}",
+                    "/* нет ни глобальных ни локальных акций*/",
+                    "else",
+                    "{",
+                    "    record.set('dress_weight_result_price', record.get('dress_weight_price'));",
+                    "    record.set('home_weight_result_price', record.get('home_weight_price'));",
+                    "    record.set('result_price', record.get('price'));",
+                    "    record.set('discount', 0);",
+                    "    record.set('result_action_name', \"\");",
+                    "}",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "return {wear_name:wear_name, record:record};"
+                ]
+            },
+            "designerId": "0bf52288-2ab4-4897-a06b-a245ad9d52fd"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "id_action_order_field",
+                "designer|targetType": "Ext.field.Select",
+                "fn": "action_change",
+                "implHandler": [
+                    "this.check_all_fields();",
+                    "this.update_order_prices_by_action();",
+                    "this.update_order_detail_prices();",
+                    "this.set_order_msg();"
+                ],
+                "name": "change"
+            },
+            "designerId": "7575e169-7045-400d-9450-c5ce661f894e"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "white_field",
+                "designer|targetType": "Ext.field.Checkbox",
+                "fn": "is_white_check",
+                "implHandler": [
+                    "",
+                    "if (!newValue)",
+                    "{",
+                    "    this.getTicket_number_field().setDisabled(true);",
+                    "    this.getTicket_number_field().setValue(\"0\");",
+                    "}",
+                    "else",
+                    "    this.getTicket_number_field().setDisabled(false);",
+                    "    ",
+                    "",
+                    "this.check_all_fields();"
+                ],
+                "name": "change"
+            },
+            "designerId": "bd141daa-4ac6-494a-aa84-9744bd4cb819"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "comment_field",
+                "designer|targetType": "Ext.field.Text",
+                "fn": "comment_chenge",
+                "implHandler": [
+                    "this.check_all_fields();"
+                ],
+                "name": "keyup"
+            },
+            "designerId": "1a2b5ed8-ac81-4a7d-ad8d-24183953b2a3"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "record",
+                    "action_record",
+                    "order_count",
+                    "home_weight_price",
+                    "dress_weight_price",
+                    "name_dist"
+                ],
+                "fn": "create_wear_name_and_calc_result_price_ext",
+                "implHandler": [
+                    "",
+                    "",
+                    "this.update_record_price_data(record, action_record, order_count, home_weight_price, dress_weight_price, name_dist);",
+                    "",
+                    "/* создаем наименование для типа просмотра */",
+                    "var wear_name = this.set_record_wear_name (record, home_weight_price, dress_weight_price, name_dist);",
+                    "var price_dimension = record.get('price_dimension');",
+                    "var result_action = record.get('result_action_name');",
+                    "var discount = record.get('discount');",
+                    "var result_price = record.get('result_price');",
+                    "var price = record.get('price');",
+                    "",
+                    "wear_name += \" ** Цена: \" + price.toFixed(2) + \" \" + price_dimension + \" **\";",
+                    "",
+                    "",
+                    "if (result_action !== ' ')",
+                    "    wear_name +=  \" Акция: \" + result_action + \"; Скидка: \" + discount + \"%; ** Итоговая цена: \" + result_price  + \" \" + price_dimension + \" **\";",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "return {wear_name:wear_name, record:record};"
+                ]
+            },
+            "designerId": "9f7d4997-029c-436b-92fc-fc3445cb5cb4"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "record",
+                    "home_weight_price",
+                    "dress_weight_price",
+                    "name_dist"
+                ],
+                "fn": "set_record_wear_name",
+                "implHandler": [
+                    "var is_item_home_weight = record.get('is_home_weight');",
+                    "var item_price_type = record.get('price_type');",
+                    "var item_type_name = record.get('item_type_name');",
+                    "var item_gender = record.get('gender');",
+                    "var item_color = record.get('color');",
+                    "var item_count = record.get('count');",
+                    "var item_with_lable = record.get('is_lable');",
+                    "var item_hanger = record.get('hanger');",
+                    "",
+                    "if (item_with_lable)",
+                    "    var item_with_lable_text = \"; c маркировкой\";",
+                    "else",
+                    "    var item_with_lable_text = \"; без маркировки\";",
+                    "",
+                    "",
+                    "if (item_hanger)",
+                    "    var item_hanger_text = record.get('count').toString()  + 'Ω';",
+                    "else",
+                    "    var item_hanger_text = record.get('count').toString() + '_';",
+                    "",
+                    "/* Для договора */",
+                    "if (name_dist == 'create_contract')",
+                    "{",
+                    "    var wear_name = item_hanger_text + \" \" + item_type_name + \" (\" + item_gender + \"; \" + item_color;",
+                    "",
+                    "    if (is_item_home_weight === 1)",
+                    "        wear_name = item_hanger_text + \" \" + item_type_name + \" (\" + item_color;",
+                    "",
+                    "    if (item_price_type == \"Штучный\")",
+                    "        wear_name += \"; \" + item_count + \" шт.\";",
+                    "",
+                    "",
+                    "    if (item_price_type == \"Весовой\" && is_item_home_weight === 0)",
+                    "        wear_name += \"; весовая одежда\";",
+                    "",
+                    "",
+                    "    if (item_price_type == \"Весовой\" && is_item_home_weight === 1)",
+                    "        wear_name += \"; весовой текстиль\" ;",
+                    "",
+                    "    wear_name += item_with_lable_text + \" \";",
+                    "",
+                    "}",
+                    "/* Для панели просмотра заказов */",
+                    "else if (name_dist == 'add_order' || name_dist == 'edit_order')",
+                    "{",
+                    "    var wear_name = item_type_name + \" (\" + item_gender + \"; \" + item_color;",
+                    "",
+                    "    if (is_item_home_weight === 1)",
+                    "        wear_name = item_hanger_text + \" \" + item_type_name + \" (\" + item_color;",
+                    "",
+                    "    if (item_price_type == \"Штучный\")",
+                    "        wear_name += \"; \" + item_count + \" шт.\";",
+                    "",
+                    "",
+                    "    if (item_price_type == \"Весовой\" && is_item_home_weight === 0)",
+                    "        wear_name += \"; весовая одежда\";",
+                    "",
+                    "",
+                    "    if (item_price_type == \"Весовой\" && is_item_home_weight === 1)",
+                    "        wear_name += \"; весовой текстиль\" ;",
+                    "",
+                    "",
+                    "",
+                    "}",
+                    "/* остальные */",
+                    "else",
+                    "{",
+                    "    var wear_name = item_type_name + \" (\" + item_gender + \"; \" + item_color;",
+                    "",
+                    "    if (is_item_home_weight === 1)",
+                    "        wear_name = item_hanger_text + \" \" + item_type_name + \" (\" + item_color;",
+                    "",
+                    "    if (item_price_type == \"Штучный\")",
+                    "        wear_name += \"; \" + item_count + \" шт.\";",
+                    "",
+                    "",
+                    "    if (item_price_type == \"Весовой\" && is_item_home_weight === 0)",
+                    "        wear_name += \"; весовая одежда\";",
+                    "",
+                    "",
+                    "    if (item_price_type == \"Весовой\" && is_item_home_weight === 1)",
+                    "        wear_name += \"; весовой текстиль\" ;",
+                    "}",
+                    "",
+                    "",
+                    "",
+                    "wear_name += \")\";",
+                    "",
+                    "record.set('wear_name', wear_name);",
+                    "",
+                    "return wear_name;"
+                ]
+            },
+            "designerId": "c7968dc2-29ff-485a-a667-f3b82566a0b1"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "record",
+                    "action_record",
+                    "order_count",
+                    "home_weight_price",
+                    "dress_weight_price",
+                    "name_dist"
+                ],
+                "fn": "update_record_price_data",
+                "implHandler": [
+                    "var item_price_type = record.get('price_type');",
+                    "",
+                    "",
+                    "if (item_price_type == \"Штучный\")",
+                    "{",
+                    "    record.set('price_dimension', 'руб./шт.');",
+                    "    this.set_result_price_for_peace_item (record, action_record, order_count, name_dist);",
+                    "}",
+                    "",
+                    "else",
+                    "{",
+                    "    record.set('price_dimension', 'руб./кг.');",
+                    "    this.set_result_price_for_home_weight_item (record, action_record, home_weight_price, dress_weight_price);",
+                    "}",
+                    ""
+                ]
+            },
+            "designerId": "7904ed22-1050-42b7-8392-96c980502816"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "record",
+                    "action_record",
+                    "order_count",
+                    "name_dist"
+                ],
+                "fn": "set_result_price_for_peace_item",
+                "implHandler": [
+                    "var item_price = record.get('price');",
+                    "var item_action_name = record.get('action_name');",
+                    "var item_action_type = record.get('action_type');",
+                    "var item_acton_value = record.get('action_value');",
+                    "",
+                    "",
+                    "",
+                    "/* если есть глобальные акции */",
+                    "//if (action_record && order_action_name !== ' ')",
+                    "if (action_record && action_record.get('action_name') !== ' ')",
+                    "{",
+                    "    var order_action_name = action_record.get('action_name');",
+                    "    var order_action_type = action_record.get('action_type');",
+                    "    var order_action_value = action_record.get('action_value');",
+                    "",
+                    "",
+                    "    var discount = 0;",
+                    "    var result_price = 0;",
+                    "",
+                    "    /*Если есть глобальная процентная акция*/",
+                    "    if (order_action_type == 'Процентная')",
+                    "    {",
+                    "        discount = Math.ceil (((item_price * (1-order_action_value))/item_price)*100);",
+                    "        result_price = parseFloat((item_price * order_action_value).toFixed(2));",
+                    "",
+                    "        var result_data = this.comp_prices (item_price, result_price, discount, order_action_name);",
+                    "",
+                    "",
+                    "        record.set('result_price', result_data.result_price);",
+                    "        record.set('discount', result_data.discount);",
+                    "        record.set('result_action_name', result_data.action_name);",
+                    "    }",
+                    "    /* иначе считаем цену с учетом локальной акции",
+                    "        пока что эта ветка не сработает, так как кроме процентных глобальных акций ничего нет*/",
+                    "    else",
+                    "        this.set_result_price_for_peace_item_with_local_action (record, order_count, name_dist);",
+                    "}",
+                    "/* иначе считаем цену с учетом локальной акции */",
+                    "else",
+                    "    this.set_result_price_for_peace_item_with_local_action (record, order_count, name_dist);",
+                    ""
+                ]
+            },
+            "designerId": "c27e016b-e3ca-44a2-b446-beb3ac113ae9"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "record",
+                    "order_count",
+                    "name_dist"
+                ],
+                "fn": "set_result_price_for_peace_item_with_local_action",
+                "implHandler": [
+                    "var item_price = record.get('price');",
+                    "var item_action_name = record.get('action_name');",
+                    "var item_action_type = record.get('action_type');",
+                    "var item_acton_value = record.get('action_value');",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "/* или первый контакт и его можно применять, или просто акция */",
+                    "if (item_action_name != ' ' && ((item_action_name == 'первый контакт' && order_count === 0 && name_dist == 'add_order') || (item_action_name !== 'первый контакт' && name_dist == 'add_order') || (item_action_name !== '' && (name_dist == 'edit_order' || name_dist == 'create_contract'))))",
+                    "{",
+                    "    ",
+                    "    if (item_action_type == 'Рублевая')",
+                    "    {",
+                    "        var discount = Math.ceil (((item_price - item_acton_value)/item_price)*100);",
+                    "        var result_price = item_acton_value;",
+                    "",
+                    "    }",
+                    "    else if (item_action_type == 'Процентная')",
+                    "    {",
+                    "        var discount = Math.ceil (((item_price * (1-item_acton_value))/item_price)*100);",
+                    "        var result_price = parseFloat((item_price * item_acton_value).toFixed(2));",
+                    "    }",
+                    "",
+                    "    var result_data = this.comp_prices (item_price, result_price, discount, item_action_name);",
+                    "",
+                    "",
+                    "    record.set('result_price', result_data.result_price);",
+                    "    record.set('discount', result_data.discount);",
+                    "    record.set('result_action_name', result_data.action_name);",
+                    "}",
+                    "else",
+                    "{",
+                    "    record.set('result_price', item_price);",
+                    "    record.set('discount', 0);",
+                    "    record.set('result_action_name', ' ');",
+                    "    record.set('id_action', 0);",
+                    "}"
+                ]
+            },
+            "designerId": "982d3fe9-da20-4331-b618-212ed3a7c728"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "price",
+                    "result_price",
+                    "discount",
+                    "action_name"
+                ],
+                "fn": "comp_prices",
+                "implHandler": [
+                    "",
+                    "if (result_price > price)",
+                    "    return {result_price:price, discount:0, action_name:' '};",
+                    "else",
+                    "    return {result_price:result_price, discount:discount, action_name:action_name};"
+                ]
+            },
+            "designerId": "3bfff912-cde5-482d-95ff-c532432cd53f"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "record",
+                    "action_record",
+                    "home_weight_price",
+                    "dress_weight_price"
+                ],
+                "fn": "set_result_price_for_home_weight_item",
+                "implHandler": [
+                    "",
+                    "var is_item_home_weight = record.get('is_home_weight');",
+                    "",
+                    "",
+                    "if (is_item_home_weight == 1)",
+                    "    var item_price = home_weight_price;",
+                    "else",
+                    "    var item_price = dress_weight_price;",
+                    "",
+                    "var is_item_home_weight = record.get('is_home_weight');",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "//if (action_record && order_action_name !== ' ')",
+                    "if (action_record && action_record.get('action_name') !== ' ')",
+                    "{",
+                    "    var order_action_name = action_record.get('action_name');",
+                    "    var order_action_type = action_record.get('action_type');",
+                    "    var order_action_value = action_record.get('action_value');",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "    if (order_action_type == 'На весовой текстиль' && is_item_home_weight == 1)",
+                    "    {",
+                    "        discount = Math.ceil(((home_weight_price * (1-order_action_value))/home_weight_price)*100);",
+                    "        result_price = parseFloat((home_weight_price * order_action_value).toFixed(2));",
+                    "",
+                    "        record.set('price', home_weight_price);",
+                    "        record.set('result_price', result_price);",
+                    "        record.set('discount', discount);",
+                    "        record.set('result_action_name', order_action_name);",
+                    "    }",
+                    "    else if (order_action_type == 'На весовую одежду' && is_item_home_weight != 1)",
+                    "    {",
+                    "        discount = Math.ceil(((dress_weight_price * (1-order_action_value))/dress_weight_price)*100);",
+                    "        result_price = parseFloat((dress_weight_price * order_action_value).toFixed(2));",
+                    "",
+                    "        record.set('price', dress_weight_price);",
+                    "        record.set('result_price', result_price);",
+                    "        record.set('discount', discount);",
+                    "        record.set('result_action_name', order_action_name);",
+                    "    }",
+                    "    else if (order_action_type == 'Процентная')",
+                    "    {",
+                    "",
+                    "        discount = Math.ceil(((item_price * (1-order_action_value))/item_price)*100);",
+                    "        result_price = parseFloat((item_price * order_action_value).toFixed(2));",
+                    "",
+                    "        record.set('price', item_price);",
+                    "        record.set('result_price', result_price);",
+                    "        record.set('discount', discount);",
+                    "        record.set('result_action_name', order_action_name);",
+                    "    }",
+                    "    else",
+                    "        this.set_result_price_zero_discount (record, item_price);",
+                    "}",
+                    "else",
+                    "    this.set_result_price_zero_discount (record, item_price);",
+                    ""
+                ]
+            },
+            "designerId": "bd2ab3a7-1ec2-40d9-88cc-cd83e6fcb1f6"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "record",
+                    "item_price"
+                ],
+                "fn": "set_result_price_zero_discount",
+                "implHandler": [
+                    "record.set('price', item_price);",
+                    "record.set('result_price', item_price);",
+                    "record.set('discount', 0);",
+                    "record.set('result_action_name', ' ');",
+                    "record.set('id_action', 0);"
+                ]
+            },
+            "designerId": "c891b495-e8aa-4170-a85e-795abdbf174e"
+        }
+    ]
+}

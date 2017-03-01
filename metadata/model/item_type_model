@@ -1,0 +1,79 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "item_type_model"
+    },
+    "designerId": "97092114-2f35-4e49-9f4e-11fccf4822e9",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "id_item_type",
+                "type": "int"
+            },
+            "designerId": "4c114485-3f00-4b46-957f-f7d0136a4408"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "is_home_weight",
+                "type": "int"
+            },
+            "designerId": "5a9a88c6-26e4-4bac-b87c-a62f197d9b69"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "is_only_piece",
+                "type": "int"
+            },
+            "designerId": "d7b66e25-f548-4e1d-9e74-109ae3d46dc0"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "name",
+                "type": "string"
+            },
+            "designerId": "7e0fe026-3ac5-4523-9d5c-7a1fd5b8fb20"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "comment",
+                "type": "string"
+            },
+            "designerId": "486fa22a-f96e-45cc-9f43-ecb75eeca0b3"
+        }
+    ]
+}

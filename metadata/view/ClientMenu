@@ -1,0 +1,100 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "centered": true,
+        "designer|userAlias": "clientmenu",
+        "designer|userClassName": "ClientMenu",
+        "hidden": true,
+        "hideOnMaskTap": true,
+        "id": null,
+        "itemId": "clientMenu",
+        "modal": true,
+        "padding": 10
+    },
+    "designerId": "7bad157a-c027-422d-a916-69a7247ae1ac",
+    "cn": [
+        {
+            "type": "Ext.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "disabled": null,
+                "iconCls": "home",
+                "id": null,
+                "itemId": null,
+                "margin": 15,
+                "navId": null,
+                "navView": "addresspanel",
+                "navViewItemId": "addressPanel",
+                "text": "Адреса"
+            },
+            "designerId": "cceacb4d-759b-44e0-99cd-84de510fcaf4",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navId",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navView",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navViewItemId",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "config": null,
+                "iconCls": "info",
+                "itemId": null,
+                "margin": 15,
+                "navId": null,
+                "navView": "phonepanel",
+                "navViewItemId": "phonePanel",
+                "text": "Телефоны"
+            },
+            "designerId": "aface200-769f-4fe6-aed5-2a1e449bbf94",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "config",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navId",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navView",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navViewItemId",
+                    "type": "string"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,58 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "user_menu_controller",
+        "views": [
+            "UserMenu"
+        ]
+    },
+    "designerId": "5ee55433-fb37-4ca8-b7b9-3a12b6887513",
+    "cn": [
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "userMenu",
+                "selector": "panel#userMenu",
+                "xtype": "Ext.Panel"
+            },
+            "designerId": "3fb837c2-c13e-4049-b476-6895fa01092d"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "panel#userMenu button",
+                "designer|targetType": "Ext.Button",
+                "fn": "show_user_panel",
+                "implHandler": [
+                    "// TODO ебаные селекторы!!!!",
+                    "",
+                    "",
+                    "navView = button.getInitialConfig().navView;",
+                    "navViewItemId = button.getInitialConfig().navViewItemId;",
+                    "",
+                    "",
+                    "user_panel = Ext.create ('widget.' + navView);",
+                    "Ext.Viewport.add (user_panel);",
+                    "user_panel.show ();"
+                ],
+                "name": "tap"
+            },
+            "designerId": "9b427606-05d2-4ebe-aed3-a54cfd0b9842"
+        }
+    ]
+}

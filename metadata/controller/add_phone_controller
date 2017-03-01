@@ -1,0 +1,304 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "add_phone_controller"
+    },
+    "designerId": "a536e042-93c1-405c-9fd5-f5024cb4ddf7",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "addPhonePanel",
+                "designer|targetType": "PhonePanel",
+                "fn": "onPhonePanelShow",
+                "implHandler": [
+                    "this.id_owner = this.getApplication().getController('phone_panel_controller').get_phone_list_owner_id();",
+                    "this.owner_type = this.getApplication().getController('phone_panel_controller').get_phone_list_owner_type();",
+                    ""
+                ],
+                "name": "show"
+            },
+            "designerId": "8ada089b-b4b9-48c2-9299-de4a330e2e52"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "cancel_btn",
+                "designer|targetType": "Ext.Button",
+                "fn": "cancle_btn_tap",
+                "implHandler": [
+                    "this.close_add_phone_form();"
+                ],
+                "name": "tap"
+            },
+            "designerId": "6df19f88-e5f2-41e6-9d70-bbb6cb9923fc"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "primary_phone_checkbox",
+                "designer|targetType": "Ext.field.Checkbox",
+                "fn": "is_primary_change",
+                "implHandler": [
+                    "this.check_all_fields();"
+                ],
+                "name": "change"
+            },
+            "designerId": "9b60cc31-cfa9-4c0e-98a7-374deba04800"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "panel#addPhonePanel  textfield",
+                "designer|targetType": "Ext.field.Text",
+                "fn": "phone_data_chenge",
+                "implHandler": [
+                    "this.check_all_fields();"
+                ],
+                "name": "keyup"
+            },
+            "designerId": "ee2edfb9-1102-4dca-8b8a-c69dc4cc92aa"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "add_btn",
+                "designer|targetType": "Ext.Button",
+                "fn": "add_phone_btn",
+                "implHandler": [
+                    "var phone = this.getPhone_field().getValue();",
+                    "var is_primary = this.getPrimary_phone_checkbox().getChecked();",
+                    "var comment = this.getPhone_comment_field().getValue();",
+                    "",
+                    "",
+                    "this.add_phone (phone, comment, is_primary);"
+                ],
+                "name": "tap"
+            },
+            "designerId": "6d28f616-6d11-49d3-8990-1fccf543a19c"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "addPhonePanel",
+                "selector": "panel#addPhonePanel"
+            },
+            "designerId": "b25f78f4-1312-43ad-bc96-3d1f7d83647e"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "phone_field",
+                "selector": "panel#addPhonePanel textfield[itemId=id_phone_field]"
+            },
+            "designerId": "89f96453-2c6b-42f1-94c6-b19a14ea7323"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "phone_comment_field",
+                "selector": "panel#addPhonePanel textfield[itemId=id_phone_comment_field]"
+            },
+            "designerId": "46360176-dd80-4caa-b4ed-894e284808b1"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "primary_phone_checkbox",
+                "selector": "panel#addPhonePanel checkboxfield[itemId=id_primary_phone_checkbox]"
+            },
+            "designerId": "984d0ad0-7836-495c-97db-c5b728c72601"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "add_btn",
+                "selector": "panel#addPhonePanel button[itemId=add_btn]"
+            },
+            "designerId": "4ccbee1b-55c8-4498-9178-0d26376450a9"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "cancel_btn",
+                "selector": "panel#addPhonePanel button[itemId=cancel_btn]"
+            },
+            "designerId": "2fc3858d-8199-4255-a314-ed63213bd94b"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "close_add_phone_form",
+                "implHandler": [
+                    "var add_phone_panel = this.getAddPhonePanel();",
+                    "add_phone_panel.destroy();",
+                    "",
+                    "this.getApplication().getController('phone_panel_controller').update_phone_list();"
+                ]
+            },
+            "designerId": "4959ff2e-90a4-4003-a8d7-75872eb782e8"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "disable"
+                ],
+                "fn": "set_buttons_disable",
+                "implHandler": [
+                    "var add_btn = this.getAdd_btn();",
+                    "add_btn.setDisabled(disable);"
+                ]
+            },
+            "designerId": "495f3004-1e55-4aef-b23c-e98276247327"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "check_all_fields",
+                "implHandler": [
+                    "var phone_field= this.getPhone_field().getValue();",
+                    "var comment = this.getPhone_comment_field().getValue();",
+                    "",
+                    "",
+                    "if (phone_field.length > 0)",
+                    "    this.set_buttons_disable (false);",
+                    "else",
+                    "    this.set_buttons_disable (true);",
+                    ""
+                ]
+            },
+            "designerId": "b83a8816-62c5-4662-b727-ecbbbd32b687"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "phone",
+                    "comment",
+                    "is_primary"
+                ],
+                "fn": "add_phone",
+                "implHandler": [
+                    "var t = this;",
+                    "",
+                    "var is_primary_ = 0;",
+                    "",
+                    "if\t(is_primary)",
+                    "    is_primary_ = 1;",
+                    "",
+                    "console.log(t.owner_type);",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name\t: 'add_phone',",
+                    "            id_owner\t\t: t.id_owner,",
+                    "            owner_type\t\t: t.owner_type,",
+                    "            phone\t\t\t: phone,",
+                    "            is_primary\t\t: is_primary_,",
+                    "            comment\t\t\t: comment,",
+                    "            format: 'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        scope: this,",
+                    "        success: function (result)",
+                    "        {",
+                    "            Ext.Msg.alert('Iron', result.text);",
+                    "",
+                    "            if (result.result == 'ok')",
+                    "                t.close_add_phone_form ();",
+                    "",
+                    "        }",
+                    "    });",
+                    "",
+                    "",
+                    ""
+                ]
+            },
+            "designerId": "d7eff9db-f787-4ca9-8818-555c9fbb803d"
+        }
+    ]
+}

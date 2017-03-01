@@ -1,0 +1,128 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "centered": true,
+        "designer|userAlias": "doneorderreport",
+        "designer|userClassName": "DoneOrderReport",
+        "height": 616,
+        "itemId": "doneOrderReport",
+        "layout": "vbox",
+        "width": 587
+    },
+    "designerId": "8a7d0a1c-3429-4caf-9f2e-e81ed0440d42",
+    "cn": [
+        {
+            "type": "Ext.dataview.List",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": "left",
+                "height": null,
+                "itemId": "order_list",
+                "mode": "MULTI",
+                "store": "order_for_phone",
+                "width": 575
+            },
+            "designerId": "3631d76c-f451-4e09-8f20-a7cdb9de09da",
+            "cn": [
+                {
+                    "type": "Ext.XTemplate",
+                    "reference": {
+                        "name": "itemTpl",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "itemTpl",
+                        "implHandler": [
+                            "",
+                            "<div><font size=\"2\"> Заказ <b>№{id_order} </b>  от: <b>{date_create}</b> <br> Готово с: <b>{done_date}</b> <br> Последний прозвон: <b>{last_phone_date}</b> <br> <b>{surname}  {name}  {patronymic}<br> телефон: {phone}</b><font></div>"
+                        ]
+                    },
+                    "designerId": "5639b60a-51e9-40bb-bff9-67fd209fa8cb"
+                },
+                {
+                    "type": "Ext.Toolbar",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "docked": "top",
+                        "title": "Готовые заказы"
+                    },
+                    "designerId": "d4f393a3-f565-461a-a5ef-8f545a0f360e",
+                    "cn": [
+                        {
+                            "type": "Ext.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "disabled": true,
+                                "itemId": "mark_as_phoned_btn",
+                                "text": "Отметить"
+                            },
+                            "designerId": "faadecda-061c-4ca6-b391-59d7fda15f24"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.Toolbar",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "docked": "bottom"
+                    },
+                    "designerId": "4a5cbaba-d902-4483-adfa-7cf26bed7485",
+                    "cn": [
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "docked": "right",
+                                "layout": "vbox",
+                                "width": 100
+                            },
+                            "designerId": "b653fcb4-558f-40ce-9a3d-78e3526a8dc7",
+                            "cn": [
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "docked": null,
+                                        "itemId": "ok_btn",
+                                        "text": "OK"
+                                    },
+                                    "designerId": "5fe8c643-7be8-4645-be18-f3fe049e3ab1"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

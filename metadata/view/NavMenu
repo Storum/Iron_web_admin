@@ -1,0 +1,250 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "centered": true,
+        "designer|userAlias": "navmenu",
+        "designer|userClassName": "NavMenu",
+        "hidden": true,
+        "hideOnMaskTap": true,
+        "itemId": "navMenu",
+        "modal": true,
+        "padding": 10
+    },
+    "designerId": "6b1d9070-b093-4ef5-9404-8efed4679c79",
+    "cn": [
+        {
+            "type": "Ext.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "disabled": true,
+                "iconCls": "home",
+                "itemId": null,
+                "margin": 15,
+                "navId": null,
+                "navView": "homepanel",
+                "navViewItemId": "homePanel",
+                "text": "Главная"
+            },
+            "designerId": "2c4d259f-7209-431d-b20f-fdbe6210042f",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navId",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navView",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navViewItemId",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "iconCls": "compose",
+                "itemId": null,
+                "margin": 15,
+                "navId": null,
+                "navView": "clientpanel",
+                "navViewItemId": "clientPanel",
+                "text": "Клиенты"
+            },
+            "designerId": "2f7996be-3019-4db7-88bf-0d5eabbb3536",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navId",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navView",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navViewItemId",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "config": null,
+                "iconCls": "info",
+                "itemId": null,
+                "margin": 15,
+                "navId": null,
+                "navView": "orderpanel",
+                "navViewItemId": "orderPanel",
+                "text": "Заказы"
+            },
+            "designerId": "0d08b4a7-366d-4372-914a-bf7fff3c8277",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "config",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navId",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navView",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navViewItemId",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "config": null,
+                "iconCls": "info",
+                "itemId": null,
+                "margin": 15,
+                "navId": null,
+                "navView": "reportsmenupanel",
+                "navViewItemId": null,
+                "text": "Отчеты"
+            },
+            "designerId": "ac65bd2f-f4d6-4a7b-a7a6-966c0a7507f8",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "config",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navId",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navView",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navViewItemId",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "iconCls": "compose",
+                "itemId": null,
+                "margin": 15,
+                "navId": null,
+                "navView": "userpanel",
+                "navViewItemId": "userPanel",
+                "text": "Пользователи"
+            },
+            "designerId": "a3e8652a-95b8-4879-8e9c-a55cd15fd906",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navId",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navView",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navViewItemId",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "config": null,
+                "iconCls": "info",
+                "itemId": null,
+                "margin": 15,
+                "navId": null,
+                "navView": "catalogmenu",
+                "navViewItemId": "catalogMenu",
+                "text": "Справочники"
+            },
+            "designerId": "87b9d312-f2da-4139-9ff0-cf82a9e65ca4",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "config",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navId",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navView",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navViewItemId",
+                    "type": "string"
+                }
+            ]
+        }
+    ]
+}

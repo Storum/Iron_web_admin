@@ -1,0 +1,14 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "select_price_store",
+        "model": "select_price_model",
+        "storeId": "select_price_store"
+    },
+    "designerId": "8d55bbf1-bf76-4f14-8f58-47de33662760"
+}

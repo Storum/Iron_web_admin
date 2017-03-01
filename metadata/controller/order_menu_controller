@@ -1,0 +1,943 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "order_menu_controller"
+    },
+    "designerId": "f0d9dfae-5ab1-47f8-a4ea-47f285b9930f",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "panel#addorderMenu button[itemId=id_select_client]",
+                "designer|targetType": "Ext.Button",
+                "fn": "select_client",
+                "implHandler": [
+                    "navView = button.getInitialConfig().navView;",
+                    "navViewItemId = button.getInitialConfig().navViewItemId;",
+                    "",
+                    "",
+                    "client_panel = Ext.create ('widget.' + navView);",
+                    "client_panel.setModal(true);",
+                    "client_panel.setCentered(true);",
+                    "client_panel.source = 'add_order_panel';",
+                    "Ext.Viewport.add (client_panel);",
+                    "client_panel.show ();",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "var select_client_btn = this.getSelect_client_button();",
+                    "select_client_btn.setHidden(false);",
+                    "",
+                    "var cancle_client_btn = this.getCancel_client_button();",
+                    "cancle_client_btn.setHidden(false);",
+                    "",
+                    "",
+                    "",
+                    "client_panel.setWidth(980);",
+                    "",
+                    "this.getAddOrderMenu().destroy();"
+                ],
+                "name": "tap"
+            },
+            "designerId": "498d4b46-f567-498e-92d7-aa21fd767bee"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "panel#addorderMenu button[itemId=create_contract]",
+                "designer|targetType": "Ext.Button",
+                "fn": "create_contract_tap",
+                "implHandler": [
+                    "this.create_contract();"
+                ],
+                "name": "tap"
+            },
+            "designerId": "d661259f-dbf2-4aa3-8b69-9e3e08fac5d9"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "panel#addorderMenu button[itemId=create_docs]",
+                "designer|targetType": "Ext.Button",
+                "fn": "create_docs_tap",
+                "implHandler": [
+                    "this.create_docs();"
+                ],
+                "name": "tap"
+            },
+            "designerId": "03d101f6-a166-4c1c-8b64-46da8f523b8b"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "panel#addorderMenu button[itemId=create_lines]",
+                "designer|targetType": "Ext.Button",
+                "fn": "create_lines_tap",
+                "implHandler": [
+                    "var t = this;",
+                    "",
+                    "Ext.Msg.prompt('Iron', 'Введите количество', function(button, value) {",
+                    "    ",
+                    "    if (button == 'ok')",
+                    "        t.create_lines (parseInt(value,10));",
+                    "});",
+                    "",
+                    ""
+                ],
+                "name": "tap"
+            },
+            "designerId": "c034deb7-1e26-48ff-97e3-2edc30e5dafb"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "panel#addorderMenu button[itemId=create_lines_container_stickers]",
+                "designer|targetType": "Ext.Button",
+                "fn": "create_stickers_tap",
+                "implHandler": [
+                    "var t = this;",
+                    "",
+                    "Ext.Msg.prompt('Iron', 'Введите количество', function(button, count) {",
+                    "    ",
+                    "    if (button == 'ok')",
+                    "    {",
+                    "        Ext.Msg.prompt('Iron', 'Начиная с', function(button_, from) {",
+                    "            if (button_ == 'ok')",
+                    "            {",
+                    "                t.create_stickers (parseInt(count,10), parseInt(from,10));",
+                    "            }",
+                    "        });",
+                    "    }",
+                    "        ",
+                    "});",
+                    "",
+                    ""
+                ],
+                "name": "tap"
+            },
+            "designerId": "05f730e1-100a-400c-b938-2b6680fcd956"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "addOrderPanel",
+                "selector": "panel#addOrderPanel"
+            },
+            "designerId": "0d6ccbb4-9a24-478e-aead-b2b600a8caa0"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "addOrderMenu",
+                "selector": "panel#addorderMenu"
+            },
+            "designerId": "804e85ca-8cc5-491e-b99e-fa4840ca9b2f"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "select_client_button",
+                "selector": "button#select_client_button"
+            },
+            "designerId": "0165763e-3dd5-4e28-ac39-311f4aa31347"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "cancel_client_button",
+                "selector": "button#cancel_button"
+            },
+            "designerId": "1e4f033f-98ec-4e32-b44c-7132b7d7c6d8"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "create_docs_button",
+                "selector": "button#create_docs"
+            },
+            "designerId": "956b4005-ee6c-4283-9147-09a35f98c8d9"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "create_lines_button",
+                "selector": "button#create_lines"
+            },
+            "designerId": "d94cc774-8613-4b90-95a5-8fb4ba319c1a"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "create_contract",
+                "implHandler": [
+                    "var t = this;",
+                    "var order_record = t.getApplication().getController('order_panel_controller').get_selected_order();",
+                    "var action_record = t.getApplication().getController('order_panel_controller').get_selected_order_action();",
+                    "",
+                    "",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name\t\t:\t'get_order_detail_by_id_order',",
+                    "            id_order\t\t\t:\torder_record.get('id_order'),",
+                    "            format\t\t\t\t:\t'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        async: false,",
+                    "        success: function (result)",
+                    "        {",
+                    "            t.create_contract_with_items (order_record, result.order_detail_list, action_record);",
+                    "",
+                    "",
+                    "            t.getAddOrderMenu().destroy();",
+                    "",
+                    "        }",
+                    "    });"
+                ]
+            },
+            "designerId": "c5f5ed14-a7ab-4ad6-9b0f-494e0d0068a6"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "order_record",
+                    "order_details",
+                    "action_record"
+                ],
+                "fn": "create_contract_with_items",
+                "implHandler": [
+                    "var t = this;",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name\t\t:\t'get_current_order_price_list',",
+                    "            format\t\t\t\t:\t'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        async: false,",
+                    "        success: function (result)",
+                    "        {",
+                    "            var home_weight_price = 0;",
+                    "            var dress_weight_price = 0;",
+                    "            var home_weight_result_price = 0;",
+                    "            var dress_weight_result_price = 0;",
+                    "",
+                    "            var hanger_count = t.calc_hanger_count(order_details);",
+                    "            var total_count = t.calc_total_count (order_details);",
+                    "",
+                    "            for (var next_price in result.current_order_price_list){",
+                    "                if (result.current_order_price_list[next_price].price_type_name === 'Весовой на домашний текстиль')",
+                    "                    home_weight_price = result.current_order_price_list[next_price].price;",
+                    "",
+                    "                if (result.current_order_price_list[next_price].price_type_name === 'Весовой для одежды')",
+                    "                    dress_weight_price = result.current_order_price_list[next_price].price;",
+                    "            }",
+                    "",
+                    "",
+                    "            var newWin = window.open('url','windowName','height=800,width=800', 'scrollbars=yes');",
+                    "",
+                    "",
+                    "            var client = t.getApplication().getController('order_panel_controller').get_selected_order_client();",
+                    "            var date = order_record.get('date_create');",
+                    "",
+                    "            var x = '<style type=\"text/css\">TABLE {border-collapse: collapse; border: 1px solid black}TD, TH {padding: 3px; border: 1px solid black;font-size: 10px}</style>';",
+                    "",
+                    "            var header_text = '<div><p align=\"center\">Договор № ' + order_record.get('id_order') + ' от ' +  ('0' + date.getDate()).slice(-2) + '.' + ('0' + (date.getMonth() + 1)).slice(-2) + '.' + date.getFullYear() + '</p>';",
+                    "            var contract_text = '<p align=\"left\"> <font size=\"2\"> <b> Особые условия выполнения договора по глажке Исполнителем. </b> </font> </p>';",
+                    "            var time = '<font size=\"2\"> 1. Срок ответственного хранения выполненного заказа Исполнителем не более 3-х дней. За хранение вещей более 3 дней взимается плата в размере 1% от стоимости заказа, за каждый день хранения.</font>';",
+                    "            var task = '<br><font size=\"2\"> 2.\tГлажение осуществляется по заданию Заказчика. </font>';",
+                    "            var lable = '<br><font size=\"2\"> 3. Изделия с отсутствующей маркировкой, либо имеющие неполную/запрещающую маркировку (символику к обслуживанию) принимаются только с согласия Заказчика. За возможные последствия Исполнитель ответственности не несет. Ответственность за вред, причиненный Заказчику вследствие недостоверной или неполной информации лежит на Изготовителе, либо Продавце изделия (ст. 1095, 1095 ГК РФ). </font>';",
+                    "            var strong_wear = '<br><font size=\"2\"> 4. В случае сильного износа и ветхости изделия Исполнитель не может отвечать за возможные механические повреждения в процессе обработки. </font>';",
+                    "            var claims = '<br><font size=\"2\"> 5. Претензии по качеству услуги могут быть предъявлены только в момент приема-передачи заказа (ст. 29 Закона «О защите прав потребителей»). Заказчик, принявший изделие без проверки лишается права на претензию и ссылки на недостатки в услуге, которые могли бы быть устранены при приемке вещи (п.3, ст. 720 ГК РФ). </font></div>';",
+                    "",
+                    "            var agreement = '<div style=\"float:left\"><br><font size=\"2\"> О неустранимых дефектах, последствиях глаженья, в случае некачественного изготовления изделия фирмой-производителем и недостоверной информацией по уходу за изделием (либо отсутствием таковой) <b>ПРЕДУПРЕЖДЕН</b></font>. <br><font size=\"2\">С правилами приема вещей в гладильню, а также с условиями договора по глаженью изделий, указанных в \"Информации для клиентов\"</font>';",
+                    "            var signatures = '<br><b><font size=\"2\"> ОЗНАКОМЛЕН И СОГЛАСЕН </b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp________________________/__<ins>' + client.get('surname') + ' ' + client.get('name').substring(0,1) + '.' + client.get('patronymic').substring(0,1) + '</ins>__' ;",
+                    "            signatures += '<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<sup>подпись</sup>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<sup>расшифровка</sup>';",
+                    "            var signatures_finish = '<br><font size=\"2\"> Качество работы (услуги), сохранность, исходную форму и целостность <b>ПРОВЕРИЛ</b></font>.<br><font size=\"2\">Заказ получил, претензий к качеству услуги <b>НЕ ИМЕЮ</b></font> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp________________________/__<ins>' + client.get('surname') + ' ' + client.get('name').substring(0,1) + '.' + client.get('patronymic').substring(0,1) + '</ins>__';",
+                    "            signatures_finish += '<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<sup>подпись</sup>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<sup>расшифровка</sup></div>';",
+                    "",
+                    "            var no_weight_table = t.create_no_weight_html_table(order_record, order_details, action_record, home_weight_price, dress_weight_price);",
+                    "            var weight_home_table = t.create_home_weight_html_table (order_record, order_details, action_record, home_weight_price, dress_weight_price);",
+                    "            var weight_dress_table = t.create_dress_weight_html_table (order_record, order_details, action_record, home_weight_price, dress_weight_price);",
+                    "            var result_table = t.create_result_html_table (no_weight_table.result_sum, weight_home_table.result_sum, weight_dress_table.result_sum, hanger_count, total_count);",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "            newWin.document.write(x + header_text + contract_text + time + task + lable + strong_wear + claims + '<br>' + no_weight_table.table + '<br>' + weight_home_table.table + '<br>'+  weight_dress_table.table + '<br>' + result_table + '<br>' + agreement + '<br>' + signatures + '<br>' + signatures_finish);",
+                    "",
+                    "",
+                    "        }",
+                    "    });"
+                ]
+            },
+            "designerId": "cc8a7332-1377-47b6-93d5-8fec0552e3c3"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "order_record",
+                    "order_details",
+                    "action_record",
+                    "home_weight_price",
+                    "dress_weight_price"
+                ],
+                "fn": "create_no_weight_html_table",
+                "implHandler": [
+                    "var result_sum = 0;",
+                    "var result_count = 0;",
+                    "",
+                    "var with_no_weight_items = false;",
+                    "",
+                    "for (var next_detail in order_details)",
+                    "{",
+                    "    var record  = Ext.create('Iron.model.order_detail_model');",
+                    "    record.setData(order_details[next_detail]);",
+                    "",
+                    "    if (record.get('price_type') == \"Штучный\")",
+                    "    {",
+                    "        with_no_weight_items = true;",
+                    "        break;",
+                    "    }",
+                    "}",
+                    "",
+                    "if (!with_no_weight_items)",
+                    "    return {table:'', result_sum:result_sum};",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "var table = '<div> <table border=\"1\" frame=\"above\"> <caption><font size=\"2\">Список штучных позиций</font></caption> <tr> <th>Наименование</th> <th>Кол.</th> <th>Износ</th> <th>Цена</th> <th>Акция</th> <th>Скидка</th> <th>Итоговая цена</th> <th>Сумма</th> <th>Комментарии</th> </tr>';",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "for (var next_detail in order_details)",
+                    "{",
+                    "    var record  = Ext.create('Iron.model.order_detail_model');",
+                    "    record.setData(order_details[next_detail]);",
+                    "    record.set('home_weight_price', home_weight_price);",
+                    "    record.set('dress_weight_price', dress_weight_price);",
+                    "",
+                    "",
+                    "    var x = this.getApplication().getController('add_order_panel_controller').create_wear_name_and_calc_result_price_ext (record, action_record, 1, home_weight_price, dress_weight_price, 'create_contract');",
+                    "",
+                    "    if (x.record.get('price_type') == \"Штучный\")",
+                    "    {",
+                    "        table += '<tr><td> ' + x.record.get('wear_name') + '</td>';",
+                    "        table += '<td> ' + x.record.get('count') + '</td>';",
+                    "        table += '<td> ' + x.record.get('wear') + '%</td>';",
+                    "        table += '<td> ' + x.record.get('price') + ' руб./шт.</td>';",
+                    "        table += '<td> ' + x.record.get('result_action_name') + '</td>';",
+                    "        table += '<td> ' + x.record.get('discount') + '% </td>';",
+                    "        table += '<td> ' + x.record.get('result_price') + ' руб./шт.</td>';",
+                    "        table += '<td> ' + x.record.get('result_price')  * x.record.get('count') + ' руб./шт.</td>';",
+                    "        table += '<td> ' + x.record.get('comment') + '</td></tr>';",
+                    "",
+                    "        result_sum += x.record.get('result_price')  * x.record.get('count');",
+                    "        result_count += x.record.get('count');",
+                    "    }",
+                    "}",
+                    "",
+                    "table += '<tr><th align=\"left\">Итого:</th> <th align=\"left\">' + result_count + '</th> <th align=\"left\">--</th> <th align=\"left\">--</th> <th align=\"left\">--</th> <th align=\"left\">--</th> <th align=\"left\">--</th>  <th align=\"left\">' + result_sum + ' руб. </th> <th align=\"left\">--</th> <tr>';",
+                    "",
+                    "table += '</table></div>';",
+                    "",
+                    "return {table:table, result_sum:result_sum};"
+                ]
+            },
+            "designerId": "e23ce16f-f688-4e95-ae5f-e088666b61c7"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "order_record",
+                    "order_details",
+                    "action_record",
+                    "home_weight_price",
+                    "dress_weight_price"
+                ],
+                "fn": "create_home_weight_html_table",
+                "implHandler": [
+                    "var result_sum = 0;",
+                    "",
+                    "var with_weight_items = false;",
+                    "",
+                    "for (var next_detail in order_details)",
+                    "{",
+                    "    var record  = Ext.create('Iron.model.order_detail_model');",
+                    "    record.setData(order_details[next_detail]);",
+                    "",
+                    "    if (record.get('price_type') == \"Весовой\" && record.get('is_home_weight') == 1)",
+                    "    {",
+                    "        with_weight_items = true;",
+                    "        break;",
+                    "    }",
+                    "}",
+                    "",
+                    "if (!with_weight_items)",
+                    "    return {table:'', result_sum:result_sum};",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "var table = '<div> <table border=\"1\"> <caption><font size=\"2\">Список весовых позиций (домашний текстиль) </font></caption> <tr> <th>Наименование</th> <th>Кол.</th> <th>Вес</th> <th>Износ</th> <th>Цена за кг.</th> <th>Акция</th> <th>Скидка</th> <th>Итоговая цена</th> <th>Комментарии</th> </tr>';",
+                    "var result_home_weight = 0;",
+                    "var result_dress_weight = 0;",
+                    "",
+                    "var result_home_weight_price = home_weight_price;",
+                    "var result_dress_weight_price = dress_weight_price;",
+                    "var result_home_weight_count = 0;",
+                    "",
+                    "",
+                    "",
+                    "for (var next_detail in order_details)",
+                    "{",
+                    "    var record  = Ext.create('Iron.model.order_detail_model');",
+                    "    record.setData(order_details[next_detail]);",
+                    "    record.set('home_weight_price', home_weight_price);",
+                    "    record.set('dress_weight_price', dress_weight_price);",
+                    "",
+                    "    var x = this.getApplication().getController('add_order_panel_controller').create_wear_name_and_calc_result_price_ext (record, action_record, 1, home_weight_price, dress_weight_price, 'create_contract');",
+                    "",
+                    "    if (x.record.get('price_type') == \"Весовой\" && x.record.get('is_home_weight') == 1)",
+                    "    {",
+                    "        table += '<tr><td>' + x.record.get('wear_name') + '</td>';",
+                    "        table += '<td>' + x.record.get('count') + '</td>';",
+                    "        table += '<td>--</td>';",
+                    "        table += '<td>' + x.record.get('wear') + '%</td>';",
+                    "        table += '<td>' + home_weight_price + ' руб./кг.</td>';",
+                    "        table += '<td>' + x.record.get('result_action_name') + '</td>';",
+                    "        table += '<td>' + x.record.get('discount') + '% </td>';",
+                    "        table += '<td>' + x.record.get('result_price') + ' руб./кг.</td>';",
+                    "        result_home_weight_price = x.record.get('result_price');",
+                    "        result_home_weight_count += x.record.get('count');",
+                    "        table += '<td>' + x.record.get('comment') + '</td></tr>';",
+                    "",
+                    "    }",
+                    "}",
+                    "",
+                    "var result_sum = (order_record.get('weight_home') * result_home_weight_price) + (order_record.get('weight_dress') * result_dress_weight_price);",
+                    "",
+                    "",
+                    "",
+                    "table += '<tr><th align=\"left\">Итого:</th> <th align=\"left\">' + result_home_weight_count + 'шт.<th align=\"left\">' + order_record.get('weight_home') + ' кг. </th> <th align=\"left\">--</th> <th align=\"left\">--</th> <th align=\"left\">--</th> <th align=\"left\">--</th> <th>' + result_sum + ' руб. </th> <th align=\"left\">--</th> <tr>';",
+                    "",
+                    "",
+                    "",
+                    "table += '</table></div>';",
+                    "",
+                    "return {table:table, result_sum:result_sum};"
+                ]
+            },
+            "designerId": "68933d06-bd5a-4ac4-9c6d-165167cf9a12"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "order_record",
+                    "order_details",
+                    "action_record",
+                    "home_weight_price",
+                    "dress_weight_price"
+                ],
+                "fn": "create_dress_weight_html_table",
+                "implHandler": [
+                    "var result_sum = 0;",
+                    "",
+                    "var with_weight_items = false;",
+                    "",
+                    "for (var next_detail in order_details)",
+                    "{",
+                    "    var record  = Ext.create('Iron.model.order_detail_model');",
+                    "    record.setData(order_details[next_detail]);",
+                    "",
+                    "    if (record.get('price_type') == \"Весовой\" && record.get('is_home_weight') === 0)",
+                    "    {",
+                    "        with_weight_items = true;",
+                    "        break;",
+                    "    }",
+                    "}",
+                    "",
+                    "if (!with_weight_items)",
+                    "    return {table:'', result_sum:result_sum};",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "var table = '<div> <table border=\"1\"> <caption><font size=\"2\">Список весовых позиций (одежда) </font></caption> <tr> <th>Наименование</th> <th>Кол</th> <th>Вес</th> <th>Износ</th> <th>Цена за кг.</th> <th>Акция</th> <th>Скидка</th> <th>Итоговая цена</th> <th>Комментарии</th> </tr>';",
+                    "var result_home_weight = 0;",
+                    "var result_dress_weight = 0;",
+                    "",
+                    "var result_home_weight_price = home_weight_price;",
+                    "var result_dress_weight_price = dress_weight_price;",
+                    "var result_dress_weight_count = 0;",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "for (var next_detail in order_details)",
+                    "{",
+                    "    var record  = Ext.create('Iron.model.order_detail_model');",
+                    "    record.setData(order_details[next_detail]);",
+                    "    record.set('home_weight_price', home_weight_price);",
+                    "    record.set('dress_weight_price', dress_weight_price);",
+                    "",
+                    "    var x = this.getApplication().getController('add_order_panel_controller').create_wear_name_and_calc_result_price_ext (record, action_record, 1, home_weight_price, dress_weight_price, 'create_contract');",
+                    "",
+                    "    if (x.record.get('price_type') == \"Весовой\" && x.record.get('is_home_weight') === 0)",
+                    "    {",
+                    "        table += '<tr><td>' + x.record.get('wear_name') + '</td>';",
+                    "        table += '<td>' + x.record.get('count') + '</td>';",
+                    "        table += '<td>--</td>';",
+                    "        table += '<td>' + x.record.get('wear') + '%</td>';",
+                    "        table += '<td>' + dress_weight_price + ' руб./кг.</td>';",
+                    "        table += '<td>' + x.record.get('result_action_name') + '</td>';",
+                    "        table += '<td>' + x.record.get('discount') + '% </td>';",
+                    "        table += '<td>' + x.record.get('result_price') + ' руб./кг.</td>';",
+                    "        result_home_weight_price = x.record.get('result_price');",
+                    "        result_dress_weight_count += x.record.get('count');",
+                    "        table += '<td>' + x.record.get('comment') + '</td></tr>';",
+                    "",
+                    "    }",
+                    "}",
+                    "",
+                    "var result_sum = (order_record.get('weight_home') * result_home_weight_price) + (order_record.get('weight_dress') * result_dress_weight_price);",
+                    "",
+                    "",
+                    "table += '<tr><th align=\"left\">Итого:</th> <th align=\"left\">' + result_dress_weight_count + ' шт. </th> <th align=\"left\">' + order_record.get('weight_dress') + ' кг. </th> <th align=\"left\">--</th> <th align=\"left\">--</th> <th align=\"left\">--</th> <th align=\"left\">--</th> <th>' + result_sum + ' руб. </th> <th align=\"left\">--</th> <tr>';",
+                    "",
+                    "",
+                    "",
+                    "table += '</table></div>';",
+                    "",
+                    "return {table:table, result_sum:result_sum};"
+                ]
+            },
+            "designerId": "98268d5c-b83c-4546-8997-b9becc0e50c0"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "no_weight_item_sum",
+                    "weight_home_item_sum",
+                    "weight_dress_item_sum",
+                    "hanger_count",
+                    "total_count"
+                ],
+                "fn": "create_result_html_table",
+                "implHandler": [
+                    "var hanger_no_weight_count_text = '';",
+                    "var hanger_home_weight_count_text = '';",
+                    "var hanger_dress_weight_count_text = '';",
+                    "",
+                    "",
+                    "",
+                    "if (hanger_count.no_weight_count !== 0)",
+                    "{",
+                    "    if (total_count.no_weight_count > hanger_count.no_weight_count)",
+                    "        hanger_no_weight_count_text = hanger_count.no_weight_count + 'Ω/' + (total_count.no_weight_count - hanger_count.no_weight_count) + '_';",
+                    "    else",
+                    "        hanger_no_weight_count_text = hanger_count.no_weight_count + 'Ω';",
+                    "}",
+                    "else",
+                    "    hanger_no_weight_count_text = (total_count.no_weight_count - hanger_count.no_weight_count) + '_';",
+                    "",
+                    "",
+                    "",
+                    "if (hanger_count.home_weight_count !== 0)",
+                    "{",
+                    "    if (total_count.home_weight_count > hanger_count.home_weight_count)",
+                    "        hanger_home_weight_count_text = hanger_count.home_weight_count + 'Ω/' + (total_count.home_weight_count - hanger_count.home_weight_count) + '_' ;",
+                    "    else",
+                    "        hanger_home_weight_count_text = hanger_count.home_weight_count + 'Ω';",
+                    "}",
+                    "else",
+                    "    hanger_home_weight_count_text = (total_count.home_weight_count - hanger_count.home_weight_count) + '_' ;",
+                    "",
+                    "",
+                    "if (hanger_count.dress_weight_count !== 0)",
+                    "{",
+                    "    if (total_count.dress_weight_count > hanger_count.dress_weight_count)",
+                    "        hanger_dress_weight_count_text = hanger_count.dress_weight_count + 'Ω/' + (total_count.dress_weight_count - hanger_count.dress_weight_count) + '_' ;",
+                    "    else",
+                    "        hanger_dress_weight_count_text = hanger_count.dress_weight_count + 'Ω';",
+                    "}",
+                    "else",
+                    "    hanger_dress_weight_count_text = (total_count.dress_weight_count - hanger_count.dress_weight_count) + '_' ;",
+                    "",
+                    "console.log('');",
+                    "",
+                    "",
+                    "var result_table = '<div><table border=\"1\" frame=\"above\"> <caption><font size=\"2\">Сумма к оплате </font></caption> <tr> <th>Наименование</th> <th>Сумма</th> </tr>';",
+                    "",
+                    "if (no_weight_item_sum !== 0)",
+                    "{",
+                    "    result_table += '<tr><td> Штучные позиции </font>' + hanger_no_weight_count_text  + '</td>';",
+                    "    result_table += '<td>' + no_weight_item_sum.toString() + ' руб. </td></tr>';",
+                    "",
+                    "}",
+                    "",
+                    "if (weight_home_item_sum !== 0)",
+                    "{",
+                    "    result_table += '<tr><td>Весовые позиции (домашний текстиль) </font>' + hanger_home_weight_count_text + '</td>';",
+                    "    result_table += '<td>' + weight_home_item_sum.toString() + ' руб. </td></tr>';",
+                    "}",
+                    "",
+                    "if (weight_dress_item_sum !== 0)",
+                    "{",
+                    "    result_table += '<tr><td>Весовые позиции (одежда) </font>' + hanger_dress_weight_count_text + '</td>';",
+                    "    result_table += '<td>' + weight_dress_item_sum.toString() + ' руб. </td></tr>';",
+                    "}",
+                    "",
+                    "result_table += '<tr><th align=\"left\">Итого:</th> <th align=\"left\">' + Math.floor((no_weight_item_sum + weight_home_item_sum + weight_dress_item_sum)/10)*10 + ' руб. </th> <tr>';",
+                    "",
+                    "result_table += '</table> </div>';",
+                    "",
+                    "return result_table;"
+                ]
+            },
+            "designerId": "d6861f41-3830-4f34-a2d5-ff9f9a579ad7"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "order_details"
+                ],
+                "fn": "calc_hanger_count",
+                "implHandler": [
+                    "var no_weight_count = 0;",
+                    "var home_weight_count = 0;",
+                    "var dress_weight_count = 0;",
+                    "",
+                    "",
+                    "for (var next_detail in order_details)",
+                    "{",
+                    "    if (order_details[next_detail].price_type == 'Штучный')",
+                    "        no_weight_count += (order_details[next_detail].hanger * order_details[next_detail].count);",
+                    "    else",
+                    "    {",
+                    "        if (order_details[next_detail].is_home_weight == 1)",
+                    "            home_weight_count += (order_details[next_detail].hanger * order_details[next_detail].count);",
+                    "        else",
+                    "            dress_weight_count += (order_details[next_detail].hanger * order_details[next_detail].count);",
+                    "    }",
+                    "",
+                    "}",
+                    "",
+                    "",
+                    "",
+                    "return {no_weight_count:no_weight_count, home_weight_count:home_weight_count, dress_weight_count:dress_weight_count};"
+                ]
+            },
+            "designerId": "e97f3730-f4c1-4cbb-9dae-efb053b15f08"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "order_details"
+                ],
+                "fn": "calc_total_count",
+                "implHandler": [
+                    "var no_weight_count = 0;",
+                    "var home_weight_count = 0;",
+                    "var dress_weight_count = 0;",
+                    "",
+                    "",
+                    "for (var next_detail in order_details)",
+                    "{",
+                    "    if (order_details[next_detail].price_type == 'Штучный')",
+                    "        no_weight_count += order_details[next_detail].count;",
+                    "    else",
+                    "    {",
+                    "        if (order_details[next_detail].is_home_weight == 1)",
+                    "            home_weight_count += order_details[next_detail].count;",
+                    "        else",
+                    "            dress_weight_count += order_details[next_detail].count;",
+                    "    }",
+                    "",
+                    "}",
+                    "",
+                    "",
+                    "",
+                    "return {no_weight_count:no_weight_count, home_weight_count:home_weight_count, dress_weight_count:dress_weight_count};"
+                ]
+            },
+            "designerId": "33906445-597d-4f83-a766-21bae059a94e"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "create_docs",
+                "implHandler": [
+                    "",
+                    "",
+                    "var t = this;",
+                    "var order_record = this.getApplication().getController('order_panel_controller').get_selected_order();",
+                    "var id_order = order_record.get('id_order');",
+                    "",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name\t\t:\t'get_order_detail_by_id_order',",
+                    "            id_order\t\t\t:\torder_record.get('id_order'),",
+                    "            format\t\t\t\t:\t'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        async: false,",
+                    "        success: function (result)",
+                    "        {",
+                    "            var newWin = open('url','windowName','height=800,width=800');",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "            var containers = '';",
+                    "            for (var i = 1; i <= order_record.get('cont_count'); i++)",
+                    "                containers += '<div style=\"border-width:2px;border-style:solid;writing-mode: vertical-rl;font-size: 130;float:left\">.' + id_order + '/' + i + '</div>';",
+                    "",
+                    "",
+                    "            var details = '';",
+                    "",
+                    "            for (var i = 0; i <= result.order_detail_list.length-1; i++)",
+                    "            {",
+                    "",
+                    "                var item_count = result.order_detail_list[i].count;",
+                    "",
+                    "",
+                    "                for (var j = 0; j < item_count; j++)",
+                    "                {",
+                    "                    details += '<div style=\"border-width:2px;border-style:solid;writing-mode: vertical-rl;font-size: 25;width:100%;float:left\">.' + id_order + '<br>';",
+                    "",
+                    "                    for (var g = 0; g < 11; g++)",
+                    "                        details += '<br>.' + id_order + '<br>';",
+                    "",
+                    "                    details += '</div>';",
+                    "",
+                    "                }",
+                    "            }",
+                    "",
+                    "            newWin.document.write(containers + details);",
+                    "",
+                    "            t.getAddOrderMenu().destroy();",
+                    "",
+                    "        }",
+                    "    });"
+                ]
+            },
+            "designerId": "a301adb9-fdf8-4ef7-87e9-a913eff9c504"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "count"
+                ],
+                "fn": "create_lines",
+                "implHandler": [
+                    "if (count === 0)",
+                    "    return;",
+                    "",
+                    "var order_record = this.getApplication().getController('order_panel_controller').get_selected_order();",
+                    "var id_order = order_record.get('id_order');",
+                    "",
+                    "",
+                    "var newWin = open('url','windowName','height=800,width=800');",
+                    "",
+                    "",
+                    "var details = '';",
+                    "",
+                    "for (var j = 0; j < count; j++)",
+                    "{",
+                    "    details += '<div style=\"border-width:2px;border-style:solid;writing-mode: vertical-rl;font-size: 25;width:100%;float:left\">.' + id_order + '<br>';",
+                    "",
+                    "    for (var g = 0; g < 11; g++)",
+                    "        details += '<br>.' + id_order + '<br>';",
+                    "",
+                    "    details += '</div>';",
+                    "",
+                    "}",
+                    "",
+                    "",
+                    "newWin.document.write(details);",
+                    "",
+                    "this.getAddOrderMenu().destroy();"
+                ]
+            },
+            "designerId": "3b1249d3-10ce-4444-9407-df684aae10e5"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "count",
+                    "from"
+                ],
+                "fn": "create_stickers",
+                "implHandler": [
+                    "if (count === 0)",
+                    "    return;",
+                    "",
+                    "var order_record = this.getApplication().getController('order_panel_controller').get_selected_order();",
+                    "var id_order = order_record.get('id_order');",
+                    "",
+                    "",
+                    "var newWin = open('url','windowName','height=800,width=800');",
+                    "",
+                    "",
+                    "var containers = '';",
+                    "for (var i = 0; i < count; i++)",
+                    "{",
+                    "    var next_index = from + i;",
+                    "    console.log(i);",
+                    "    console.log(from);",
+                    "    containers += '<div style=\"border-width:2px;border-style:solid;writing-mode: vertical-rl;font-size: 130;float:left\">.' + id_order + '/' + next_index + '</div>';",
+                    "}",
+                    "    ",
+                    "",
+                    "",
+                    "",
+                    "newWin.document.write(containers);",
+                    "",
+                    "this.getAddOrderMenu().destroy();"
+                ]
+            },
+            "designerId": "eeea173b-4e2e-47b3-9bb4-ca1efb451bae"
+        }
+    ]
+}

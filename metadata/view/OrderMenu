@@ -1,0 +1,166 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "centered": true,
+        "designer|userAlias": "addordermenu",
+        "designer|userClassName": "OrderMenu",
+        "hidden": true,
+        "hideOnMaskTap": true,
+        "id": null,
+        "itemId": "addorderMenu",
+        "modal": true,
+        "padding": 10
+    },
+    "designerId": "3232cd87-8eca-454a-b501-0b97b310088e",
+    "cn": [
+        {
+            "type": "Ext.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "disabled": false,
+                "iconCls": "compose",
+                "itemId": "create_contract",
+                "margin": 15,
+                "navId": null,
+                "navView": null,
+                "navViewItemId": null,
+                "text": "Договор"
+            },
+            "designerId": "0b5e07aa-ee24-40cd-a47e-81bc42a71f1a",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navId",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navView",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navViewItemId",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "disabled": false,
+                "iconCls": "compose",
+                "itemId": "create_docs",
+                "margin": 15,
+                "navId": null,
+                "navView": null,
+                "navViewItemId": null,
+                "text": "Сопроводительные"
+            },
+            "designerId": "2d3a1fa7-eebb-4087-8dc8-c980ac31d68e",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navId",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navView",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navViewItemId",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "disabled": false,
+                "iconCls": "compose",
+                "itemId": "create_lines",
+                "margin": 15,
+                "navId": null,
+                "navView": null,
+                "navViewItemId": null,
+                "text": "Ленточки"
+            },
+            "designerId": "f0a4dc0b-7832-47dc-8886-14d8c5676f4f",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navId",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navView",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navViewItemId",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "disabled": false,
+                "iconCls": "compose",
+                "itemId": "create_lines_container_stickers",
+                "margin": 15,
+                "navId": null,
+                "navView": null,
+                "navViewItemId": null,
+                "text": "Для контейнеров"
+            },
+            "designerId": "3627233d-8e3b-44c3-97c0-3898f0c82fed",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navId",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navView",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navViewItemId",
+                    "type": "string"
+                }
+            ]
+        }
+    ]
+}

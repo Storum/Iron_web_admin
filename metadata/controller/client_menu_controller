@@ -1,0 +1,55 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "client_menu_controller",
+        "views": [
+            "ClientMenu"
+        ]
+    },
+    "designerId": "86149f8e-7120-48a2-b739-cdfb5018da1f",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "panel#clientMenu button",
+                "designer|targetType": "Ext.Button",
+                "fn": "onButtonTap",
+                "implHandler": [
+                    "navView = button.getInitialConfig().navView;",
+                    "navViewItemId = button.getInitialConfig().navViewItemId;",
+                    "",
+                    "",
+                    "client_panel = Ext.create ('widget.' + navView);",
+                    "Ext.Viewport.add (client_panel);",
+                    "client_panel.show ();"
+                ],
+                "name": "tap"
+            },
+            "designerId": "1ebe8005-1ab2-46c1-b0df-f0135a8ebd96"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "clientMenu",
+                "selector": "panel#clientMenu",
+                "xtype": "Ext.Panel"
+            },
+            "designerId": "68a21b1f-7bff-4060-b3ed-125b3db1f14c"
+        }
+    ]
+}

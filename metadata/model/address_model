@@ -1,0 +1,92 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "address_model"
+    },
+    "designerId": "9ce3b181-39d4-48dc-926e-381b5eaf93f6",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "add_type_comment",
+                "type": "string"
+            },
+            "designerId": "eac88008-14cf-4004-97d4-c528edb84c54"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "add_type_name",
+                "type": "string"
+            },
+            "designerId": "476c8463-7f98-4f80-8e3e-1f91f5dedfc8"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "comment",
+                "type": "string"
+            },
+            "designerId": "0d359e94-d491-4b28-b01f-d27182feef9b"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "id_address_type",
+                "type": "string"
+            },
+            "designerId": "e73dd192-2e70-40a9-8bc9-eb9ef952605c"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "name",
+                "type": "string"
+            },
+            "designerId": "45f67add-5429-4f04-a74b-51b7f5fcec60"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "id_address_set",
+                "type": "int"
+            },
+            "designerId": "2abd12e1-99c2-4f1d-88d6-772ba9532a8e"
+        }
+    ]
+}

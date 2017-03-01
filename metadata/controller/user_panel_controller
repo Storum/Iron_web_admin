@@ -1,0 +1,665 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "user_panel_controller",
+        "requires": [
+            "Ext.data.JsonP",
+            "Ext.MessageBox"
+        ],
+        "views": [
+            "UserPanel"
+        ]
+    },
+    "designerId": "75288f7b-60f1-415f-b405-74e4c77e30f0",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "textfield[target='edit_user']",
+                "designer|targetType": "Ext.field.Text",
+                "fn": "user_data_changed",
+                "implHandler": [
+                    "",
+                    "this.check_field_change ();"
+                ],
+                "name": "keyup"
+            },
+            "designerId": "1ca79ad4-1350-4a2b-90e2-204ac7f27737"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "user_save_button",
+                "designer|targetType": "Ext.Button",
+                "fn": "save_tap",
+                "implHandler": [
+                    "",
+                    "var nick = this.getUserNickField().getValue();",
+                    "var name = this.getUserNameField().getValue();",
+                    "var surname = this.getUserSurnameField().getValue();",
+                    "var patronymic = this.getUserPatronymicField().getValue();",
+                    "var comment = this.getUserCommentField().getValue();",
+                    "",
+                    "var user_list = this.getUserList();",
+                    "var selected_id_user = user_list.getSelection ()[0].get('id_user');",
+                    "",
+                    "var t = this;",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name: 'update_user_data',",
+                    "            id_user: selected_id_user,",
+                    "            nick: nick,",
+                    "            name: name,",
+                    "            surname: surname,",
+                    "            patronymic: patronymic,",
+                    "            comment: comment,",
+                    "            format: 'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        async: false,",
+                    "        success: function (result)",
+                    "        {",
+                    "            t.update_user_list();",
+                    "            t.change_save_btn_status(true);",
+                    "",
+                    "            t.select_user_in_listview (user_list, selected_id_user);",
+                    "        }",
+                    "    });",
+                    ""
+                ],
+                "name": "tap"
+            },
+            "designerId": "584df1d8-2261-4dd4-8505-c04257c25bb9"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "check_field_change",
+                "implHandler": [
+                    "var user_list = this.getUserList();",
+                    "",
+                    "",
+                    "if (user_list.getSelection().length !== 0)",
+                    "{",
+                    "    var nick = this.getUserNickField();",
+                    "    var name = this.getUserNameField();",
+                    "    var surname = this.getUserSurnameField();",
+                    "    var patronymic = this.getUserPatronymicField();",
+                    "    var comment = this.getUserCommentField();",
+                    "",
+                    "    if (user_list.getSelection()[0].get(nick.getName()) !== nick.getValue())",
+                    "    {",
+                    "        this.change_save_btn_status (false);",
+                    "        return;",
+                    "    }",
+                    "",
+                    "    if (user_list.getSelection()[0].get(name.getName()) !== name.getValue())",
+                    "    {",
+                    "        this.change_save_btn_status (false);",
+                    "        return;",
+                    "    }",
+                    "",
+                    "",
+                    "    if (user_list.getSelection()[0].get(surname.getName()) !== surname.getValue())",
+                    "    {",
+                    "        this.change_save_btn_status (false);",
+                    "        return;",
+                    "    }",
+                    "",
+                    "    if (user_list.getSelection()[0].get(patronymic.getName()) !== patronymic.getValue())",
+                    "    {",
+                    "        this.change_save_btn_status (false);",
+                    "        return;",
+                    "    }",
+                    "",
+                    "    if (user_list.getSelection()[0].get(comment.getName()) !== comment.getValue())",
+                    "    {",
+                    "        this.change_save_btn_status (false);",
+                    "        return;",
+                    "    }",
+                    "",
+                    "    this.change_save_btn_status (true);",
+                    "",
+                    "}"
+                ]
+            },
+            "designerId": "d796da23-c703-492b-93cb-12bffb2a9986"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "userpanel",
+                "designer|targetType": "UserPanel",
+                "fn": "userpanel_Activate",
+                "implHandler": [
+                    "this.update_user_list();"
+                ],
+                "name": "activate"
+            },
+            "designerId": "81a8ff40-d63c-4b7e-8315-0a3fc4e162a6"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "userList",
+                "designer|targetType": "Ext.dataview.List",
+                "fn": "onUserListSelect",
+                "implHandler": [
+                    "",
+                    "var user_NickField\t\t\t= this.getUserNickField();",
+                    "var user_NameField\t\t\t= this.getUserNameField();",
+                    "var user_SurnameField\t\t= this.getUserSurnameField();",
+                    "var user_PatronymicField\t= this.getUserPatronymicField();",
+                    "var user_DateField\t\t\t= this.getUserDateCreateField();",
+                    "var user_CommentField\t\t= this.getUserCommentField();",
+                    "",
+                    "",
+                    "user_NickField.setValue (record.get('nick'));",
+                    "user_NameField.setValue (record.get('name'));",
+                    "user_SurnameField.setValue (record.get('surname'));",
+                    "user_PatronymicField.setValue (record.get('patronymic'));",
+                    "user_CommentField.setValue (record.get('comment'));",
+                    "",
+                    "",
+                    "this.change_btn_disable (false);",
+                    "this.change_save_btn_status (true);"
+                ],
+                "name": "itemtap"
+            },
+            "designerId": "3d14a331-5e0e-4ccc-a74b-6856a07277f8"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "newValue"
+                ],
+                "fn": "change_save_btn_status",
+                "implHandler": [
+                    "var usr_save_btn = this.getUser_save_button();",
+                    "usr_save_btn.setDisabled (newValue);"
+                ]
+            },
+            "designerId": "a1b6a131-fe8f-448c-8218-605379a29358"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "disabled"
+                ],
+                "fn": "change_btn_disable",
+                "implHandler": [
+                    "var usr_del_btn = this.getUser_delete_button ();",
+                    "var usr_menu_btn = this.getUser_menu_button();",
+                    "",
+                    "",
+                    "usr_del_btn.setDisabled (disabled);",
+                    "usr_menu_btn.setDisabled (disabled);"
+                ]
+            },
+            "designerId": "13f89a94-4380-4551-b76d-354b3c078f5d"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "update_user_list",
+                "implHandler": [
+                    "var t = this;",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name: 'get_user_list',",
+                    "            format: 'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        async: false,",
+                    "        success: function (result)",
+                    "        {",
+                    "            t.update_user_store (result.user_list);",
+                    "        }",
+                    "    });"
+                ]
+            },
+            "designerId": "7880cdb6-5093-4638-8aef-eedde0adf75c"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "data"
+                ],
+                "fn": "update_user_store",
+                "implHandler": [
+                    "",
+                    "var user_ListView = this.getUserList();",
+                    "var user_store = user_ListView.getStore();",
+                    "",
+                    "user_store.data.clear();",
+                    "user_store.setData(data);",
+                    "//user_ListView.refresh();"
+                ]
+            },
+            "designerId": "abedbbc5-cdb5-460b-a2f0-394ff753bd74"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "listview",
+                    "id_user"
+                ],
+                "fn": "select_user_in_listview",
+                "implHandler": [
+                    "",
+                    "",
+                    "var store = listview.getStore();",
+                    "var record_index = store.find ('id_user', id_user);",
+                    "listview.select (0, false, true);",
+                    "",
+                    "//listview.fireEvent('itemtap', listview, 0, listview.getAt(0), null, null);"
+                ]
+            },
+            "designerId": "800b4931-634d-4450-abcc-290e6e122ca1"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "get_current_user_id",
+                "implHandler": [
+                    "var user_list = this.getUserList();",
+                    "",
+                    "if (user_list)",
+                    "{",
+                    "    var selected_id_user = user_list.getSelection ()[0].get('id_user');",
+                    "    return selected_id_user;",
+                    "}",
+                    "else",
+                    "    return null;",
+                    ""
+                ]
+            },
+            "designerId": "06008747-4e4c-4672-93f2-758509f209e8"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "id_user",
+                    "is_silent"
+                ],
+                "fn": "delete_user",
+                "implHandler": [
+                    "var t = this;",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name: 'delete_user',",
+                    "            id_user: id_user,",
+                    "            format: 'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        async: false,",
+                    "        success: function (result)",
+                    "        {",
+                    "            var user_list = t.getUserList();",
+                    "",
+                    "            t.update_user_list();",
+                    "            t.change_save_btn_status(true);",
+                    "",
+                    "            t.select_user_in_listview (user_list, id_user);",
+                    "",
+                    "            Ext.Msg.alert('Iron', result.text);",
+                    "        }",
+                    "    });"
+                ]
+            },
+            "designerId": "cc8e3ad9-adba-48a9-bafe-1938d3068e59"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "userPanel",
+                "selector": "#id_user_panel",
+                "xtype": "userpanel"
+            },
+            "designerId": "c4953877-e6b5-4f98-9132-4028ead0dc37"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "userDataFielset",
+                "selector": "#user_data_fieldset"
+            },
+            "designerId": "9f184bf2-2587-45d0-a477-fa609fffe57c"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "userMenu",
+                "selector": "#userMenu",
+                "xtype": "usermenu"
+            },
+            "designerId": "a77d185c-0e53-4e37-b822-8d099d718b16"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "userList",
+                "selector": "#userPanel #user_list",
+                "xtype": ""
+            },
+            "designerId": "2ec0bc88-6045-4e9f-9fe9-42fc65f7b3bf"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "user_menu_button",
+                "designer|params": [
+                    "target"
+                ],
+                "designer|targetType": null,
+                "fn": "show_UserMenu",
+                "implHandler": [
+                    "",
+                    "",
+                    "var menu = this.getUserMenu();",
+                    "if (!menu) {",
+                    "    menu = Ext.create('widget.usermenu');",
+                    "}",
+                    "",
+                    "",
+                    "// Show menu by menu button",
+                    "menu.showBy(target);",
+                    ""
+                ],
+                "name": "tap"
+            },
+            "designerId": "3235b2f1-28e4-4c71-bf54-341bc5fbc16b"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "userNickField",
+                "selector": "#userPanel #user_nick_textfield",
+                "xtype": "Ext.field.Text"
+            },
+            "designerId": "e0ed6227-4b43-4aa2-b110-a1a89cef600f"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "userNameField",
+                "selector": "#userPanel  #user_name_textfield",
+                "xtype": "Ext.field.Text"
+            },
+            "designerId": "2acd5389-d2aa-4bf7-8995-dc3434e55697"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "userSurnameField",
+                "selector": "#userPanel  #user_surname_textfield",
+                "xtype": "Ext.field.Text"
+            },
+            "designerId": "7588fdc8-e398-4363-a985-5cbb8f6c8c45"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "userPatronymicField",
+                "selector": "#userPanel  #user_patronymic_textfield",
+                "xtype": "Ext.field.Text"
+            },
+            "designerId": "c8d61dd7-a449-4d40-9fdb-f76f04788753"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "userDateCreateField",
+                "selector": "#userPanel  #user_date_create_textfield",
+                "xtype": "Ext.field.Text"
+            },
+            "designerId": "bcee3352-a348-47fb-a67c-9f89b1e51cd7"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "userCommentField",
+                "selector": "#userPanel #user_comment_textfield",
+                "xtype": "Ext.field.Text"
+            },
+            "designerId": "f0329b62-586d-4f36-be07-b8189b371deb"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "user_save_button",
+                "selector": "#userPanel  #user_save_button",
+                "xtype": "Ext.Button"
+            },
+            "designerId": "6e7842f6-e3a3-4493-9fa4-053ba449af0a"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "user_delete_button",
+                "selector": "#userPanel  #delete_user_button",
+                "xtype": "Ext.Button"
+            },
+            "designerId": "6619ba94-29b7-4535-8068-62690cf121fa"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "user_add_button",
+                "selector": "#userPanel  #add_user_button",
+                "xtype": "Ext.Button"
+            },
+            "designerId": "a2848871-749d-4d93-819c-e7b4fbff4e57"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "user_menu_button",
+                "selector": "#userPanel  #usermenu_button",
+                "xtype": "Ext.Button"
+            },
+            "designerId": "4fa6ccf7-e1e2-4300-9505-99e7b525140c"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "user_add_button",
+                "designer|targetType": "Ext.Button",
+                "fn": "add_user_tap",
+                "implHandler": [
+                    "",
+                    "",
+                    "addUserPanel = Ext.create('widget.adduserpanel');",
+                    "Ext.Viewport.add(addUserPanel);",
+                    "addUserPanel.show();",
+                    ""
+                ],
+                "name": "tap"
+            },
+            "designerId": "81fcb7b7-3f3c-4895-80f5-1773dc431c5c"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "user_delete_button",
+                "designer|targetType": "Ext.Button",
+                "fn": "delete_user_tap",
+                "implHandler": [
+                    "var user_list = this.getUserList();",
+                    "var selected_id_user = user_list.getSelection ()[0].get('id_user');",
+                    "",
+                    "this.delete_user (selected_id_user, false);"
+                ],
+                "name": "tap"
+            },
+            "designerId": "461092f4-dd6e-42c1-964a-15eee36c078c"
+        }
+    ]
+}
