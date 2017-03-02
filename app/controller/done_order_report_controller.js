@@ -101,9 +101,9 @@ Ext.define('Iron.controller.done_order_report_controller', {
         var selection = this.getOrder_list().getSelection();
 
         if (selection.length > 0)
-            this.getMark_as_phoned_btn().setDisabled(false);
+            this.update_btn_disabled (false);
         else
-            this.getMark_as_phoned_btn().setDisabled(true);
+            this.update_btn_disabled (true);
     },
 
     update_status: function(id_order) {
@@ -126,13 +126,28 @@ Ext.define('Iron.controller.done_order_report_controller', {
 
                     if (t.count === 0)
                     {
-                        Ext.Msg.alert('Iron', result.text);
-                        t.getDoneOrderReport().destroy();
+
+
+                        if (result.result == 'ok')
+                        {
+                            t.getApplication().getController('order_panel_controller').send_sms(id_order, false);
+                            t.getDoneOrderReport().destroy();
+                        }
+                        else
+                        {
+                            Ext.Msg.alert ('Iron', result.text);
+                        }
+
+
                     }
 
 
                 }
             });
+    },
+
+    update_btn_disabled: function(disabled) {
+        this.getMark_as_phoned_btn().setDisabled(disabled);
     }
 
 });

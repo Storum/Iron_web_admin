@@ -72,7 +72,7 @@
                             "userConfig": {
                                 "disabled": true,
                                 "itemId": "mark_as_phoned_btn",
-                                "text": "Отметить"
+                                "text": "Оповестить"
                             },
                             "designerId": "faadecda-061c-4ca6-b391-59d7fda15f24"
                         }

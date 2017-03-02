@@ -185,6 +185,21 @@
                         "width": 101
                     },
                     "designerId": "fb3a38ce-1901-47e0-a00b-111b71512d18"
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "disabled": true,
+                        "iconCls": "action",
+                        "itemId": "send_sms_button",
+                        "text": "СМС"
+                    },
+                    "designerId": "a680c5fe-2b08-4eb8-bb9b-d2fbd34ee447"
                 }
             ]
         },

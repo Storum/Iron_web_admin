@@ -108,6 +108,13 @@ Ext.define('Iron.view.OrderPanel', {
                         width: 101,
                         iconCls: 'more',
                         text: 'Меню'
+                    },
+                    {
+                        xtype: 'button',
+                        disabled: true,
+                        itemId: 'send_sms_button',
+                        iconCls: 'action',
+                        text: 'СМС'
                     }
                 ]
             },

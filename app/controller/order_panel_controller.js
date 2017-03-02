@@ -46,7 +46,8 @@ Ext.define('Iron.controller.order_panel_controller', {
             delete_order_btn: 'panel#orderPanel button[itemId=delete_order_button]',
             search_order: 'panel#orderPanel searchfield[itemId=id_search_order]',
             order_menu_button: 'panel#orderPanel button[itemId=order_menu_button]',
-            addOrderMenu: 'panel#orderPanel panel#addorderMenu'
+            addOrderMenu: 'panel#orderPanel panel#addorderMenu',
+            send_sms_button: 'panel#orderPanel button[itemId=send_sms_button]'
         },
 
         control: {
@@ -62,6 +63,9 @@ Ext.define('Iron.controller.order_panel_controller', {
             },
             "panel#orderPanel selectfield": {
                 change: 'onSelectfieldChange'
+            },
+            "order_status_select": {
+                change: 'change_status'
             },
             "panel#orderPanel numberfield": {
                 keyup: 'onNumberfieldKeyup'
@@ -84,6 +88,9 @@ Ext.define('Iron.controller.order_panel_controller', {
             },
             "order_menu_button": {
                 tap: 'menu_open'
+            },
+            "send_sms_button": {
+                tap: 'send_sms_tap'
             }
         }
     },
@@ -137,6 +144,7 @@ Ext.define('Iron.controller.order_panel_controller', {
 
         this.change_save_btn_status (true);
         this.change_btn_disable (false);
+        this.check_sms_btn();
 
         //console.log(record);
     },
@@ -159,6 +167,36 @@ Ext.define('Iron.controller.order_panel_controller', {
 
     onSelectfieldChange: function(selectfield, newValue, oldValue, eOpts) {
         this.check_field_change();
+    },
+
+    change_status: function(selectfield, newValue, oldValue, eOpts) {
+        var t = this;
+
+        if (oldValue)
+        {
+            new_status_name = selectfield.getStore().findRecord('id_status', newValue);
+
+            if (new_status_name.get('name') == 'Заказ готов')
+            {
+                Ext.Msg.confirm ('Iron', 'Отправить смс о готовности заказа?', function(button) {
+
+                    if (button == 'yes')
+                    {
+                        t.send_sms (t.getOrder_list().getSelection()[0].get('id_order'), true);
+                    }
+                    else
+                    {
+                        t.check_sms_btn();
+                        t.update_order();
+                    }
+
+                });
+
+            }
+        }
+
+
+
     },
 
     onNumberfieldKeyup: function(textfield, e, eOpts) {
@@ -204,6 +242,86 @@ Ext.define('Iron.controller.order_panel_controller', {
     },
 
     save_btn: function(button, e, eOpts) {
+        this.update_order();
+    },
+
+    search: function(textfield, e, eOpts) {
+        var value = textfield.getValue(),
+        store = this.getOrder_list().getStore();
+        store.clearFilter();
+
+        store.filter('id_order', value);
+    },
+
+    clear_filter_tap: function(textfield, e, eOpts) {
+        store = this.getOrder_list().getStore();
+        store.clearFilter();
+
+    },
+
+    menu_open: function(target) {
+
+        var menu = this.getAddOrderMenu();
+        if (!menu) {
+            menu = Ext.create('widget.addordermenu');
+        }
+
+
+        // Show menu by menu button
+        menu.showBy(target);
+
+
+    },
+
+    send_sms_tap: function(button, e, eOpts) {
+        var id_order = this.getOrder_list().getSelection()[0].get('id_order');
+
+        this.send_sms (id_order, true);
+    },
+
+    send_sms: function(id_order, change_status) {
+        var t = this;
+
+        Ext.data.JsonP.request(
+            {
+                url: GlobalVars.url_setting + 'php/base_functional.php',
+                params:
+                {
+                    function_name		:	'send_sms',
+                    id_order			:	id_order,
+                    format				:	'json'
+                },
+                callbackKey: 'callback',
+                async: false,
+                success: function (result)
+                {
+                    if (result.status == 'ok')
+                    {
+
+                        //if (result.messages[0].status == 'accepted')
+                        if (result.messages[0].status == 'not enough credits')
+                        {
+                            if (change_status)
+                                t.set_status_for_order_and_save ('Клиент оповещен');
+
+                            Ext.Msg.alert ('Iron', 'Уведомления отправлены');
+                        }
+                    }
+
+                }
+            });
+    },
+
+    set_status_for_order_and_save: function(status_name) {
+        var status_field = this.getOrder_status_select();
+
+        id_new_status = status_field.getStore().findRecord('name', status_name);
+
+        status_field.setValue(id_new_status);
+        this.update_order();
+    },
+
+    update_order: function() {
         var id_order = this.getOrder_list().getSelection()[0].get('id_order');
 
         var id_action = this.getOrder_action_select().getValue();
@@ -251,37 +369,10 @@ Ext.define('Iron.controller.order_panel_controller', {
                 {
                     t.update_order_list();
                     t.change_save_btn_status(true);
+                    t.check_sms_btn();
                     Ext.Msg.alert('Iron', result.text);
                 }
             });
-
-    },
-
-    search: function(textfield, e, eOpts) {
-        var value = textfield.getValue(),
-        store = this.getOrder_list().getStore();
-        store.clearFilter();
-
-        store.filter('id_order', value);
-    },
-
-    clear_filter_tap: function(textfield, e, eOpts) {
-        store = this.getOrder_list().getStore();
-        store.clearFilter();
-
-    },
-
-    menu_open: function(target) {
-
-        var menu = this.getAddOrderMenu();
-        if (!menu) {
-            menu = Ext.create('widget.addordermenu');
-        }
-
-
-        // Show menu by menu button
-        menu.showBy(target);
-
 
     },
 
@@ -388,6 +479,17 @@ Ext.define('Iron.controller.order_panel_controller', {
 
         del_btn.setDisabled (disabled);
         menu_btn.setDisabled (disabled);
+    },
+
+    check_sms_btn: function() {
+        var send_sms_btn = this.getSend_sms_button();
+
+        cur_status_name = this.getOrder_status_select().getStore().findRecord('id_status', this.getOrder_status_select().getValue()).get('name');
+
+        if (cur_status_name == 'Заказ готов')
+            send_sms_btn.setDisabled (false);
+        else
+            send_sms_btn.setDisabled (true);
     },
 
     update_order_action_list: function() {

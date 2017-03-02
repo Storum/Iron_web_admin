@@ -3,13 +3,57 @@
 
 function connect_db (){
 	//$db = mysqli_connect('localhost', 'u0194327_root', 'HYvtP5uM', 'u0194327_iron')
-	//$db = mysqli_connect('localhost', 'root', '', 'u0194327_iron')
-	$db = mysqli_connect('localhost', 'root', '', 'iron_base')
+	$db = mysqli_connect('localhost', 'root', '', 'u0194327_iron')
+	//$db = mysqli_connect('localhost', 'root', '', 'iron_base')
 		or die('Unable to connect to MySQL');
 	
 	mysqli_set_charset($db, 'utf8');
 
 	return $db;
+}
+
+//-------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------Работа с СМС--------------------------------------------
+//-------------------------------------------------------------------------------------------------------------------
+
+
+function send_sms ($id_order)
+{
+	$db = connect_db ();
+
+	$sql = "SELECT 	o.id_order, 
+					c.name, c.surname, c.patronymic, cp.phone
+			FROM  tbl_orders o
+					join tbl_clients c on o.id_client = c.id_client
+					join tbl_client_phone_set cp on c.id_client = cp.id_client
+			where is_primary = 1 and id_order = $id_order";
+
+	$sql_result = mysqli_query ($db, $sql)
+		or die('Error querying database.');
+
+	$row = mysqli_fetch_array($sql_result);
+	$result_list = '';
+
+
+	if (mysqli_num_rows ($sql_result) <> 0)
+	{
+
+		$client_name = $row{'name'}.' '.$row{'patronymic'};
+		$curl = curl_init("http://json.gate.iqsms.ru/send/");
+		curl_setopt($curl, CURLOPT_POST, 0);
+		curl_setopt($curl, CURLOPT_POSTFIELDS, '{"login": "z1488473036197","password": "155544","statusQueueName": "","scheduleTime": "","messages":[{"clientId" : "1","phone": "'.$row{'phone'}.'","text": "Мама погладит  \n'.$client_name.', Ваш заказа №'.$row{'id_order'}.' готов.","sender": "MediaGramma"}]}');
+		//curl_setopt($curl, CURLOPT_POSTFIELDS, '{"login": "z1488473036197","password": "155544"}');
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+		$curl_res = curl_exec($curl);
+		$result_list =  $curl_res;
+		curl_close($curl);
+	}
+	else
+		$result_list .= 'Нет данных о таком заказе';
+
+	mysqli_close ($db);
+
+	echo $_GET['callback'].'('.$result_list.')';
 }
 
 //-------------------------------------------------------------------------------------------------------------------
@@ -1630,7 +1674,8 @@ function update_order_ext ($id_order, $id_status, $id_client, $id_executor, $id_
 
 	$sql = "UPDATE tbl_orders set id_client=$id_client, id_action=$id_action, id_executor=$id_executor, сontainer_count=$container_count, weight_home=$weight_home, weight_dress=$weight_dress, ticket_number = $ticket_number, is_white = $is_white, comment='$comment' where id_order = $id_order";
 
-	$sql2 = "INSERT INTO tbl_order_status (id_order, id_status, ds) VALUES ('$id_order', '$id_status', NOW())";
+	//echo $sql;
+	$sql2 = "INSERT INTO tbl_order_status (id_order, id_status, ds) VALUES ($id_order, $id_status, NOW())";
 
 
 	if (mysqli_query ($db, $sql) && mysqli_query ($db, $sql2))
@@ -1812,6 +1857,9 @@ switch ($function_name) {
 		break;
 	case 'get_order_list':
 		get_order_list ();
+		break;
+	case 'send_sms':
+		send_sms ($_GET['id_order']);
 		break;
 	default:
 		# code...

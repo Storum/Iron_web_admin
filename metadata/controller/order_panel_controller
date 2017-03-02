@@ -333,6 +333,156 @@
             "designerId": "3e53880e-ceb4-4c27-ac82-d6f4c31f3dca"
         },
         {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "send_sms_button",
+                "selector": "panel#orderPanel button[itemId=send_sms_button]"
+            },
+            "designerId": "39a8d45a-a7b5-4201-b854-6d8c08e1d307"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "id_order",
+                    "change_status"
+                ],
+                "fn": "send_sms",
+                "implHandler": [
+                    "var t = this;",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name\t\t:\t'send_sms',",
+                    "            id_order\t\t\t:\tid_order,",
+                    "            format\t\t\t\t:\t'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        async: false,",
+                    "        success: function (result)",
+                    "        {",
+                    "            if (result.status == 'ok')",
+                    "            {",
+                    "                ",
+                    "                //if (result.messages[0].status == 'accepted')",
+                    "                if (result.messages[0].status == 'not enough credits')",
+                    "                {",
+                    "                    if (change_status)",
+                    "                        t.set_status_for_order_and_save ('Клиент оповещен');",
+                    "                    ",
+                    "                    Ext.Msg.alert ('Iron', 'Уведомления отправлены');",
+                    "                }",
+                    "            }",
+                    "",
+                    "        }",
+                    "    });"
+                ]
+            },
+            "designerId": "1048f554-b1d0-4c13-9446-e72b821f0918"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "status_name"
+                ],
+                "fn": "set_status_for_order_and_save",
+                "implHandler": [
+                    "var status_field = this.getOrder_status_select();",
+                    "",
+                    "id_new_status = status_field.getStore().findRecord('name', status_name);",
+                    "",
+                    "status_field.setValue(id_new_status);",
+                    "this.update_order();"
+                ]
+            },
+            "designerId": "2f2ec9be-db9e-411e-ac12-f79899d07cd9"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "update_order",
+                "implHandler": [
+                    "var id_order = this.getOrder_list().getSelection()[0].get('id_order');",
+                    "",
+                    "var id_action = this.getOrder_action_select().getValue();",
+                    "var id_status = this.getOrder_status_select().getValue();",
+                    "var id_executor = this.getOrder_executor_select().getValue();",
+                    "var id_client = this.getOrder_client_select().getValue();",
+                    "var ticket_number = this.getTicket_number().getValue();",
+                    "var container_count = this.getContainer_count().getValue();",
+                    "var weight_home = this.getWeight().getValue();",
+                    "var weight_dress = this.getWeight_dress().getValue();",
+                    "",
+                    "var is_white_ = this.getWhite().getChecked();",
+                    "var is_white = 0;",
+                    "if (is_white_)",
+                    "    is_white = 1;",
+                    "",
+                    "var comment = this.getComment().getValue();",
+                    "var addition_info = this.getAddition_info().getValue();",
+                    "",
+                    "",
+                    "var t = this;",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name\t\t:\t'update_order_ext',",
+                    "            id_order\t\t\t:\tid_order,",
+                    "            id_status\t\t\t:\tid_status,",
+                    "            id_client\t\t\t:\tid_client,",
+                    "            id_executor\t\t\t:\tid_executor,",
+                    "            id_action\t\t\t:\tid_action,",
+                    "            container_count\t\t:\tcontainer_count,",
+                    "            weight_home\t\t\t:\tweight_home,",
+                    "            weight_dress\t\t:\tweight_dress,",
+                    "            ticket_number\t\t:\tticket_number,",
+                    "            is_white\t\t\t:\tis_white,",
+                    "            comment\t\t\t\t:\tcomment,",
+                    "            format\t\t\t\t:\t'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        async: false,",
+                    "        success: function (result)",
+                    "        {   ",
+                    "            t.update_order_list();",
+                    "            t.change_save_btn_status(true);",
+                    "            t.check_sms_btn();",
+                    "            Ext.Msg.alert('Iron', result.text);",
+                    "        }",
+                    "    });",
+                    ""
+                ]
+            },
+            "designerId": "09b31c62-78c4-487d-9856-b2b76bdd6537"
+        },
+        {
             "type": "basicfunction",
             "reference": {
                 "name": "items",
@@ -475,6 +625,28 @@
                 ]
             },
             "designerId": "8e6b956e-6a0e-4e3d-9e78-a90671e3def8"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "check_sms_btn",
+                "implHandler": [
+                    "var send_sms_btn = this.getSend_sms_button();",
+                    "",
+                    "cur_status_name = this.getOrder_status_select().getStore().findRecord('id_status', this.getOrder_status_select().getValue()).get('name');",
+                    "",
+                    "if (cur_status_name == 'Заказ готов')",
+                    "    send_sms_btn.setDisabled (false);    ",
+                    "else",
+                    "    send_sms_btn.setDisabled (true);    "
+                ]
+            },
+            "designerId": "5d27dcaa-bca3-4965-bb14-163dd320fce9"
         },
         {
             "type": "basicfunction",
@@ -792,6 +964,7 @@
                     "",
                     "this.change_save_btn_status (true);",
                     "this.change_btn_disable (false);",
+                    "this.check_sms_btn();",
                     "",
                     "//console.log(record);"
                 ],
@@ -846,6 +1019,50 @@
                 "name": "change"
             },
             "designerId": "9b2720ce-5405-494f-8454-9e9f070140d4"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "order_status_select",
+                "designer|targetType": "Ext.field.Select",
+                "fn": "change_status",
+                "implHandler": [
+                    "var t = this;",
+                    "",
+                    "if (oldValue)",
+                    "{",
+                    "    new_status_name = selectfield.getStore().findRecord('id_status', newValue);",
+                    "",
+                    "    if (new_status_name.get('name') == 'Заказ готов')",
+                    "    {",
+                    "        Ext.Msg.confirm ('Iron', 'Отправить смс о готовности заказа?', function(button) {",
+                    "",
+                    "            if (button == 'yes')",
+                    "            {",
+                    "                t.send_sms (t.getOrder_list().getSelection()[0].get('id_order'), true);",
+                    "            }",
+                    "            else",
+                    "            {",
+                    "                t.check_sms_btn();",
+                    "                t.update_order();",
+                    "            }",
+                    "            ",
+                    "        });",
+                    "",
+                    "    }",
+                    "}",
+                    "",
+                    "",
+                    ""
+                ],
+                "name": "change"
+            },
+            "designerId": "ba88a6aa-fae1-47c6-8bff-b3b0e3cdfb4c"
         },
         {
             "type": "controlleraction",
@@ -957,57 +1174,7 @@
                 "designer|targetType": "Ext.Button",
                 "fn": "save_btn",
                 "implHandler": [
-                    "var id_order = this.getOrder_list().getSelection()[0].get('id_order');",
-                    "",
-                    "var id_action = this.getOrder_action_select().getValue();",
-                    "var id_status = this.getOrder_status_select().getValue();",
-                    "var id_executor = this.getOrder_executor_select().getValue();",
-                    "var id_client = this.getOrder_client_select().getValue();",
-                    "var ticket_number = this.getTicket_number().getValue();",
-                    "var container_count = this.getContainer_count().getValue();",
-                    "var weight_home = this.getWeight().getValue();",
-                    "var weight_dress = this.getWeight_dress().getValue();",
-                    "",
-                    "var is_white_ = this.getWhite().getChecked();",
-                    "var is_white = 0;",
-                    "if (is_white_)",
-                    "    is_white = 1;",
-                    "",
-                    "var comment = this.getComment().getValue();",
-                    "var addition_info = this.getAddition_info().getValue();",
-                    "",
-                    "",
-                    "var t = this;",
-                    "",
-                    "Ext.data.JsonP.request(",
-                    "    {",
-                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
-                    "        params:",
-                    "        {",
-                    "            function_name\t\t:\t'update_order_ext',",
-                    "            id_order\t\t\t:\tid_order,",
-                    "            id_status\t\t\t:\tid_status,",
-                    "            id_client\t\t\t:\tid_client,",
-                    "            id_executor\t\t\t:\tid_executor,",
-                    "            id_action\t\t\t:\tid_action,",
-                    "            container_count\t\t:\tcontainer_count,",
-                    "            weight_home\t\t\t:\tweight_home,",
-                    "            weight_dress\t\t:\tweight_dress,",
-                    "            ticket_number\t\t:\tticket_number,",
-                    "            is_white\t\t\t:\tis_white,",
-                    "            comment\t\t\t\t:\tcomment,",
-                    "            format\t\t\t\t:\t'json'",
-                    "        },",
-                    "        callbackKey: 'callback',",
-                    "        async: false,",
-                    "        success: function (result)",
-                    "        {",
-                    "            t.update_order_list();",
-                    "            t.change_save_btn_status(true);",
-                    "            Ext.Msg.alert('Iron', result.text);",
-                    "        }",
-                    "    });",
-                    ""
+                    "this.update_order();"
                 ],
                 "name": "tap"
             },
@@ -1139,6 +1306,26 @@
                 ]
             },
             "designerId": "84e2a382-d899-4342-b226-67ccf38cbbc4"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "send_sms_button",
+                "designer|targetType": "Ext.Button",
+                "fn": "send_sms_tap",
+                "implHandler": [
+                    "var id_order = this.getOrder_list().getSelection()[0].get('id_order');",
+                    "",
+                    "this.send_sms (id_order, true);"
+                ],
+                "name": "tap"
+            },
+            "designerId": "2b10468f-9106-4a4f-a6dc-a09cbafeb2a7"
         }
     ]
 }

@@ -52,7 +52,7 @@ Ext.define('Iron.view.DoneOrderReport', {
                                 xtype: 'button',
                                 disabled: true,
                                 itemId: 'mark_as_phoned_btn',
-                                text: 'Отметить'
+                                text: 'Оповестить'
                             }
                         ]
                     },

@@ -164,9 +164,9 @@
                     "var selection = this.getOrder_list().getSelection();",
                     "",
                     "if (selection.length > 0)",
-                    "    this.getMark_as_phoned_btn().setDisabled(false);",
+                    "    this.update_btn_disabled (false);",
                     "else",
-                    "    this.getMark_as_phoned_btn().setDisabled(true);"
+                    "    this.update_btn_disabled (true);"
                 ]
             },
             "designerId": "e82ec224-afc3-4f0a-a35a-005f2545f09a"
@@ -209,9 +209,9 @@
                     "for (var i = 0; i < this.count; i++)",
                     "{",
                     "    var id_order = selection[i].get('id_order');",
-                    "    this.update_status (id_order); ",
+                    "    this.update_status (id_order);",
                     "}",
-                    "    ",
+                    "",
                     "",
                     "",
                     "//console.log(selection);"
@@ -249,19 +249,48 @@
                     "        success: function (result)",
                     "        {",
                     "            t.count -= 1;",
-                    "            ",
+                    "",
                     "            if (t.count === 0)",
                     "            {",
-                    "                Ext.Msg.alert('Iron', result.text);",
-                    "                t.getDoneOrderReport().destroy();",
+                    "",
+                    "",
+                    "                if (result.result == 'ok')",
+                    "                {",
+                    "                    t.getApplication().getController('order_panel_controller').send_sms(id_order, false);",
+                    "                    t.getDoneOrderReport().destroy();",
+                    "                }",
+                    "                else",
+                    "                {",
+                    "                    Ext.Msg.alert ('Iron', result.text);",
+                    "                }",
+                    "",
+                    "",
                     "            }",
-                    "                ",
-                    "                ",
+                    "",
+                    "",
                     "        }",
                     "    });"
                 ]
             },
             "designerId": "1c6bf560-924c-4c04-b8f7-1abb49e80122"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "disabled"
+                ],
+                "fn": "update_btn_disabled",
+                "implHandler": [
+                    "this.getMark_as_phoned_btn().setDisabled(disabled);"
+                ]
+            },
+            "designerId": "c274acb1-9120-4916-82ad-450d973ef0a9"
         }
     ]
 }
