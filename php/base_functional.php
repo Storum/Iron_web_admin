@@ -2,8 +2,8 @@
 
 
 function connect_db (){
-	$db = mysqli_connect('localhost', 'u0194327_root', 'HYvtP5uM', 'u0194327_iron')
-	//$db = mysqli_connect('localhost', 'root', '', 'u0194327_iron')
+	//$db = mysqli_connect('localhost', 'u0194327_root', 'HYvtP5uM', 'u0194327_iron')
+	$db = mysqli_connect('localhost', 'root', '', 'u0194327_iron')
 	//$db = mysqli_connect('localhost', 'root', '', 'iron_base')
 		or die('Unable to connect to MySQL');
 	
@@ -1610,7 +1610,9 @@ function update_order ($id_order, $id_client, $id_action, $container_count, $wei
 
 	$db = connect_db ();
 
-	$sql = "UPDATE tbl_orders set id_client='$id_client', id_action='$id_action', сontainer_count='$container_count', weight_home='$weight_home', weight_dress='$weight_dress', ticket_number = '$ticket_number', is_white = '$is_white', comment='$comment' where id_order = '$id_order'";
+
+	$sql = "UPDATE tbl_orders set id_client=$id_client, id_action=$id_action, сontainer_count=$container_count, weight_home=$weight_home, weight_dress=$weight_dress, ticket_number = $ticket_number, is_white = $is_white, comment='$comment' where id_order = $id_order";
+
 
 	if (mysqli_query ($db, $sql))
 		echo $_GET['callback'].'({result:"ok"})';
@@ -1626,7 +1628,7 @@ function update_order_ext ($id_order, $id_status, $id_client, $id_executor, $id_
 
 	$db = connect_db ();
 
-	$sql = "UPDATE tbl_orders set id_client='$id_client', id_action='$id_action', id_executor='$id_executor', сontainer_count='$container_count', weight_home='$weight_home', weight_dress='$weight_dress', ticket_number = '$ticket_number', is_white = '$is_white', comment='$comment' where id_order = '$id_order'";
+	$sql = "UPDATE tbl_orders set id_client=$id_client, id_action=$id_action, id_executor=$id_executor, сontainer_count=$container_count, weight_home=$weight_home, weight_dress=$weight_dress, ticket_number = $ticket_number, is_white = $is_white, comment='$comment' where id_order = $id_order";
 
 	$sql2 = "INSERT INTO tbl_order_status (id_order, id_status, ds) VALUES ('$id_order', '$id_status', NOW())";
 
@@ -1661,7 +1663,7 @@ function update_order_detail ($id_order_detail, $id_item_type, $id_action, $id_c
 
 	$db = connect_db ();
 
-	$sql = "UPDATE tbl_order_details set id_item_type='$id_item_type', id_action='$id_action', id_color='$id_color', id_gender='$id_gender', wear='$wear', count = '$count', id_price='$id_price', is_label='$is_label', comment='$comment' where id_order_detail = '$id_order_detail'";
+	$sql = "UPDATE tbl_order_details set id_item_type=$id_item_type, id_action=$id_action, id_color=$id_color, id_gender=$id_gender, wear=$wear, count = $count, id_price=$id_price, is_label=$is_label, comment=$comment where id_order_detail = $id_order_detail";
 
 	if (mysqli_query ($db, $sql))
 		echo $_GET['callback'].'({result:"ok"})';

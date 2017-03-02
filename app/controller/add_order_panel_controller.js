@@ -1600,7 +1600,7 @@ Ext.define('Iron.controller.add_order_panel_controller', {
             var wear_name = item_type_name + " (" + item_gender + "; " + item_color;
 
             if (is_item_home_weight === 1)
-                wear_name = item_hanger_text + " " + item_type_name + " (" + item_color;
+                wear_name = item_type_name + " (" + item_color;
 
             if (item_price_type == "Штучный")
                 wear_name += "; " + item_count + " шт.";
@@ -1622,7 +1622,7 @@ Ext.define('Iron.controller.add_order_panel_controller', {
             var wear_name = item_type_name + " (" + item_gender + "; " + item_color;
 
             if (is_item_home_weight === 1)
-                wear_name = item_hanger_text + " " + item_type_name + " (" + item_color;
+                wear_name = item_type_name + " (" + item_color;
 
             if (item_price_type == "Штучный")
                 wear_name += "; " + item_count + " шт.";
