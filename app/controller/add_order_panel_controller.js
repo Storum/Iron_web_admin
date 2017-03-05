@@ -27,6 +27,7 @@ Ext.define('Iron.controller.add_order_panel_controller', {
             id_order_menu: 'panel#addOrderPanel button[itemId=id_order_menu]',
             id_cancle_btn: 'panel#addOrderPanel button[itemId=id_cancle]',
             id_create_order_btn: 'panel#addOrderPanel  button[itemId=id_create_order]',
+            id_start_record: 'panel#addOrderPanel button[itemId=id_start_record]',
             client_field: 'panel#addOrderPanel  textfield[itemId=id_client_field]',
             ticket_number_field: 'panel#addOrderPanel numberfield[itemId=id_ticket_number_field]',
             container_count_field: 'panel#addOrderPanel   numberfield[itemId=id_container_count_field]',
@@ -88,6 +89,9 @@ Ext.define('Iron.controller.add_order_panel_controller', {
             },
             "comment_field": {
                 keyup: 'comment_chenge'
+            },
+            "id_start_record": {
+                tap: 'start_record_tap'
             }
         }
     },
@@ -228,6 +232,31 @@ Ext.define('Iron.controller.add_order_panel_controller', {
 
     comment_chenge: function(textfield, e, eOpts) {
         this.check_all_fields();
+    },
+
+    start_record_tap: function(button, e, eOpts) {
+        if (this.rec_win)
+        {
+            this.rec_win.close();
+            this.rec_win = null;
+            return;
+        }
+
+
+        var t = this;
+
+        var xmlhttp = this.getXmlHttp();
+        xmlhttp.open('GET', 'record_video.html', false);
+        xmlhttp.send(null);
+        if (xmlhttp.status == 200) {
+            var response = xmlhttp.responseText;
+
+            var newWin = window.open('url','windowName','height=800,width=800', 'scrollbars=yes', 'url_record=f');
+            newWin.document.write(response);
+            newWin.url_record =  GlobalVars.url_setting + 'php/loader/endpoint.php';
+            t.rec_win = newWin;
+        //    newWin.d = ;
+        }
     },
 
     load_order_data_to_form: function(record, client_name, name_dist) {
@@ -1365,6 +1394,24 @@ Ext.define('Iron.controller.add_order_panel_controller', {
         record.set('discount', 0);
         record.set('result_action_name', ' ');
         record.set('id_action', 0);
+    },
+
+    getXmlHttp: function() {
+        var xmlhttp;
+            try {
+                xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+            } catch (e) {
+                try {
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                } catch (E) {
+                    xmlhttp = false;
+                }
+            }
+            if (!xmlhttp && typeof XMLHttpRequest != 'undefined') {
+                xmlhttp = new XMLHttpRequest();
+            }
+            return xmlhttp;
+
     }
 
 });

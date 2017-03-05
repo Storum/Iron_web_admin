@@ -158,6 +158,11 @@ Ext.define('Iron.view.AddOrderPanel', {
                                         docked: 'right',
                                         itemId: 'id_order_menu',
                                         text: 'Меню'
+                                    },
+                                    {
+                                        xtype: 'button',
+                                        itemId: 'id_start_record',
+                                        text: 'Запись'
                                     }
                                 ]
                             }

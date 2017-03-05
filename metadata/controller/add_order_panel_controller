@@ -104,6 +104,19 @@
             },
             "codeClass": null,
             "userConfig": {
+                "ref": "id_start_record",
+                "selector": "panel#addOrderPanel button[itemId=id_start_record]"
+            },
+            "designerId": "6fd40a73-b7cc-487b-85f2-7c62f65ad29b"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
                 "ref": "client_field",
                 "selector": "panel#addOrderPanel  textfield[itemId=id_client_field]"
             },
@@ -334,7 +347,7 @@
                     "if (client.getValue() === '')",
                     "{",
                     "    client.setValue(client_name);",
-                    "    client.id_client = record.get('id_client');    ",
+                    "    client.id_client = record.get('id_client');",
                     "}",
                     "",
                     "ticket_number.setValue(record.get('ticket_number'));",
@@ -2313,6 +2326,74 @@
                 ]
             },
             "designerId": "c891b495-e8aa-4170-a85e-795abdbf174e"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "id_start_record",
+                "designer|targetType": "Ext.Button",
+                "fn": "start_record_tap",
+                "implHandler": [
+                    "if (this.rec_win)",
+                    "{",
+                    "    this.rec_win.close();",
+                    "    this.rec_win = null;",
+                    "    return;",
+                    "}",
+                    "    ",
+                    "",
+                    "var t = this;",
+                    "",
+                    "var xmlhttp = this.getXmlHttp();",
+                    "xmlhttp.open('GET', 'record_video.html', false);",
+                    "xmlhttp.send(null);",
+                    "if (xmlhttp.status == 200) {",
+                    "    var response = xmlhttp.responseText;",
+                    "    ",
+                    "    var newWin = window.open('url','windowName','height=800,width=800', 'scrollbars=yes', 'url_record=f');            ",
+                    "    newWin.document.write(response);",
+                    "    newWin.url_record =  GlobalVars.url_setting + 'php/loader/endpoint.php';",
+                    "    t.rec_win = newWin;",
+                    "//    newWin.d = ;",
+                    "}"
+                ],
+                "name": "tap"
+            },
+            "designerId": "457a5084-1d19-4136-82e7-5af1e1120fea"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "getXmlHttp",
+                "implHandler": [
+                    "var xmlhttp;",
+                    "    try {",
+                    "        xmlhttp = new ActiveXObject(\"Msxml2.XMLHTTP\");",
+                    "    } catch (e) {",
+                    "        try {",
+                    "            xmlhttp = new ActiveXObject(\"Microsoft.XMLHTTP\");",
+                    "        } catch (E) {",
+                    "            xmlhttp = false;",
+                    "        }",
+                    "    }",
+                    "    if (!xmlhttp && typeof XMLHttpRequest != 'undefined') {",
+                    "        xmlhttp = new XMLHttpRequest();",
+                    "    }",
+                    "    return xmlhttp;",
+                    ""
+                ]
+            },
+            "designerId": "363270ca-7b29-49ca-a424-49c62fd27899"
         }
     ]
 }

@@ -345,6 +345,19 @@
                                         "text": "Меню"
                                     },
                                     "designerId": "987982e5-af7d-4227-abdf-c91ea56d8de9"
+                                },
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "itemId": "id_start_record",
+                                        "text": "Запись"
+                                    },
+                                    "designerId": "2888dfa0-55d5-45ca-9c2a-2ddf333025a2"
                                 }
                             ]
                         }
