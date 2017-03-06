@@ -161,6 +161,42 @@
                     "type": "string"
                 }
             ]
+        },
+        {
+            "type": "Ext.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "disabled": false,
+                "iconCls": "compose",
+                "itemId": "show_video",
+                "margin": 15,
+                "navId": null,
+                "navView": null,
+                "navViewItemId": null,
+                "text": "Видео"
+            },
+            "designerId": "0f68ec52-ffcd-4e94-80de-a803e3832121",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navId",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navView",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navViewItemId",
+                    "type": "string"
+                }
+            ]
         }
     ]
 }

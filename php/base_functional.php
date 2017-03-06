@@ -4,7 +4,7 @@
 function connect_db (){
 	//$db = mysqli_connect('localhost', 'u0194327_root', 'HYvtP5uM', 'u0194327_iron')
 	$db = mysqli_connect('localhost', 'root', '', 'u0194327_iron')
-	//$db = mysqli_connect('localhost', 'root', '', 'iron_base')
+	//$db = mysqli_connect('localhost', 'u0194327_root', 'HYvtP5uM', 'u0194327_test')
 		or die('Unable to connect to MySQL');
 	
 	mysqli_set_charset($db, 'utf8');
@@ -13,20 +13,17 @@ function connect_db (){
 }
 
 
-function load_blob ($data)
-{
-	$db = connect_db ();
+function write_file_path_to_base ($file_name)
+    {
+        $db = connect_db ();
+        $sql = 'insert into tbl_file_links (path, date_create) select "php/loader/files/'.$file_name.'", NOW()';
 
-	$sql = "insert into test select '$data'";
-	
-	$sql_result = mysqli_query ($db, $sql)
-		or die('Error querying database.');
+        //echo $sql;
+        $sql_result = mysqli_query ($db, $sql);
+        mysqli_close ($db);
 
-	mysqli_close ($db);
-
-
-	echo $_GET['callback'].'({user_list:'.$result_list.'})';
-}
+        return;
+    }
 
 //-------------------------------------------------------------------------------------------------------------------
 //-----------------------------------------------------------ПОЛЬЗОВАТЕЛИ--------------------------------------------
@@ -1228,12 +1225,16 @@ function get_current_order_actions (){
 // Добавление шапки заказа
 function add_order ($id_client, $id_action, $container_count, $weight_home, $weight_dress, $ticket_number, $is_white, $comment){
 
+
 	$db = connect_db ();
 
-	$sql = "INSERT INTO tbl_orders(id_client, id_action, date_create, сontainer_count, weight_home, weight_dress, ticket_number, is_white, comment) 
-			VALUES ('$id_client', '$id_action', CURDATE(), '$container_count','$weight_home', '$weight_dress', '$ticket_number', $is_white,'$comment')";
+	$sql = "INSERT INTO tbl_orders(id_client, id_action, date_create, сontainer_count, weight_home, weight_dress, ticket_number, is_white, comment, id_file_link) 
+			select $id_client, $id_action, CURDATE(), $container_count, $weight_home, $weight_dress, $ticket_number, $is_white, '$comment',
+			(select id_file_link +1 from tbl_file_links
+			where date_create = (select max(date_create) ds from tbl_file_links))";
 
-			
+	//TODO - сделать чтобы без магической единички
+
 
 	if (mysqli_query ($db, $sql))
 	{
@@ -1624,6 +1625,7 @@ function delete_order ($id_order){
 // Обновлние шапки заказа
 function update_order ($id_order, $id_client, $id_action, $container_count, $weight_home, $weight_dress, $ticket_number, $is_white, $comment){
 
+
 	$db = connect_db ();
 
 
@@ -1701,6 +1703,34 @@ function delete_order_detail ($id_order_detail){
 		echo $_GET['callback'].'({result:"error in database"})';
 
 	mysqli_close ($db);
+}
+
+
+// Получить видео по заказу
+function get_order_video_link ($id_order){
+
+	$db = connect_db ();
+
+	$sql = "SELECT path 
+			FROM tbl_file_links l
+				JOIN tbl_orders o ON l.id_file_link = o.id_file_link where id_order = $id_order";
+
+	$sql_result = mysqli_query ($db, $sql)
+		or die('Error querying database.');
+
+	$row = mysqli_fetch_array($sql_result);
+	$result_path = '';
+
+	if (mysqli_num_rows ($sql_result) <> 0)
+	{
+		$result_path = '{path:"'.$row{'path'}.'"}';
+	}
+	else
+		$result_path .= '{}';
+
+	mysqli_close ($db);
+
+	echo $_GET['callback'].'({file_path:'.$result_path.'})';
 }
 
 $function_name = $_GET['function_name'];
@@ -1828,6 +1858,9 @@ switch ($function_name) {
 		break;
 	case 'get_order_list':
 		get_order_list ();
+		break;
+	case 'get_order_video_link':
+		get_order_video_link($_GET['id_order']);
 		break;
 	default:
 		# code...

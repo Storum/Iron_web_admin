@@ -60,6 +60,14 @@ Ext.define('Iron.view.OrderMenu', {
                 margin: 15,
                 iconCls: 'compose',
                 text: 'Для контейнеров'
+            },
+            {
+                xtype: 'button',
+                disabled: false,
+                itemId: 'show_video',
+                margin: 15,
+                iconCls: 'compose',
+                text: 'Видео'
             }
         ]
     }

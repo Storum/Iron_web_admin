@@ -23,7 +23,8 @@ Ext.define('Iron.controller.order_menu_controller', {
             select_client_button: 'button#select_client_button',
             cancel_client_button: 'button#cancel_button',
             create_docs_button: 'button#create_docs',
-            create_lines_button: 'button#create_lines'
+            create_lines_button: 'button#create_lines',
+            show_video_button: 'button#show_video'
         },
 
         control: {
@@ -41,6 +42,9 @@ Ext.define('Iron.controller.order_menu_controller', {
             },
             "panel#addorderMenu button[itemId=create_lines_container_stickers]": {
                 tap: 'create_stickers_tap'
+            },
+            "show_video_button": {
+                tap: 'show_video_tap'
             }
         }
     },
@@ -111,6 +115,51 @@ Ext.define('Iron.controller.order_menu_controller', {
         });
 
 
+    },
+
+    show_video_tap: function(button, e, eOpts) {
+        var t = this;
+        var order_record = t.getApplication().getController('order_panel_controller').get_selected_order();
+
+
+        Ext.data.JsonP.request(
+            {
+                url: GlobalVars.url_setting + 'php/base_functional.php',
+                params:
+                {
+                    function_name		:	'get_order_video_link',
+                    id_order			:	order_record.get('id_order'),
+                    format				:	'json'
+                },
+                callbackKey: 'callback',
+                async: false,
+                success: function (result)
+                {
+
+                    console.log(GlobalVars.url_setting + result.file_path.path);
+                    t.create_video_window(GlobalVars.url_setting + result.file_path.path);
+
+                }
+            });
+    },
+
+    create_video_window: function(file_path) {
+        var t = this;
+
+        var xmlhttp = this.getApplication().getController('add_order_panel_controller').getXmlHttp();
+
+        xmlhttp.open('GET', 'show_video.html', false);
+        xmlhttp.send(null);
+        if (xmlhttp.status == 200) {
+
+            var response = xmlhttp.responseText;
+            var left = (screen.width/2)-(400);
+            var top = (screen.height/2)-(400);
+
+            var newWin = window.open('url','windowName','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, height=800,width=800, top='+top+', left='+left, 'scrollbars=yes', 'url_record=f');
+            newWin.document.write(response);
+            newWin.url_record =  file_path;
+        }
     },
 
     create_contract: function() {

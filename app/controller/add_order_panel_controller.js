@@ -27,7 +27,6 @@ Ext.define('Iron.controller.add_order_panel_controller', {
             id_order_menu: 'panel#addOrderPanel button[itemId=id_order_menu]',
             id_cancle_btn: 'panel#addOrderPanel button[itemId=id_cancle]',
             id_create_order_btn: 'panel#addOrderPanel  button[itemId=id_create_order]',
-            id_start_record: 'panel#addOrderPanel button[itemId=id_start_record]',
             client_field: 'panel#addOrderPanel  textfield[itemId=id_client_field]',
             ticket_number_field: 'panel#addOrderPanel numberfield[itemId=id_ticket_number_field]',
             container_count_field: 'panel#addOrderPanel   numberfield[itemId=id_container_count_field]',
@@ -89,15 +88,14 @@ Ext.define('Iron.controller.add_order_panel_controller', {
             },
             "comment_field": {
                 keyup: 'comment_chenge'
-            },
-            "id_start_record": {
-                tap: 'start_record_tap'
             }
         }
     },
 
     cancle_tap: function(button, e, eOpts) {
         this.close_add_order_form();
+        this.remove_record_window();
+
     },
 
     order_menu_tap: function(target) {
@@ -175,7 +173,13 @@ Ext.define('Iron.controller.add_order_panel_controller', {
         if (add_order_panel.target == 'edit_order')
             this.update_order_to_base_and_close_window ();
         else
+        {
+            this.rec_win.focus();
+        //    this.remove_record_window ();
+
             this.add_order_to_base_and_close_window();
+        }
+
     },
 
     dress_Doubletap: function(dataview, index, target, record, e, eOpts) {
@@ -199,6 +203,15 @@ Ext.define('Iron.controller.add_order_panel_controller', {
         this.removed_records = [];
 
         this.check_weight_is_need();
+
+
+        var add_order_panel = this.getAddOrderPanel();
+
+
+        if (add_order_panel.target !== 'edit_order')
+            this.open_record_window();
+
+
     },
 
     home_weight_change: function(textfield, e, eOpts) {
@@ -234,13 +247,17 @@ Ext.define('Iron.controller.add_order_panel_controller', {
         this.check_all_fields();
     },
 
-    start_record_tap: function(button, e, eOpts) {
+    remove_record_window: function() {
         if (this.rec_win)
         {
             this.rec_win.close();
             this.rec_win = null;
             return;
         }
+    },
+
+    open_record_window: function() {
+        this.remove_record_window();
 
 
         var t = this;
@@ -249,13 +266,17 @@ Ext.define('Iron.controller.add_order_panel_controller', {
         xmlhttp.open('GET', 'record_video.html', false);
         xmlhttp.send(null);
         if (xmlhttp.status == 200) {
-            var response = xmlhttp.responseText;
 
-            var newWin = window.open('url','windowName','height=800,width=800', 'scrollbars=yes', 'url_record=f');
+            var response = xmlhttp.responseText;
+            var left = (screen.width/2)-(160);
+            var top = (screen.height/2)-(120);
+
+            var newWin = window.open('','windowName','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, height=240,width=320, top='+top+', left='+left, 'scrollbars=yes', 'url_record=f');
             newWin.document.write(response);
             newWin.url_record =  GlobalVars.url_setting + 'php/loader/endpoint.php';
             t.rec_win = newWin;
-        //    newWin.d = ;
+
+
         }
     },
 
@@ -664,7 +685,13 @@ Ext.define('Iron.controller.add_order_panel_controller', {
         var weight_home = this.getWeight_field().getValue();
         var weight_dress = this.getWeight_dress_field().getValue();
         var ticket_number = this.getTicket_number_field().getValue();
-        var id_action = this.getId_action_order_field().getValue();
+        var id_action_ = this.getId_action_order_field().getValue();
+        var id_action = 0;
+
+        if (id_action_)
+            id_action = id_action_;
+
+
         var is_white_ = this.getWhite_field().getChecked();
         var is_white = 0;
         if (is_white_)
@@ -789,7 +816,14 @@ Ext.define('Iron.controller.add_order_panel_controller', {
 
 
         var ticket_number = this.getTicket_number_field().getValue();
-        var id_action = this.getId_action_order_field().getValue();
+
+        var id_action_ = this.getId_action_order_field().getValue();
+        var id_action = 0;
+
+        if (id_action_)
+            id_action = id_action_;
+
+
         var is_white_ = this.getWhite_field().getChecked();
         var is_white = 0;
         if (is_white_)

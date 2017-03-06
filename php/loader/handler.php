@@ -6,6 +6,9 @@
  * file(s).
  */
 
+
+include_once (dirname(__FILE__).'/../base_functional.php');
+
 class UploadHandler {
 
     public $allowedExtensions = array();
@@ -21,6 +24,8 @@ class UploadHandler {
     /**
      * Get the original filename
      */
+
+
     public function getName(){
         if (isset($_REQUEST['qqfilename']))
             return $_REQUEST['qqfilename'];
@@ -56,6 +61,7 @@ class UploadHandler {
 
         $targetPath = join(DIRECTORY_SEPARATOR, array($uploadDirectory, $uuid, $name));
         $this->uploadName = $name;
+
 
         if (!file_exists($targetPath)){
             mkdir(dirname($targetPath), 0777, true);
@@ -166,6 +172,10 @@ class UploadHandler {
         $totalParts = isset($_REQUEST['qqtotalparts']) ? (int)$_REQUEST['qqtotalparts'] : 1;
 
         $uuid = $_REQUEST['qquuid'];
+
+            
+
+
         if ($totalParts > 1){
         # chunked upload
 
@@ -184,7 +194,8 @@ class UploadHandler {
 
             $target = $targetFolder.'/'.$partIndex;
             $success = move_uploaded_file($_FILES[$this->inputName]['tmp_name'], $target);
-
+            
+            write_file_path_to_base ($uuid.'/'.$this->uploadName);
             return array("success" => true, "uuid" => $uuid);
 
         }
@@ -200,10 +211,15 @@ class UploadHandler {
                     mkdir(dirname($target), 0777, true);
                 }
                 if (move_uploaded_file($file['tmp_name'], $target)){
+                    
+                    write_file_path_to_base ($uuid.'/'.$this->uploadName);
                     return array('success'=> true, "uuid" => $uuid);
                 }
+                else
+                    write_file_path_to_base ('ddsd');
             }
 
+            write_file_path_to_base ('ffffsfd');
             return array('error'=> 'Could not save uploaded file.' .
                 'The upload was cancelled, or server error encountered');
         }

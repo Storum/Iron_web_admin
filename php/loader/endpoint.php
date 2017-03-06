@@ -29,6 +29,8 @@
  */
 
 // Include the upload handler class
+
+
 require_once "handler.php";
 
 
@@ -67,16 +69,7 @@ function get_request_method() {
     return $_SERVER["REQUEST_METHOD"];
 }
 
-function connect_db (){
-    //$db = mysqli_connect('localhost', 'u0194327_root', 'HYvtP5uM', 'u0194327_iron')
-    $db = mysqli_connect('localhost', 'root', '', 'u0194327_iron')
-    //$db = mysqli_connect('localhost', 'root', '', 'iron_base')
-        or die('Unable to connect to MySQL');
-    
-    mysqli_set_charset($db, 'utf8');
 
-    return $db;
-}
 
 
 
@@ -98,15 +91,8 @@ if ($method == "POST") {
         $result["uploadName"] = $uploader->getUploadName();
     }
 
-    $db = connect_db ();
-    $sql = "insert into tbl_file_links select '".$result["uuid"].'/'.$result["uploadName"].'.webm'."'";
-    $sql_result = mysqli_query ($db, $sql)
-        or die('Error querying database.');
-    mysqli_close ($db);
-
-    //echo $result["uuid"].'/'.$result["uploadName"].'.webm';
-
-    //echo json_encode($result);
+    
+    echo json_encode($result);
 }
 // for delete file requests
 else if ($method == "DELETE") {

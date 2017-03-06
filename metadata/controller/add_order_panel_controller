@@ -77,7 +77,9 @@
                 "designer|targetType": "Ext.Button",
                 "fn": "cancle_tap",
                 "implHandler": [
-                    "this.close_add_order_form();"
+                    "this.close_add_order_form();",
+                    "this.remove_record_window();",
+                    ""
                 ],
                 "name": "tap"
             },
@@ -95,19 +97,6 @@
                 "selector": "panel#addOrderPanel  button[itemId=id_create_order]"
             },
             "designerId": "7ce4e20a-5181-4c0e-bd31-40c59848e0ff"
-        },
-        {
-            "type": "controllerref",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "ref": "id_start_record",
-                "selector": "panel#addOrderPanel button[itemId=id_start_record]"
-            },
-            "designerId": "6fd40a73-b7cc-487b-85f2-7c62f65ad29b"
         },
         {
             "type": "controllerref",
@@ -316,6 +305,61 @@
                 "selector": "panel#clientPanel button[itemId=cancel_button]"
             },
             "designerId": "bd26a7fd-e70d-4eff-8186-317b185a566f"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "remove_record_window",
+                "implHandler": [
+                    "if (this.rec_win)",
+                    "{",
+                    "    this.rec_win.close();",
+                    "    this.rec_win = null;",
+                    "    return;",
+                    "}"
+                ]
+            },
+            "designerId": "585aa4ed-4f2f-458d-8d11-7e397a5e4b62"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "open_record_window",
+                "implHandler": [
+                    "this.remove_record_window();",
+                    "",
+                    "",
+                    "var t = this;",
+                    "",
+                    "var xmlhttp = this.getXmlHttp();",
+                    "xmlhttp.open('GET', 'record_video.html', false);",
+                    "xmlhttp.send(null);",
+                    "if (xmlhttp.status == 200) {",
+                    "",
+                    "    var response = xmlhttp.responseText;",
+                    "    var left = (screen.width/2)-(160);",
+                    "    var top = (screen.height/2)-(120);",
+                    "    ",
+                    "    var newWin = window.open('','windowName','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, height=240,width=320, top='+top+', left='+left, 'scrollbars=yes', 'url_record=f');",
+                    "    newWin.document.write(response);",
+                    "    newWin.url_record =  GlobalVars.url_setting + 'php/loader/endpoint.php';",
+                    "    t.rec_win = newWin;",
+                    "    ",
+                    "    ",
+                    "}"
+                ]
+            },
+            "designerId": "9d901c6c-d45c-4b8a-b623-baceb64ebff9"
         },
         {
             "type": "basicfunction",
@@ -1134,7 +1178,13 @@
                     "if (add_order_panel.target == 'edit_order')",
                     "    this.update_order_to_base_and_close_window ();",
                     "else",
-                    "    this.add_order_to_base_and_close_window();"
+                    "{",
+                    "    this.rec_win.focus();",
+                    "//    this.remove_record_window ();",
+                    "",
+                    "    this.add_order_to_base_and_close_window();",
+                    "}",
+                    "    "
                 ],
                 "name": "tap"
             },
@@ -1155,7 +1205,13 @@
                     "var weight_home = this.getWeight_field().getValue();",
                     "var weight_dress = this.getWeight_dress_field().getValue();",
                     "var ticket_number = this.getTicket_number_field().getValue();",
-                    "var id_action = this.getId_action_order_field().getValue();",
+                    "var id_action_ = this.getId_action_order_field().getValue();",
+                    "var id_action = 0;",
+                    "",
+                    "if (id_action_)",
+                    "    id_action = id_action_;",
+                    "",
+                    "",
                     "var is_white_ = this.getWhite_field().getChecked();",
                     "var is_white = 0;",
                     "if (is_white_)",
@@ -1328,7 +1384,14 @@
                     "",
                     "",
                     "var ticket_number = this.getTicket_number_field().getValue();",
-                    "var id_action = this.getId_action_order_field().getValue();",
+                    "",
+                    "var id_action_ = this.getId_action_order_field().getValue();",
+                    "var id_action = 0;",
+                    "",
+                    "if (id_action_)",
+                    "    id_action = id_action_;",
+                    "",
+                    "",
                     "var is_white_ = this.getWhite_field().getChecked();",
                     "var is_white = 0;",
                     "if (is_white_)",
@@ -1594,7 +1657,16 @@
                     "",
                     "this.removed_records = [];",
                     "",
-                    "this.check_weight_is_need();"
+                    "this.check_weight_is_need();",
+                    "",
+                    "",
+                    "var add_order_panel = this.getAddOrderPanel();",
+                    "",
+                    "",
+                    "if (add_order_panel.target !== 'edit_order')",
+                    "    this.open_record_window();",
+                    "",
+                    ""
                 ],
                 "name": "show"
             },
@@ -2326,45 +2398,6 @@
                 ]
             },
             "designerId": "c891b495-e8aa-4170-a85e-795abdbf174e"
-        },
-        {
-            "type": "controlleraction",
-            "reference": {
-                "name": "listeners",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|controlQuery": "id_start_record",
-                "designer|targetType": "Ext.Button",
-                "fn": "start_record_tap",
-                "implHandler": [
-                    "if (this.rec_win)",
-                    "{",
-                    "    this.rec_win.close();",
-                    "    this.rec_win = null;",
-                    "    return;",
-                    "}",
-                    "    ",
-                    "",
-                    "var t = this;",
-                    "",
-                    "var xmlhttp = this.getXmlHttp();",
-                    "xmlhttp.open('GET', 'record_video.html', false);",
-                    "xmlhttp.send(null);",
-                    "if (xmlhttp.status == 200) {",
-                    "    var response = xmlhttp.responseText;",
-                    "    ",
-                    "    var newWin = window.open('url','windowName','height=800,width=800', 'scrollbars=yes', 'url_record=f');            ",
-                    "    newWin.document.write(response);",
-                    "    newWin.url_record =  GlobalVars.url_setting + 'php/loader/endpoint.php';",
-                    "    t.rec_win = newWin;",
-                    "//    newWin.d = ;",
-                    "}"
-                ],
-                "name": "tap"
-            },
-            "designerId": "457a5084-1d19-4136-82e7-5af1e1120fea"
         },
         {
             "type": "basicfunction",
