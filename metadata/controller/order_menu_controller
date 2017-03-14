@@ -694,7 +694,7 @@
                     "    result_table += '<td>' + weight_dress_item_sum.toString() + ' руб. </td></tr>';",
                     "}",
                     "",
-                    "result_table += '<tr><th align=\"left\">Итого:</th> <th align=\"left\">' + Math.floor((no_weight_item_sum + weight_home_item_sum + weight_dress_item_sum)/10)*10 + ' руб. </th> <tr>';",
+                    "result_table += '<tr><th align=\"left\">Итого:</th> <th align=\"left\">' + Math.floor((no_weight_item_sum + weight_home_item_sum + weight_dress_item_sum)/5)*5 + ' руб. </th> <tr>';",
                     "",
                     "result_table += '</table> </div>';",
                     "",

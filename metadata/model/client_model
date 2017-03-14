@@ -122,6 +122,32 @@
             },
             "codeClass": null,
             "userConfig": {
+                "name": "phone",
+                "type": "string"
+            },
+            "designerId": "755b2b55-bd70-4fed-9637-21919e44c3dc"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "address",
+                "type": "string"
+            },
+            "designerId": "57083213-4cd7-4562-a79a-775984b54313"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
                 "name": "id_client",
                 "type": "int"
             },

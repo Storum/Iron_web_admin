@@ -18,6 +18,28 @@
             },
             "codeClass": null,
             "userConfig": {
+                "designer|controlQuery": "addClientPanel",
+                "designer|targetType": "Ext.form.Panel",
+                "fn": "onFormpanelShow",
+                "implHandler": [
+                    "this.update_gender_list();",
+                    "",
+                    "",
+                    "",
+                    ""
+                ],
+                "name": "show"
+            },
+            "designerId": "d3d7a2e6-5e86-48da-8105-9459b5bd9e08"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
                 "designer|controlQuery": "panel#addClientPanel  textfield[target='add_client']",
                 "designer|targetType": "Ext.field.Text",
                 "fn": "textdata_changed",
@@ -145,6 +167,32 @@
             },
             "codeClass": null,
             "userConfig": {
+                "ref": "client_phone",
+                "selector": "panel#addClientPanel  textfield[itemId=client_phone_textfield]"
+            },
+            "designerId": "b63cd58f-b68b-4062-bc45-11bd91d54a50"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "client_address",
+                "selector": "panel#addClientPanel  textfield[itemId=client_address_textfield]"
+            },
+            "designerId": "daff4216-703b-4959-8972-677cde07a0d5"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
                 "ref": "add_btn",
                 "selector": "panel#addClientPanel button[itemId=add_btn]"
             },
@@ -173,10 +221,99 @@
             "userConfig": {
                 "fn": "update_gender_list",
                 "implHandler": [
+                    "var t = this;",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name\t: 'get_gender_list',",
+                    "            format\t\t\t: 'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        scope: this,",
+                    "        success: function (result)",
+                    "        {",
+                    "",
+                    "            t.update_gender_store (result.gender_list);",
+                    "",
+                    "        }",
+                    "    });",
                     ""
                 ]
             },
             "designerId": "3cdd0c0f-b337-49e0-9b68-451bd64567b3"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "data"
+                ],
+                "fn": "update_gender_store",
+                "implHandler": [
+                    "",
+                    "var gender_field = this.getClient_gender();",
+                    "var gender_store = gender_field.getStore();",
+                    "",
+                    "gender_store.data.clear();",
+                    "gender_store.setData(data);",
+                    "",
+                    "this.set_fields_value_if_exists();"
+                ]
+            },
+            "designerId": "d452f523-502f-4153-8ee3-50f504179127"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "set_fields_value_if_exists",
+                "implHandler": [
+                    "var add_client_panel = this.getAddClientPanel();",
+                    "",
+                    "if (add_client_panel.target == 'edit_client')",
+                    "{",
+                    "    var client = this.getApplication().getController(add_client_panel.source).get_selected_client_record();",
+                    "    var name = this.getClient_name();",
+                    "    var surname = this.getClient_surname();",
+                    "    var patronimyc = this.getClient_patronymic();",
+                    "    var gender = this.getClient_gender();",
+                    "    var birthday = this.getClient_birthday();",
+                    "    var comment = this.getClient_comment();",
+                    "    var phone = this.getClient_phone();",
+                    "    var address = this.getClient_address();",
+                    "",
+                    "    this.getAdd_btn().setHtml('OK');",
+                    "",
+                    "",
+                    "    name.setValue(client.get('name'));",
+                    "    surname.setValue(client.get('surname'));",
+                    "    patronimyc.setValue(client.get('patronymic'));",
+                    "    gender.setValue(client.get('gender'));",
+                    "    ",
+                    "    if (client.get('birthday'))",
+                    "        birthday.setValue(Iron.Utilities.date_to_string(client.get('birthday')));",
+                    "    ",
+                    "    comment.setValue(client.get('comment'));",
+                    "    phone.setValue(client.get('phone'));",
+                    "    address.setValue(client.get('address'));",
+                    "",
+                    "    this.client = client;",
+                    "}"
+                ]
+            },
+            "designerId": "7fd71d6f-ab41-41bf-aa47-1bd22b0965d5"
         },
         {
             "type": "basicfunction",
@@ -192,7 +329,7 @@
                     "add_client_panel.destroy();",
                     "",
                     "",
-                    "this.getApplication().getController('client_panel_controller').update_client_list();"
+                    "this.getApplication().getController(add_client_panel.source).update_client_list();"
                 ]
             },
             "designerId": "30b8bc6a-2750-4a75-85f4-e5592c7213c7"
@@ -225,15 +362,31 @@
             "userConfig": {
                 "fn": "check_all_fields",
                 "implHandler": [
-                    "var id_gender = this.getClient_gender().getValue();",
+                    "var gender_field = this.getClient_gender();",
+                    "",
+                    "",
                     "var name = this.getClient_name().getValue();",
                     "var surname = this.getClient_surname().getValue();",
                     "var patronymic = this.getClient_patronymic().getValue();",
-                    "var birthday = this.getClient_birthday().getValue();",
                     "var comment = this.getClient_comment().getValue();",
+                    "var phone = this.getClient_phone().getValue();",
                     "",
                     "",
-                    "if (birthday && id_gender && name.length > 0 && surname.length >0 && patronymic.length >0)",
+                    "",
+                    "",
+                    "var sex_by_russian_name = new SexByRussianName(surname, name, patronymic);",
+                    "var gender = sex_by_russian_name.get_gender();",
+                    "",
+                    "//console.log(); // 1 — мужской, 0 — женский, undefined — не определен.",
+                    "",
+                    "if (gender == 1)",
+                    "    gender_field.setValue(gender_field.getStore().findRecord('name', 'Мужчина').get('id_gender'));",
+                    "else if (gender === 0)",
+                    "    gender_field.setValue(gender_field.getStore().findRecord('name', 'Женщина').get('id_gender'));",
+                    "",
+                    "var id_gender = gender_field.getValue();",
+                    "",
+                    "if (id_gender && name.length > 0 && surname.length >0 && patronymic.length >0 && phone.length > 0)",
                     "    this.set_buttons_disable (false);",
                     "else",
                     "    this.set_buttons_disable (true);",
@@ -275,7 +428,9 @@
                     "patronymic",
                     "id_gender",
                     "birthday",
-                    "comment"
+                    "comment",
+                    "phone",
+                    "address"
                 ],
                 "fn": "add_client",
                 "implHandler": [
@@ -293,6 +448,8 @@
                     "            id_gender\t\t: id_gender,",
                     "            birthday\t\t: birthday,",
                     "            comment\t\t\t: comment,",
+                    "            phone\t\t\t: phone,",
+                    "            address\t\t\t: address,",
                     "            format\t\t\t: 'json'",
                     "        },",
                     "        callbackKey: 'callback',",
@@ -331,14 +488,82 @@
                     "var patronymic = this.getClient_patronymic().getValue();",
                     "var birthday = this.getClient_birthday().getValue();",
                     "var comment = this.getClient_comment().getValue();",
+                    "var phone = this.getClient_phone().getValue();",
+                    "var address = this.getClient_address().getValue();",
                     "",
                     "",
+                    "var add_client_panel = this.getAddClientPanel();",
                     "",
-                    "this.add_client(name, surname, patronymic, id_gender, birthday, comment);"
+                    "",
+                    "if (add_client_panel.target == 'edit_client')",
+                    "    this.update_client (this.client.get('id_client'), name, surname, patronymic, id_gender, birthday, comment, phone, address);",
+                    "else",
+                    "    this.add_client (name, surname, patronymic, id_gender, birthday, comment, phone, address);",
+                    "",
+                    "",
+                    ""
                 ],
                 "name": "tap"
             },
             "designerId": "77a4a1e7-a6ac-4331-9a72-1bab34495d97"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "id_client",
+                    "name",
+                    "surname",
+                    "patronymic",
+                    "id_gender",
+                    "birthday",
+                    "comment",
+                    "phone",
+                    "address"
+                ],
+                "fn": "update_client",
+                "implHandler": [
+                    "var t = this;",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name\t: 'update_client_data',",
+                    "            id_client\t\t: id_client,",
+                    "            name\t\t\t: name,",
+                    "            surname\t\t\t: surname,",
+                    "            patronymic\t\t: patronymic,",
+                    "            id_gender\t\t: id_gender,",
+                    "            birthday\t\t: birthday,",
+                    "            comment\t\t\t: comment,",
+                    "            phone\t\t\t: phone,",
+                    "            address\t\t\t: address,",
+                    "            format\t\t\t: 'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        scope: this,",
+                    "        success: function (result)",
+                    "        {",
+                    "            Ext.Msg.alert('Iron', result.text);",
+                    "",
+                    "            if (result.result == 'ok')",
+                    "                t.close_add_client_form ();",
+                    "",
+                    "        }",
+                    "    });",
+                    "",
+                    "",
+                    ""
+                ]
+            },
+            "designerId": "39234d0e-9b34-4700-aab0-a378824be033"
         }
     ]
 }

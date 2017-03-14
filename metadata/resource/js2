@@ -1,0 +1,13 @@
+{
+    "type": "jsresource",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "js2",
+        "url": "app/sex_by_russian_name.js"
+    },
+    "designerId": "1098a1c0-913d-4fbc-a812-5655234a961f"
+}

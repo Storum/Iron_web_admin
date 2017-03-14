@@ -652,6 +652,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "Iron.controller.address_panel_controller": [],
   "Iron.controller.client_menu_controller": [],
   "Iron.controller.client_panel_controller": [],
+  "Iron.controller.client_panel_ext_controller": [],
   "Iron.controller.done_order_report_controller": [],
   "Iron.controller.itemgroup_controller": [],
   "Iron.controller.order_menu_controller": [],
@@ -700,6 +701,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "Iron.view.AddressPanel": [],
   "Iron.view.ClientMenu": [],
   "Iron.view.ClientPanel": [],
+  "Iron.view.ClientPanelExt": [],
   "Iron.view.ContactPanel": [],
   "Iron.view.DoneOrderReport": [],
   "Iron.view.HomePanel": [],
@@ -1443,6 +1445,7 @@ Ext.ClassManager.addNameAliasMappings({
   "Iron.controller.address_panel_controller": [],
   "Iron.controller.client_menu_controller": [],
   "Iron.controller.client_panel_controller": [],
+  "Iron.controller.client_panel_ext_controller": [],
   "Iron.controller.done_order_report_controller": [],
   "Iron.controller.itemgroup_controller": [],
   "Iron.controller.order_menu_controller": [],
@@ -1512,6 +1515,9 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "Iron.view.ClientPanel": [
     "widget.clientpanel"
+  ],
+  "Iron.view.ClientPanelExt": [
+    "widget.clientpanelext"
   ],
   "Iron.view.ContactPanel": [
     "widget.contactpanel"

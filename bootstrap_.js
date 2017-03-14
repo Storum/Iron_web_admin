@@ -645,39 +645,55 @@ Ext.ClassManager.addNameAlternateMappings({
   "Iron.controller.Navigation": [],
   "Iron.controller.add_address_controller": [],
   "Iron.controller.add_client_controller": [],
-  "Iron.controller.add_order_menu_controller": [],
-  "Iron.controller.add_order_panel": [],
+  "Iron.controller.add_dress_for_order_controller": [],
+  "Iron.controller.add_order_panel_controller": [],
   "Iron.controller.add_phone_controller": [],
   "Iron.controller.add_user_panel_controller": [],
   "Iron.controller.address_panel_controller": [],
-  "Iron.controller.catalog_menu_controller": [],
   "Iron.controller.client_menu_controller": [],
   "Iron.controller.client_panel_controller": [],
+  "Iron.controller.done_order_report_controller": [],
   "Iron.controller.itemgroup_controller": [],
+  "Iron.controller.order_menu_controller": [],
   "Iron.controller.order_panel_controller": [],
   "Iron.controller.phone_panel_controller": [],
+  "Iron.controller.report_menu_controller": [],
   "Iron.controller.user_menu_controller": [],
   "Iron.controller.user_panel_controller": [],
   "Iron.model.address_model": [],
   "Iron.model.address_type_model": [],
   "Iron.model.client_model": [],
+  "Iron.model.color_model": [],
   "Iron.model.gender_model": [],
   "Iron.model.item_type_groups_model": [],
-  "Iron.model.itemgroup_model": [],
+  "Iron.model.item_type_model": [],
+  "Iron.model.order_actions_model": [],
+  "Iron.model.order_detail_model": [],
+  "Iron.model.order_for_phone": [],
+  "Iron.model.order_model": [],
+  "Iron.model.order_status_model": [],
   "Iron.model.phone_model": [],
+  "Iron.model.select_price_model": [],
   "Iron.model.user_model": [],
   "Iron.store.address_store": [],
   "Iron.store.address_type_store": [],
   "Iron.store.client_store": [],
+  "Iron.store.color_store": [],
   "Iron.store.gender_store": [],
   "Iron.store.item_type_groups_store": [],
-  "Iron.store.itemgroup_store": [],
+  "Iron.store.item_type_store": [],
+  "Iron.store.order_actions_store": [],
+  "Iron.store.order_detail_store": [],
+  "Iron.store.order_for_phone": [],
+  "Iron.store.order_status_store": [],
+  "Iron.store.order_store": [],
   "Iron.store.phone_store": [],
+  "Iron.store.select_price_store": [],
   "Iron.store.user_store": [],
   "Iron.view.AboutPanel": [],
   "Iron.view.AddAddressPanel": [],
   "Iron.view.AddClientPanel": [],
-  "Iron.view.AddOrderMenu": [],
+  "Iron.view.AddDressForOrderPanel": [],
   "Iron.view.AddOrderPanel": [],
   "Iron.view.AddPhonePanel": [],
   "Iron.view.AddUserPanel": [],
@@ -685,15 +701,17 @@ Ext.ClassManager.addNameAlternateMappings({
   "Iron.view.ClientMenu": [],
   "Iron.view.ClientPanel": [],
   "Iron.view.ContactPanel": [],
+  "Iron.view.DoneOrderReport": [],
   "Iron.view.HomePanel": [],
   "Iron.view.ItemGroupsPanel": [],
   "Iron.view.MainView": [],
   "Iron.view.NavMenu": [],
+  "Iron.view.OrderMenu": [],
   "Iron.view.OrderPanel": [],
   "Iron.view.PhonePanel": [],
+  "Iron.view.ReportsMenuPanel": [],
   "Iron.view.UserMenu": [],
   "Iron.view.UserPanel": [],
-  "Iron.view.catalogMenu": [],
   "MyApp.view.Main": []
 });
 Ext.ClassManager.addNameAliasMappings({
@@ -1418,34 +1436,52 @@ Ext.ClassManager.addNameAliasMappings({
   "Iron.controller.Navigation": [],
   "Iron.controller.add_address_controller": [],
   "Iron.controller.add_client_controller": [],
-  "Iron.controller.add_order_menu_controller": [],
-  "Iron.controller.add_order_panel": [],
+  "Iron.controller.add_dress_for_order_controller": [],
+  "Iron.controller.add_order_panel_controller": [],
   "Iron.controller.add_phone_controller": [],
   "Iron.controller.add_user_panel_controller": [],
   "Iron.controller.address_panel_controller": [],
-  "Iron.controller.catalog_menu_controller": [],
   "Iron.controller.client_menu_controller": [],
   "Iron.controller.client_panel_controller": [],
+  "Iron.controller.done_order_report_controller": [],
   "Iron.controller.itemgroup_controller": [],
+  "Iron.controller.order_menu_controller": [],
   "Iron.controller.order_panel_controller": [],
   "Iron.controller.phone_panel_controller": [],
+  "Iron.controller.report_menu_controller": [],
   "Iron.controller.user_menu_controller": [],
   "Iron.controller.user_panel_controller": [],
   "Iron.model.address_model": [],
   "Iron.model.address_type_model": [],
   "Iron.model.client_model": [],
+  "Iron.model.color_model": [],
   "Iron.model.gender_model": [],
   "Iron.model.item_type_groups_model": [],
-  "Iron.model.itemgroup_model": [],
+  "Iron.model.item_type_model": [],
+  "Iron.model.order_actions_model": [],
+  "Iron.model.order_detail_model": [
+    "model.orderdetail"
+  ],
+  "Iron.model.order_for_phone": [],
+  "Iron.model.order_model": [],
+  "Iron.model.order_status_model": [],
   "Iron.model.phone_model": [],
+  "Iron.model.select_price_model": [],
   "Iron.model.user_model": [],
   "Iron.store.address_store": [],
   "Iron.store.address_type_store": [],
   "Iron.store.client_store": [],
+  "Iron.store.color_store": [],
   "Iron.store.gender_store": [],
   "Iron.store.item_type_groups_store": [],
-  "Iron.store.itemgroup_store": [],
+  "Iron.store.item_type_store": [],
+  "Iron.store.order_actions_store": [],
+  "Iron.store.order_detail_store": [],
+  "Iron.store.order_for_phone": [],
+  "Iron.store.order_status_store": [],
+  "Iron.store.order_store": [],
   "Iron.store.phone_store": [],
+  "Iron.store.select_price_store": [],
   "Iron.store.user_store": [],
   "Iron.view.AboutPanel": [
     "widget.aboutpanel"
@@ -1456,8 +1492,8 @@ Ext.ClassManager.addNameAliasMappings({
   "Iron.view.AddClientPanel": [
     "widget.addclientpanel"
   ],
-  "Iron.view.AddOrderMenu": [
-    "widget.addordermenu"
+  "Iron.view.AddDressForOrderPanel": [
+    "widget.adddressfororderpanel"
   ],
   "Iron.view.AddOrderPanel": [
     "widget.addorderpanel"
@@ -1480,6 +1516,9 @@ Ext.ClassManager.addNameAliasMappings({
   "Iron.view.ContactPanel": [
     "widget.contactpanel"
   ],
+  "Iron.view.DoneOrderReport": [
+    "widget.doneorderreport"
+  ],
   "Iron.view.HomePanel": [
     "widget.homepanel"
   ],
@@ -1492,20 +1531,23 @@ Ext.ClassManager.addNameAliasMappings({
   "Iron.view.NavMenu": [
     "widget.navmenu"
   ],
+  "Iron.view.OrderMenu": [
+    "widget.addordermenu"
+  ],
   "Iron.view.OrderPanel": [
     "widget.orderpanel"
   ],
   "Iron.view.PhonePanel": [
     "widget.phonepanel"
   ],
+  "Iron.view.ReportsMenuPanel": [
+    "widget.reportsmenupanel"
+  ],
   "Iron.view.UserMenu": [
     "widget.usermenu"
   ],
   "Iron.view.UserPanel": [
     "widget.userpanel"
-  ],
-  "Iron.view.catalogMenu": [
-    "widget.catalogmenu"
   ],
   "MyApp.view.Main": [
     "widget.main"

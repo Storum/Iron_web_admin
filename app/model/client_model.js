@@ -55,6 +55,14 @@ Ext.define('Iron.model.client_model', {
                 type: 'string'
             },
             {
+                name: 'phone',
+                type: 'string'
+            },
+            {
+                name: 'address',
+                type: 'string'
+            },
+            {
                 name: 'id_client',
                 type: 'int'
             }

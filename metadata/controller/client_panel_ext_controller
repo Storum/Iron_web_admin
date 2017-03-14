@@ -1,0 +1,379 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "client_panel_ext_controller",
+        "stores": [
+            "client_store"
+        ]
+    },
+    "designerId": "cb958cf7-50f9-4b8d-a0a4-e4399baa4baa",
+    "cn": [
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "clientPanelExt",
+                "selector": "panel#clientPanelExt"
+            },
+            "designerId": "bfcb2bc2-b51f-48f1-99f4-377cc2853772"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "client_list",
+                "selector": "panel#clientPanelExt list[itemId=client_list]"
+            },
+            "designerId": "07304dd5-d8b3-47be-ab63-8900a518c2bf"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "add_client_btn",
+                "selector": "panel#clientPanelExt button[itemId=add_client_btn]"
+            },
+            "designerId": "b94c9249-cd75-42ed-bb08-eaf2f97ed056"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "delete_client_btn",
+                "selector": "panel#clientPanelExt button[itemId=delete_client_btn]"
+            },
+            "designerId": "0ba9f001-eeec-49ff-868b-8505a15afb15"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "menu_client_btn",
+                "selector": "panel#clientPanelExt button[itemId=menu_client_btn]"
+            },
+            "designerId": "bdd3d3dd-1314-4e35-93a3-7e0522747127"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "cancle_btn",
+                "selector": "panel#clientPanelExt button[itemId=cancle_btn]"
+            },
+            "designerId": "7bbe1337-6260-41d4-91f9-998fb21fa228"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "search_field",
+                "selector": "panel#clientPanelExt searchfield[itemId=search_field]"
+            },
+            "designerId": "e80f61ce-71f5-4f27-9ee4-477f7694850e"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "update_client_list",
+                "implHandler": [
+                    "var t = this;",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name: 'get_client_list',",
+                    "            format: 'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        async: false,",
+                    "        success: function (result)",
+                    "        {",
+                    "            t.update_client_store (result.client_list);",
+                    "        }",
+                    "    });"
+                ]
+            },
+            "designerId": "27e2baba-4a49-44a5-84cf-bce088a3c3a2"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "data"
+                ],
+                "fn": "update_client_store",
+                "implHandler": [
+                    "",
+                    "var client_ListView = this.getClient_list();",
+                    "var client_store = client_ListView.getStore();",
+                    "",
+                    "client_store.data.clear();",
+                    "client_store.setData(data);",
+                    "",
+                    ""
+                ]
+            },
+            "designerId": "c9f9d534-3a88-4d26-a1df-77e2c73211fc"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "panel#clientPanelExt",
+                "designer|targetType": "Ext.form.Panel",
+                "fn": "onFormpanelShow",
+                "implHandler": [
+                    "this.update_client_list();",
+                    "",
+                    "",
+                    "if (this.getClientPanelExt().target == 'select_client')",
+                    "{",
+                    "    this.getMenu_client_btn().setHidden(true);",
+                    "    this.getCancle_btn().setHidden(false);",
+                    "}"
+                ],
+                "name": "show"
+            },
+            "designerId": "a5fbf582-6b5e-4925-bfe2-6ad76bfe16fc"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "client_list",
+                "designer|targetType": "Ext.dataview.List",
+                "fn": "onListItemTap",
+                "implHandler": [
+                    "this.getDelete_client_btn().setDisabled(false);"
+                ],
+                "name": "itemtap"
+            },
+            "designerId": "9508d586-98b0-491c-8af6-d0839fab37d4"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "client_list",
+                "designer|targetType": "Ext.dataview.List",
+                "fn": "onListItemDoubletap",
+                "implHandler": [
+                    "var client_panel = this.getClientPanelExt();",
+                    "if (client_panel.target == 'select_client')",
+                    "{",
+                    "    var client_list = this.getClient_list();",
+                    "    this.getApplication().getController(client_panel.source).set_client_name(client_list.getSelection()[0].get('name'), client_list.getSelection()[0].get('id_client'));",
+                    "    client_panel.destroy();",
+                    "    return;",
+                    "}",
+                    "    ",
+                    "",
+                    "addClientPanel = Ext.create('widget.addclientpanel');",
+                    "addClientPanel.source = 'client_panel_ext_controller';",
+                    "addClientPanel.target = 'edit_client';",
+                    "Ext.Viewport.add(addClientPanel);",
+                    "addClientPanel.show();"
+                ],
+                "name": "itemdoubletap"
+            },
+            "designerId": "92dbbd83-a12e-40f7-9619-02313f021964"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "search_field",
+                "designer|targetType": "Ext.field.Search",
+                "fn": "onSearchfieldKeyup",
+                "implHandler": [
+                    "var value = textfield.getValue(),",
+                    "store = this.getClient_list().getStore();",
+                    "store.clearFilter();",
+                    "",
+                    "store.filter('surname', value);"
+                ],
+                "name": "keyup"
+            },
+            "designerId": "beafceb2-77e7-44e0-8bc6-89fcb704666e"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "get_selected_client_record",
+                "implHandler": [
+                    "var client_list = this.getClient_list();",
+                    "",
+                    "",
+                    "return client_list.getStore().findRecord('id_client', client_list.getSelection()[0].get('id_client'));"
+                ]
+            },
+            "designerId": "77f8c4bd-0201-4ff9-91a7-0110f7b7f55b"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "add_client_btn",
+                "designer|targetType": "Ext.Button",
+                "fn": "add_client_tap",
+                "implHandler": [
+                    "addClientPanel = Ext.create('widget.addclientpanel');",
+                    "addClientPanel.source = 'client_panel_ext_controller';",
+                    "addClientPanel.target = 'add_client';",
+                    "Ext.Viewport.add(addClientPanel);",
+                    "addClientPanel.show();"
+                ],
+                "name": "tap"
+            },
+            "designerId": "dd080a57-6527-42f1-bba5-59fb6105ca67"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "delete_client_btn",
+                "designer|targetType": "Ext.Button",
+                "fn": "delete_client_tap",
+                "implHandler": [
+                    "var client_list = this.getClient_list();",
+                    "var selected_id_client = client_list.getSelection ()[0].get('id_client');",
+                    "",
+                    "this.delete_client (selected_id_client, false);"
+                ],
+                "name": "tap"
+            },
+            "designerId": "43a8be01-6946-4020-8644-ff8252f1ff15"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "id_client"
+                ],
+                "fn": "delete_client",
+                "implHandler": [
+                    "var t = this;",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name: 'delete_client',",
+                    "            id_client: id_client,",
+                    "            format: 'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        async: false,",
+                    "        success: function (result)",
+                    "        {",
+                    "            t.update_client_list();",
+                    "            t.getDelete_client_btn().setDisabled(true);",
+                    "            ",
+                    "            Ext.Msg.alert('Iron', result.text);",
+                    "        }",
+                    "    });"
+                ]
+            },
+            "designerId": "dcb4199d-4270-42f4-9fa7-d811d88dd436"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "cancle_btn",
+                "designer|targetType": "Ext.Button",
+                "fn": "cancle_tap",
+                "implHandler": [
+                    "var client_panel = this.getClientPanelExt();",
+                    "client_panel.destroy();"
+                ],
+                "name": "tap"
+            },
+            "designerId": "c1dd1bc5-fc23-4ff4-ba49-56c58295a314"
+        }
+    ]
+}

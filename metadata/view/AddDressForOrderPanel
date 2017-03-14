@@ -231,6 +231,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "checked": true,
                         "itemId": "is_lable_fld",
                         "label": "Бирка:"
                     },

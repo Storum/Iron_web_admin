@@ -286,21 +286,8 @@
             },
             "codeClass": null,
             "userConfig": {
-                "ref": "select_client_button",
-                "selector": "panel#clientPanel button[itemId=select_client_button]"
-            },
-            "designerId": "9400ee33-65be-42e4-a92d-d61ed996bf04"
-        },
-        {
-            "type": "controllerref",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
                 "ref": "cancel_client_button",
-                "selector": "panel#clientPanel button[itemId=cancel_button]"
+                "selector": "panel#clientPanelExt button[itemId=cancle_btn]"
             },
             "designerId": "bd26a7fd-e70d-4eff-8186-317b185a566f"
         },
@@ -905,22 +892,19 @@
                 "fn": "client_select",
                 "implHandler": [
                     "",
-                    "client_panel = Ext.create ('widget.clientpanel');",
+                    "client_panel = Ext.create ('widget.clientpanelext');",
                     "client_panel.setModal(true);",
                     "client_panel.setCentered(true);",
                     "client_panel.source = 'add_order_panel_controller';",
+                    "client_panel.target = 'select_client';",
                     "Ext.Viewport.add (client_panel);",
                     "client_panel.show ();",
                     "",
                     "",
-                    "var select_client_btn = this.getSelect_client_button();",
-                    "select_client_btn.setHidden(false);",
-                    "",
-                    "var cancle_client_btn = this.getCancel_client_button();",
-                    "cancle_client_btn.setHidden(false);",
                     "",
                     "",
-                    "client_panel.setWidth(980);"
+                    "client_panel.setWidth(768);",
+                    "client_panel.setHeight(500);"
                 ],
                 "name": "tap"
             },
@@ -1142,7 +1126,12 @@
                     "var weight_home = this.getWeight_field().getValue();",
                     "var weight_dress = this.getWeight_dress_field().getValue();",
                     "var ticket_number = this.getTicket_number_field().getValue();",
-                    "var id_action = this.getId_action_order_field().getValue();",
+                    "var id_action_ = this.getId_action_order_field().getValue();",
+                    "var id_action = id_action_;",
+                    "",
+                    "if (!id_action_)",
+                    "    id_action = 0;",
+                    "",
                     "var is_white_ = this.getWhite_field().getChecked();",
                     "var is_white = 0;",
                     "if (is_white_)",
@@ -1790,7 +1779,7 @@
                     "    var total_sum_wo_disc = weight_home_items_sum_wo_disc + weight_dress_items_sum_wo_disc + order_detail_info.no_weight_item_wo_disc;",
                     "    var total_discount = order_detail_info.no_weight_item_discount + weight_discount;",
                     "",
-                    "    text = '<div> <font size=\"2\" color=\"white\"> Общая сумма заказа: </font> <font size=\"3\" color=\"yellow\">' + Math.floor(total_sum/10)*10 + ' руб.: </div> </font> ' +",
+                    "    text = '<div> <font size=\"2\" color=\"white\"> Общая сумма заказа: </font> <font size=\"3\" color=\"yellow\">' + Math.floor(total_sum/5)*5 + ' руб.: </div> </font> ' +",
                     "            '<font size=\"2\" color=\"yellow\"> Поштучно: ' + order_detail_info.no_weight_item_sum + ' руб.; </font>' +",
                     "            '<font size=\"2\" color=\"yellow\"> Весовая одежда: ' + parseFloat(weight_dress_items_sum.toFixed(2)) + ' руб.; </font>' +",
                     "            '<font size=\"2\" color=\"yellow\"> Весовой текстиль: ' + parseFloat(weight_home_items_sum.toFixed(2)) + ' руб.; </font>' +",

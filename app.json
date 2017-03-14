@@ -21,6 +21,9 @@
       },
       {
          "path": "app/Utilities.js"
+      },
+      {
+         "path": "app/sex_by_russian_name.js"
       }
    ],
    "css": [
@@ -34,6 +37,9 @@
          "theme": "Default",
          "path": "resources/css/sencha-touch.css",
          "_architect_active_theme": true
+      },
+      {
+         "path": "custome_styles"
       }
    ],
    "appCache": {

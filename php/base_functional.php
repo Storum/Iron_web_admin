@@ -1,15 +1,22 @@
-<?php
-
+﻿<?php
 
 function connect_db (){
-	$db = mysqli_connect('localhost', 'u0194327_root', 'HYvtP5uM', 'u0194327_iron')
-	//$db = mysqli_connect('localhost', 'root', '', 'u0194327_iron')
-	//$db = mysqli_connect('localhost', 'root', '', 'iron_base')
-		or die('Unable to connect to MySQL');
 	
-	mysqli_set_charset($db, 'utf8');
+	// $link = mysql_connect('localhost', 'root', '')
+	// 	or die('Unable to connect to MySQL');
+	
+	$link = mysql_connect('localhost', 'u0194327_root', 'HYvtP5uM')
+		or die('Unable to connect to MySQL');
 
-	return $db;
+
+	mysql_set_charset ('utf8');
+
+ 	mysql_select_db ('u0194327_iron', $link);
+
+
+	
+
+	//return $db;
 }
 
 //-------------------------------------------------------------------------------------------------------------------
@@ -18,17 +25,17 @@ function connect_db (){
 
 function get_user_list (){
 
-	$db = connect_db ();
+	connect_db ();
 
 	$sql = 'SELECT SQL_NO_CACHE * FROM tbl_users where name is not null';
 	
-	$sql_result = mysqli_query ($db, $sql)
+	$sql_result = mysql_query ($sql)
 		or die('Error querying database.');
 
-	$row = mysqli_fetch_array($sql_result);
+	$row = mysql_fetch_array($sql_result);
 	$result_list = '';
 
-	if (mysqli_num_rows ($sql_result) <> 0)
+	if (mysql_num_rows ($sql_result) <> 0)
 	{
 		$result_list = '[{id_user:'.$row{'id_user'}.
 					', nick:"'.$row{'nick'}.
@@ -38,7 +45,7 @@ function get_user_list (){
 					'", date_create:"'.$row{'date_create'}.
 					'", comment:"'.$row{'comment'}.'"}';
 
-		while ($row = mysqli_fetch_array($sql_result)) {
+		while ($row = mysql_fetch_array($sql_result)) {
 	   		$result_list .= ',{id_user:'.$row{'id_user'}.
 					', nick:"'.$row{'nick'}.
 					'", name:"'.$row{'name'}.
@@ -55,7 +62,7 @@ function get_user_list (){
 		$result_list .= '[]';
 	
 
-	mysqli_close ($db);
+	
 
 
 	echo $_GET['callback'].'({user_list:'.$result_list.'})';
@@ -63,35 +70,35 @@ function get_user_list (){
 
 function update_user_data ($id_user, $nick, $name, $surname, $patronymic, $comment){
 
-	$db = connect_db ();
+	connect_db ();
 
 	$sql = "UPDATE tbl_users set nick='$nick', name='$name', surname='$surname', patronymic='$patronymic', comment='$comment' where id_user=$id_user";
 
-	if (mysqli_query ($db, $sql))
+	if (mysql_query ($sql))
 
 		echo $_GET['callback'].'({result:"ok"})';
 	else
 		echo $_GET['callback'].'({result:"error in database"})';
 
-	mysqli_close ($db);
+	
 }
 
 function add_user ($nick, $password, $name, $surname, $patronymic, $comment){
 
-	$db = connect_db ();
+	connect_db ();
 
 	$sql = "INSERT INTO tbl_users(nick, name, surname, patronymic, date_create, password, comment) VALUES ('$nick','$name','$surname','$patronymic',CURDATE(),'$password','$comment')";
 
-	if (mysqli_query ($db, $sql))
+	if (mysql_query ($sql))
 	{
 		$sql = "SELECT max(id_user) as id_user from tbl_users where 1";
-		$sql_result = mysqli_query ($db, $sql)
+		$sql_result = mysql_query ($sql)
 			or die('Error querying database.');
 
-		$row = mysqli_fetch_array($sql_result);
+		$row = mysql_fetch_array($sql_result);
 		$new_user_id = 0;
 
-		if (mysqli_num_rows ($sql_result) <> 0)
+		if (mysql_num_rows ($sql_result) <> 0)
 		{
 			$new_user_id = $row{'id_user'};
 			echo $_GET['callback'].'({result:"ok", id_user:'.$new_user_id.', text:"Пользователь добавлен"})';
@@ -103,24 +110,24 @@ function add_user ($nick, $password, $name, $surname, $patronymic, $comment){
 	else
 		echo $_GET['callback'].'({result:"error in database"})';
 
-	mysqli_close ($db);
+	
 }
 
 function delete_user ($id_user){
 
-	$db = connect_db ();
+	connect_db ();
 
 	$sql = "DELETE FROM tbl_users where id_user='$id_user'";
 	$sql2 = "DELETE FROM tbl_user_phone_set where id_user='$id_user'";
 	$sql2 = "DELETE FROM bl_user_address_set where id_user='$id_user'";
 	
 
-	if (mysqli_query ($db, $sql) && mysqli_query ($db, $sql2) && mysqli_query ($db, $sql3))
+	if (mysql_query ($sql) && mysql_query ($sql2) && mysql_query ($sql3))
 		echo $_GET['callback'].'({result:"ok", text:"Пользователь удален"})';
 	else
 		echo $_GET['callback'].'({result:"error in database"})';
 
-	mysqli_close ($db);
+	
 }
 
 
@@ -141,7 +148,7 @@ function get_address_list ($id_owner, $owner_type){
 
 function get_user_address_list ($id_user){
 
-	$db = connect_db ();
+	connect_db ();
 
 	$sql = "SELECT 	
 					addrs.id_address_set,
@@ -154,13 +161,13 @@ function get_user_address_list ($id_user){
 				JOIN tbl_address_types addr_tps ON addrs.id_address_type = addr_tps.id_address_type 
 			WHERE id_user=$id_user";
 
-	$sql_result = mysqli_query ($db, $sql)
+	$sql_result = mysql_query ($sql)
 		or die('Error querying database.');
 
-	$row = mysqli_fetch_array($sql_result);
+	$row = mysql_fetch_array($sql_result);
 	$result_list = '';
 
-	if (mysqli_num_rows ($sql_result) <> 0)
+	if (mysql_num_rows ($sql_result) <> 0)
 	{
 		$result_list = '[{id_address_set:'.$row{'id_address_set'}.
 					', id_address_type:"'.$row{'id_address_type'}.
@@ -169,7 +176,7 @@ function get_user_address_list ($id_user){
 					'", add_type_name:"'.$row{'add_type_name'}.
 					'", add_type_comment:"'.$row{'add_type_comment'}.'"}';
 
-		while ($row = mysqli_fetch_array($sql_result)) {
+		while ($row = mysql_fetch_array($sql_result)) {
 		   $result_list .= ',{id_address_set:'.$row{'id_address_set'}.
 						', id_address_type:"'.$row{'id_address_type'}.
 						'", name:"'.$row{'name'}.
@@ -182,14 +189,14 @@ function get_user_address_list ($id_user){
 	else
 		$result_list .= '[]';
 
-	mysqli_close ($db);
+	
 
 	echo $_GET['callback'].'({address_list:'.$result_list.'})';
 }
 
 function get_client_address_list ($id_user){
 
-	$db = connect_db ();
+	connect_db ();
 
 	$sql = "SELECT 	
 					addrs.id_address_set,
@@ -202,13 +209,13 @@ function get_client_address_list ($id_user){
 				JOIN tbl_address_types addr_tps ON addrs.id_address_type = addr_tps.id_address_type 
 			WHERE id_user=$id_user";
 
-	$sql_result = mysqli_query ($db, $sql)
+	$sql_result = mysql_query ($sql)
 		or die('Error querying database.');
 
-	$row = mysqli_fetch_array($sql_result);
+	$row = mysql_fetch_array($sql_result);
 	$result_list = '';
 
-	if (mysqli_num_rows ($sql_result) <> 0)
+	if (mysql_num_rows ($sql_result) <> 0)
 	{
 		$result_list = '[{id_address_set:'.$row{'id_address_set'}.
 					', id_address_type:"'.$row{'id_address_type'}.
@@ -217,7 +224,7 @@ function get_client_address_list ($id_user){
 					'", add_type_name:"'.$row{'add_type_name'}.
 					'", add_type_comment:"'.$row{'add_type_comment'}.'"}';
 
-		while ($row = mysqli_fetch_array($sql_result)) {
+		while ($row = mysql_fetch_array($sql_result)) {
 		   $result_list .= ',{id_address_set:'.$row{'id_address_set'}.
 						', id_address_type:"'.$row{'id_address_type'}.
 						'", name:"'.$row{'name'}.
@@ -230,7 +237,7 @@ function get_client_address_list ($id_user){
 	else
 		$result_list .= '[]';
 
-	mysqli_close ($db);
+	
 
 	echo $_GET['callback'].'({address_list:'.$result_list.'})';
 }
@@ -247,27 +254,27 @@ function add_address ($id_owner, $owner_type, $id_address_type, $name, $comment)
 }
 
 function add_user_address ($id_user, $id_address_type, $name, $comment){
-	$db = connect_db ();
+	connect_db ();
 	$sql = "INSERT INTO tbl_user_address_set(id_user, id_address_type, name, comment) VALUES ('$id_user','$id_address_type','$name','$comment')";
 
-	if (mysqli_query ($db, $sql))
+	if (mysql_query ($sql))
 		echo $_GET['callback'].'({result:"ok", text:"Адрес добавлен"})'; 
 	else
 		echo $_GET['callback'].'({result:"error of adding new user", text:"Ошибка сервера"})'; 
 
-	mysqli_close ($db);
+	
 }
 
 function add_client_address ($id_client, $id_address_type, $name, $comment){
-	$db = connect_db ();
+	connect_db ();
 	$sql = "INSERT INTO tbl_client_address_set(id_client, id_address_type, name, comment) VALUES ('$id_client','$id_address_type','$name','$comment')";
 
-	if (mysqli_query ($db, $sql))
+	if (mysql_query ($sql))
 		echo $_GET['callback'].'({result:"ok", text:"Адрес добавлен"})'; 
 	else
 		echo $_GET['callback'].'({result:"error of adding new client", text:"Ошибка сервера"})'; 
 
-	mysqli_close ($db);
+	
 }
 
 
@@ -282,29 +289,29 @@ function delete_address ($id_address_set, $owner_type){
 }
 
 function delete_user_address ($id_address_set){
-	$db = connect_db ();
+	connect_db ();
 
 	$sql = "DELETE FROM tbl_user_address_set where id_address_set='$id_address_set'";
 
-	if (mysqli_query ($db, $sql))
+	if (mysql_query ($sql))
 		echo $_GET['callback'].'({result:"ok", text:"Адрес удален"})';
 	else
 		echo $_GET['callback'].'({result:"error in database"})';
 
-	mysqli_close ($db);
+	
 }
 
 function delete_client_address ($id_address_set){
-	$db = connect_db ();
+	connect_db ();
 
 	$sql = "DELETE FROM tbl_client_address_set where id_address_set='$id_address_set'";
 
-	if (mysqli_query ($db, $sql))
+	if (mysql_query ($sql))
 		echo $_GET['callback'].'({result:"ok", text:"Адрес удален"})';
 	else
 		echo $_GET['callback'].'({result:"error in database"})';
 
-	mysqli_close ($db);
+	
 }
 
 
@@ -320,31 +327,31 @@ function update_address ($id_address_set, $owner_type, $id_address_type, $name, 
 }
 
 function update_user_address ($id_address_set, $id_address_type, $name, $comment){
-	$db = connect_db ();
+	connect_db ();
 
 	$sql = "UPDATE tbl_user_address_set set name='$name', comment='$comment', id_address_type='$id_address_type' where id_address_set=$id_address_set";
 
-	if (mysqli_query ($db, $sql))
+	if (mysql_query ($sql))
 
 		echo $_GET['callback'].'({result:"ok", text:"Обновление прошло успешно"})';
 	else
 		echo $_GET['callback'].'({result:"error in database"})';
 
-	mysqli_close ($db);
+	
 }
 
 function update_client_address ($id_address_set, $id_address_type, $name, $comment){
-	$db = connect_db ();
+	connect_db ();
 
 	$sql = "UPDATE tbl_client_address_set set name='$name', comment='$comment', id_address_type='$id_address_type' where id_address_set=$id_address_set";
 
-	if (mysqli_query ($db, $sql))
+	if (mysql_query ($sql))
 
 		echo $_GET['callback'].'({result:"ok", text:"Обновление прошло успешно"})';
 	else
 		echo $_GET['callback'].'({result:"error in database"})';
 
-	mysqli_close ($db);
+	
 }
 
 //-------------------------------------------------------------------------------------------------------------------
@@ -362,7 +369,7 @@ function get_phone_list ($id_owner, $owner_type){
 }
 
 function get_user_phone_list ($id_user){
-	$db = connect_db ();
+	connect_db ();
 
 	$sql = "SELECT 	
 					id_phone_set,
@@ -374,13 +381,13 @@ function get_user_phone_list ($id_user){
 			WHERE id_user=$id_user";
 
 
-	$sql_result = mysqli_query ($db, $sql)
+	$sql_result = mysql_query ($sql)
 		or die('Error querying database.');
 
-	$row = mysqli_fetch_array($sql_result);
+	$row = mysql_fetch_array($sql_result);
 	$result_list = '';
 
-	if (mysqli_num_rows ($sql_result) <> 0)
+	if (mysql_num_rows ($sql_result) <> 0)
 	{
 		$result_list = '[{id_phone_set:'.$row{'id_phone_set'}.
 					', phone:"'.$row{'phone'}.
@@ -388,7 +395,7 @@ function get_user_phone_list ($id_user){
 					'", is_primary:'.$row{'is_primary'}.
 					', comment:"'.$row{'comment'}.'"}';
 
-		while ($row = mysqli_fetch_array($sql_result)) {
+		while ($row = mysql_fetch_array($sql_result)) {
 		   $result_list .= ',{id_phone_set:'.$row{'id_phone_set'}.
 					', phone:"'.$row{'phone'}.
 					'", is_primary_text:"'.$row{'is_primary_text'}.
@@ -400,13 +407,13 @@ function get_user_phone_list ($id_user){
 	else
 		$result_list .= '[]';
 
-	mysqli_close ($db);
+	
 
 	echo $_GET['callback'].'({phone_list:'.$result_list.'})';
 }
 
 function get_client_phone_list ($id_client){
-	$db = connect_db ();
+	connect_db ();
 
 	$sql = "SELECT 	
 					id_phone_set,
@@ -418,13 +425,13 @@ function get_client_phone_list ($id_client){
 			WHERE id_client=$id_client";
 
 
-	$sql_result = mysqli_query ($db, $sql)
+	$sql_result = mysql_query ($sql)
 		or die('Error querying database.');
 
-	$row = mysqli_fetch_array($sql_result);
+	$row = mysql_fetch_array($sql_result);
 	$result_list = '';
 
-	if (mysqli_num_rows ($sql_result) <> 0)
+	if (mysql_num_rows ($sql_result) <> 0)
 	{
 		$result_list = '[{id_phone_set:'.$row{'id_phone_set'}.
 					', phone:"'.$row{'phone'}.
@@ -432,7 +439,7 @@ function get_client_phone_list ($id_client){
 					'", is_primary:'.$row{'is_primary'}.
 					', comment:"'.$row{'comment'}.'"}';
 
-		while ($row = mysqli_fetch_array($sql_result)) {
+		while ($row = mysql_fetch_array($sql_result)) {
 		   $result_list .= ',{id_phone_set:'.$row{'id_phone_set'}.
 					', phone:"'.$row{'phone'}.
 					'", is_primary_text:"'.$row{'is_primary_text'}.
@@ -444,7 +451,7 @@ function get_client_phone_list ($id_client){
 	else
 		$result_list .= '[]';
 
-	mysqli_close ($db);
+	
 
 	echo $_GET['callback'].'({phone_list:'.$result_list.'})';
 }
@@ -465,28 +472,28 @@ function add_phone ($id_owner, $owner_type, $phone, $is_primary, $comment){
 }
 
 function add_user_phone ($id_user, $phone, $is_primary, $comment){
-	$db = connect_db ();
+	connect_db ();
 	$sql = "INSERT INTO tbl_user_phone_set(id_user, phone, is_primary, comment) VALUES ('$id_user','$phone', $is_primary,'$comment')";
 
 	//echo $sql;
-	if (mysqli_query ($db, $sql))
+	if (mysql_query ($sql))
 		echo $_GET['callback'].'({result:"ok", text:"Телефон добавлен"})'; 
 	else
 		echo $_GET['callback'].'({result:"error of adding user phone", text:"Ошибка сервера"})'; 
 
-	mysqli_close ($db);
+	
 }
 
 function add_client_phone ($id_client, $phone, $is_primary, $comment){
-	$db = connect_db ();
+	connect_db ();
 	$sql = "INSERT INTO tbl_client_phone_set(id_client, phone, is_primary, comment) VALUES ('$id_client','$phone', $is_primary,'$comment')";
 
-	if (mysqli_query ($db, $sql))
+	if (mysql_query ($sql))
 		echo $_GET['callback'].'({result:"ok", text:"Телефон добавлен"})'; 
 	else
 		echo $_GET['callback'].'({result:"error of adding client phone", text:"Ошибка сервера"})'; 
 
-	mysqli_close ($db);
+	
 }
 
 
@@ -503,29 +510,29 @@ function delete_phone ($id_phone_set, $owner_type){
 }
 
 function delete_user_phone ($id_phone_set){
-	$db = connect_db ();
+	connect_db ();
 
 	$sql = "DELETE FROM tbl_user_phone_set where id_phone_set='$id_phone_set'";
 
-	if (mysqli_query ($db, $sql))
+	if (mysql_query ($sql))
 		echo $_GET['callback'].'({result:"ok", text:"Телефон удален"})';
 	else
 		echo $_GET['callback'].'({result:"error in database"})';
 
-	mysqli_close ($db);
+	
 }
 
 function delete_client_phone ($id_phone_set){
-	$db = connect_db ();
+	connect_db ();
 
 	$sql = "DELETE FROM tbl_client_phone_set where id_phone_set='$id_phone_set'";
 
-	if (mysqli_query ($db, $sql))
+	if (mysql_query ($sql))
 		echo $_GET['callback'].'({result:"ok", text:"Телефон удален"})';
 	else
 		echo $_GET['callback'].'({result:"error in database"})';
 
-	mysqli_close ($db);
+	
 }
 
 
@@ -541,31 +548,31 @@ function update_phone ($id_phone_set, $owner_type, $phone, $is_primary, $comment
 }
 
 function update_user_phone ($id_phone_set, $phone, $is_primary, $comment){
-	$db = connect_db ();
+	connect_db ();
 
 	$sql = "UPDATE tbl_user_phone_set set phone='$phone', comment='$comment', is_primary=$is_primary where id_phone_set=$id_phone_set";
 
-	if (mysqli_query ($db, $sql))
+	if (mysql_query ($sql))
 
 		echo $_GET['callback'].'({result:"ok", text:"Обновление прошло успешно"})';
 	else
 		echo $_GET['callback'].'({result:"error in database"})';
 
-	mysqli_close ($db);
+	
 }
 
 function update_client_phone ($id_phone_set, $phone, $is_primary, $comment){
-	$db = connect_db ();
+	connect_db ();
 
 	$sql = "UPDATE tbl_client_phone_set set phone='$phone', comment='$comment', is_primary=$is_primary where id_phone_set=$id_phone_set";
 
-	if (mysqli_query ($db, $sql))
+	if (mysql_query ($sql))
 
 		echo $_GET['callback'].'({result:"ok", text:"Обновление прошло успешно"})';
 	else
 		echo $_GET['callback'].'({result:"error in database"})';
 
-	mysqli_close ($db);
+	
 }
 
 
@@ -577,26 +584,26 @@ function update_client_phone ($id_phone_set, $phone, $is_primary, $comment){
 
 // Получение списка групп типов одежды
 function get_itemgroup_list (){
-	$db = connect_db ();
+	connect_db ();
 
 	$sql = "SELECT  id_item_type_group, 
 					name, 
 					comment
 			FROM tbl_item_type_group";
 
-	$sql_result = mysqli_query ($db, $sql)
+	$sql_result = mysql_query ($sql)
 		or die('Error querying database.');
 
-	$row = mysqli_fetch_array($sql_result);
+	$row = mysql_fetch_array($sql_result);
 	$result_list = '';
 
-	if (mysqli_num_rows ($sql_result) <> 0)
+	if (mysql_num_rows ($sql_result) <> 0)
 	{
 		$result_list = '[{id_item_type_group:'.$row{'id_item_type_group'}.
 					', name:"'.$row{'name'}.
 					'", comment:"'.$row{'comment'}.'"}';
 
-		while ($row = mysqli_fetch_array($sql_result)) {
+		while ($row = mysql_fetch_array($sql_result)) {
 		   $result_list .= ',{id_item_type_group:'.$row{'id_item_type_group'}.
 						', name:"'.$row{'name'}.
 						'", comment:"'.$row{'comment'}.'"}';
@@ -606,39 +613,39 @@ function get_itemgroup_list (){
 	else
 		$result_list .= '[]';
 
-	mysqli_close ($db);
+	
 
 	echo $_GET['callback'].'({itemgroup_list:'.$result_list.'})';
 }
 
 // Удаление группы типа одежды
 function delete_itemgroup ($id_item_type_group){
-	$db = connect_db ();
+	connect_db ();
 
 	$sql = "DELETE FROM tbl_item_type_group where id_item_type_group='$id_item_type_group'";
 
-	if (mysqli_query ($db, $sql))
+	if (mysql_query ($sql))
 		echo $_GET['callback'].'({result:"ok", text:"Группа типа удалена"})';
 	else
 		echo $_GET['callback'].'({result:"error in database"})';
 
-	mysqli_close ($db);
+	
 }
 
 // Обновление группы типа одежды
 function update_itemgroup_data ($id_item_type_group, $name, $comment){
 
-	$db = connect_db ();
+	connect_db ();
 
 	$sql = "UPDATE tbl_item_type_group set name='$name', comment='$comment' where id_item_type_group=$id_item_type_group";
 
-	if (mysqli_query ($db, $sql))
+	if (mysql_query ($sql))
 
 		echo $_GET['callback'].'({result:"ok", text:"Обновление прошло успешно"})';
 	else
 		echo $_GET['callback'].'({result:"error in database"})';
 
-	mysqli_close ($db);
+	
 }
 
 
@@ -651,20 +658,23 @@ function update_itemgroup_data ($id_item_type_group, $name, $comment){
 // Получение списка клиентов
 function get_client_list (){
 
-	$db = connect_db ();
+	connect_db ();
 
-	$sql = 'SELECT SQL_NO_CACHE c.id_client, c.name, c.surname, c.patronymic, c.birthday, c.date_create, c.comment, s.name as gender, c.id_gender
+	$sql = 'SELECT SQL_NO_CACHE c.id_client, c.name, c.surname, c.patronymic, c.birthday, c.date_create, c.comment, s.name as gender, c.id_gender, p.phone, a.name address
 			FROM tbl_clients as c
-				join tbl_gender s on c.id_gender = s.id_gender
-			where 1';
+			join tbl_gender s on c.id_gender = s.id_gender
+			left join tbl_clients_address_set a on c.id_client = a.id_client
+			left join tbl_address_types at on a.id_address_type = at.id_address_type and at.name = "Домашний"
+			left join tbl_client_phone_set p on c.id_client = p.id_client and p.is_primary = 1
+			order by c.surname';
 
-	$sql_result = mysqli_query ($db, $sql)
+	$sql_result = mysql_query ($sql)
 		or die('Error querying database.');
 
-	$row = mysqli_fetch_array($sql_result);
+	$row = mysql_fetch_array($sql_result);
 	$result_list = '';
 
-	if (mysqli_num_rows ($sql_result) <> 0)
+	if (mysql_num_rows ($sql_result) <> 0)
 	{
 		$result_list = '[{id_client:'.$row{'id_client'}.
 					', name:"'.$row{'name'}.
@@ -674,9 +684,11 @@ function get_client_list (){
 					'", gender:"'.$row{'gender'}.
 					'", id_gender:"'.$row{'id_gender'}.
 					'", date_create:"'.$row{'date_create'}.
+					'", phone:"'.$row{'phone'}.
+					'", address:"'.$row{'address'}.
 					'", comment:"'.$row{'comment'}.'"}';
 
-		while ($row = mysqli_fetch_array($sql_result)) {
+		while ($row = mysql_fetch_array($sql_result)) {
 	   		$result_list .= ',{id_client:'.$row{'id_client'}.
 					', name:"'.$row{'name'}.
 					'", surname:"'.$row{'surname'}.
@@ -685,6 +697,8 @@ function get_client_list (){
 					'", gender:"'.$row{'gender'}.
 					'", id_gender:"'.$row{'id_gender'}.
 					'", date_create:"'.$row{'date_create'}.
+					'", phone:"'.$row{'phone'}.
+					'", address:"'.$row{'address'}.
 					'", comment:"'.$row{'comment'}.'"}';
 
 		}
@@ -695,51 +709,122 @@ function get_client_list (){
 		$result_list .= '[]';
 	
 
-	mysqli_close ($db);
+	
 
 
 	echo $_GET['callback'].'({client_list:'.$result_list.'})';
 }
 
 // Обновление данных клиента
-function update_client_data ($id_client, $name, $surname, $patronymic, $birthday, $id_gender, $comment){
+function update_client_data ($id_client, $name, $surname, $patronymic, $birthday, $id_gender, $comment, $phone, $address){
 
-	$db = connect_db ();
+	connect_db ();
 
-	$sql = "UPDATE tbl_clients set name='$name', surname='$surname', patronymic='$patronymic', birthday='$birthday', id_gender='$id_gender', comment='$comment' where id_client=$id_client";
+	$sql = "UPDATE tbl_clients set name='$name', surname='$surname', patronymic='$patronymic', birthday='$birthday', id_gender=$id_gender, comment='$comment' where id_client=$id_client";
 
 
-	if (mysqli_query ($db, $sql))
+	if (mysql_query ($sql))
+	{
+		
+		// Обновляем\добавляем адрес
+		$sql = "SELECT id_address_set 
+				from tbl_clients_address_set a 
+					join tbl_address_types at on a.id_address_type = at.id_address_type 
+				where at.name = 'Домашний' and id_client=$id_client";
 
-		echo $_GET['callback'].'({result:"ok"})';
+			
+		$sql_result = mysql_query ($sql)
+			or die('Error querying database.');
+
+		$row = mysql_fetch_array ($sql_result);
+
+		if (mysql_num_rows ($sql_result) == 0 && strlen($address)<>0)
+		{
+
+			$sql = "INSERT INTO tbl_clients_address_set (id_client, id_address_type, name) SELECT $id_client, id_address_type, '$address' from tbl_address_types where name = 'Домашний'";
+
+			
+
+			mysql_query ($sql)
+				or die('Error querying database.');
+		}
+		else if (strlen($address)<>0)
+		{
+			$id_address_set = $row{'id_address_set'};
+			$sql = "UPDATE tbl_clients_address_set set name='$address' where id_address_set=$id_address_set";
+
+
+
+			mysql_query ($sql)
+				or die('Error querying database.');
+		}
+
+		// Обновляем\добавляем телефон
+		$sql = "SELECT 	id_phone_set 
+				from tbl_client_phone_set a 
+				where id_client=$id_client and is_primary = 1";
+
+		
+		$sql_result = mysql_query ($sql)
+			or die('Error querying database.');
+			
+
+		$row = mysql_fetch_array ($sql_result);
+		if (mysql_num_rows ($sql_result) == 0)
+		{
+			$sql = "INSERT INTO tbl_client_phone_set (id_client, phone, is_primary) SELECT $id_client, '$phone', 1";
+
+			mysql_query ($sql)
+				or die('Error querying database.');
+		}
+		else
+		{
+			$id_phone_set = $row{'id_phone_set'};
+			$sql = "UPDATE tbl_client_phone_set set phone='$phone' where id_phone_set=$id_phone_set";
+
+			mysql_query ($sql)
+				or die('Error querying database.');
+		}
+
+
+		echo $_GET['callback'].'({result:"ok", text:"Данные клиента обновлены"})';
+	}
 	else
 		echo $_GET['callback'].'({result:"error in database"})';
 
-	mysqli_close ($db);
+	
 }
 
 // Добавить клиента
-function add_client ($name, $surname, $patronymic, $id_gender, $birthday, $comment){
+function add_client ($name, $surname, $patronymic, $id_gender, $birthday, $comment, $phone, $address){
 
-	$db = connect_db ();
+	connect_db ();
 
 	$sql = "INSERT INTO tbl_clients(name, surname, patronymic, date_create, birthday, id_gender, comment) 
 					VALUES ('$name','$surname','$patronymic',CURDATE(),'$birthday', $id_gender, '$comment')";
 
 
-	if (mysqli_query ($db, $sql))
+	if (mysql_query ($sql))
 	{
 		$sql = "SELECT max(id_client) as id_client from tbl_clients where 1";
-		$sql_result = mysqli_query ($db, $sql)
+		$sql_result = mysql_query ($sql)
 			or die('Error querying database.');
 
-		$row = mysqli_fetch_array($sql_result);
+		$row = mysql_fetch_array($sql_result);
 		$new_client_id = 0;
 
-		if (mysqli_num_rows ($sql_result) <> 0)
+		if (mysql_num_rows ($sql_result) <> 0)
 		{
 			$new_client_id = $row{'id_client'};
-			echo $_GET['callback'].'({result:"ok", id_user:'.$new_client_id.', text:"Клиент добавлен"})';
+
+			$sql = "INSERT INTO tbl_client_phone_set (id_client, phone, is_primary) VALUES ($new_client_id, $phone, 1)";
+			$sql2 = "INSERT INTO tbl_clients_address_set (id_client, id_address_type, name) SELECT $new_client_id, id_address_type, '$address' from tbl_address_types where name = 'Домашний'";
+
+			
+			if (mysql_query ($sql) && mysql_query ($sql2))
+				echo $_GET['callback'].'({result:"ok", id_user:'.$new_client_id.', text:"Клиент добавлен"})';
+			else
+				echo $_GET['callback'].'({result:"error", text:"Ошибка"})';
 		}
 		else
 			echo $_GET['callback'].'({result:"error of adding new client", text:"Ошибка сервера"})'; 
@@ -748,39 +833,39 @@ function add_client ($name, $surname, $patronymic, $id_gender, $birthday, $comme
 	else
 		echo $_GET['callback'].'({result:"error in database"})';
 
-	mysqli_close ($db);
+	
 }
 
 function delete_client ($id_client){
 
-	$db = connect_db ();
+	connect_db ();
 
 	$sql = "DELETE FROM tbl_clients where id_client='$id_client'";
 	$sql2 = "DELETE FROM tbl_client_phone_set where id_client='$id_client'";
 	$sql3 = "DELETE FROM tbl_clients_address_set where id_client='$id_client'";
 
-	if (mysqli_query ($db, $sql) && mysqli_query ($db, $sql2) && mysqli_query ($db, $sql3))
+	if (mysql_query ($sql) && mysql_query ($sql2) && mysql_query ($sql3))
 		echo $_GET['callback'].'({result:"ok", text:"Клиент удален. НАВЕЧНО! Крутитесь как хотите теперь!"})';
 	else
 		echo $_GET['callback'].'({result:"error in database"})';
 
-	mysqli_close ($db);
+	
 }
 
 
 // Получить количество заказов у клиента
 function get_client_order_count ($id_client){
-	$db = connect_db ();
+	connect_db ();
 
 	$sql = "SELECT * from tbl_orders where id_client = '$id_client'";
-	$sql_result = mysqli_query ($db, $sql)
+	$sql_result = mysql_query ($sql)
 			or die('Error querying database.');
 
-	$row = mysqli_fetch_array($sql_result);
+	$row = mysql_fetch_array($sql_result);
 
-	echo $_GET['callback'].'({result:"ok", order_count:'.mysqli_num_rows ($sql_result).'})';
+	echo $_GET['callback'].'({result:"ok", order_count:'.mysql_num_rows ($sql_result).'})';
 
-	mysqli_close ($db);
+	
 }
 
 
@@ -790,26 +875,26 @@ function get_client_order_count ($id_client){
 
 // Получение списка типов адресов
 function get_address_type_list (){
-	$db = connect_db ();
+	connect_db ();
 
 	$sql = "SELECT 	id_address_type, 
 					name, 
 					comment
 			FROM tbl_address_types";
 
-	$sql_result = mysqli_query ($db, $sql)
+	$sql_result = mysql_query ($sql)
 		or die('Error querying database.');
 
-	$row = mysqli_fetch_array($sql_result);
+	$row = mysql_fetch_array($sql_result);
 	$result_list = '';
 
-	if (mysqli_num_rows ($sql_result) <> 0)
+	if (mysql_num_rows ($sql_result) <> 0)
 	{
 		$result_list = '[{id_address_type:'.$row{'id_address_type'}.
 					', name:"'.$row{'name'}.
 					'", comment:"'.$row{'comment'}.'"}';
 
-		while ($row = mysqli_fetch_array($sql_result)) {
+		while ($row = mysql_fetch_array($sql_result)) {
 		   $result_list .= ',{id_address_type:'.$row{'id_address_type'}.
 						', name:"'.$row{'name'}.
 						'", comment:"'.$row{'comment'}.'"}';
@@ -819,33 +904,33 @@ function get_address_type_list (){
 	else
 		$result_list .= '[]';
 
-	mysqli_close ($db);
+	
 
 	echo $_GET['callback'].'({address_type_list:'.$result_list.'})';
 }
 
 // Получить список полов
 function get_gender_list (){
-	$db = connect_db ();
+	connect_db ();
 
 	$sql = "SELECT 	id_gender, 
 					name, 
 					comment
 			FROM tbl_gender";
 
-	$sql_result = mysqli_query ($db, $sql)
+	$sql_result = mysql_query ($sql)
 		or die('Error querying database.');
 
-	$row = mysqli_fetch_array($sql_result);
+	$row = mysql_fetch_array($sql_result);
 	$result_list = '';
 
-	if (mysqli_num_rows ($sql_result) <> 0)
+	if (mysql_num_rows ($sql_result) <> 0)
 	{
 		$result_list = '[{id_gender:'.$row{'id_gender'}.
 					', name:"'.$row{'name'}.
 					'", comment:"'.$row{'comment'}.'"}';
 
-		while ($row = mysqli_fetch_array($sql_result)) {
+		while ($row = mysql_fetch_array($sql_result)) {
 		   $result_list .= ',{id_gender:'.$row{'id_gender'}.
 						', name:"'.$row{'name'}.
 						'", comment:"'.$row{'comment'}.'"}';
@@ -855,33 +940,33 @@ function get_gender_list (){
 	else
 		$result_list .= '[]';
 
-	mysqli_close ($db);
+	
 
 	echo $_GET['callback'].'({gender_list:'.$result_list.'})';
 }
 
 // Получение списка типов групп одежды
 function get_item_type_groups (){
-	$db = connect_db ();
+	connect_db ();
 
 	$sql = "SELECT 	id_item_type_group, 
 					name, 
 					comment
 			FROM tbl_item_type_groups";
 
-	$sql_result = mysqli_query ($db, $sql)
+	$sql_result = mysql_query ($sql)
 		or die('Error querying database.');
 
-	$row = mysqli_fetch_array($sql_result);
+	$row = mysql_fetch_array($sql_result);
 	$result_list = '';
 
-	if (mysqli_num_rows ($sql_result) <> 0)
+	if (mysql_num_rows ($sql_result) <> 0)
 	{
 		$result_list = '[{id_item_type_group:'.$row{'id_item_type_group'}.
 					', name:"'.$row{'name'}.
 					'", comment:"'.$row{'comment'}.'"}';
 
-		while ($row = mysqli_fetch_array($sql_result)) {
+		while ($row = mysql_fetch_array($sql_result)) {
 		   $result_list .= ',{id_item_type_group:'.$row{'id_item_type_group'}.
 						', name:"'.$row{'name'}.
 						'", comment:"'.$row{'comment'}.'"}';
@@ -891,14 +976,14 @@ function get_item_type_groups (){
 	else
 		$result_list .= '[]';
 
-	mysqli_close ($db);
+	
 
 	echo $_GET['callback'].'({item_type_groups_list:'.$result_list.'})';
 }
 
 // Получение списка типов одежды по идентификатору группы
 function get_item_types_by_group_type ($id_item_type_group){
-	$db = connect_db ();
+	connect_db ();
 
 	$sql = "SELECT 	id_item_type, 
 					name,
@@ -908,13 +993,13 @@ function get_item_types_by_group_type ($id_item_type_group){
 			FROM tbl_item_types 
 			where id_item_type_group='$id_item_type_group'";
 
-	$sql_result = mysqli_query ($db, $sql)
+	$sql_result = mysql_query ($sql)
 		or die('Error querying database.');
 
-	$row = mysqli_fetch_array($sql_result);
+	$row = mysql_fetch_array($sql_result);
 	$result_list = '';
 
-	if (mysqli_num_rows ($sql_result) <> 0)
+	if (mysql_num_rows ($sql_result) <> 0)
 	{
 		$result_list = '[{id_item_type:'.$row{'id_item_type'}.
 					',is_home_weight:'.$row{'is_home_weight'}.
@@ -922,7 +1007,7 @@ function get_item_types_by_group_type ($id_item_type_group){
 					', name:"'.$row{'name'}.
 					'", comment:"'.$row{'comment'}.'"}';
 
-		while ($row = mysqli_fetch_array($sql_result)) {
+		while ($row = mysql_fetch_array($sql_result)) {
 		   $result_list .= ',{id_item_type:'.$row{'id_item_type'}.
 		   				',is_home_weight:'.$row{'is_home_weight'}.
 		   				',is_only_piece:'.$row{'is_only_piece'}.
@@ -934,14 +1019,14 @@ function get_item_types_by_group_type ($id_item_type_group){
 	else
 		$result_list .= '[]';
 
-	mysqli_close ($db);
+	
 
 	echo $_GET['callback'].'({item_types_list:'.$result_list.'})';
 }
 
 // Получение списка цветов
 function get_color_list (){
-	$db = connect_db ();
+	connect_db ();
 
 	$sql = "SELECT 	id_color, 
 					name, 
@@ -949,20 +1034,20 @@ function get_color_list (){
 					comment
 			FROM tbl_colors";
 
-	$sql_result = mysqli_query ($db, $sql)
+	$sql_result = mysql_query ($sql)
 		or die('Error querying database.');
 
-	$row = mysqli_fetch_array($sql_result);
+	$row = mysql_fetch_array($sql_result);
 	$result_list = '';
 
-	if (mysqli_num_rows ($sql_result) <> 0)
+	if (mysql_num_rows ($sql_result) <> 0)
 	{
 		$result_list = '[{id_color:'.$row{'id_color'}.
 					', name:"'.$row{'name'}.
 					'", color_code:"'.$row{'color_code'}.
 					'", comment:"'.$row{'comment'}.'"}';
 
-		while ($row = mysqli_fetch_array($sql_result)) {
+		while ($row = mysql_fetch_array($sql_result)) {
 		   $result_list .= ',{id_color:'.$row{'id_color'}.
 						', name:"'.$row{'name'}.
 						'", color_code:"'.$row{'color_code'}.
@@ -973,33 +1058,33 @@ function get_color_list (){
 	else
 		$result_list .= '[]';
 
-	mysqli_close ($db);
+	
 
 	echo $_GET['callback'].'({color_list:'.$result_list.'})';
 }
 
 // Получение списка статусов заказов
 function get_order_status_list (){
-	$db = connect_db ();
+	connect_db ();
 
 	$sql = "SELECT 	id_status, 
 					name, 
 					comment
 			FROM tbl_status_types";
 
-	$sql_result = mysqli_query ($db, $sql)
+	$sql_result = mysql_query ($sql)
 		or die('Error querying database.');
 
-	$row = mysqli_fetch_array($sql_result);
+	$row = mysql_fetch_array($sql_result);
 	$result_list = '';
 
-	if (mysqli_num_rows ($sql_result) <> 0)
+	if (mysql_num_rows ($sql_result) <> 0)
 	{
 		$result_list = '[{id_status:'.$row{'id_status'}.
 					', name:"'.$row{'name'}.
 					'", comment:"'.$row{'comment'}.'"}';
 
-		while ($row = mysqli_fetch_array($sql_result)) {
+		while ($row = mysql_fetch_array($sql_result)) {
 		   $result_list .= ',{id_status:'.$row{'id_status'}.
 						', name:"'.$row{'name'}.
 						'", comment:"'.$row{'comment'}.'"}';
@@ -1009,7 +1094,7 @@ function get_order_status_list (){
 	else
 		$result_list .= '[]';
 
-	mysqli_close ($db);
+	
 
 	echo $_GET['callback'].'({status_list:'.$result_list.'})';
 }
@@ -1025,7 +1110,7 @@ function get_order_status_list (){
 // Получить все действующие прайсы вещей 
 function get_current_price_list_by_item_id ($id_item_type){
 
-	$db = connect_db ();
+	connect_db ();
 
 	$sql = "SELECT 	p.id_price, 
 					pt.name price_type_name, 
@@ -1037,19 +1122,19 @@ function get_current_price_list_by_item_id ($id_item_type){
 			BETWEEN ds
 			AND IFNULL( df,  '4000-01-01' ) ";
 
-	$sql_result = mysqli_query ($db, $sql)
+	$sql_result = mysql_query ($sql)
 		or die('Error querying database.');
 
-	$row = mysqli_fetch_array($sql_result);
+	$row = mysql_fetch_array($sql_result);
 	$result_list = '';
 
-	if (mysqli_num_rows ($sql_result) <> 0)
+	if (mysql_num_rows ($sql_result) <> 0)
 	{
 		$result_list = '[{id_price:'.$row{'id_price'}.
 					', price_type_name:"'.$row{'price_type_name'}.
 					'", price:'.$row{'price'}.'}';
 
-		while ($row = mysqli_fetch_array($sql_result)) {
+		while ($row = mysql_fetch_array($sql_result)) {
 		   $result_list .= ',{id_price:'.$row{'id_price'}.
 						', price_type_name:"'.$row{'price_type_name'}.
 						'", price:'.$row{'price'}.'}';
@@ -1059,7 +1144,7 @@ function get_current_price_list_by_item_id ($id_item_type){
 	else
 		$result_list .= '[]';
 
-	mysqli_close ($db);
+	
 
 	echo $_GET['callback'].'({current_price_list:'.$result_list.'})';
 }
@@ -1067,7 +1152,7 @@ function get_current_price_list_by_item_id ($id_item_type){
 // Получить все действующие прайсы на итог заказа
 function get_current_order_price_list (){
 
-	$db = connect_db ();
+	connect_db ();
 
 	$sql = "SELECT 	p.id_price, 
 					pt.name price_type_name, 
@@ -1078,19 +1163,19 @@ function get_current_order_price_list (){
 			BETWEEN ds
 			AND IFNULL(df,  '4000-01-01' ) ";
 
-	$sql_result = mysqli_query ($db, $sql)
+	$sql_result = mysql_query ($sql)
 		or die('Error querying database.');
 
-	$row = mysqli_fetch_array($sql_result);
+	$row = mysql_fetch_array($sql_result);
 	$result_list = '';
 
-	if (mysqli_num_rows ($sql_result) <> 0)
+	if (mysql_num_rows ($sql_result) <> 0)
 	{
 		$result_list = '[{id_price:'.$row{'id_price'}.
 					', price_type_name:"'.$row{'price_type_name'}.
 					'", price:'.$row{'price'}.'}';
 
-		while ($row = mysqli_fetch_array($sql_result)) {
+		while ($row = mysql_fetch_array($sql_result)) {
 		   $result_list .= ',{id_price:'.$row{'id_price'}.
 						', price_type_name:"'.$row{'price_type_name'}.
 						'", price:'.$row{'price'}.'}';
@@ -1100,7 +1185,7 @@ function get_current_order_price_list (){
 	else
 		$result_list .= '[]';
 
-	mysqli_close ($db);
+	
 
 	echo $_GET['callback'].'({current_order_price_list:'.$result_list.'})';
 }
@@ -1115,7 +1200,7 @@ function get_current_order_price_list (){
 // Получить все действующие акции по идентификатору вещи
 function get_current_action_by_item_id ($id_item_type){
 
-	$db = connect_db ();
+	connect_db ();
 
 	$sql = "SELECT 	a.id_action, 
 					a.name action_name, 
@@ -1129,13 +1214,13 @@ function get_current_action_by_item_id ($id_item_type){
 				AND CURDATE( ) 
 				BETWEEN ds AND IFNULL(df, '4000-01-01')";
 
-	$sql_result = mysqli_query ($db, $sql)
+	$sql_result = mysql_query ($sql)
 		or die('Error querying database.');
 
-	$row = mysqli_fetch_array($sql_result);
+	$row = mysql_fetch_array($sql_result);
 	$result_list = '';
 
-	if (mysqli_num_rows ($sql_result) <> 0)
+	if (mysql_num_rows ($sql_result) <> 0)
 	{
 		$result_list = '[{id_action:'.$row{'id_action'}.
 					', action_name:"'.$row{'action_name'}.
@@ -1143,7 +1228,7 @@ function get_current_action_by_item_id ($id_item_type){
 					'", action_value:'.$row{'action_value'}.
 					',id_item_type:'.$row{'id_item_type'}.'}';
 
-		while ($row = mysqli_fetch_array($sql_result)) {
+		while ($row = mysql_fetch_array($sql_result)) {
 		   $result_list .= ',{id_action:'.$row{'id_action'}.
 					', action_name:"'.$row{'action_name'}.
 					'",action_type:"'.$row{'action_type'}.
@@ -1155,7 +1240,7 @@ function get_current_action_by_item_id ($id_item_type){
 	else
 		$result_list .= '[]';
 
-	mysqli_close ($db);
+	
 
 	echo $_GET['callback'].'({current_item_action_list:'.$result_list.'})';
 }
@@ -1163,7 +1248,7 @@ function get_current_action_by_item_id ($id_item_type){
 // Получить все действующие акции на сумму заказа
 function get_current_order_actions (){
 
-	$db = connect_db ();
+	connect_db ();
 
 	$sql = "SELECT 	a.id_action, 
 					a.name action_name, 
@@ -1174,20 +1259,20 @@ function get_current_order_actions (){
 			WHERE CURDATE( ) BETWEEN ds AND IFNULL(df, '4000-01-01')
 			ORDER BY action_name";
 
-	$sql_result = mysqli_query ($db, $sql)
+	$sql_result = mysql_query ($sql)
 		or die('Error querying database.');
 
-	$row = mysqli_fetch_array($sql_result);
+	$row = mysql_fetch_array($sql_result);
 	$result_list = '';
 
-	if (mysqli_num_rows ($sql_result) <> 0)
+	if (mysql_num_rows ($sql_result) <> 0)
 	{
 		$result_list = '[{id_action:'.$row{'id_action'}.
 					', action_name:"'.$row{'action_name'}.
 					'",action_type:"'.$row{'action_type'}.
 					'", action_value:'.$row{'action_value'}.'}';
 
-		while ($row = mysqli_fetch_array($sql_result)) {
+		while ($row = mysql_fetch_array($sql_result)) {
 		   $result_list .= ',{id_action:'.$row{'id_action'}.
 					', action_name:"'.$row{'action_name'}.
 					'",action_type:"'.$row{'action_type'}.
@@ -1198,7 +1283,7 @@ function get_current_order_actions (){
 	else
 		$result_list .= '[]';
 
-	mysqli_close ($db);
+	
 
 	echo $_GET['callback'].'({current_order_action_list:'.$result_list.'})';
 }
@@ -1212,27 +1297,27 @@ function get_current_order_actions (){
 // Добавление шапки заказа
 function add_order ($id_client, $id_action, $container_count, $weight_home, $weight_dress, $ticket_number, $is_white, $comment){
 
-	$db = connect_db ();
+	connect_db ();
 
 	$sql = "INSERT INTO tbl_orders(id_client, id_action, date_create, сontainer_count, weight_home, weight_dress, ticket_number, is_white, comment) 
 			VALUES ('$id_client', '$id_action', CURDATE(), '$container_count','$weight_home', '$weight_dress', '$ticket_number', $is_white,'$comment')";
 
 			
 
-	if (mysqli_query ($db, $sql))
+	if (mysql_query ($sql))
 	{
 
 
 		$sql = "SELECT max(id_order) as id_order from tbl_orders where 1";
-		$sql_result = mysqli_query ($db, $sql)
+		$sql_result = mysql_query ($sql)
 			or die('Error querying database.');
 
 		
 
-		$row = mysqli_fetch_array($sql_result);
+		$row = mysql_fetch_array($sql_result);
 		$new_id_order= 0;
 
-		if (mysqli_num_rows ($sql_result) <> 0)
+		if (mysql_num_rows ($sql_result) <> 0)
 		{
 
 			$new_id_order = $row{'id_order'};
@@ -1248,7 +1333,7 @@ function add_order ($id_client, $id_action, $container_count, $weight_home, $wei
 	else
 		echo $_GET['callback'].'({result:"error in database"})';
 
-	mysqli_close ($db);
+	
 }
 
 
@@ -1256,36 +1341,36 @@ function add_order ($id_client, $id_action, $container_count, $weight_home, $wei
 function add_order_status ($id_order, $id_status){
 
 	
-	$db = connect_db ();
+	connect_db ();
 
 	$sql = "INSERT INTO tbl_order_status (id_order, id_status, ds) 
 			VALUES ('$id_order', '$id_status', NOW())";
 	
 
-	mysqli_query ($db, $sql);
-	mysqli_close ($db);
+	mysql_query ($sql);
+	
 }
 
 
 // Добавление деталей заказа
 function add_order_detail ($id_order, $id_item_type, $id_action, $id_color, $id_gender, $wear, $count, $id_price, $is_label, $comment){
 
-	$db = connect_db ();
+	connect_db ();
 
 	$sql = "INSERT INTO tbl_order_details (id_order, id_item_type, id_action, id_color, id_gender, wear, count, id_price, is_label, comment) 
 			VALUES ('$id_order', '$id_item_type', '$id_action', '$id_color', '$id_gender', '$wear', '$count', '$id_price', '$is_label', '$comment')";
 
 
-	if (mysqli_query ($db, $sql))
+	if (mysql_query ($sql))
 	{
 		$sql = "SELECT max(id_order_detail) as id_order_detail from tbl_order_details where 1";
-		$sql_result = mysqli_query ($db, $sql)
+		$sql_result = mysql_query ($sql)
 			or die('Error querying database.');
 
-		$row = mysqli_fetch_array($sql_result);
+		$row = mysql_fetch_array($sql_result);
 		$new_id_order_detail= 0;
 
-		if (mysqli_num_rows ($sql_result) <> 0)
+		if (mysql_num_rows ($sql_result) <> 0)
 		{
 			$new_id_order_detail = $row{'id_order_detail'};
 			echo $_GET['callback'].'({result:"ok", id_order_detail:'.$new_id_order_detail.', text:"Деталь заказа добавлена"})';
@@ -1297,14 +1382,14 @@ function add_order_detail ($id_order, $id_item_type, $id_action, $id_color, $id_
 	else
 		echo $_GET['callback'].'({result:"error in database"})';
 
-	mysqli_close ($db);
+	
 }
 
 
 // получить идентификатор статуса по наименованию статуса
 function get_order_id_status_by_name ($name_status){
 
-	$db = connect_db ();
+	connect_db ();
 
 	$sql = "SELECT 	s.id_status
 			FROM  `tbl_status_types` s
@@ -1312,16 +1397,16 @@ function get_order_id_status_by_name ($name_status){
 
 
 
-	$sql_result = mysqli_query ($db, $sql)
+	$sql_result = mysql_query ($sql)
 		or die('Error querying database.');
 
-	$row = mysqli_fetch_array($sql_result);
+	$row = mysql_fetch_array($sql_result);
 	$id_status = 0;
 
-	if (mysqli_num_rows ($sql_result) <> 0)
+	if (mysql_num_rows ($sql_result) <> 0)
 		return $row{'id_status'};
 	
-	mysqli_close ($db);
+	
 
 	return $id_status;
 }
@@ -1330,7 +1415,7 @@ function get_order_id_status_by_name ($name_status){
 // Получить все заказы
 function get_order_list (){
 
-	$db = connect_db ();
+	connect_db ();
 
 	$sql = "SELECT 	o.id_order, 
 					o.id_action, 
@@ -1349,13 +1434,14 @@ function get_order_list (){
 					o.comment
 			FROM  tbl_orders o";
 
-	$sql_result = mysqli_query ($db, $sql)
+
+	$sql_result = mysql_query ($sql)
 		or die('Error querying database.');
 
-	$row = mysqli_fetch_array($sql_result);
+	$row = mysql_fetch_array($sql_result);
 	$result_list = '';
 
-	if (mysqli_num_rows ($sql_result) <> 0)
+	if (mysql_num_rows ($sql_result) <> 0)
 	{
 		$result_list = '[{id_order:'.$row{'id_order'}.
 					', id_action:'.$row{'id_action'}.
@@ -1370,7 +1456,7 @@ function get_order_list (){
 					', id_status:'.$row{'id_status'}.
 					', comment:"'.$row{'comment'}.'"}';
 
-		while ($row = mysqli_fetch_array($sql_result)) {
+		while ($row = mysql_fetch_array($sql_result)) {
 		   $result_list .= ',{id_order:'.$row{'id_order'}.
 					', id_action:'.$row{'id_action'}.
 					', id_client:'.$row{'id_client'}.
@@ -1389,7 +1475,7 @@ function get_order_list (){
 	else
 		$result_list .= '[]';
 
-	mysqli_close ($db);
+	
 
 	echo $_GET['callback'].'({order_list:'.$result_list.'})';
 }
@@ -1397,7 +1483,7 @@ function get_order_list (){
 // Получить все заказы для прозвона
 function get_order_for_phone_list (){
 
-	$db = connect_db ();
+	connect_db ();
 
 	$sql = "SELECT * 
 		    FROM
@@ -1425,13 +1511,13 @@ function get_order_for_phone_list (){
 	//AND last_phone_date is null
 		//echo $sql;
 
-	$sql_result = mysqli_query ($db, $sql)
+	$sql_result = mysql_query ($sql)
 		or die('Error querying database.');
 
-	$row = mysqli_fetch_array($sql_result);
+	$row = mysql_fetch_array($sql_result);
 	$result_list = '';
 
-	if (mysqli_num_rows ($sql_result) <> 0)
+	if (mysql_num_rows ($sql_result) <> 0)
 	{
 		$last_phone_date = 'Не прозванивался';
 		if (!is_null($row{'last_phone_date'}))
@@ -1448,7 +1534,7 @@ function get_order_for_phone_list (){
 					'", done_date:"'.date_format(date_create_from_format('Y-m-d G:i:s', $row{'done_date'}),'Y.m.d').
 					'", last_phone_date:"'.$last_phone_date.'"}';
 
-		while ($row = mysqli_fetch_array($sql_result)) {
+		while ($row = mysql_fetch_array($sql_result)) {
 
 			$last_phone_date = 'Не прозванивался';
 			if (!is_null($row{'last_phone_date'}))
@@ -1469,7 +1555,7 @@ function get_order_for_phone_list (){
 	else
 		$result_list .= '[]';
 
-	mysqli_close ($db);
+	
 
 	echo $_GET['callback'].'({order_for_phone_list:'.$result_list.'})';
 }
@@ -1478,7 +1564,7 @@ function get_order_for_phone_list (){
 // Получить детали заказа по id_order
 function get_order_detail_by_id_order ($id_order){
 
-	$db = connect_db ();
+	connect_db ();
 
 	$sql = " SELECT @rn:=@rn+1 AS number, 
 				id_order_detail,
@@ -1516,14 +1602,14 @@ function get_order_detail_by_id_order ($id_order){
 				(SELECT @rn:=0) t2
 			where id_order = '$id_order'";
 
-	$sql_result = mysqli_query ($db, $sql)
+	$sql_result = mysql_query ($sql)
 		or die('Error querying database.');
 
-	$row = mysqli_fetch_array($sql_result);
+	$row = mysql_fetch_array($sql_result);
 	$result_list = '';
 
 
-	if (mysqli_num_rows ($sql_result) <> 0)
+	if (mysql_num_rows ($sql_result) <> 0)
 	{
 		$result_list = '[{id_order:'.$row{'id_order'}.
 					', id_item_type:'.$row{'id_item_type'}.
@@ -1550,7 +1636,7 @@ function get_order_detail_by_id_order ($id_order){
 					', wear_name:"'.$row{'wear_name'}.
 					'", comment:"'.$row{'comment'}.'"}';
 
-		while ($row = mysqli_fetch_array($sql_result)) {
+		while ($row = mysql_fetch_array($sql_result)) {
 		   $result_list .= ',{id_order:'.$row{'id_order'}.
 					', id_item_type:'.$row{'id_item_type'}.
 					', id_order_detail:'.$row{'id_order_detail'}.
@@ -1581,7 +1667,7 @@ function get_order_detail_by_id_order ($id_order){
 	else
 		$result_list .= '[]';
 
-	mysqli_close ($db);
+	
 
 	echo $_GET['callback'].'({order_detail_list:'.$result_list.'})';
 }
@@ -1589,102 +1675,102 @@ function get_order_detail_by_id_order ($id_order){
 // Удалить заказ (и детали и историю стстусов)
 function delete_order ($id_order){
 
-	$db = connect_db ();
+	connect_db ();
 
 	$sql = "DELETE FROM tbl_orders where id_order='$id_order'";
 	$sql_2 = "DELETE FROM tbl_order_details where id_order='$id_order'";
 	$sql_3 = "DELETE FROM tbl_order_status where id_order='$id_order'";
 
 
-	if (mysqli_query ($db, $sql) && mysqli_query ($db, $sql_2) && mysqli_query ($db, $sql_3))
+	if (mysql_query ($sql) && mysql_query ($sql_2) && mysql_query ($sql_3))
 		echo $_GET['callback'].'({result:"ok", text:"Заказ удален. НАВЕЧНО! Крутитесь как хотите теперь!"})';
 	else
 		echo $_GET['callback'].'({result:"error in database"})';
 
-	mysqli_close ($db);
+	
 }
 
 
 // Обновлние шапки заказа
 function update_order ($id_order, $id_client, $id_action, $container_count, $weight_home, $weight_dress, $ticket_number, $is_white, $comment){
 
-	$db = connect_db ();
+	connect_db ();
 
 
 	$sql = "UPDATE tbl_orders set id_client=$id_client, id_action=$id_action, сontainer_count=$container_count, weight_home=$weight_home, weight_dress=$weight_dress, ticket_number = $ticket_number, is_white = $is_white, comment='$comment' where id_order = $id_order";
 
 
-	if (mysqli_query ($db, $sql))
+	if (mysql_query ($sql))
 		echo $_GET['callback'].'({result:"ok"})';
 	else
 		echo $_GET['callback'].'({result:"error in database"})';
 
-	mysqli_close ($db);
+	
 }
 
 
 // Расширенное обновлние шапки заказа и статуса
 function update_order_ext ($id_order, $id_status, $id_client, $id_executor, $id_action, $container_count, $weight_home, $weight_dress, $ticket_number, $is_white, $comment){
 
-	$db = connect_db ();
+	connect_db ();
 
 	$sql = "UPDATE tbl_orders set id_client=$id_client, id_action=$id_action, id_executor=$id_executor, сontainer_count=$container_count, weight_home=$weight_home, weight_dress=$weight_dress, ticket_number = $ticket_number, is_white = $is_white, comment='$comment' where id_order = $id_order";
 
 	$sql2 = "INSERT INTO tbl_order_status (id_order, id_status, ds) VALUES ('$id_order', '$id_status', NOW())";
 
 
-	if (mysqli_query ($db, $sql) && mysqli_query ($db, $sql2))
+	if (mysql_query ($sql) && mysql_query ($sql2))
 		echo $_GET['callback'].'({result:"ok", text:"Данные обновлены"})';
 	else
 		echo $_GET['callback'].'({result:"error in database"})';
 
-	mysqli_close ($db);
+	
 }
 
 // Обновить статус как прозвоненный
 function update_order_status_as_phoned ($id_order){
 
-	$db = connect_db ();
+	connect_db ();
 
 	$sql = "INSERT INTO tbl_order_status (id_order, id_status, ds) select $id_order, id_status, NOW() from tbl_status_types where name='Клиент оповещен'";
 
 
-	if (mysqli_query ($db, $sql))
+	if (mysql_query ($sql))
 		echo $_GET['callback'].'({result:"ok", text:"Данные обновлены"})';
 	else
 		echo $_GET['callback'].'({result:"error in database"})';
 
-	mysqli_close ($db);
+	
 }
 
 
 //  Обновление деталей заказа
 function update_order_detail ($id_order_detail, $id_item_type, $id_action, $id_color, $id_gender, $wear, $count, $id_price, $is_label, $comment){
 
-	$db = connect_db ();
+	connect_db ();
 
-	$sql = "UPDATE tbl_order_details set id_item_type=$id_item_type, id_action=$id_action, id_color=$id_color, id_gender=$id_gender, wear=$wear, count = $count, id_price=$id_price, is_label=$is_label, comment=$comment where id_order_detail = $id_order_detail";
+	$sql = "UPDATE tbl_order_details set id_item_type=$id_item_type, id_action=$id_action, id_color=$id_color, id_gender=$id_gender, wear=$wear, count = $count, id_price=$id_price, is_label=$is_label, comment='$comment' where id_order_detail = $id_order_detail";
 
-	if (mysqli_query ($db, $sql))
+	if (mysql_query ($sql))
 		echo $_GET['callback'].'({result:"ok"})';
 	else
 		echo $_GET['callback'].'({result:"error in database"})';
 
-	mysqli_close ($db);
+	
 }
 
 // Удаление детали заказа
 function delete_order_detail ($id_order_detail){
-	$db = connect_db ();
+	connect_db ();
 
 	$sql = "DELETE FROM tbl_order_details where id_order_detail=$id_order_detail";
 
-	if (mysqli_query ($db, $sql))
+	if (mysql_query ($sql))
 		echo $_GET['callback'].'({result:"ok"})';
 	else
 		echo $_GET['callback'].'({result:"error in database"})';
 
-	mysqli_close ($db);
+	
 }
 
 $function_name = $_GET['function_name'];
@@ -1748,10 +1834,10 @@ switch ($function_name) {
 		get_client_list ();
 		break;
 	case 'update_client_data':
-		update_client_data ($_GET['id_client'], $_GET['name'], $_GET['surname'], $_GET['patronymic'], $_GET['birthday'], $_GET['id_gender'], $_GET['comment']);
+		update_client_data ($_GET['id_client'], $_GET['name'], $_GET['surname'], $_GET['patronymic'], $_GET['birthday'], $_GET['id_gender'], $_GET['comment'], $_GET['phone'], $_GET['address']);
 		break;
 	case 'add_client':
-		add_client ($_GET['name'], $_GET['surname'], $_GET['patronymic'], $_GET['id_gender'], $_GET['birthday'], $_GET['comment']);
+		add_client ($_GET['name'], $_GET['surname'], $_GET['patronymic'], $_GET['id_gender'], $_GET['birthday'], $_GET['comment'], $_GET['phone'], $_GET['address']);
 		break;
 	case 'delete_client':
 		delete_client ($_GET['id_client']);

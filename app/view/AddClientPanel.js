@@ -26,14 +26,17 @@ Ext.define('Iron.view.AddClientPanel', {
 
     config: {
         centered: true,
+        height: 573,
         itemId: 'addClientPanel',
         showAnimation: 'pop',
-        width: 545,
+        width: 543,
         hideOnMaskTap: false,
+        layout: 'vbox',
         modal: true,
         items: [
             {
                 xtype: 'fieldset',
+                flex: 0,
                 itemId: 'client_data_fieldset1',
                 title: 'Данные',
                 items: [
@@ -42,6 +45,7 @@ Ext.define('Iron.view.AddClientPanel', {
                         target: 'add_client',
                         itemId: 'client_name_textfield',
                         clearIcon: false,
+                        inputCls: 'mandatory-textfield',
                         label: 'Имя',
                         name: 'name'
                     },
@@ -50,6 +54,7 @@ Ext.define('Iron.view.AddClientPanel', {
                         target: 'add_client',
                         itemId: 'client_patronymic_textfield',
                         clearIcon: false,
+                        inputCls: 'mandatory-textfield',
                         label: 'Отчество',
                         name: 'patronymic'
                     },
@@ -58,6 +63,7 @@ Ext.define('Iron.view.AddClientPanel', {
                         target: 'add_client',
                         itemId: 'client_surname_textfield',
                         clearIcon: false,
+                        inputCls: 'mandatory-textfield',
                         label: 'Фамилия',
                         name: 'surname'
                     },
@@ -65,12 +71,31 @@ Ext.define('Iron.view.AddClientPanel', {
                         xtype: 'selectfield',
                         target: 'add_client',
                         itemId: 'client_gender_field',
+                        inputCls: 'mandatory-selectfield',
                         label: 'Пол',
                         name: 'id_gender',
                         autoSelect: false,
                         displayField: 'name',
                         store: 'gender_store',
                         valueField: 'id_gender'
+                    },
+                    {
+                        xtype: 'textfield',
+                        target: 'add_client',
+                        itemId: 'client_phone_textfield',
+                        clearIcon: false,
+                        inputCls: 'mandatory-textfield',
+                        label: 'Телефон',
+                        name: 'phone'
+                    },
+                    {
+                        xtype: 'textfield',
+                        target: 'add_client',
+                        height: 70,
+                        itemId: 'client_address_textfield',
+                        clearIcon: false,
+                        label: 'Адрес',
+                        name: 'address'
                     },
                     {
                         xtype: 'textfield',
@@ -88,7 +113,7 @@ Ext.define('Iron.view.AddClientPanel', {
                     {
                         xtype: 'textfield',
                         target: 'add_client',
-                        height: 116,
+                        height: 94,
                         itemId: 'client_comment_textfield',
                         label: 'Комментарии',
                         name: 'comment'
@@ -99,17 +124,24 @@ Ext.define('Iron.view.AddClientPanel', {
                         itemId: 'add_client_bottom_roolbar',
                         items: [
                             {
-                                xtype: 'button',
-                                disabled: true,
+                                xtype: 'container',
                                 docked: 'right',
-                                itemId: 'add_btn',
-                                text: 'Добавить'
-                            },
-                            {
-                                xtype: 'button',
-                                docked: 'right',
-                                itemId: 'cancel_btn',
-                                text: 'Отмена'
+                                layout: 'hbox',
+                                items: [
+                                    {
+                                        xtype: 'button',
+                                        disabled: true,
+                                        docked: 'left',
+                                        itemId: 'add_btn',
+                                        text: 'Добавить'
+                                    },
+                                    {
+                                        xtype: 'button',
+                                        docked: 'right',
+                                        itemId: 'cancel_btn',
+                                        text: 'Отмена'
+                                    }
+                                ]
                             }
                         ]
                     }

@@ -72,7 +72,8 @@ Ext.application({
         'AddOrderPanel',
         'AddDressForOrderPanel',
         'DoneOrderReport',
-        'ReportsMenuPanel'
+        'ReportsMenuPanel',
+        'ClientPanelExt'
     ],
     controllers: [
         'Navigation',
@@ -92,7 +93,8 @@ Ext.application({
         'order_menu_controller',
         'add_dress_for_order_controller',
         'done_order_report_controller',
-        'report_menu_controller'
+        'report_menu_controller',
+        'client_panel_ext_controller'
     ],
     name: 'Iron',
 

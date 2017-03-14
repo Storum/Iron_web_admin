@@ -57,7 +57,8 @@
             "25e1e552-2d4b-420e-8b1f-8d589ca371e4",
             "8c78135e-cf27-415e-83c7-2d1624f5ee6b",
             "546016af-c11f-451d-a62e-9f65cb36fead",
-            "8a7d0a1c-3429-4caf-9f2e-e81ed0440d42"
+            "8a7d0a1c-3429-4caf-9f2e-e81ed0440d42",
+            "667916ea-ad0b-4be9-9c76-a78e9e29b789"
         ],
         "store": [
             "82e178a3-1330-4e90-8bfe-fc7a5d1d0a51",
@@ -86,6 +87,7 @@
             "c15cada4-e25a-459a-a6c6-93d0d4eabdff",
             "a536e042-93c1-405c-9fd5-f5024cb4ddf7",
             "edc5c9c3-08cd-40f2-8cb8-1d6eba43bd1c",
+            "cb958cf7-50f9-4b8d-a0a4-e4399baa4baa",
             "700eb93e-3cad-4a0f-8fd2-81a245dd1f13",
             "86149f8e-7120-48a2-b739-cdfb5018da1f",
             "0106c457-0d2c-4483-8de6-d01500611e8c",
@@ -116,7 +118,9 @@
         "resource": [
             "01dfa91f-d7fa-4c86-8272-a99995dea3d2",
             "efb22941-a3c0-4e92-a152-27d1ebe407f1",
-            "dc5cf56f-0544-496c-b0e1-3e6e2235c5cc"
+            "dc5cf56f-0544-496c-b0e1-3e6e2235c5cc",
+            "1098a1c0-913d-4fbc-a812-5655234a961f",
+            "51eac574-5184-442b-8c11-2d857349a42b"
         ],
         "app": [
             "application"

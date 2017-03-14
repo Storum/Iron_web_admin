@@ -65,8 +65,8 @@
                 "itemId": null,
                 "margin": 15,
                 "navId": null,
-                "navView": "clientpanel",
-                "navViewItemId": "clientPanel",
+                "navView": "clientpanelext",
+                "navViewItemId": "clientPanelExt",
                 "text": "Клиенты"
             },
             "designerId": "2f7996be-3019-4db7-88bf-0d5eabbb3536",

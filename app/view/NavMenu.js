@@ -40,8 +40,8 @@ Ext.define('Iron.view.NavMenu', {
             },
             {
                 xtype: 'button',
-                navView: 'clientpanel',
-                navViewItemId: 'clientPanel',
+                navView: 'clientpanelext',
+                navViewItemId: 'clientPanelExt',
                 margin: 15,
                 iconCls: 'compose',
                 text: 'Клиенты'

@@ -41,8 +41,7 @@ Ext.define('Iron.controller.add_order_panel_controller', {
             id_client_order_count: 'panel#addOrderPanel label[itemId=id_client_order_count]',
             id_tip: 'panel#addOrderPanel label[itemId=id_tip]',
             id_action_order_field: 'panel#addOrderPanel selectfield[itemId=id_action_order]',
-            select_client_button: 'panel#clientPanel button[itemId=select_client_button]',
-            cancel_client_button: 'panel#clientPanel button[itemId=cancel_button]'
+            cancel_client_button: 'panel#clientPanelExt button[itemId=cancle_btn]'
         },
 
         control: {
@@ -116,22 +115,19 @@ Ext.define('Iron.controller.add_order_panel_controller', {
 
     client_select: function(button, e, eOpts) {
 
-        client_panel = Ext.create ('widget.clientpanel');
+        client_panel = Ext.create ('widget.clientpanelext');
         client_panel.setModal(true);
         client_panel.setCentered(true);
         client_panel.source = 'add_order_panel_controller';
+        client_panel.target = 'select_client';
         Ext.Viewport.add (client_panel);
         client_panel.show ();
 
 
-        var select_client_btn = this.getSelect_client_button();
-        select_client_btn.setHidden(false);
-
-        var cancle_client_btn = this.getCancel_client_button();
-        cancle_client_btn.setHidden(false);
 
 
-        client_panel.setWidth(980);
+        client_panel.setWidth(768);
+        client_panel.setHeight(500);
     },
 
     add_dress_tap: function(button, e, eOpts) {
@@ -635,7 +631,12 @@ Ext.define('Iron.controller.add_order_panel_controller', {
         var weight_home = this.getWeight_field().getValue();
         var weight_dress = this.getWeight_dress_field().getValue();
         var ticket_number = this.getTicket_number_field().getValue();
-        var id_action = this.getId_action_order_field().getValue();
+        var id_action_ = this.getId_action_order_field().getValue();
+        var id_action = id_action_;
+
+        if (!id_action_)
+            id_action = 0;
+
         var is_white_ = this.getWhite_field().getChecked();
         var is_white = 0;
         if (is_white_)
@@ -1049,7 +1050,7 @@ Ext.define('Iron.controller.add_order_panel_controller', {
             var total_sum_wo_disc = weight_home_items_sum_wo_disc + weight_dress_items_sum_wo_disc + order_detail_info.no_weight_item_wo_disc;
             var total_discount = order_detail_info.no_weight_item_discount + weight_discount;
 
-            text = '<div> <font size="2" color="white"> Общая сумма заказа: </font> <font size="3" color="yellow">' + Math.floor(total_sum/10)*10 + ' руб.: </div> </font> ' +
+            text = '<div> <font size="2" color="white"> Общая сумма заказа: </font> <font size="3" color="yellow">' + Math.floor(total_sum/5)*5 + ' руб.: </div> </font> ' +
                     '<font size="2" color="yellow"> Поштучно: ' + order_detail_info.no_weight_item_sum + ' руб.; </font>' +
                     '<font size="2" color="yellow"> Весовая одежда: ' + parseFloat(weight_dress_items_sum.toFixed(2)) + ' руб.; </font>' +
                     '<font size="2" color="yellow"> Весовой текстиль: ' + parseFloat(weight_home_items_sum.toFixed(2)) + ' руб.; </font>' +

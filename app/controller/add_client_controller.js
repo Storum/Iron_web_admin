@@ -25,11 +25,16 @@ Ext.define('Iron.controller.add_client_controller', {
             client_gender: 'panel#addClientPanel selectfield[itemId=client_gender_field]',
             client_birthday: 'panel#addClientPanel textfield[itemId=birthday_textfield]',
             client_comment: 'panel#addClientPanel textfield[itemId=client_comment_textfield]',
+            client_phone: 'panel#addClientPanel  textfield[itemId=client_phone_textfield]',
+            client_address: 'panel#addClientPanel  textfield[itemId=client_address_textfield]',
             add_btn: 'panel#addClientPanel button[itemId=add_btn]',
             cancel_btn: 'panel#addClientPanel button[itemId=cancel_btn]'
         },
 
         control: {
+            "addClientPanel": {
+                show: 'onFormpanelShow'
+            },
             "panel#addClientPanel  textfield[target='add_client']": {
                 keyup: 'textdata_changed',
                 change: 'gender_changed'
@@ -41,6 +46,14 @@ Ext.define('Iron.controller.add_client_controller', {
                 tap: 'add_client_tap'
             }
         }
+    },
+
+    onFormpanelShow: function(component, eOpts) {
+        this.update_gender_list();
+
+
+
+
     },
 
     textdata_changed: function(textfield, e, eOpts) {
@@ -62,14 +75,88 @@ Ext.define('Iron.controller.add_client_controller', {
         var patronymic = this.getClient_patronymic().getValue();
         var birthday = this.getClient_birthday().getValue();
         var comment = this.getClient_comment().getValue();
+        var phone = this.getClient_phone().getValue();
+        var address = this.getClient_address().getValue();
+
+
+        var add_client_panel = this.getAddClientPanel();
+
+
+        if (add_client_panel.target == 'edit_client')
+            this.update_client (this.client.get('id_client'), name, surname, patronymic, id_gender, birthday, comment, phone, address);
+        else
+            this.add_client (name, surname, patronymic, id_gender, birthday, comment, phone, address);
 
 
 
-        this.add_client(name, surname, patronymic, id_gender, birthday, comment);
     },
 
     update_gender_list: function() {
+        var t = this;
 
+        Ext.data.JsonP.request(
+            {
+                url: GlobalVars.url_setting + 'php/base_functional.php',
+                params:
+                {
+                    function_name	: 'get_gender_list',
+                    format			: 'json'
+                },
+                callbackKey: 'callback',
+                scope: this,
+                success: function (result)
+                {
+
+                    t.update_gender_store (result.gender_list);
+
+                }
+            });
+
+    },
+
+    update_gender_store: function(data) {
+
+        var gender_field = this.getClient_gender();
+        var gender_store = gender_field.getStore();
+
+        gender_store.data.clear();
+        gender_store.setData(data);
+
+        this.set_fields_value_if_exists();
+    },
+
+    set_fields_value_if_exists: function() {
+        var add_client_panel = this.getAddClientPanel();
+
+        if (add_client_panel.target == 'edit_client')
+        {
+            var client = this.getApplication().getController(add_client_panel.source).get_selected_client_record();
+            var name = this.getClient_name();
+            var surname = this.getClient_surname();
+            var patronimyc = this.getClient_patronymic();
+            var gender = this.getClient_gender();
+            var birthday = this.getClient_birthday();
+            var comment = this.getClient_comment();
+            var phone = this.getClient_phone();
+            var address = this.getClient_address();
+
+            this.getAdd_btn().setHtml('OK');
+
+
+            name.setValue(client.get('name'));
+            surname.setValue(client.get('surname'));
+            patronimyc.setValue(client.get('patronymic'));
+            gender.setValue(client.get('gender'));
+
+            if (client.get('birthday'))
+                birthday.setValue(Iron.Utilities.date_to_string(client.get('birthday')));
+
+            comment.setValue(client.get('comment'));
+            phone.setValue(client.get('phone'));
+            address.setValue(client.get('address'));
+
+            this.client = client;
+        }
     },
 
     close_add_client_form: function() {
@@ -77,19 +164,35 @@ Ext.define('Iron.controller.add_client_controller', {
         add_client_panel.destroy();
 
 
-        this.getApplication().getController('client_panel_controller').update_client_list();
+        this.getApplication().getController(add_client_panel.source).update_client_list();
     },
 
     check_all_fields: function() {
-        var id_gender = this.getClient_gender().getValue();
+        var gender_field = this.getClient_gender();
+
+
         var name = this.getClient_name().getValue();
         var surname = this.getClient_surname().getValue();
         var patronymic = this.getClient_patronymic().getValue();
-        var birthday = this.getClient_birthday().getValue();
         var comment = this.getClient_comment().getValue();
+        var phone = this.getClient_phone().getValue();
 
 
-        if (birthday && id_gender && name.length > 0 && surname.length >0 && patronymic.length >0)
+
+
+        var sex_by_russian_name = new SexByRussianName(surname, name, patronymic);
+        var gender = sex_by_russian_name.get_gender();
+
+        //console.log(); // 1 — мужской, 0 — женский, undefined — не определен.
+
+        if (gender == 1)
+            gender_field.setValue(gender_field.getStore().findRecord('name', 'Мужчина').get('id_gender'));
+        else if (gender === 0)
+            gender_field.setValue(gender_field.getStore().findRecord('name', 'Женщина').get('id_gender'));
+
+        var id_gender = gender_field.getValue();
+
+        if (id_gender && name.length > 0 && surname.length >0 && patronymic.length >0 && phone.length > 0)
             this.set_buttons_disable (false);
         else
             this.set_buttons_disable (true);
@@ -101,7 +204,7 @@ Ext.define('Iron.controller.add_client_controller', {
         add_btn.setDisabled(disable);
     },
 
-    add_client: function(name, surname, patronymic, id_gender, birthday, comment) {
+    add_client: function(name, surname, patronymic, id_gender, birthday, comment, phone, address) {
         var t = this;
 
         Ext.data.JsonP.request(
@@ -116,6 +219,44 @@ Ext.define('Iron.controller.add_client_controller', {
                     id_gender		: id_gender,
                     birthday		: birthday,
                     comment			: comment,
+                    phone			: phone,
+                    address			: address,
+                    format			: 'json'
+                },
+                callbackKey: 'callback',
+                scope: this,
+                success: function (result)
+                {
+                    Ext.Msg.alert('Iron', result.text);
+
+                    if (result.result == 'ok')
+                        t.close_add_client_form ();
+
+                }
+            });
+
+
+
+    },
+
+    update_client: function(id_client, name, surname, patronymic, id_gender, birthday, comment, phone, address) {
+        var t = this;
+
+        Ext.data.JsonP.request(
+            {
+                url: GlobalVars.url_setting + 'php/base_functional.php',
+                params:
+                {
+                    function_name	: 'update_client_data',
+                    id_client		: id_client,
+                    name			: name,
+                    surname			: surname,
+                    patronymic		: patronymic,
+                    id_gender		: id_gender,
+                    birthday		: birthday,
+                    comment			: comment,
+                    phone			: phone,
+                    address			: address,
                     format			: 'json'
                 },
                 callbackKey: 'callback',

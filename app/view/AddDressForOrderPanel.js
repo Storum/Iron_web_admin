@@ -134,7 +134,8 @@ Ext.define('Iron.view.AddDressForOrderPanel', {
                     {
                         xtype: 'checkboxfield',
                         itemId: 'is_lable_fld',
-                        label: 'Бирка:'
+                        label: 'Бирка:',
+                        checked: true
                     },
                     {
                         xtype: 'textfield',

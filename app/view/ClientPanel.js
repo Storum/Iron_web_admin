@@ -28,29 +28,62 @@ Ext.define('Iron.view.ClientPanel', {
     ],
 
     config: {
+        height: 850,
         itemId: 'clientPanel',
-        layout: 'vbox',
         items: [
             {
                 xtype: 'list',
-                flex: 1,
                 disabled: false,
                 docked: 'left',
-                height: 648,
+                height: 843,
                 itemId: 'client_list',
                 maxHeight: '',
-                width: 329,
+                width: 385,
                 itemTpl: [
                     '<div class="user"> {name}<br>{surname}<br> </div>'
                 ],
                 store: 'client_store',
                 striped: true,
-                variableHeights: true
+                variableHeights: true,
+                items: [
+                    {
+                        xtype: 'toolbar',
+                        docked: 'top',
+                        items: [
+                            {
+                                xtype: 'container',
+                                docked: 'bottom',
+                                layout: 'hbox',
+                                items: [
+                                    {
+                                        xtype: 'button',
+                                        docked: 'left',
+                                        itemId: 'add_client_button',
+                                        ui: 'confirm',
+                                        width: 125,
+                                        iconCls: 'add',
+                                        text: 'Добавить'
+                                    },
+                                    {
+                                        xtype: 'button',
+                                        disabled: true,
+                                        docked: 'left',
+                                        itemId: 'delete_client_button',
+                                        ui: 'decline',
+                                        width: 125,
+                                        iconCls: 'delete',
+                                        text: 'Удалить'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
             },
             {
                 xtype: 'toolbar',
-                docked: 'bottom',
-                height: 41,
+                docked: 'top',
+                height: 10,
                 itemId: 'user_toolbar',
                 items: [
                     {
@@ -67,7 +100,7 @@ Ext.define('Iron.view.ClientPanel', {
                         xtype: 'button',
                         flex: 1,
                         disabled: true,
-                        docked: 'left',
+                        docked: 'right',
                         itemId: 'clientmenu_button',
                         ui: 'decline-round',
                         width: 101,
@@ -94,43 +127,12 @@ Ext.define('Iron.view.ClientPanel', {
             },
             {
                 xtype: 'container',
-                flex: 1,
+                docked: 'left',
+                layout: 'vbox',
                 items: [
                     {
-                        xtype: 'toolbar',
-                        docked: 'top',
-                        items: [
-                            {
-                                xtype: 'container',
-                                docked: 'top',
-                                layout: 'hbox',
-                                items: [
-                                    {
-                                        xtype: 'button',
-                                        docked: 'right',
-                                        itemId: 'add_client_button',
-                                        ui: 'confirm',
-                                        width: 125,
-                                        iconCls: 'add',
-                                        text: 'Добавить'
-                                    },
-                                    {
-                                        xtype: 'button',
-                                        disabled: true,
-                                        docked: 'right',
-                                        itemId: 'delete_client_button',
-                                        ui: 'decline',
-                                        width: 125,
-                                        iconCls: 'delete',
-                                        text: 'Удалить'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
                         xtype: 'fieldset',
-                        docked: 'top',
+                        hidden: false,
                         itemId: 'client_data_fieldset',
                         title: 'Данные',
                         items: [

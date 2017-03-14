@@ -8,9 +8,9 @@
     "userConfig": {
         "designer|userAlias": "clientpanel",
         "designer|userClassName": "ClientPanel",
+        "height": 850,
         "id": null,
-        "itemId": "clientPanel",
-        "layout": "vbox"
+        "itemId": "clientPanel"
     },
     "designerId": "a36924e0-c897-4567-b03f-2249fb05a5bf",
     "customConfigs": [
@@ -31,17 +31,16 @@
             "userConfig": {
                 "disabled": false,
                 "docked": "left",
-                "height": 648,
+                "height": 843,
                 "id": null,
                 "itemHeight": null,
                 "itemId": "client_list",
-                "layout|flex": 1,
                 "maxHeight": "",
                 "minHeight": null,
                 "store": "client_store",
                 "striped": true,
                 "variableHeights": true,
-                "width": 329
+                "width": 385
             },
             "designerId": "200e1fa6-94f8-4040-9ffb-9ea0a06b6a19",
             "cn": [
@@ -59,6 +58,76 @@
                         ]
                     },
                     "designerId": "d9595065-bbd7-4e47-8abd-f64e11ca5be5"
+                },
+                {
+                    "type": "Ext.Toolbar",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "docked": "top"
+                    },
+                    "designerId": "0d3d563c-4600-4520-9d0c-5ab7fd3c11ab",
+                    "cn": [
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "docked": "bottom",
+                                "layout": "hbox"
+                            },
+                            "designerId": "ec8923ab-8d0d-4b6e-a95b-8b3ca2997529",
+                            "cn": [
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|uiInterfaceName": "confirm",
+                                        "docked": "left",
+                                        "iconCls": "add",
+                                        "id": null,
+                                        "itemId": "add_client_button",
+                                        "layout|flex": null,
+                                        "text": "Добавить",
+                                        "ui": "confirm",
+                                        "width": 125
+                                    },
+                                    "designerId": "55d435c5-a12c-4214-9428-b92adc946b6d"
+                                },
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|uiInterfaceName": "decline",
+                                        "disabled": true,
+                                        "docked": "left",
+                                        "iconCls": "delete",
+                                        "id": null,
+                                        "itemId": "delete_client_button",
+                                        "layout|flex": null,
+                                        "text": "Удалить",
+                                        "ui": "decline",
+                                        "width": 125
+                                    },
+                                    "designerId": "711c717d-13a8-4891-a569-a3f7e21524de"
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         },
@@ -70,8 +139,8 @@
             },
             "codeClass": null,
             "userConfig": {
-                "docked": "bottom",
-                "height": 41,
+                "docked": "top",
+                "height": 10,
                 "id": null,
                 "itemId": "user_toolbar"
             },
@@ -106,7 +175,7 @@
                     "userConfig": {
                         "designer|uiInterfaceName": "decline-round",
                         "disabled": true,
-                        "docked": "left",
+                        "docked": "right",
                         "iconCls": "more",
                         "id": null,
                         "itemId": "clientmenu_button",
@@ -161,80 +230,11 @@
             },
             "codeClass": null,
             "userConfig": {
-                "layout|flex": 1
+                "docked": "left",
+                "layout": "vbox"
             },
             "designerId": "e70dfc80-989c-42b7-a16e-86120b9e04d7",
             "cn": [
-                {
-                    "type": "Ext.Toolbar",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "docked": "top"
-                    },
-                    "designerId": "0d3d563c-4600-4520-9d0c-5ab7fd3c11ab",
-                    "cn": [
-                        {
-                            "type": "Ext.Container",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "docked": "top",
-                                "layout": "hbox"
-                            },
-                            "designerId": "ec8923ab-8d0d-4b6e-a95b-8b3ca2997529",
-                            "cn": [
-                                {
-                                    "type": "Ext.Button",
-                                    "reference": {
-                                        "name": "items",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "designer|uiInterfaceName": "confirm",
-                                        "docked": "right",
-                                        "iconCls": "add",
-                                        "id": null,
-                                        "itemId": "add_client_button",
-                                        "layout|flex": null,
-                                        "text": "Добавить",
-                                        "ui": "confirm",
-                                        "width": 125
-                                    },
-                                    "designerId": "55d435c5-a12c-4214-9428-b92adc946b6d"
-                                },
-                                {
-                                    "type": "Ext.Button",
-                                    "reference": {
-                                        "name": "items",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "designer|uiInterfaceName": "decline",
-                                        "disabled": true,
-                                        "docked": "right",
-                                        "iconCls": "delete",
-                                        "id": null,
-                                        "itemId": "delete_client_button",
-                                        "layout|flex": null,
-                                        "text": "Удалить",
-                                        "ui": "decline",
-                                        "width": 125
-                                    },
-                                    "designerId": "711c717d-13a8-4891-a569-a3f7e21524de"
-                                }
-                            ]
-                        }
-                    ]
-                },
                 {
                     "type": "Ext.form.FieldSet",
                     "reference": {
@@ -244,7 +244,8 @@
                     "codeClass": null,
                     "userConfig": {
                         "disabled": null,
-                        "docked": "top",
+                        "docked": null,
+                        "hidden": false,
                         "itemId": "client_data_fieldset",
                         "title": "Данные"
                     },

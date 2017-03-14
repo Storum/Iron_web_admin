@@ -9,12 +9,14 @@
         "centered": true,
         "designer|userAlias": "addclientpanel",
         "designer|userClassName": "AddClientPanel",
+        "height": 573,
         "hideAnimation": null,
         "hideOnMaskTap": false,
         "itemId": "addClientPanel",
+        "layout": "vbox",
         "modal": true,
         "showAnimation": "pop",
-        "width": 545
+        "width": 543
     },
     "configAlternates": {
         "cash_user": "number"
@@ -32,6 +34,7 @@
                 "disabled": null,
                 "docked": null,
                 "itemId": "client_data_fieldset1",
+                "layout|flex": 0,
                 "title": "Данные"
             },
             "designerId": "7dc9b45e-df6a-41a7-a657-56e547fc365a",
@@ -46,6 +49,7 @@
                     "userConfig": {
                         "clearIcon": false,
                         "id": null,
+                        "inputCls": "mandatory-textfield",
                         "itemId": "client_name_textfield",
                         "label": "Имя",
                         "name": "name",
@@ -70,6 +74,7 @@
                     "userConfig": {
                         "clearIcon": false,
                         "id": null,
+                        "inputCls": "mandatory-textfield",
                         "itemId": "client_patronymic_textfield",
                         "label": "Отчество",
                         "name": "patronymic",
@@ -94,6 +99,7 @@
                     "userConfig": {
                         "clearIcon": false,
                         "id": null,
+                        "inputCls": "mandatory-textfield",
                         "itemId": "client_surname_textfield",
                         "label": "Фамилия",
                         "name": "surname",
@@ -118,6 +124,7 @@
                     "userConfig": {
                         "autoSelect": false,
                         "displayField": "name",
+                        "inputCls": "mandatory-selectfield",
                         "itemId": "client_gender_field",
                         "label": "Пол",
                         "name": "id_gender",
@@ -126,6 +133,56 @@
                         "valueField": "id_gender"
                     },
                     "designerId": "3885df7f-f291-4e73-93a8-94061857aca7",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "target",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "clearIcon": false,
+                        "id": null,
+                        "inputCls": "mandatory-textfield",
+                        "itemId": "client_phone_textfield",
+                        "label": "Телефон",
+                        "name": "phone",
+                        "target": "add_client"
+                    },
+                    "designerId": "3efc051f-192e-4001-b736-48f9843fb973",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "target",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "clearIcon": false,
+                        "height": 70,
+                        "id": null,
+                        "itemId": "client_address_textfield",
+                        "label": "Адрес",
+                        "name": "address",
+                        "target": "add_client"
+                    },
+                    "designerId": "fcdd7c94-7f4a-4431-98d5-1f607631cc16",
                     "customConfigs": [
                         {
                             "group": "(Custom Properties)",
@@ -168,7 +225,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "height": 116,
+                        "height": 94,
                         "id": null,
                         "itemId": "client_comment_textfield",
                         "label": "Комментарии",
@@ -198,22 +255,7 @@
                     "designerId": "518ea124-0c57-43ff-99aa-7d46b9ff35c7",
                     "cn": [
                         {
-                            "type": "Ext.Button",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "disabled": true,
-                                "docked": "right",
-                                "itemId": "add_btn",
-                                "text": "Добавить"
-                            },
-                            "designerId": "0184166d-bc18-4cd1-94b9-4f6d0056e0c1"
-                        },
-                        {
-                            "type": "Ext.Button",
+                            "type": "Ext.Container",
                             "reference": {
                                 "name": "items",
                                 "type": "array"
@@ -221,10 +263,42 @@
                             "codeClass": null,
                             "userConfig": {
                                 "docked": "right",
-                                "itemId": "cancel_btn",
-                                "text": "Отмена"
+                                "layout": "hbox"
                             },
-                            "designerId": "4dfdcb79-10c7-47cf-a14e-df98d52c33df"
+                            "designerId": "9213ee45-c849-4ae8-bd07-2e4ed4522a1a",
+                            "cn": [
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "disabled": true,
+                                        "docked": "left",
+                                        "itemId": "add_btn",
+                                        "layout|flex": null,
+                                        "text": "Добавить"
+                                    },
+                                    "designerId": "0184166d-bc18-4cd1-94b9-4f6d0056e0c1"
+                                },
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "docked": "right",
+                                        "itemId": "cancel_btn",
+                                        "layout|flex": null,
+                                        "text": "Отмена"
+                                    },
+                                    "designerId": "4dfdcb79-10c7-47cf-a14e-df98d52c33df"
+                                }
+                            ]
                         }
                     ]
                 }

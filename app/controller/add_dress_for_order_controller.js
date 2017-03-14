@@ -77,6 +77,8 @@ Ext.define('Iron.controller.add_dress_for_order_controller', {
 
         this.getPrice_fld().setDisabled(true);
         this.check_all_fields();
+
+        this.set_gender_of_item_group_type();
     },
 
     item_select: function(selectfield, newValue, oldValue, eOpts) {
@@ -350,6 +352,8 @@ Ext.define('Iron.controller.add_dress_for_order_controller', {
         }
 
 
+        color_field.setValue(color_field.getStore().findRecord('name','Белый').get('id_color'));
+
         this.update_gender_list();
     },
 
@@ -420,6 +424,13 @@ Ext.define('Iron.controller.add_dress_for_order_controller', {
         var price_field = this.getPrice_fld();
         var price_store = price_field.getStore();
 
+        var item_group_type_fld = this.getItem_type_group_fld();
+        var item_group_name = item_group_type_fld.getStore().findRecord('id_item_type_group', item_group_type_fld.getValue()).get('name');
+
+
+
+
+
         price_store.data.clear();
         price_store.setData(data);
 
@@ -436,6 +447,16 @@ Ext.define('Iron.controller.add_dress_for_order_controller', {
 
 
         this.update_color_list();
+
+
+        var piece_price = price_field.getStore().findRecord('price_type_name','Штучный');
+        var weight_price = price_field.getStore().findRecord('price_type_name','Весовой');
+
+
+        if (item_group_name === 'Домашний текстиль' && weight_price)
+            price_field.setValue(weight_price.get('id_price'));
+        else
+            price_field.setValue(piece_price.get('id_price'));
     },
 
     check_all_fields: function() {
@@ -451,6 +472,7 @@ Ext.define('Iron.controller.add_dress_for_order_controller', {
             return;
 
         var is_home_weight = this.getItem_type_fld().getStore().findRecord('id_item_type', id_item_type).get('is_home_weight');
+
 
 
         if (is_home_weight === 1)
@@ -469,6 +491,54 @@ Ext.define('Iron.controller.add_dress_for_order_controller', {
         }
 
 
+    },
+
+    set_gender_of_item_group_type: function() {
+
+        var item_group_type_fld = this.getItem_type_group_fld();
+        var gender_fld = this.getGender_fld();
+        var price_fld = this.getPrice_fld();
+
+        var item_group_name = item_group_type_fld.getStore().findRecord('id_item_type_group', item_group_type_fld.getValue()).get('name');
+
+
+
+
+
+
+        if (item_group_name == 'Мужская одежда')
+        {
+            gender_fld.setHidden(false);
+            gender_fld.setValue(gender_fld.getStore().findRecord('name', 'Мужчина'));
+        }
+
+
+        if (item_group_name == 'Женская одежда')
+        {
+            gender_fld.setHidden(false);
+            gender_fld.setValue(gender_fld.getStore().findRecord('name', 'Женщина'));
+        }
+
+
+        if (item_group_name == 'Верхняя одежда')
+        {
+            gender_fld.setHidden(false);
+            gender_fld.setValue(gender_fld.getStore().findRecord('name', 'Мужчина'));
+        }
+
+
+        if (item_group_name == 'Детская одежда')
+        {
+            gender_fld.setHidden(false);
+            gender_fld.setValue(gender_fld.getStore().findRecord('name', 'Мужчина'));
+        }
+
+
+
+
+
+        if (item_group_name == 'Домашний текстиль')
+            gender_fld.setHidden(true);
     },
 
     set_buttons_disable: function(disable) {

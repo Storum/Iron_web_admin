@@ -1,0 +1,186 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "clientpanelext",
+        "designer|userClassName": "ClientPanelExt",
+        "itemId": "clientPanelExt",
+        "layout": "vbox"
+    },
+    "designerId": "667916ea-ad0b-4be9-9c76-a78e9e29b789",
+    "cn": [
+        {
+            "type": "Ext.dataview.List",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "height": 245,
+                "itemId": "client_list",
+                "layout|flex": 1,
+                "store": "client_store"
+            },
+            "designerId": "0dd7a2bd-b3e4-4389-a6d5-a1bac2c7a47a",
+            "cn": [
+                {
+                    "type": "Ext.XTemplate",
+                    "reference": {
+                        "name": "itemTpl",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "itemTpl",
+                        "implHandler": [
+                            "<div class=\"client\"> {surname}<br>{name}<br>{patronymic}<br> </div>"
+                        ]
+                    },
+                    "designerId": "512e6775-8e5e-4612-b7db-176216703e81"
+                },
+                {
+                    "type": "Ext.Toolbar",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|uiInterfaceName": "light",
+                        "docked": "bottom",
+                        "ui": "light"
+                    },
+                    "designerId": "d852327a-82ba-4119-922b-2824f1089fc1",
+                    "cn": [
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "designerId": "1eafaef0-675c-40e2-a78c-c07e70d352ef",
+                            "cn": [
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "docked": "left",
+                                        "iconAlign": null,
+                                        "iconCls": "add",
+                                        "itemId": "add_client_btn",
+                                        "text": "Добавить",
+                                        "width": 106
+                                    },
+                                    "designerId": "2f56dac0-1903-4394-ae9a-15ad25f1458c"
+                                },
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "disabled": true,
+                                        "docked": "left",
+                                        "iconCls": "delete",
+                                        "itemId": "delete_client_btn",
+                                        "text": "Удалить",
+                                        "width": 108
+                                    },
+                                    "designerId": "1f312eef-0db6-4f7b-aad5-4b623c189a99"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "docked": "right"
+                            },
+                            "designerId": "4a485328-e15b-4b43-902d-a27fb766ce78",
+                            "cn": [
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "disabled": true,
+                                        "docked": "right",
+                                        "iconCls": "action",
+                                        "itemId": "menu_client_btn",
+                                        "text": "Меню клиента"
+                                    },
+                                    "designerId": "9d0aeb83-dbe1-4799-aa03-bfc195c5a9d4"
+                                },
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "docked": "right",
+                                        "hidden": true,
+                                        "iconCls": "home",
+                                        "itemId": "cancle_btn",
+                                        "text": "Отмена"
+                                    },
+                                    "designerId": "f5d1482e-9e72-46cf-984e-b59fa1258274"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.Toolbar",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "docked": "top"
+                    },
+                    "designerId": "da26ffae-91b1-4540-8ad1-226967e788af",
+                    "cn": [
+                        {
+                            "type": "Ext.field.Search",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "clearIcon": false,
+                                "docked": "top",
+                                "itemId": "search_field",
+                                "label": "Поиск по фамилии",
+                                "width": 514
+                            },
+                            "designerId": "767c60bb-131d-4d79-9da9-6feb83e308a8"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

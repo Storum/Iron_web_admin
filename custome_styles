@@ -1,0 +1,10 @@
+.mandatory-textfield {
+    background-color: #7d92da !important;
+    color: #f2f2f3 !important;
+}
+
+.mandatory-selectfield {
+    background-color: #7d92da !important;
+    -webkit-text-fill-color:#f2f2f3 !important;
+    color: #f2f2f3 !important;
+}
