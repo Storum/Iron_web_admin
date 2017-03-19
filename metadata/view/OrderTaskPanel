@@ -1,0 +1,167 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "centered": true,
+        "designer|userAlias": "ordertaskpanel",
+        "designer|userClassName": "OrderTaskPanel",
+        "height": 715,
+        "itemId": "orderTaskPanel",
+        "layout": "fit",
+        "modal": true,
+        "width": 654
+    },
+    "designerId": "682f03f5-14ef-44df-9ccf-2e616f33ac01",
+    "cn": [
+        {
+            "type": "Ext.Toolbar",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": "bottom"
+            },
+            "designerId": "baf56328-34c5-4f32-bc04-2126888a1ece",
+            "cn": [
+                {
+                    "type": "Ext.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "docked": "right",
+                        "layout": "hbox"
+                    },
+                    "designerId": "af02abd6-97ec-4deb-b31b-5448d056e7ed",
+                    "cn": [
+                        {
+                            "type": "Ext.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "itemId": "cancel_btn",
+                                "text": "Отмена"
+                            },
+                            "designerId": "caf4afbc-72d5-48d0-9449-5ea4f055f0f1"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.dataview.List",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": null,
+                "itemId": "order_list",
+                "mode": "MULTI",
+                "store": "order_by_status_store"
+            },
+            "designerId": "06d35859-946f-4d50-be53-67114df42eff",
+            "cn": [
+                {
+                    "type": "Ext.XTemplate",
+                    "reference": {
+                        "name": "itemTpl",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "itemTpl",
+                        "implHandler": [
+                            "<div>Заказ номер {id_order} <br> от {date_create} <br> для {client_name} </div>"
+                        ]
+                    },
+                    "designerId": "e42e348f-fcb4-47e0-b711-43f6f112f69b"
+                },
+                {
+                    "type": "Ext.Toolbar",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "docked": "top"
+                    },
+                    "designerId": "2f3a43f7-9b0e-4d88-b600-994528e58cc3",
+                    "cn": [
+                        {
+                            "type": "Ext.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "itemId": "calc_from_time",
+                                "text": "Расчет по времени"
+                            },
+                            "designerId": "f8d80760-00b4-4ec0-aa76-1672e56e4a01"
+                        },
+                        {
+                            "type": "Ext.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "itemId": "create_for_selected",
+                                "text": "По выбранным"
+                            },
+                            "designerId": "4617c537-b51a-4830-b89d-461b2433175a"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.Toolbar",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "docked": "top"
+                    },
+                    "designerId": "2a352b7c-6b1b-44bd-a8c2-e2ccc6b90833",
+                    "cn": [
+                        {
+                            "type": "Ext.field.Select",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "displayField": "full_user_name",
+                                "itemId": "executor_fld",
+                                "label": "Сотрудник:",
+                                "layout|flex": 1,
+                                "store": "executor_store",
+                                "valueField": "id_user",
+                                "width": 409
+                            },
+                            "designerId": "fcd7ba90-42fe-4f90-8553-10bfb169a46b"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -23,7 +23,7 @@
                 "docked": "left",
                 "itemId": "id_order_list",
                 "store": "order_store",
-                "width": 293
+                "width": 305
             },
             "designerId": "344761f0-bcfe-44f9-adc0-9e45cf773853",
             "cn": [
@@ -46,6 +46,9 @@
                                 "type": "array"
                             },
                             "codeClass": null,
+                            "userConfig": {
+                                "layout": "hbox"
+                            },
                             "designerId": "cb0f6cee-4949-4e1f-abbb-725f26055419",
                             "cn": [
                                 {
@@ -60,6 +63,20 @@
                                         "label": "Поиск:"
                                     },
                                     "designerId": "295af380-9b6f-4172-87bd-b8136053f38b"
+                                },
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "iconCls": "search",
+                                        "itemId": "search_menu",
+                                        "text": ""
+                                    },
+                                    "designerId": "9b977d31-884e-4aaf-9023-b70fb7cb063b"
                                 }
                             ]
                         }
@@ -166,6 +183,22 @@
                         "width": 133
                     },
                     "designerId": "417326c4-62d4-41fd-8d81-145235dd5989"
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "docked": "left",
+                        "iconCls": "info",
+                        "itemId": "task_order_button",
+                        "text": "З-Н",
+                        "width": 91
+                    },
+                    "designerId": "bb1c653f-a007-4ceb-948a-ee5b12f91825"
                 },
                 {
                     "type": "Ext.Button",

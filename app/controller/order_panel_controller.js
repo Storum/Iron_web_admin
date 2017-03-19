@@ -24,6 +24,10 @@ Ext.define('Iron.controller.order_panel_controller', {
             'client_store',
             'order_store'
         ],
+        views: [
+            'SearchOrderMenu',
+            'OrderTaskPanel'
+        ],
 
         refs: {
             addOrderPanel: 'panel#addOrderPanel',
@@ -46,7 +50,10 @@ Ext.define('Iron.controller.order_panel_controller', {
             delete_order_btn: 'panel#orderPanel button[itemId=delete_order_button]',
             search_order: 'panel#orderPanel searchfield[itemId=id_search_order]',
             order_menu_button: 'panel#orderPanel button[itemId=order_menu_button]',
-            addOrderMenu: 'panel#orderPanel panel#addorderMenu'
+            addOrderMenu: 'panel#orderPanel panel#addorderMenu',
+            searchOrderMenu: 'panel#searchOrderMenu',
+            search_menu_btn: 'panel#orderPanel button[itemId=search_menu]',
+            task_order_btn: 'panel#orderPanel  button[itemId=task_order_button]'
         },
 
         control: {
@@ -84,6 +91,12 @@ Ext.define('Iron.controller.order_panel_controller', {
             },
             "order_menu_button": {
                 tap: 'menu_open'
+            },
+            "search_menu_btn": {
+                tap: 'search_menu_tap'
+            },
+            "task_order_btn": {
+                tap: 'task_order_tab'
             }
         }
     },
@@ -283,6 +296,28 @@ Ext.define('Iron.controller.order_panel_controller', {
         menu.showBy(target);
 
 
+    },
+
+    search_menu_tap: function(target) {
+
+        var menu = this.getSearchOrderMenu();
+        if (!menu) {
+            menu = Ext.create('widget.seachordermenu');
+        }
+
+        menu.source_store = this.getOrder_list().getStore();
+        menu.status_store = this.getOrder_status_select().getStore();
+
+
+
+        // Show menu by menu button
+        menu.showBy(target);
+    },
+
+    task_order_tab: function(button, e, eOpts) {
+        var order_task_panel = Ext.create('widget.ordertaskpanel');
+        Ext.Viewport.add(order_task_panel);
+        order_task_panel.show();
     },
 
     check_field_change: function() {

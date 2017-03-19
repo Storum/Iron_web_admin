@@ -1,0 +1,152 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "centered": true,
+        "designer|userAlias": "seachordermenu",
+        "designer|userClassName": "SearchOrderMenu",
+        "hidden": true,
+        "hideOnMaskTap": true,
+        "id": null,
+        "itemId": "searchOrderMenu",
+        "modal": true,
+        "padding": 10
+    },
+    "designerId": "41d9e8e8-9613-453d-893c-4c763aa75900",
+    "cn": [
+        {
+            "type": "Ext.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "iconCls": "team",
+                "itemId": "all_orders",
+                "margin": 15,
+                "text": "Все"
+            },
+            "designerId": "4a84b899-eed4-4978-937e-5a8733de1d05"
+        },
+        {
+            "type": "Ext.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "config": null,
+                "iconCls": "team",
+                "itemId": "new_orders",
+                "margin": 15,
+                "navId": null,
+                "navView": null,
+                "navViewItemId": null,
+                "text": "Новые"
+            },
+            "designerId": "b3d5a389-6864-4f39-830e-4d7097728957",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "config",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navId",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navView",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navViewItemId",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "disabled": null,
+                "iconCls": "team",
+                "id": null,
+                "itemId": "finished_orders",
+                "margin": 15,
+                "navId": null,
+                "navView": null,
+                "navViewItemId": null,
+                "text": "Готовые"
+            },
+            "designerId": "097b1b30-d712-4888-8d55-3c46fc8594e1",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navId",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navView",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navViewItemId",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "disabled": null,
+                "iconCls": "team",
+                "id": null,
+                "itemId": "closed_orders",
+                "margin": 15,
+                "navId": null,
+                "navView": null,
+                "navViewItemId": null,
+                "text": "Закрытые"
+            },
+            "designerId": "e6a4238a-60a7-4e02-8199-a2a08b2e6064",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navId",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navView",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navViewItemId",
+                    "type": "string"
+                }
+            ]
+        }
+    ]
+}

@@ -2,11 +2,11 @@
 
 function connect_db (){
 	
-	// $link = mysql_connect('localhost', 'root', '')
-	// 	or die('Unable to connect to MySQL');
+	$link = mysql_connect('localhost', 'root', '')
+	 	or die('Unable to connect to MySQL');
 	
-	$link = mysql_connect('localhost', 'u0194327_root', 'HYvtP5uM')
-		or die('Unable to connect to MySQL');
+	//$link = mysql_connect('localhost', 'u0194327_root', 'HYvtP5uM')
+	//	or die('Unable to connect to MySQL');
 
 
 	mysql_set_charset ('utf8');
@@ -79,9 +79,8 @@ function update_user_data ($id_user, $nick, $name, $surname, $patronymic, $comme
 		echo $_GET['callback'].'({result:"ok"})';
 	else
 		echo $_GET['callback'].'({result:"error in database"})';
-
-	
 }
+
 
 function add_user ($nick, $password, $name, $surname, $patronymic, $comment){
 
@@ -109,8 +108,6 @@ function add_user ($nick, $password, $name, $surname, $patronymic, $comment){
 	}
 	else
 		echo $_GET['callback'].'({result:"error in database"})';
-
-	
 }
 
 function delete_user ($id_user){
@@ -126,11 +123,50 @@ function delete_user ($id_user){
 		echo $_GET['callback'].'({result:"ok", text:"Пользователь удален"})';
 	else
 		echo $_GET['callback'].'({result:"error in database"})';
-
-	
 }
 
 
+// Получить список исполнителей
+function get_executor_list (){
+
+	connect_db ();
+
+	$sql = 'SELECT SQL_NO_CACHE id_user, name, surname, patronymic, CONCAT_WS(" ", name, patronymic, surname) full_user_name FROM tbl_users where name <>" "';
+	
+	$sql_result = mysql_query ($sql)
+		or die('Error querying database.');
+
+	$row = mysql_fetch_array($sql_result);
+	$result_list = '';
+
+	if (mysql_num_rows ($sql_result) <> 0)
+	{
+		$result_list = '[{id_user:'.$row{'id_user'}.
+					', name:"'.$row{'name'}.
+					'", surname:"'.$row{'surname'}.
+					'", patronymic:"'.$row{'patronymic'}.
+					'", full_user_name:"'.$row{'full_user_name'}.'"}';
+
+		while ($row = mysql_fetch_array($sql_result)) {
+	   		$result_list .= ',{id_user:'.$row{'id_user'}.
+					', name:"'.$row{'name'}.
+					'", surname:"'.$row{'surname'}.
+					'", patronymic:"'.$row{'patronymic'}.
+					'", full_user_name:"'.$row{'full_user_name'}.'"}';
+
+		}
+
+		$result_list .= ']';
+	}
+	else
+		$result_list .= '[]';
+	
+
+	
+
+
+	echo $_GET['callback'].'({executor_list:'.$result_list.'})';
+}
 
 
 //-------------------------------------------------------------------------------------------------------------------
@@ -1480,6 +1516,135 @@ function get_order_list (){
 	echo $_GET['callback'].'({order_list:'.$result_list.'})';
 }
 
+
+// Получить все заказы по статусу
+function get_order_list_by_status_name ($status_name){
+
+	connect_db ();
+
+	$sql = "SELECT * 
+			FROM (SELECT 	o.id_order,  
+							CONCAT_WS(' ', name, patronymic, surname) client_name,
+							o.сontainer_count as cont_count,
+							o.weight_home,
+							o.weight_dress,
+							o.date_create,
+							(SELECT name
+							FROM tbl_order_status s 
+		                     	JOIN tbl_status_types st on s.id_status = st.id_status
+							WHERE s.id_order = o.id_order 
+		                     	AND ds = (SELECT max(ds) FROM tbl_order_status WHERE id_order=o.id_order)) AS status_name
+					FROM  tbl_orders o
+						JOIN tbl_clients c on o.id_client = c.id_client) AS x
+			WHERE status_name = '$status_name'
+			order by date_create";
+
+
+	$sql_result = mysql_query ($sql)
+		or die('Error querying database.');
+
+	$row = mysql_fetch_array($sql_result);
+	$result_list = '';
+
+	if (mysql_num_rows ($sql_result) <> 0)
+	{
+		$result_list = '[{id_order:'.$row{'id_order'}.
+					', cont_count:'.$row{'cont_count'}.
+					', weight_home:'.$row{'weight_home'}.
+					', weight_dress:'.$row{'weight_dress'}.
+					', date_create:"'.$row{'date_create'}.
+					'", client_name:"'.$row{'client_name'}.'"}';
+
+		while ($row = mysql_fetch_array($sql_result)) {
+		   $result_list .= ',{id_order:'.$row{'id_order'}.
+					', cont_count:'.$row{'cont_count'}.
+					', weight_home:'.$row{'weight_home'}.
+					', weight_dress:'.$row{'weight_dress'}.
+					', date_create:"'.$row{'date_create'}.
+					'", client_name:"'.$row{'client_name'}.'"}';
+		}
+		$result_list .= ']';
+	}
+	else
+		$result_list .= '[]';
+
+	
+
+	echo $_GET['callback'].'({order_list:'.$result_list.'})';
+}
+
+
+// Получить данные для заказ-наряда по списку заказов
+function get_data_for_task_order_by_order_list ($order_list){
+
+	$order_array = json_decode($order_list);
+	
+	connect_db ();
+
+	$sql = "SELECT @rn:=@rn+1 AS number, 
+				o.id_order, 
+				it.name item_type_name,
+				(it.total_time_in_second * od.count)/60 time_in_minutes,
+				it.hanger,
+				od.count,
+				c.name color,
+				g.name gender,
+				is_label as is_lable,
+				o.comment order_comment,
+				od.comment detail_comment
+			    FROM tbl_orders o
+			    	join tbl_order_details as od on o.id_order = od.id_order
+			        join tbl_item_types as it on od.id_item_type = it.id_item_type
+					join tbl_colors c on od.id_color = c.id_color
+					left join tbl_gender g on od.id_gender = g.id_gender,
+				(SELECT @rn:=0) t2
+			where o.id_order in(".implode(',',$order_array).")"." ORDER BY o.date_create, o.id_order";
+
+
+	$sql_result = mysql_query ($sql)
+		or die('Error querying database.');
+
+	$row = mysql_fetch_array($sql_result);
+	$result_list = '';
+
+	if (mysql_num_rows ($sql_result) <> 0)
+	{
+		$result_list = '[{id_order:'.$row{'id_order'}.
+					',time_in_minutes: '.$row{'time_in_minutes'}.
+					', item_type_name:"'.$row{'item_type_name'}.
+					'", count:'.$row{'count'}.
+					', color:"'.$row{'color'}.
+					'", gender:"'.$row{'gender'}.
+					', is_lable:'.$row{'is_lable'}.
+					', hanger:'.$row{'hanger'}.
+					'", order_comment:"'.$row{'order_comment'}.
+					'", detail_comment:"'.$row{'detail_comment'}.'"}';
+
+		while ($row = mysql_fetch_array($sql_result)) {
+		   $result_list .= ',{id_order:'.$row{'id_order'}.
+					',time_in_minutes: '.$row{'time_in_minutes'}.
+					', item_type_name:"'.$row{'item_type_name'}.
+					'", count:'.$row{'count'}.
+					', color:"'.$row{'color'}.
+					'", gender:"'.$row{'gender'}.
+					', is_lable:'.$row{'is_lable'}.
+					', hanger:'.$row{'hanger'}.
+					'", order_comment:"'.$row{'order_comment'}.
+					'", detail_comment:"'.$row{'detail_comment'}.'"}';
+		}
+		$result_list .= ']';
+	}
+	else
+		$result_list .= '[]';
+
+	
+
+	echo $_GET['callback'].'({order_detail_list:'.$result_list.'})';
+
+
+}
+
+
 // Получить все заказы для прозвона
 function get_order_for_phone_list (){
 
@@ -1797,6 +1962,9 @@ switch ($function_name) {
 	case 'get_user_list':
 		get_user_list ();
 		break;
+	case 'get_executor_list':
+		get_executor_list ();
+		break;
 	case 'update_user_data':
 		update_user_data ($_GET['id_user'], $_GET['nick'], $_GET['name'], $_GET['surname'], $_GET['patronymic'], $_GET['comment']);
 		break;
@@ -1898,6 +2066,12 @@ switch ($function_name) {
 		break;
 	case 'get_order_list':
 		get_order_list ();
+		break;
+	case 'get_order_list_by_status_name':
+		get_order_list_by_status_name ($_GET['status_name']);
+		break;
+	case 'get_data_for_task_order_by_order_list':
+		get_data_for_task_order_by_order_list ($_GET['order_list']);
 		break;
 	default:
 		# code...

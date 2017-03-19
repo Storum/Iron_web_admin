@@ -1,0 +1,183 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "search_order_menu_controller"
+    },
+    "designerId": "dfc1bb78-c4f5-42d9-84ef-736cb204d74f",
+    "cn": [
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "searchOrderMenu",
+                "selector": "panel#searchOrderMenu"
+            },
+            "designerId": "001e0d10-1923-4d87-a311-67754df508ae"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "finished_orders",
+                "selector": "panel#searchOrderMenu button[itemId=finished_orders]"
+            },
+            "designerId": "9bd218c0-4730-4c3b-a7c6-462c5aff2aa4"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "new_orders",
+                "selector": "panel#searchOrderMenu button[itemId=new_orders]"
+            },
+            "designerId": "c2d22300-0f8a-47d6-a0c1-fae12403f420"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "finished_orders",
+                "designer|targetType": "Ext.Button",
+                "fn": "filter_finished_orders",
+                "implHandler": [
+                    "var store = this.getSearchOrderMenu().source_store;",
+                    "var status_store = this.getSearchOrderMenu().status_store;",
+                    "",
+                    "store.clearFilter();",
+                    "",
+                    "store.filter('id_status', status_store.findRecord('name', 'Заказ готов', 0, false, false, true).get('id_status'));",
+                    "",
+                    "this.getSearchOrderMenu().destroy();",
+                    "",
+                    ""
+                ],
+                "name": "tap"
+            },
+            "designerId": "3d7c7ce0-750e-4b3f-adcb-ac46bfc1e722"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "new_orders",
+                "designer|targetType": "Ext.Button",
+                "fn": "filter_new_orders",
+                "implHandler": [
+                    "var store = this.getSearchOrderMenu().source_store;",
+                    "var status_store = this.getSearchOrderMenu().status_store;",
+                    "",
+                    "store.clearFilter();",
+                    "",
+                    "store.filter('id_status', status_store.findRecord('name', 'Заказ создан', 0, false, false, true).get('id_status'));",
+                    "",
+                    "this.getSearchOrderMenu().destroy();",
+                    "",
+                    ""
+                ],
+                "name": "tap"
+            },
+            "designerId": "881395c3-3bc4-4c39-bff0-7f990298f2e1"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "all_orders",
+                "designer|targetType": "Ext.Button",
+                "fn": "filter_all_orders",
+                "implHandler": [
+                    "var store = this.getSearchOrderMenu().source_store;",
+                    "var status_store = this.getSearchOrderMenu().status_store;",
+                    "",
+                    "store.clearFilter();",
+                    "",
+                    "this.getSearchOrderMenu().destroy();",
+                    "",
+                    ""
+                ],
+                "name": "tap"
+            },
+            "designerId": "82c9feae-042e-4f87-a527-42f946990535"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "closed_orders",
+                "designer|targetType": "Ext.Button",
+                "fn": "filter_closed_orders",
+                "implHandler": [
+                    "var store = this.getSearchOrderMenu().source_store;",
+                    "var status_store = this.getSearchOrderMenu().status_store;",
+                    "",
+                    "store.clearFilter();",
+                    "",
+                    "store.filter('id_status', status_store.findRecord('name', 'Заказ закрыт', 0, false, false, true).get('id_status'));",
+                    "",
+                    "this.getSearchOrderMenu().destroy();"
+                ],
+                "name": "tap"
+            },
+            "designerId": "7c93700b-1baf-47df-aaa2-0e8244868580"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "closed_orders",
+                "selector": "panel#searchOrderMenu button[itemId=closed_orders]"
+            },
+            "designerId": "e54f288c-afdd-47ff-bc93-1bfd48aaf4f0"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "all_orders",
+                "selector": "panel#searchOrderMenu button[itemId=all_orders]"
+            },
+            "designerId": "cde46423-95c7-4d7d-b494-16e356ee4442"
+        }
+    ]
+}

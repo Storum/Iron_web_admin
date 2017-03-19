@@ -21,8 +21,8 @@ Ext.define('Iron.view.OrderPanel', {
         'Ext.dataview.List',
         'Ext.Toolbar',
         'Ext.field.Search',
-        'Ext.XTemplate',
         'Ext.Button',
+        'Ext.XTemplate',
         'Ext.form.FieldSet',
         'Ext.field.Select',
         'Ext.field.Number',
@@ -36,7 +36,7 @@ Ext.define('Iron.view.OrderPanel', {
                 xtype: 'list',
                 docked: 'left',
                 itemId: 'id_order_list',
-                width: 293,
+                width: 305,
                 itemTpl: [
                     '<div>Заказ номер {id_order}</div>'
                 ],
@@ -48,11 +48,18 @@ Ext.define('Iron.view.OrderPanel', {
                         items: [
                             {
                                 xtype: 'container',
+                                layout: 'hbox',
                                 items: [
                                     {
                                         xtype: 'searchfield',
                                         itemId: 'id_search_order',
                                         label: 'Поиск:'
+                                    },
+                                    {
+                                        xtype: 'button',
+                                        itemId: 'search_menu',
+                                        iconCls: 'search',
+                                        text: ''
                                     }
                                 ]
                             }
@@ -98,6 +105,14 @@ Ext.define('Iron.view.OrderPanel', {
                         width: 133,
                         iconCls: 'bookmarks',
                         text: 'Сохранить'
+                    },
+                    {
+                        xtype: 'button',
+                        docked: 'left',
+                        itemId: 'task_order_button',
+                        width: 91,
+                        iconCls: 'info',
+                        text: 'З-Н'
                     },
                     {
                         xtype: 'button',

@@ -1,0 +1,92 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "order_by_status_model"
+    },
+    "designerId": "23439815-b865-4adb-b665-e05b587bd3f5",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "id_order",
+                "type": "int"
+            },
+            "designerId": "eaa40fe3-88bd-4eb0-bda1-7e5c48023bc3"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "date_create",
+                "type": "string"
+            },
+            "designerId": "f8adc867-3966-4b89-b2e4-e94a9a578830"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "cont_count",
+                "type": "int"
+            },
+            "designerId": "09840a31-ab6f-41d8-8a3e-2acf916c303e"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "weight_home",
+                "type": "float"
+            },
+            "designerId": "3dd1da1a-0f38-41c0-80ce-ef3b5c12860b"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "weight_dress",
+                "type": "float"
+            },
+            "designerId": "28f1e7f7-ae4a-482e-a0bb-a6e71decb50b"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "client_name",
+                "type": "string"
+            },
+            "designerId": "883e0f9f-0479-4015-b066-1769a8ab6b6f"
+        }
+    ]
+}

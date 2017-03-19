@@ -1,0 +1,59 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "centered": true,
+        "designer|userAlias": "catalogmenu",
+        "designer|userClassName": "CatalogMenu",
+        "hidden": true,
+        "hideOnMaskTap": true,
+        "id": null,
+        "itemId": "catalogMenu",
+        "modal": true,
+        "padding": 10
+    },
+    "designerId": "86e7b6f4-3fc8-4b05-93f0-3aab34928266",
+    "cn": [
+        {
+            "type": "Ext.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "disabled": null,
+                "iconCls": "home",
+                "id": null,
+                "itemId": "item_type_groups_btn",
+                "margin": 15,
+                "navId": null,
+                "navView": null,
+                "navViewItemId": null,
+                "text": "Группы одежды"
+            },
+            "designerId": "4199978b-6417-4e02-a04b-0a0574e0b811",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navId",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navView",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navViewItemId",
+                    "type": "string"
+                }
+            ]
+        }
+    ]
+}

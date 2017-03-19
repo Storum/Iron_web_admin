@@ -13,6 +13,10 @@
             "order_actions_store",
             "client_store",
             "order_store"
+        ],
+        "views": [
+            "SearchOrderMenu",
+            "OrderTaskPanel"
         ]
     },
     "designerId": "5d81ccd0-5eb5-4d8c-86aa-bd0c7a9dd707",
@@ -331,6 +335,45 @@
                 "selector": "panel#orderPanel panel#addorderMenu"
             },
             "designerId": "3e53880e-ceb4-4c27-ac82-d6f4c31f3dca"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "searchOrderMenu",
+                "selector": "panel#searchOrderMenu"
+            },
+            "designerId": "388e63bd-94ef-4f0f-bc2d-a6c065edd237"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "search_menu_btn",
+                "selector": "panel#orderPanel button[itemId=search_menu]"
+            },
+            "designerId": "dc961793-b970-493a-89b1-bfbadf06fe43"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "task_order_btn",
+                "selector": "panel#orderPanel  button[itemId=task_order_button]"
+            },
+            "designerId": "63c3a27c-3c95-4872-b9a5-a926bd808f08"
         },
         {
             "type": "basicfunction",
@@ -1139,6 +1182,59 @@
                 ]
             },
             "designerId": "84e2a382-d899-4342-b226-67ccf38cbbc4"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "search_menu_btn",
+                "designer|params": [
+                    "target"
+                ],
+                "designer|targetType": null,
+                "fn": "search_menu_tap",
+                "implHandler": [
+                    "",
+                    "var menu = this.getSearchOrderMenu();",
+                    "if (!menu) {",
+                    "    menu = Ext.create('widget.seachordermenu');",
+                    "}",
+                    "",
+                    "menu.source_store = this.getOrder_list().getStore();",
+                    "menu.status_store = this.getOrder_status_select().getStore();",
+                    "",
+                    "",
+                    "",
+                    "// Show menu by menu button",
+                    "menu.showBy(target);"
+                ],
+                "name": "tap"
+            },
+            "designerId": "c97498df-884d-433e-a610-d1fddec1adf8"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "task_order_btn",
+                "designer|targetType": "Ext.Button",
+                "fn": "task_order_tab",
+                "implHandler": [
+                    "var order_task_panel = Ext.create('widget.ordertaskpanel');",
+                    "Ext.Viewport.add(order_task_panel);",
+                    "order_task_panel.show();"
+                ],
+                "name": "tap"
+            },
+            "designerId": "272acef7-16f5-48f0-8e0e-ea6ab10dc671"
         }
     ]
 }
