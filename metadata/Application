@@ -26,7 +26,11 @@
             "report_menu_controller",
             "client_panel_ext_controller",
             "search_order_menu_controller",
-            "order_task_controller"
+            "order_task_controller",
+            "catalog_menu_controller",
+            "edit_item_type_groups_panel_controller",
+            "item_types_panel_controller",
+            "edit_item_types_panel_controller"
         ],
         "models": [
             "user_model",
@@ -45,7 +49,9 @@
             "order_model",
             "order_for_phone",
             "executor_model",
-            "order_by_status_model"
+            "order_by_status_model",
+            "item_type_full_model",
+            "client_filter_model"
         ],
         "name": "Iron",
         "stores": [
@@ -65,7 +71,10 @@
             "order_store",
             "order_for_phone",
             "executor_store",
-            "order_by_status_store"
+            "order_by_status_store",
+            "item_type_full_store",
+            "item_type_full_tree_store",
+            "client_filter_store"
         ],
         "views": [
             "MainView",
@@ -87,7 +96,10 @@
             "ReportsMenuPanel",
             "SearchOrderMenu",
             "OrderTaskPanel",
-            "CatalogMenu"
+            "CatalogMenu",
+            "EditItemTypeGroupsPanel",
+            "ItemTypesPanel",
+            "MyPanel1"
         ]
     },
     "designerId": "application",

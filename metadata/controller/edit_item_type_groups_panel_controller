@@ -1,0 +1,299 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "edit_item_type_groups_panel_controller"
+    },
+    "designerId": "75bda0a6-cb39-4092-a9f5-dbd138a5cba4",
+    "cn": [
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "editItemTypeGroupsPanel",
+                "selector": "panel#editItemTypeGroupsPanel"
+            },
+            "designerId": "8762e748-e4be-40d4-99e7-abdaf786a3fd"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "item_type_group_name",
+                "selector": "panel#editItemTypeGroupsPanel textfield[itemId=item_type_group_name]"
+            },
+            "designerId": "105bb762-4856-46e7-8a9c-4c7f7fcf52b8"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "item_type_group_comment",
+                "selector": "panel#editItemTypeGroupsPanel textfield[itemId=item_type_group_comment]"
+            },
+            "designerId": "820cef65-935d-4e0d-bcee-11864437d7f9"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "ok_btn",
+                "selector": "panel#editItemTypeGroupsPanel button[itemId=ok_btn]"
+            },
+            "designerId": "840ab815-2992-4948-a555-c08efd22af43"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "cancle_btn",
+                "selector": "panel#editItemTypeGroupsPanel button[itemId=cancle_btn]"
+            },
+            "designerId": "ca5b435a-e4eb-4be4-920a-d7f7ce2a0ed5"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "cancle_btn",
+                "designer|targetType": "Ext.Button",
+                "fn": "cancle_tap",
+                "implHandler": [
+                    "var edit_item_type_groups_panel = this.getEditItemTypeGroupsPanel();",
+                    "edit_item_type_groups_panel.destroy();"
+                ],
+                "name": "tap"
+            },
+            "designerId": "3d196b3e-3efc-4c75-910c-52631f75ed82"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "ok_btn",
+                "designer|targetType": "Ext.Button",
+                "fn": "ok_tap",
+                "implHandler": [
+                    "var edit_item_type_groups_panel = this.getEditItemTypeGroupsPanel();",
+                    "var name = this.getItem_type_group_name().getValue();",
+                    "var comment = this.getItem_type_group_comment().getValue();",
+                    "",
+                    "",
+                    "if (edit_item_type_groups_panel.target == 'edit')",
+                    "    this.edit_item_type_group (item_type_group = this.getApplication().getController(edit_item_type_groups_panel.source).get_selected_node().get('id_item_type_group'), name, comment);",
+                    "else if (edit_item_type_groups_panel.target == 'add')",
+                    "    this.add_item_type_group (name, comment);"
+                ],
+                "name": "tap"
+            },
+            "designerId": "9faf897c-2c41-4789-8260-f94e42712f2e"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "check_all_fields",
+                "implHandler": [
+                    "var name = this.getItem_type_group_name().getValue();",
+                    "",
+                    "",
+                    "if (name.length > 0)",
+                    "    this.getOk_btn().setDisabled(false);",
+                    "else",
+                    "    this.getOk_btn().setDisabled(true);",
+                    ""
+                ]
+            },
+            "designerId": "84f5b920-556e-4710-90bc-4564baf9478b"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "item_type_group_name",
+                "designer|targetType": "Ext.field.Text",
+                "fn": "name_keyup",
+                "implHandler": [
+                    "this.check_all_fields();"
+                ],
+                "name": "keyup"
+            },
+            "designerId": "50e6885c-db47-4978-a51c-26ba61871893"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "name",
+                    "comment"
+                ],
+                "fn": "add_item_type_group",
+                "implHandler": [
+                    "var t = this;",
+                    "",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name\t: 'add_item_type_group',",
+                    "            name\t\t\t: name,",
+                    "            comment\t\t\t: comment,",
+                    "            format: 'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        async: false,",
+                    "        success: function (result)",
+                    "        {",
+                    "            Ext.Msg.alert('Iron', result.text);",
+                    "",
+                    "            if (result.result == 'ok')",
+                    "                t.close_panel();",
+                    "        }",
+                    "    });"
+                ]
+            },
+            "designerId": "5f9ae001-6cea-4a2a-9c9c-cf12d1730b2d"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "id_item_type_group",
+                    "name",
+                    "comment"
+                ],
+                "fn": "edit_item_type_group",
+                "implHandler": [
+                    "var t = this;",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name\t\t:\t'update_item_type_group',",
+                    "            id_item_type_group\t:\tid_item_type_group,",
+                    "            name\t\t\t\t:\tname,",
+                    "            comment\t\t\t\t:\tcomment,",
+                    "            format: 'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        async: false,",
+                    "        success: function (result)",
+                    "        {",
+                    "            Ext.Msg.alert('Iron', result.text);",
+                    "",
+                    "            if (result.result == 'ok')",
+                    "                t.close_panel();",
+                    "        }",
+                    "    });"
+                ]
+            },
+            "designerId": "c774bf1b-793a-4d17-a7bc-850b4991d149"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "close_panel",
+                "implHandler": [
+                    "var edit_item_type_groups_panel = this.getEditItemTypeGroupsPanel();",
+                    "",
+                    "this.getApplication().getController(edit_item_type_groups_panel.source).update_item_type_list();",
+                    "edit_item_type_groups_panel.destroy();"
+                ]
+            },
+            "designerId": "2308b58a-4e59-41bc-bc40-4c0c960def29"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "editItemTypeGroupsPanel",
+                "designer|targetType": "Ext.Panel",
+                "fn": "onPanelShow",
+                "implHandler": [
+                    "",
+                    "var edit_item_type_groups_panel = this.getEditItemTypeGroupsPanel();",
+                    "",
+                    "if (edit_item_type_groups_panel.target == 'edit')",
+                    "{",
+                    "    var item_type_group = this.getApplication().getController(edit_item_type_groups_panel.source).get_selected_node();",
+                    "    var name = this.getItem_type_group_name();",
+                    "    var comment = this.getItem_type_group_comment();",
+                    "",
+                    "    this.getOk_btn().setDisabled (false);",
+                    "",
+                    "",
+                    "    name.setValue(item_type_group.get('name'));",
+                    "    comment.setValue(item_type_group.get('group_comment'));",
+                    "",
+                    "//    this.client = client;",
+                    "}"
+                ],
+                "name": "show"
+            },
+            "designerId": "cf1bfd09-6e31-4932-a0c9-2d52c1026291"
+        }
+    ]
+}

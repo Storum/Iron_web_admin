@@ -18,7 +18,8 @@ Ext.define('Iron.controller.client_panel_ext_controller', {
 
     config: {
         stores: [
-            'client_store'
+            'client_store',
+            'client_filter_store'
         ],
 
         refs: {
@@ -28,7 +29,8 @@ Ext.define('Iron.controller.client_panel_ext_controller', {
             delete_client_btn: 'panel#clientPanelExt button[itemId=delete_client_btn]',
             menu_client_btn: 'panel#clientPanelExt button[itemId=menu_client_btn]',
             cancle_btn: 'panel#clientPanelExt button[itemId=cancle_btn]',
-            search_field: 'panel#clientPanelExt searchfield[itemId=search_field]'
+            search_field: 'panel#clientPanelExt searchfield[itemId=search_field]',
+            filter_field: 'panel#clientPanelExt selectfield[itemId=filter_field]'
         },
 
         control: {
@@ -92,7 +94,9 @@ Ext.define('Iron.controller.client_panel_ext_controller', {
         store = this.getClient_list().getStore();
         store.clearFilter();
 
-        store.filter('surname', value);
+
+        var filter_field = this.getFilter_field().getValue();
+        store.filter(filter_field, value);
     },
 
     add_client_tap: function(button, e, eOpts) {

@@ -1,0 +1,255 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "centered": true,
+        "designer|userAlias": "itemtypespanel",
+        "designer|userClassName": "ItemTypesPanel",
+        "height": 600,
+        "itemId": "itemTypesPanel",
+        "layout": "fit",
+        "modal": true,
+        "scrollable": null,
+        "width": 635
+    },
+    "designerId": "625434ef-aeb1-429b-b8fb-12c8abecba2b",
+    "cn": [
+        {
+            "type": "Ext.dataview.NestedList",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "backText": "Назад",
+                "container|animation": null,
+                "displayField": "name",
+                "emptyText": "В группе нет позиций",
+                "itemId": "item_types_list",
+                "scrollable": true,
+                "store": "item_type_full_tree_store"
+            },
+            "designerId": "a8b890c2-de9d-4663-a14a-aab52f1764f6"
+        },
+        {
+            "type": "Ext.Toolbar",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": "top"
+            },
+            "designerId": "8d18a4c2-c75c-45cd-a1aa-197aae767745",
+            "cn": [
+                {
+                    "type": "Ext.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout": "hbox"
+                    },
+                    "designerId": "8504511e-4b78-4aca-8132-a6827fb93e62",
+                    "cn": [
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "docked": null,
+                                "layout": "fit"
+                            },
+                            "designerId": "915f5930-1af2-4dc3-a6d3-0d4c331d7646",
+                            "cn": [
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "iconCls": "add",
+                                        "itemId": "add_btn",
+                                        "margin": "1px 1px 1px 1px",
+                                        "text": "Добавить"
+                                    },
+                                    "designerId": "4eaa7a9c-5251-45a4-8b6d-6776888b2851"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "docked": null,
+                                "layout": "hbox"
+                            },
+                            "designerId": "3396d79f-555e-4be8-b80b-6d1eae3916d6",
+                            "cn": [
+                                {
+                                    "type": "Ext.Container",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout": "vbox",
+                                        "margin": 0,
+                                        "padding": null
+                                    },
+                                    "designerId": "fa439814-d310-4bd7-83cb-8fa258c3168c",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.Button",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "disabled": true,
+                                                "iconCls": "compose",
+                                                "itemId": "change_item_btn",
+                                                "margin": "1px 1px 1px 1px",
+                                                "padding": null,
+                                                "text": "Изменить позицию"
+                                            },
+                                            "designerId": "b3dcc76c-ebc1-4638-830c-9cd2f2b19957"
+                                        },
+                                        {
+                                            "type": "Ext.Button",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "disabled": true,
+                                                "iconCls": "compose",
+                                                "itemId": "change_group_btn",
+                                                "margin": "1px 1px 1px 1px",
+                                                "text": "Изменить группу"
+                                            },
+                                            "designerId": "0e9460eb-576a-4a01-8575-0fa01d26abf0"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.Container",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "bottom": null,
+                                        "margin": null,
+                                        "padding": null
+                                    },
+                                    "designerId": "1201a034-23e3-4a42-960f-f26da881fd70",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.Button",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "disabled": true,
+                                                "iconCls": "delete",
+                                                "itemId": "delete_item_btn",
+                                                "margin": "1px 1px 1px 1px",
+                                                "text": "Удалить позицию"
+                                            },
+                                            "designerId": "2b728aa5-8ead-45b9-b327-ca08e7f0e1e5"
+                                        },
+                                        {
+                                            "type": "Ext.Button",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "disabled": true,
+                                                "iconCls": "delete",
+                                                "itemId": "delete_group_btn",
+                                                "margin": "1px 1px 1px 1px",
+                                                "text": "Удалить группу"
+                                            },
+                                            "designerId": "2e53aec4-1c53-4ca5-a4f4-ada69e65e753"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.Toolbar",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": "bottom"
+            },
+            "designerId": "85fbe1fc-8cc2-4e28-8bfb-8b75e015bd20",
+            "cn": [
+                {
+                    "type": "Ext.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "docked": "right",
+                        "layout": "hbox",
+                        "width": 120
+                    },
+                    "designerId": "6a9bd82f-bad2-4587-9715-f53ad081f001",
+                    "cn": [
+                        {
+                            "type": "Ext.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "iconCls": "home",
+                                "itemId": "cancle_btn",
+                                "layout|flex": 1,
+                                "text": "Отмена"
+                            },
+                            "designerId": "64b9f0bc-4c26-4a15-9e16-80e67e122102"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

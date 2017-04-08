@@ -35,6 +35,13 @@ Ext.define('Iron.view.CatalogMenu', {
                 margin: 15,
                 iconCls: 'home',
                 text: 'Группы одежды'
+            },
+            {
+                xtype: 'button',
+                itemId: 'item_types_btn',
+                margin: 15,
+                iconCls: 'home',
+                text: 'Наименования одежды'
             }
         ]
     }

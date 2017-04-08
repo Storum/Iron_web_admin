@@ -54,6 +54,43 @@
                     "type": "string"
                 }
             ]
+        },
+        {
+            "type": "Ext.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "disabled": null,
+                "iconCls": "home",
+                "id": null,
+                "itemId": "item_types_btn",
+                "margin": 15,
+                "navId": null,
+                "navView": null,
+                "navViewItemId": null,
+                "text": "Наименования одежды"
+            },
+            "designerId": "8b0dc62c-9444-46d8-956c-7389881279b9",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navId",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navView",
+                    "type": "string"
+                },
+                {
+                    "group": "(Custom Properties)",
+                    "name": "navViewItemId",
+                    "type": "string"
+                }
+            ]
         }
     ]
 }

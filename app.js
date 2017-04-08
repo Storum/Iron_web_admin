@@ -37,7 +37,9 @@ Ext.application({
         'order_model',
         'order_for_phone',
         'executor_model',
-        'order_by_status_model'
+        'order_by_status_model',
+        'item_type_full_model',
+        'client_filter_model'
     ],
     stores: [
         'user_store',
@@ -56,7 +58,10 @@ Ext.application({
         'order_store',
         'order_for_phone',
         'executor_store',
-        'order_by_status_store'
+        'order_by_status_store',
+        'item_type_full_store',
+        'item_type_full_tree_store',
+        'client_filter_store'
     ],
     views: [
         'MainView',
@@ -78,7 +83,10 @@ Ext.application({
         'ReportsMenuPanel',
         'SearchOrderMenu',
         'OrderTaskPanel',
-        'CatalogMenu'
+        'CatalogMenu',
+        'EditItemTypeGroupsPanel',
+        'ItemTypesPanel',
+        'EditItemTypesPanel'
     ],
     controllers: [
         'Navigation',
@@ -100,7 +108,11 @@ Ext.application({
         'report_menu_controller',
         'client_panel_ext_controller',
         'search_order_menu_controller',
-        'order_task_controller'
+        'order_task_controller',
+        'catalog_menu_controller',
+        'edit_item_type_groups_panel_controller',
+        'item_types_panel_controller',
+        'edit_item_types_panel_controller'
     ],
     name: 'Iron',
 

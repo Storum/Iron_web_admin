@@ -70,6 +70,19 @@
             },
             "codeClass": null,
             "userConfig": {
+                "name": "group_name",
+                "type": "string"
+            },
+            "designerId": "0b4e78c0-9b32-429d-bba7-1002ee058b66"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
                 "name": "comment",
                 "type": "string"
             },

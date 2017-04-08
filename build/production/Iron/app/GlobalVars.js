@@ -1,1 +1,1 @@
-function _07d7943c6cbae9cc26a8c8f8fb6781a906e275a7(){};Ext.define("GlobalVars",{singleton:true,previous_view:"homepanel",url_setting:"http://termostorage.ru/m8/",cash_user:null});
+function _dfc45fd2f163a5b517459ad942dde33857b8e199(){};Ext.define("GlobalVars",{singleton:true,previous_view:"homepanel",url_setting:"http://termostorage.ru/m10/",cash_user:null});

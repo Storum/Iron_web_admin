@@ -38,7 +38,7 @@
                     "userConfig": {
                         "designer|displayName": "itemTpl",
                         "implHandler": [
-                            "<div class=\"client\"> {surname}<br>{name}<br>{patronymic}<br> </div>"
+                            "<div class=\"client\"> {surname}<br>{name}<br>{patronymic} <br><b>Тел.:{phone}</b><br> </div>"
                         ]
                     },
                     "designerId": "512e6775-8e5e-4612-b7db-176216703e81"
@@ -163,20 +163,52 @@
                     "designerId": "da26ffae-91b1-4540-8ad1-226967e788af",
                     "cn": [
                         {
-                            "type": "Ext.field.Search",
+                            "type": "Ext.Container",
                             "reference": {
                                 "name": "items",
                                 "type": "array"
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "clearIcon": false,
-                                "docked": "top",
-                                "itemId": "search_field",
-                                "label": "Поиск по фамилии",
-                                "width": 514
+                                "layout": "hbox",
+                                "width": 676
                             },
-                            "designerId": "767c60bb-131d-4d79-9da9-6feb83e308a8"
+                            "designerId": "b9f28d2b-efeb-4270-a340-5300b7d14406",
+                            "cn": [
+                                {
+                                    "type": "Ext.field.Select",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": null,
+                                        "displayField": "name",
+                                        "itemId": "filter_field",
+                                        "label": "",
+                                        "store": "client_filter_store",
+                                        "valueField": "field_name"
+                                    },
+                                    "designerId": "beef9d70-cdc8-4ccf-bd4b-003ca331fdbd"
+                                },
+                                {
+                                    "type": "Ext.field.Search",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "clearIcon": false,
+                                        "docked": null,
+                                        "itemId": "search_field",
+                                        "label": "",
+                                        "width": 389
+                                    },
+                                    "designerId": "767c60bb-131d-4d79-9da9-6feb83e308a8"
+                                }
+                            ]
                         }
                     ]
                 }

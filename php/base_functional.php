@@ -2,11 +2,11 @@
 
 function connect_db (){
 	
-	$link = mysql_connect('localhost', 'root', '')
-	 	or die('Unable to connect to MySQL');
-	
-	//$link = mysql_connect('localhost', 'u0194327_root', 'HYvtP5uM')
+	//$link = mysql_connect('localhost', 'root', '')
 	//	or die('Unable to connect to MySQL');
+	
+	$link = mysql_connect('localhost', 'u0194327_root', 'HYvtP5uM')
+		or die('Unable to connect to MySQL');
 
 
 	mysql_set_charset ('utf8');
@@ -297,8 +297,6 @@ function add_user_address ($id_user, $id_address_type, $name, $comment){
 		echo $_GET['callback'].'({result:"ok", text:"Адрес добавлен"})'; 
 	else
 		echo $_GET['callback'].'({result:"error of adding new user", text:"Ошибка сервера"})'; 
-
-	
 }
 
 function add_client_address ($id_client, $id_address_type, $name, $comment){
@@ -614,77 +612,6 @@ function update_client_phone ($id_phone_set, $phone, $is_primary, $comment){
 
 
 
-//-------------------------------------------------------------------------------------------------------------------
-//-----------------------------------------------------------Группы типов одежды-------------------------------------
-//-------------------------------------------------------------------------------------------------------------------
-
-// Получение списка групп типов одежды
-function get_itemgroup_list (){
-	connect_db ();
-
-	$sql = "SELECT  id_item_type_group, 
-					name, 
-					comment
-			FROM tbl_item_type_group";
-
-	$sql_result = mysql_query ($sql)
-		or die('Error querying database.');
-
-	$row = mysql_fetch_array($sql_result);
-	$result_list = '';
-
-	if (mysql_num_rows ($sql_result) <> 0)
-	{
-		$result_list = '[{id_item_type_group:'.$row{'id_item_type_group'}.
-					', name:"'.$row{'name'}.
-					'", comment:"'.$row{'comment'}.'"}';
-
-		while ($row = mysql_fetch_array($sql_result)) {
-		   $result_list .= ',{id_item_type_group:'.$row{'id_item_type_group'}.
-						', name:"'.$row{'name'}.
-						'", comment:"'.$row{'comment'}.'"}';
-		}
-		$result_list .= ']';
-	}
-	else
-		$result_list .= '[]';
-
-	
-
-	echo $_GET['callback'].'({itemgroup_list:'.$result_list.'})';
-}
-
-// Удаление группы типа одежды
-function delete_itemgroup ($id_item_type_group){
-	connect_db ();
-
-	$sql = "DELETE FROM tbl_item_type_group where id_item_type_group='$id_item_type_group'";
-
-	if (mysql_query ($sql))
-		echo $_GET['callback'].'({result:"ok", text:"Группа типа удалена"})';
-	else
-		echo $_GET['callback'].'({result:"error in database"})';
-
-	
-}
-
-// Обновление группы типа одежды
-function update_itemgroup_data ($id_item_type_group, $name, $comment){
-
-	connect_db ();
-
-	$sql = "UPDATE tbl_item_type_group set name='$name', comment='$comment' where id_item_type_group=$id_item_type_group";
-
-	if (mysql_query ($sql))
-
-		echo $_GET['callback'].'({result:"ok", text:"Обновление прошло успешно"})';
-	else
-		echo $_GET['callback'].'({result:"error in database"})';
-
-	
-}
-
-
 
 
 //-------------------------------------------------------------------------------------------------------------------
@@ -981,6 +908,9 @@ function get_gender_list (){
 	echo $_GET['callback'].'({gender_list:'.$result_list.'})';
 }
 
+
+
+
 // Получение списка типов групп одежды
 function get_item_type_groups (){
 	connect_db ();
@@ -1017,6 +947,66 @@ function get_item_type_groups (){
 	echo $_GET['callback'].'({item_type_groups_list:'.$result_list.'})';
 }
 
+// Добавление типа групп одежды
+function add_item_type_group ($name, $comment){
+
+	connect_db ();
+	$sql = "INSERT INTO tbl_item_type_groups(name, comment) VALUES ('$name','$comment')";
+
+	if (mysql_query ($sql))
+		echo $_GET['callback'].'({result:"ok", text:"Группа добавлена"})'; 
+	else
+		echo $_GET['callback'].'({result:"error of adding item type group", text:"Ошибка сервера"})'; 
+
+}
+
+// Обновление типа групп одежды
+function update_item_type_group ($id_item_type_group, $name, $comment){
+
+	connect_db ();
+
+	$sql = "UPDATE tbl_item_type_groups set name='$name', comment='$comment' where id_item_type_group=$id_item_type_group";
+
+
+	if (mysql_query ($sql))
+
+		echo $_GET['callback'].'({result:"ok", text:"Обновлено"})';
+	else
+		echo $_GET['callback'].'({result:"error in database"})';
+
+}
+
+
+// Удалеение типа группы одежды
+function delete_item_type_group ($id_item_type_group){
+	connect_db ();
+
+
+	$sql = "SELECT *
+			FROM tbl_orders o
+				join tbl_order_details od on o.id_order = od.id_order
+				join tbl_item_types i on od.id_item_type = i.id_item_type
+				join tbl_item_type_groups g on i.id_item_type_group = g.id_item_type_group
+			where g.id_item_type_group = $id_item_type_group
+			LIMIT 1";
+
+	$sql_result = mysql_query ($sql)
+			or die('Error querying database.');
+
+	if (mysql_num_rows ($sql_result) <> 0)
+		echo $_GET['callback'].'({result:"error", text:"Группа не может быть удалена! Существуют заказы под позиции данной группы. Сорян"})';
+	else{
+
+		$sql = "DELETE FROM tbl_item_type_groups where id_item_type_group=$id_item_type_group";
+
+		if (mysql_query ($sql))
+			echo $_GET['callback'].'({result:"ok", text:"Группа удалена. Ну и фиг с ним"})';
+		else
+			echo $_GET['callback'].'({result:"error in database"})';
+	}
+}
+
+
 // Получение списка типов одежды по идентификатору группы
 function get_item_types_by_group_type ($id_item_type_group){
 	connect_db ();
@@ -1026,8 +1016,8 @@ function get_item_types_by_group_type ($id_item_type_group){
 					is_home_weight,
 					is_only_piece,
 					comment
-			FROM tbl_item_types 
-			where id_item_type_group='$id_item_type_group'";
+			FROM tbl_item_types t
+			where id_item_type_group=$id_item_type_group";
 
 	$sql_result = mysql_query ($sql)
 		or die('Error querying database.');
@@ -1059,6 +1049,112 @@ function get_item_types_by_group_type ($id_item_type_group){
 
 	echo $_GET['callback'].'({item_types_list:'.$result_list.'})';
 }
+
+
+
+
+// Получение списка типов одежды
+function get_item_types (){
+	connect_db ();
+
+
+	$sql = "SELECT 	IFNULL(t.id_item_type,  0) as id_item_type, 
+					g.id_item_type_group,
+					IFNULL(t.is_only_piece,  0) as is_only_piece,
+					IFNULL(t.is_home_weight,  0) as is_home_weight,
+					IFNULL(t.name,  g.name) as name,
+					g.name group_name, 
+					g.comment group_comment,
+					IFNULL(t.hanger,  0) as hanger,
+					IFNULL(t.total_time_in_second,  0) total_time_in_second,
+					IFNULL(t.comment,  '') as comment,
+					get_current_price_by_item_id (id_item_type, 'Штучный') cur_price,
+					IF(get_current_action_type_by_item_id (id_item_type) = 'Рублевая', get_current_action_value_by_item_id (id_item_type), get_current_price_by_item_id (id_item_type, 'Штучный')*get_current_action_value_by_item_id (id_item_type)) cur_action_price
+			FROM tbl_item_type_groups g 
+				left join tbl_item_types t on t.id_item_type_group = g.id_item_type_group
+			order by g.name, t.name";
+
+
+	$sql_result = mysql_query ($sql)
+		or die('Error querying database.');
+
+	//$row = mysql_fetch_array($sql_result);
+	//$result_list = '';
+
+	$rows = array();
+
+	$cur_group_index = 0;
+	//$r = mysql_fetch_array($sql_result);
+	$cur_group_name = '';
+	
+	//echo $cur_group_name;
+	
+	$rows['item_types_list']['items'] = array();
+
+
+	while($row = mysql_fetch_assoc($sql_result)) {
+	
+
+		if ($row{'group_name'} != $cur_group_name){
+			$cur_group_name = $row{'group_name'};
+			$cur_group_index++;
+
+			$rows['item_types_list']['items'][]= $row;
+			//$rows['item_types_list']['items'][$cur_group_index] = $row;
+			$rows['item_types_list']['items'][$cur_group_index-1]['name'] = $cur_group_name;
+			$rows['item_types_list']['items'][$cur_group_index-1]['items'] = array();
+
+			if ($row{'id_item_type'}){
+				$indx = array_push ($rows['item_types_list']['items'][$cur_group_index-1]['items'], $row);
+				$rows['item_types_list']['items'][$cur_group_index-1]['items'][$indx-1]['leaf'] = true;
+			}
+		}
+		else{
+			$indx = array_push ($rows['item_types_list']['items'][$cur_group_index-1]['items'], $row);
+			$rows['item_types_list']['items'][$cur_group_index-1]['items'][$indx-1]['leaf'] = true;
+
+			//$rows['item_types_list']['items'][$cur_group_index-1]['items'][] = $row;
+		}
+	}
+
+
+	echo $_GET['callback'].'('.json_encode($rows).')';
+
+	/*if (mysql_num_rows ($sql_result) <> 0)
+	{
+		$result_list = '[{id_item_type:'.$row{'id_item_type'}.
+					', id_item_type_group:'.$row{'id_item_type_group'}.
+					', is_only_piece:'.$row{'is_only_piece'}.
+					', is_home_weight:'.$row{'is_home_weight'}.
+					', name:"'.$row{'name'}.
+					'", group_name:"'.$row{'group_name'}.
+					'", hanger:'.$row{'hanger'}.
+					', total_time_in_second:'.$row{'total_time_in_second'}.
+					', comment:"'.$row{'comment'}.'"}';
+
+		while ($row = mysql_fetch_array($sql_result)) {
+		   $result_list .= ',{id_item_type:'.$row{'id_item_type'}.
+					', id_item_type_group:'.$row{'id_item_type_group'}.
+					', is_only_piece:'.$row{'is_only_piece'}.
+					', is_home_weight:'.$row{'is_home_weight'}.
+					', name:"'.$row{'name'}.
+					'", group_name:"'.$row{'group_name'}.
+					'", hanger:'.$row{'hanger'}.
+					', total_time_in_second:'.$row{'total_time_in_second'}.
+					', comment:"'.$row{'comment'}.'"}';
+		}
+		$result_list .= ']';
+	}
+	else
+		$result_list .= '[]';
+
+	
+
+	echo $_GET['callback'].'({item_types_list:'.$result_list.'})';*/
+}
+
+
+
 
 // Получение списка цветов
 function get_color_list (){
@@ -1235,6 +1331,13 @@ function get_current_order_price_list (){
 
 // Получить все действующие акции по идентификатору вещи
 function get_current_action_by_item_id ($id_item_type){
+
+
+
+
+
+
+
 
 	connect_db ();
 
@@ -1468,7 +1571,8 @@ function get_order_list (){
 					where s.id_order = o.id_order 
                      	and ds = (select max(ds) from tbl_order_status where id_order=o.id_order)) as id_status,
 					o.comment
-			FROM  tbl_orders o";
+			FROM  tbl_orders o
+			ORDER BY o.id_order desc";
 
 
 	$sql_result = mysql_query ($sql)
@@ -1950,8 +2054,20 @@ switch ($function_name) {
 	case 'get_gender_list':
 		get_gender_list ();
 		break;
+	case 'get_item_types':
+		get_item_types ();
+		break;
 	case 'get_item_type_groups':
 		get_item_type_groups ();
+		break;
+	case 'add_item_type_group':
+		add_item_type_group ($_GET['name'], $_GET['comment']);
+		break;
+	case 'update_item_type_group':
+		update_item_type_group ($_GET['id_item_type_group'], $_GET['name'], $_GET['comment']);
+		break;
+	case 'delete_item_type_group':
+		delete_item_type_group ($_GET['id_item_type_group']);
 		break;
 	case 'get_item_types_by_group_type':
 		get_item_types_by_group_type ($_GET['id_item_type_group']);
@@ -2012,15 +2128,6 @@ switch ($function_name) {
 		break;
 	case 'get_client_order_count':
 		get_client_order_count ($_GET['id_client']);
-		break;
-	case 'get_itemgroup_list':
-		get_itemgroup_list ();
-		break;
-	case 'delete_itemgroup':
-		delete_itemgroup ($_GET['id_item_type_group']);
-		break;
-	case 'update_itemgroup_data':
-		update_itemgroup_data ($_GET['id_item_type_group'], $_GET['name'], $_GET['comment']);
 		break;
 	case 'get_current_price_list_by_item_id':
 		get_current_price_list_by_item_id ($_GET['id_item_type']);

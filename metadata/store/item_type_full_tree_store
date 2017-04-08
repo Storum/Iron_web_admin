@@ -1,0 +1,40 @@
+{
+    "type": "Ext.data.TreeStore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "defaultRootProperty": "items",
+        "designer|userClassName": "item_type_full_tree_store",
+        "model": "item_type_full_model",
+        "storeId": "item_type_full_tree_store"
+    },
+    "designerId": "b9bb4bd9-a0c2-4ddc-b339-e21d73447ca4",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Memory",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "designerId": "2721e0f2-2b90-47cb-bb7c-6375f1c46127",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "rootProperty": null
+                    },
+                    "designerId": "1f3a8779-9dc1-454d-adf5-1a3a4acd6b38"
+                }
+            ]
+        }
+    ]
+}

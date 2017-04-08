@@ -18,26 +18,15 @@ Ext.define('Iron.view.HomePanel', {
     alias: 'widget.homepanel',
 
     requires: [
-        'Ext.Label',
         'Ext.Img'
     ],
 
     config: {
         itemId: 'homePanel',
-        layout: 'hbox',
+        layout: 'fit',
         items: [
             {
-                xtype: 'label',
-                centered: true,
-                html: 'Home',
-                itemId: 'homeLabel'
-            },
-            {
                 xtype: 'image',
-                flex: 1,
-                centered: true,
-                height: 364,
-                width: 715,
                 src: 'logo.png'
             }
         ]

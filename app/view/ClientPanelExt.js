@@ -22,6 +22,7 @@ Ext.define('Iron.view.ClientPanelExt', {
         'Ext.XTemplate',
         'Ext.Toolbar',
         'Ext.Button',
+        'Ext.field.Select',
         'Ext.field.Search'
     ],
 
@@ -35,7 +36,7 @@ Ext.define('Iron.view.ClientPanelExt', {
                 height: 245,
                 itemId: 'client_list',
                 itemTpl: [
-                    '<div class="client"> {surname}<br>{name}<br>{patronymic}<br> </div>'
+                    '<div class="client"> {surname}<br>{name}<br>{patronymic} <br><b>Тел.:{phone}</b><br> </div>'
                 ],
                 store: 'client_store',
                 items: [
@@ -95,12 +96,26 @@ Ext.define('Iron.view.ClientPanelExt', {
                         docked: 'top',
                         items: [
                             {
-                                xtype: 'searchfield',
-                                docked: 'top',
-                                itemId: 'search_field',
-                                width: 514,
-                                clearIcon: false,
-                                label: 'Поиск по фамилии'
+                                xtype: 'container',
+                                width: 676,
+                                layout: 'hbox',
+                                items: [
+                                    {
+                                        xtype: 'selectfield',
+                                        itemId: 'filter_field',
+                                        label: '',
+                                        displayField: 'name',
+                                        store: 'client_filter_store',
+                                        valueField: 'field_name'
+                                    },
+                                    {
+                                        xtype: 'searchfield',
+                                        itemId: 'search_field',
+                                        width: 389,
+                                        clearIcon: false,
+                                        label: ''
+                                    }
+                                ]
                             }
                         ]
                     }

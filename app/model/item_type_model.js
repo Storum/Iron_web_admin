@@ -39,6 +39,10 @@ Ext.define('Iron.model.item_type_model', {
                 type: 'string'
             },
             {
+                name: 'group_name',
+                type: 'string'
+            },
+            {
                 name: 'comment',
                 type: 'string'
             }

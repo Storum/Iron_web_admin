@@ -1,0 +1,14 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "item_type_full_store",
+        "model": "item_type_full_model",
+        "storeId": "item_type_full_store"
+    },
+    "designerId": "411013ef-f066-4ca6-a9a9-ee68f8772896"
+}

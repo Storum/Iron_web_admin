@@ -182,6 +182,7 @@ Ext.define('Iron.controller.order_menu_controller', {
 
                     var x = '<style type="text/css">TABLE {border-collapse: collapse; border: 1px solid black}TD, TH {padding: 3px; border: 1px solid black;font-size: 10px}</style>';
 
+                    var work_time = '<div><p align="right"><b>Гладильня «Мама погладит» </b><br> Тел.: +7-906-434-76-67 <br> Часы работы: <br> вт-сб - с 10:30 до 20:00 <br> вс - с 10:30 до 16:00 <br> пн - выходной</p>';
                     var header_text = '<div><p align="center">Договор № ' + order_record.get('id_order') + ' от ' +  ('0' + date.getDate()).slice(-2) + '.' + ('0' + (date.getMonth() + 1)).slice(-2) + '.' + date.getFullYear() + '</p>';
                     var contract_text = '<p align="left"> <font size="2"> <b> Особые условия выполнения договора по глажке Исполнителем. </b> </font> </p>';
                     var time = '<font size="2"> 1. Срок ответственного хранения выполненного заказа Исполнителем не более 3-х дней. За хранение вещей более 3 дней взимается плата в размере 1% от стоимости заказа, за каждый день хранения.</font>';
@@ -204,7 +205,7 @@ Ext.define('Iron.controller.order_menu_controller', {
 
 
 
-                    newWin.document.write(x + header_text + contract_text + time + task + lable + strong_wear + claims + '<br>' + no_weight_table.table + '<br>' + weight_home_table.table + '<br>'+  weight_dress_table.table + '<br>' + result_table + '<br>' + agreement + '<br>' + signatures + '<br>' + signatures_finish);
+                    newWin.document.write(x + work_time + header_text + contract_text + time + task + lable + strong_wear + claims + '<br>' + no_weight_table.table + '<br>' + weight_home_table.table + '<br>'+  weight_dress_table.table + '<br>' + result_table + '<br>' + agreement + '<br>' + signatures + '<br>' + signatures_finish);
 
 
                 }

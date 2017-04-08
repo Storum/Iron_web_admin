@@ -1,0 +1,94 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "catalog_menu_controller"
+    },
+    "designerId": "8c29ec1d-fcb9-4386-8b88-7cee0dc653d5",
+    "cn": [
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "catalogMenu",
+                "selector": "panel#catalogMenu"
+            },
+            "designerId": "39f6a574-06ad-405a-b802-f8b3a2e4abce"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "item_type_groups_btn",
+                "selector": "panel#catalogMenu button[itemId=item_type_groups_btn]"
+            },
+            "designerId": "9cd0ef37-c233-4137-9317-79f8082b2899"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "item_type_groups_btn",
+                "designer|targetType": "Ext.Button",
+                "fn": "item_type_groups_type_tap",
+                "implHandler": [
+                    "var item_type_groups_panel = Ext.create('widget.itemtypegroupspanel');",
+                    "Ext.Viewport.add(item_type_groups_panel);",
+                    "item_type_groups_panel.show();"
+                ],
+                "name": "tap"
+            },
+            "designerId": "1f9a97aa-6f4c-4b6c-a83b-f1bfbe82fbca"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "item_types_btn",
+                "selector": "panel#catalogMenu button[itemId=item_types_btn]"
+            },
+            "designerId": "51af2d29-58be-4553-9b82-efbece105f7b"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "item_types_btn",
+                "designer|targetType": "Ext.Button",
+                "fn": "item_types_tap",
+                "implHandler": [
+                    "",
+                    "var item_types_panel = Ext.create('widget.itemtypespanel');",
+                    "Ext.Viewport.add(item_types_panel);",
+                    "item_types_panel.show();"
+                ],
+                "name": "tap"
+            },
+            "designerId": "6b88abe0-05e5-4ce3-9934-69ba7e2cb4c7"
+        }
+    ]
+}

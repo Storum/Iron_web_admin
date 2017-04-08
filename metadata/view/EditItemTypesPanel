@@ -1,0 +1,210 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "centered": true,
+        "designer|userAlias": "edititemtypepanel",
+        "designer|userClassName": "EditItemTypesPanel",
+        "height": 562,
+        "itemId": "editItemTypesPanel",
+        "modal": true,
+        "width": 560
+    },
+    "designerId": "d7486d22-c3a1-45ec-a7d6-a0d9348c9469",
+    "cn": [
+        {
+            "type": "Ext.Toolbar",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": "bottom"
+            },
+            "designerId": "900dfbd0-4983-4552-9d21-e6afed36dd15",
+            "cn": [
+                {
+                    "type": "Ext.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "docked": "right",
+                        "layout": "hbox",
+                        "width": 250
+                    },
+                    "designerId": "e3efec4f-6776-4720-8bae-1e5dc1ea76ca",
+                    "cn": [
+                        {
+                            "type": "Ext.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "iconCls": "action",
+                                "itemId": "ok_btn",
+                                "layout|flex": 1,
+                                "text": "OK"
+                            },
+                            "designerId": "603891ef-549d-4dca-a382-0cbdaf36a9df"
+                        },
+                        {
+                            "type": "Ext.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "iconCls": "home",
+                                "itemId": "cancle_btn",
+                                "layout|flex": 1,
+                                "text": "Отмена"
+                            },
+                            "designerId": "45940f1d-b809-49e2-9369-f9c0cd98c8e5"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.form.FieldSet",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "height": 477,
+                "title": "Данные позиции:"
+            },
+            "designerId": "7633312d-7ac0-4d04-ae6c-4cd030c91260",
+            "cn": [
+                {
+                    "type": "Ext.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "clearIcon": false,
+                        "itemId": "name_fld",
+                        "label": "Наименование:"
+                    },
+                    "designerId": "e6200b2d-e383-4a3a-b983-41dd57a3a8f6"
+                },
+                {
+                    "type": "Ext.field.Checkbox",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "peace_only_fld",
+                        "label": "Только штучно:"
+                    },
+                    "designerId": "c09bb75c-66d8-465f-bca0-b7e51c9f4e26"
+                },
+                {
+                    "type": "Ext.field.Checkbox",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "hanger_fld",
+                        "label": "С вешалкой:"
+                    },
+                    "designerId": "305d3d35-92b5-4239-89f9-62c0a51ded03"
+                },
+                {
+                    "type": "Ext.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "clearIcon": false,
+                        "itemId": "total_time_in_second_fld",
+                        "label": "Тайминг (в сек.):"
+                    },
+                    "designerId": "75250c8d-832f-49a0-b71e-c2e95198a825"
+                },
+                {
+                    "type": "Ext.field.Select",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "displayField": "name",
+                        "itemId": "group_fld",
+                        "label": "Группа:",
+                        "store": "item_type_groups_store",
+                        "valueField": "id_item_type_group"
+                    },
+                    "designerId": "4472da60-3f96-484f-8893-7b522b1d675a"
+                },
+                {
+                    "type": "Ext.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "clearIcon": false,
+                        "disabled": true,
+                        "itemId": "cur_price_fld",
+                        "label": "Текущий прайс:"
+                    },
+                    "designerId": "f7baf1dd-ab36-443d-b94d-b42c4863646c"
+                },
+                {
+                    "type": "Ext.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "clearIcon": false,
+                        "disabled": true,
+                        "itemId": "cur_action_price_fld",
+                        "label": "Текущая акция:"
+                    },
+                    "designerId": "cb56eb76-aed2-4d35-aafc-1face64a6355"
+                },
+                {
+                    "type": "Ext.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "clearIcon": false,
+                        "height": 102,
+                        "itemId": "comment_fld",
+                        "label": "Комментарии:"
+                    },
+                    "designerId": "f0dbd31a-d525-4cf3-a4af-a1bd3fb8ce63"
+                }
+            ]
+        }
+    ]
+}

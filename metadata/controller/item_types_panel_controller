@@ -1,0 +1,458 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "item_types_panel_controller",
+        "stores": [
+            "item_type_full_store"
+        ]
+    },
+    "designerId": "db28d15b-a40d-40c7-9c6a-4fa7c5d0e0a3",
+    "cn": [
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "itemTypesPanel",
+                "selector": "panel#itemTypesPanel",
+                "xtype": "Ext.Panel"
+            },
+            "designerId": "31cc6181-483b-4184-af85-0c1728d6d4c2"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "item_types_list",
+                "selector": "panel#itemTypesPanel nestedlist[itemId=item_types_list]"
+            },
+            "designerId": "06ed404f-c1a7-4935-b07a-dc8d096b0374"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "add_btn",
+                "selector": "panel#itemTypesPanel button[itemId=add_btn]"
+            },
+            "designerId": "ec4effcd-d5f1-439d-9ef6-deb37259188b"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "delete_item_btn",
+                "selector": "panel#itemTypesPanel button[itemId=delete_item_btn]"
+            },
+            "designerId": "944afa6d-4c7d-4628-9422-e25ac5ddb520"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "delete_group_btn",
+                "selector": "panel#itemTypesPanel button[itemId=delete_group_btn]"
+            },
+            "designerId": "9085bf0e-28f4-4257-94a7-0ee461cc652a"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "cancle_btn",
+                "selector": "panel#itemTypesPanel button[itemId=cancle_btn]"
+            },
+            "designerId": "94c3ffda-f0af-429e-865b-fa30c624139a"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "itemTypesPanel",
+                "designer|targetType": "Ext.Panel",
+                "fn": "onPanelShow",
+                "implHandler": [
+                    "this.update_item_type_list();"
+                ],
+                "name": "show"
+            },
+            "designerId": "241b5461-9f45-44ed-b244-d49aee5ba9aa"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "change_group_btn",
+                "selector": "panel#itemTypesPanel button[itemId=change_group_btn]"
+            },
+            "designerId": "9561290f-8c23-4cd1-9e71-f60536b02d91"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "change_item_btn",
+                "selector": "panel#itemTypesPanel button[itemId=change_item_btn]"
+            },
+            "designerId": "e4feba0f-2312-4b78-add1-4d54c65610a5"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "update_item_type_list",
+                "implHandler": [
+                    "var t = this;",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name: 'get_item_types',",
+                    "            format: 'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        async: false,",
+                    "        success: function (result)",
+                    "        {",
+                    "            t.update_item_type_store (result.item_types_list);",
+                    "        }",
+                    "    });"
+                ]
+            },
+            "designerId": "611237b8-c9a7-4590-bd1d-669298ca1913"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "cancle_btn",
+                "designer|targetType": "Ext.Button",
+                "fn": "cancle_tap",
+                "implHandler": [
+                    "this.getItemTypesPanel().destroy();"
+                ],
+                "name": "tap"
+            },
+            "designerId": "830348f2-a082-4720-8826-b197bcb82a6f"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "data"
+                ],
+                "fn": "update_item_type_store",
+                "implHandler": [
+                    "",
+                    "var item_types_list = this.getItem_types_list();",
+                    "var item_type_store = item_types_list.getStore();",
+                    "",
+                    "item_type_store.setData(data);",
+                    "",
+                    "",
+                    "this.update_group_btn_disabled (true);",
+                    ""
+                ]
+            },
+            "designerId": "3cec18c3-ee73-46bb-bdc0-871820d2515d"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "add_btn",
+                "designer|targetType": "Ext.Button",
+                "fn": "add_tap",
+                "implHandler": [
+                    "var cur_node_name = this.getItem_types_list().getActiveItem().getStore().getNode().get('text');",
+                    "",
+                    "",
+                    "if (cur_node_name == 'Root')",
+                    "{",
+                    "    var edit_item_type_groups_panel = Ext.create('widget.edititemtypegropupspanel');",
+                    "    edit_item_type_groups_panel.source = 'item_types_panel_controller';",
+                    "    edit_item_type_groups_panel.target = 'add';",
+                    "    Ext.Viewport.add(edit_item_type_groups_panel);",
+                    "    edit_item_type_groups_panel.show();",
+                    "}"
+                ],
+                "name": "tap"
+            },
+            "designerId": "1795b09a-962f-448e-8bb0-0314a973f082"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "item_types_list",
+                "designer|targetType": "Ext.dataview.NestedList",
+                "fn": "item_tap",
+                "implHandler": [
+                    "",
+                    "if (record.get('leaf'))",
+                    "{",
+                    "    this.update_item_btn_disabled(false);",
+                    "}",
+                    "else",
+                    "{",
+                    "   this.update_group_btn_disabled (false);",
+                    "}"
+                ],
+                "name": "itemtap"
+            },
+            "designerId": "382c65fc-d335-4384-900e-807260671c37"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "item_types_list",
+                "designer|targetType": "Ext.dataview.NestedList",
+                "fn": "back_tap",
+                "implHandler": [
+                    "",
+                    "if (!node.get('leaf'))",
+                    "{",
+                    "    this.update_group_btn_disabled (true);",
+                    "    this.update_item_btn_disabled (true);",
+                    "}"
+                ],
+                "name": "back"
+            },
+            "designerId": "7fd0c356-1266-48e1-9023-13289be1f404"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "change_group_btn",
+                "designer|targetType": "Ext.Button",
+                "fn": "change_group_tap",
+                "implHandler": [
+                    "//this.getItem_type_list().getSelection()[0].get('id_item_type_group');",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "var edit_item_type_groups_panel = Ext.create('widget.edititemtyegrpupspanel');",
+                    "",
+                    "edit_item_type_groups_panel.source = 'item_types_panel_controller';",
+                    "edit_item_type_groups_panel.target = 'edit';",
+                    "Ext.Viewport.add(edit_item_type_groups_panel);",
+                    "edit_item_type_groups_panel.show();"
+                ],
+                "name": "tap"
+            },
+            "designerId": "9f0fe229-ff4c-41e3-8168-3785f672e640"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "disabled"
+                ],
+                "fn": "update_group_btn_disabled",
+                "implHandler": [
+                    "this.getDelete_group_btn().setDisabled (disabled);",
+                    "this.getChange_group_btn().setDisabled (disabled);"
+                ]
+            },
+            "designerId": "361e3c77-0dc0-49d1-8da6-fa9e7338b6ba"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "disabled"
+                ],
+                "fn": "update_item_btn_disabled",
+                "implHandler": [
+                    "this.getDelete_item_btn().setDisabled (disabled);",
+                    "this.getChange_item_btn().setDisabled (disabled);"
+                ]
+            },
+            "designerId": "1235a77c-abca-4bfa-b98f-beb7dfc14beb"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "change_item_btn",
+                "designer|targetType": "Ext.Button",
+                "fn": "change_item_tap",
+                "implHandler": [
+                    "var edit_item_type_panel = Ext.create('widget.edititemtypepanel');",
+                    "",
+                    "edit_item_type_panel.source = 'item_types_panel_controller';",
+                    "edit_item_type_panel.target = 'edit';",
+                    "Ext.Viewport.add(edit_item_type_panel);",
+                    "edit_item_type_panel.show();"
+                ],
+                "name": "tap"
+            },
+            "designerId": "83c225f5-c916-474e-a731-f8eda9eb6753"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "delete_group_btn",
+                "designer|targetType": "Ext.Button",
+                "fn": "delete_group_tap",
+                "implHandler": [
+                    "",
+                    "var id_item_type_group = this.getItem_types_list().getActiveItem().getStore().getNode().get('id_item_type_group');",
+                    "",
+                    "",
+                    "var t = this;",
+                    "",
+                    "Ext.data.JsonP.request(",
+                    "    {",
+                    "        url: GlobalVars.url_setting + 'php/base_functional.php',",
+                    "        params:",
+                    "        {",
+                    "            function_name\t\t: 'delete_item_type_group',",
+                    "            id_item_type_group\t: id_item_type_group,",
+                    "            format: 'json'",
+                    "        },",
+                    "        callbackKey: 'callback',",
+                    "        async: false,",
+                    "        success: function (result)",
+                    "        {",
+                    "",
+                    "            Ext.Msg.alert('Iron', result.text);",
+                    "    ",
+                    "            if (result.result == 'ok')",
+                    "                t.update_item_type_list ();",
+                    "        }",
+                    "    });"
+                ],
+                "name": "tap"
+            },
+            "designerId": "c8f29219-b2b7-43f7-b042-fea18057162f"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "get_selected_node",
+                "implHandler": [
+                    "",
+                    "return this.getItem_types_list().getActiveItem().getStore().getNode();",
+                    "return this.getItem_types_list().getActiveItem().selected.items[0];//getStore();//.getSelectedRecords(); //.getNode();"
+                ]
+            },
+            "designerId": "d96b4ad0-015c-4b48-a3cb-aa264b61d077"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "get_selected_item",
+                "implHandler": [
+                    "",
+                    "return this.getItem_types_list().getActiveItem().selected.items[0];"
+                ]
+            },
+            "designerId": "417095e6-95ff-40af-9aa8-f1fc4fd7f576"
+        }
+    ]
+}

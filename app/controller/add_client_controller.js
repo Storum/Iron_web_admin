@@ -33,7 +33,7 @@ Ext.define('Iron.controller.add_client_controller', {
 
         control: {
             "addClientPanel": {
-                show: 'onFormpanelShow'
+                show: 'onPanelShow'
             },
             "panel#addClientPanel  textfield[target='add_client']": {
                 keyup: 'textdata_changed',
@@ -48,7 +48,7 @@ Ext.define('Iron.controller.add_client_controller', {
         }
     },
 
-    onFormpanelShow: function(component, eOpts) {
+    onPanelShow: function(component, eOpts) {
         this.update_gender_list();
 
 
@@ -173,14 +173,13 @@ Ext.define('Iron.controller.add_client_controller', {
 
         var name = this.getClient_name().getValue();
         var surname = this.getClient_surname().getValue();
-        var patronymic = this.getClient_patronymic().getValue();
         var comment = this.getClient_comment().getValue();
         var phone = this.getClient_phone().getValue();
 
 
 
 
-        var sex_by_russian_name = new SexByRussianName(surname, name, patronymic);
+        var sex_by_russian_name = new SexByRussianName(surname, name, '');
         var gender = sex_by_russian_name.get_gender();
 
         //console.log(); // 1 — мужской, 0 — женский, undefined — не определен.
@@ -192,7 +191,7 @@ Ext.define('Iron.controller.add_client_controller', {
 
         var id_gender = gender_field.getValue();
 
-        if (id_gender && name.length > 0 && surname.length >0 && patronymic.length >0 && phone.length > 0)
+        if (id_gender && name.length > 0 && surname.length >0 && phone.length > 0)
             this.set_buttons_disable (false);
         else
             this.set_buttons_disable (true);

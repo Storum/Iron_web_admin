@@ -1,0 +1,99 @@
+{
+    "type": "defaultthemeresource",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "MyDefaultTheme"
+    },
+    "designerId": "9732d9cd-cbb9-4b36-a63a-3b48dc63fdc7",
+    "storage": {
+        "needsCompile": false,
+        "simple": {},
+        "nameIndex": 1,
+        "varData": {
+            "Ext.Button": {
+                "globalVars": [
+                    {
+                        "name": "badge-radius",
+                        "enabled": false,
+                        "value": "0em"
+                    },
+                    {
+                        "name": "badge-size",
+                        "enabled": true,
+                        "value": "0em"
+                    },
+                    {
+                        "name": "button-radius",
+                        "enabled": true,
+                        "value": "0.0em"
+                    },
+                    {
+                        "name": "toolbar-icon-size",
+                        "enabled": true,
+                        "value": "1em"
+                    }
+                ]
+            },
+            "Ext.Class": {
+                "globalVars": [
+                    {
+                        "name": "base-color",
+                        "enabled": true,
+                        "value": "rgba(77,168,204,1)"
+                    }
+                ]
+            },
+            "Ext.dataview.List": {
+                "globalVars": [
+                    {
+                        "name": "list-active-color",
+                        "enabled": true,
+                        "value": "rgba(33,188,56,0.7322834645669292)"
+                    },
+                    {
+                        "name": "list-bg-color",
+                        "enabled": true,
+                        "value": "rgba(222,222,222,1)"
+                    },
+                    {
+                        "name": "list-round-padding",
+                        "enabled": true,
+                        "value": "1px"
+                    },
+                    {
+                        "name": "list-rounded-radius",
+                        "enabled": true,
+                        "value": "0.0em"
+                    },
+                    {
+                        "name": "list-zebrastripe",
+                        "enabled": true,
+                        "value": "true"
+                    }
+                ]
+            },
+            "Ext.form.FieldSet": {
+                "globalVars": [
+                    {
+                        "name": "form-fieldset-radius",
+                        "enabled": true,
+                        "value": "0.0em"
+                    }
+                ]
+            },
+            "Ext.Toolbar": {
+                "globalVars": [
+                    {
+                        "name": "toolbar-base-color",
+                        "enabled": true,
+                        "value": "rgba(65,141,172,1)"
+                    }
+                ]
+            }
+        }
+    }
+}

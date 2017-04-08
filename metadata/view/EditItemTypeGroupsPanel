@@ -1,0 +1,125 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "centered": true,
+        "designer|userAlias": "edititemtypegropupspanel",
+        "designer|userClassName": "EditItemTypeGroupsPanel",
+        "height": 276,
+        "itemId": "editItemTypeGroupsPanel",
+        "modal": true,
+        "width": 527
+    },
+    "designerId": "e450e6e4-0ad4-461e-9649-c6992e62d77b",
+    "cn": [
+        {
+            "type": "Ext.form.FieldSet",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "title": "Данные группы:"
+            },
+            "designerId": "2c4a39d8-4630-4910-883f-74ba420fecfc",
+            "cn": [
+                {
+                    "type": "Ext.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "clearIcon": false,
+                        "itemId": "item_type_group_name",
+                        "label": "Имя группа"
+                    },
+                    "designerId": "f6585736-0184-47d3-9f41-2fc50f9144ae"
+                },
+                {
+                    "type": "Ext.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "clearIcon": false,
+                        "height": 103,
+                        "itemId": "item_type_group_comment",
+                        "label": "Комментарии"
+                    },
+                    "designerId": "744d22a3-00a5-44a5-b90f-2a263d12aacd"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Toolbar",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": "bottom"
+            },
+            "designerId": "b0b9e1dd-3fc4-4316-bd28-9095eb19752c",
+            "cn": [
+                {
+                    "type": "Ext.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "docked": "right",
+                        "layout": "hbox",
+                        "width": 250
+                    },
+                    "designerId": "869a976c-2c09-482b-b361-f2274205bf89",
+                    "cn": [
+                        {
+                            "type": "Ext.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "disabled": true,
+                                "iconCls": "action",
+                                "itemId": "ok_btn",
+                                "layout|flex": 1,
+                                "text": "OK",
+                                "width": 92
+                            },
+                            "designerId": "235eb2bf-60b7-43b5-8177-b703bd5d5243"
+                        },
+                        {
+                            "type": "Ext.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "iconCls": "home",
+                                "itemId": "cancle_btn",
+                                "layout|flex": 1,
+                                "text": "Отмена"
+                            },
+                            "designerId": "dfa6b01a-4021-4447-81ec-fdda38acfb7c"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

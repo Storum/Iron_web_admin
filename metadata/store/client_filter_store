@@ -1,0 +1,17 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "data": [
+            "[{name:\"Имя\", field_name:\"name\"}, {name:\"Фамилия\", field_name:\"surname\"}]"
+        ],
+        "designer|userClassName": "client_filter_store",
+        "model": "client_filter_model",
+        "storeId": "client_filter_store"
+    },
+    "designerId": "b7fbc865-cc09-4b17-a739-6b9b05d5e70a"
+}
